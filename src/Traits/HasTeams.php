@@ -17,10 +17,10 @@ trait HasTeams
      */
     public function isCurrentTeam($team)
     {
-        if($team==null || $this->currentTeam==null){
+        if ($team == null || $this->currentTeam == null) {
             return false;
         }
-        
+
         return $team->id === $this->currentTeam->id;
     }
 
@@ -163,7 +163,6 @@ trait HasTeams
      * Determine if the user has the given role on the given team.
      *
      * @param  mixed  $team
-     * @param  string  $role
      * @return bool
      */
     public function hasTeamRole($team, string $role)
@@ -200,7 +199,6 @@ trait HasTeams
      * Determine if the user has the given permission on the given team.
      *
      * @param  mixed  $team
-     * @param  string  $permission
      * @return bool
      */
     public function hasTeamPermission($team, string $permission)

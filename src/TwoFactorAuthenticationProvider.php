@@ -25,7 +25,6 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
     /**
      * Create a new two factor authentication provider instance.
      *
-     * @param  \PragmaRX\Google2FA\Google2FA  $engine
      * @param  \Illuminate\Contracts\Cache\Repository|null  $cache
      * @return void
      */
@@ -65,8 +64,6 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
     /**
      * Verify the given code.
      *
-     * @param $secret
-     * @param $code
      * @return bool
      *
      * @throws \PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException

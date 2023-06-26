@@ -3,7 +3,6 @@
 namespace ArtMin96\FilamentJet\Traits;
 
 use ArtMin96\FilamentJet\Features;
-use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Storage;
 
 trait HasProfilePhoto
@@ -15,8 +14,6 @@ trait HasProfilePhoto
 
     /**
      * Update the user's profile photo.
-     *
-     * @param  string|null  $photo
      */
     public function updateProfilePhoto(null|string $photo): void
     {

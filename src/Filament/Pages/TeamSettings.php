@@ -248,8 +248,6 @@ class TeamSettings extends Page
 
     /**
      * Cancel a pending team member invitation.
-     *
-     * @param  int  $invitationId
      */
     public function cancelTeamInvitation(int $invitationId): void
     {
@@ -269,9 +267,6 @@ class TeamSettings extends Page
 
     /**
      * Delete the team.
-     *
-     * @param  ValidateTeamDeletion  $validator
-     * @param  DeletesTeams  $deleter
      */
     public function deleteTeam(ValidateTeamDeletion $validator, DeletesTeams $deleter): Redirector
     {
@@ -289,9 +284,6 @@ class TeamSettings extends Page
 
     /**
      * Remove a team member from the team.
-     *
-     * @param int                $userId
-     * @param RemovesTeamMembers $remover
      */
     public function removeTeamMember(int $userId, RemovesTeamMembers $remover): void
     {
@@ -311,8 +303,6 @@ class TeamSettings extends Page
 
     /**
      * Remove the currently authenticated user from the team.
-     *
-     * @param  RemovesTeamMembers  $remover
      */
     public function leaveTeam(RemovesTeamMembers $remover): Redirector
     {
@@ -336,8 +326,6 @@ class TeamSettings extends Page
 
     /**
      * Allow the given user's role to be managed.
-     *
-     * @param  int  $userId
      */
     public function manageRole(int $userId): void
     {
@@ -350,8 +338,6 @@ class TeamSettings extends Page
 
     /**
      * Save the role for the user being managed.
-     *
-     * @param  UpdateTeamMemberRole  $updater
      */
     public function updateRole(UpdateTeamMemberRole $updater): void
     {

@@ -17,8 +17,6 @@ class AttemptToAuthenticate
 
     /**
      * Create a new controller instance.
-     *
-     * @param  \Illuminate\Contracts\Auth\StatefulGuard  $guard
      */
     public function __construct(StatefulGuard $guard)
     {
@@ -27,7 +25,6 @@ class AttemptToAuthenticate
 
     /**
      * @param  array<string, string>  $data
-     * @param  Closure  $next
      */
     public function handle(array $data, Closure $next)
     {

@@ -2,7 +2,6 @@
 
 namespace App\Actions\FilamentJet;
 
-use App\Models\User;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserProfileInformation;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
@@ -15,7 +14,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     /**
      * Validate and update the given user's profile information.
      *
-     * @param  Model|Authenticatable  $user
      * @param  array<string, string>  $input
      */
     public function update(Model|Authenticatable $user, array $input): void
@@ -38,7 +36,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     /**
      * Update the given verified user's profile information.
      *
-     * @param  Model|Authenticatable  $user
      * @param  array<string, string>  $input
      */
     protected function updateVerifiedUser(Model|Authenticatable $user, array $input): void

@@ -7,7 +7,6 @@ class Features
     /**
      * Determine if the given feature is enabled.
      *
-     * @param  string  $feature
      * @return bool
      */
     public static function enabled(string $feature)
@@ -18,8 +17,6 @@ class Features
     /**
      * Determine if the feature is enabled and has a given option enabled.
      *
-     * @param  string  $feature
-     * @param  string  $option
      * @return bool
      */
     public static function optionEnabled(string $feature, string $option)
@@ -31,8 +28,6 @@ class Features
     /**
      * Determine if the feature is enabled and has a given option.
      *
-     * @param  string  $feature
-     * @param  string  $option
      * @return mixed
      */
     public static function getOption(string $feature, string $option)
@@ -44,8 +39,6 @@ class Features
 
     /**
      * Determine if the application has registration features.
-     *
-     * @return bool
      */
     public static function hasRegistrationFeature(): bool
     {
@@ -54,8 +47,6 @@ class Features
 
     /**
      * Determine if the application has reset password features.
-     *
-     * @return bool
      */
     public static function hasResetPasswordFeature(): bool
     {
@@ -168,7 +159,6 @@ class Features
     /**
      * Get login feature options.
      *
-     * @param  array  $options
      * @return string
      */
     public static function login(array $options = [])
@@ -183,7 +173,6 @@ class Features
     /**
      * Enable the registration feature.
      *
-     * @param  array  $options
      * @return string
      */
     public static function registration(array $options = [])
@@ -198,7 +187,6 @@ class Features
     /**
      * Enable the two factor authentication feature.
      *
-     * @param  array  $options
      * @return string
      */
     public static function twoFactorAuthentication(array $options = [])
@@ -212,8 +200,6 @@ class Features
 
     /**
      * Determine if the application can logout other browser sessions.
-     *
-     * @return bool
      */
     public static function canLogoutOtherBrowserSessions(): bool
     {
@@ -222,8 +208,6 @@ class Features
 
     /**
      * Determine if the application can export personal data.
-     *
-     * @return bool
      */
     public static function canExportPersonalData(): bool
     {
@@ -233,7 +217,6 @@ class Features
     /**
      * Enable the password reset feature.
      *
-     * @param  array  $options
      * @return string
      */
     public static function resetPasswords(array $options = [])
@@ -248,7 +231,6 @@ class Features
     /**
      * Enable the email verification feature.
      *
-     * @param  array  $options
      * @return string
      */
     public static function emailVerification(array $options = [])
@@ -273,7 +255,6 @@ class Features
     /**
      * Enable the update password feature.
      *
-     * @param  array  $options
      * @return string
      */
     public static function updatePasswords(array $options = [])
@@ -308,7 +289,6 @@ class Features
     /**
      * Enable the teams feature.
      *
-     * @param  array  $options
      * @return string
      */
     public static function teams(array $options = [])
@@ -332,8 +312,6 @@ class Features
 
     /**
      * Enable the logout other browser sessions feature.
-     *
-     * @return string
      */
     public static function logoutOtherBrowserSessions(): string
     {
@@ -353,7 +331,6 @@ class Features
     /**
      * Enable the account personal data export feature.
      *
-     * @param  array  $options
      * @return string
      */
     public static function personalDataExport(array $options = [])

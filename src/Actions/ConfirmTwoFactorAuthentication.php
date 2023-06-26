@@ -18,7 +18,6 @@ class ConfirmTwoFactorAuthentication
     /**
      * Create a new action instance.
      *
-     * @param  \ArtMin96\FilamentJet\Contracts\TwoFactorAuthenticationProvider  $provider
      * @return void
      */
     public function __construct(TwoFactorAuthenticationProvider $provider)

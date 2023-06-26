@@ -26,8 +26,6 @@ class LogoutOtherBrowserSessions extends Component
 
     /**
      * Get the current sessions.
-     *
-     * @return \Illuminate\Support\Collection
      */
     public function getSessionsProperty(): Collection
     {

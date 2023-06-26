@@ -19,8 +19,6 @@ class TeamInvitation extends Mailable
 
     /**
      * Create a new message instance.
-     *
-     * @param  \ArtMin96\FilamentJet\Models\TeamInvitation  $invitation
      */
     public function __construct(TeamInvitationModel $invitation)
     {
