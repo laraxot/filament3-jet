@@ -17,10 +17,13 @@ trait HasTeams
      */
     public function isCurrentTeam($team)
     {
+<<<<<<< HEAD
         if($team==null || $this->currentTeam==null){
             return false;
         }
         
+=======
+>>>>>>> origin/main
         return $team->id === $this->currentTeam->id;
     }
 
