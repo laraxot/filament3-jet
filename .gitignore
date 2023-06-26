@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-/vendor
-=======
 .idea
 .phpunit.result.cache
 build
@@ -12,4 +9,4 @@ phpstan.neon
 testbench.yaml
 vendor
 node_modules
->>>>>>> origin/main
+*.lock
