@@ -2,6 +2,10 @@
 
 namespace App\Actions\FilamentJet;
 
+<<<<<<< HEAD
+=======
+use App\Models\Team;
+>>>>>>> eee9f5f (Fix styling)
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Events\AddingTeam;
 use ArtMin96\FilamentJet\FilamentJet;
