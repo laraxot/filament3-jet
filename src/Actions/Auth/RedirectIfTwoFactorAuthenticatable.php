@@ -20,18 +20,12 @@ class RedirectIfTwoFactorAuthenticatable
 
     /**
      * Create a new controller instance.
-     *
-     * @param  \Illuminate\Contracts\Auth\StatefulGuard  $guard
      */
     public function __construct(StatefulGuard $guard)
     {
         $this->guard = $guard;
     }
 
-    /**
-     * @param  array  $data
-     * @param  Closure  $next
-     */
     public function handle(array $data, Closure $next)
     {
         $user = $this->validateCredentials($data);
@@ -98,9 +92,6 @@ class RedirectIfTwoFactorAuthenticatable
 
     /**
      * Get the two factor authentication enabled response.
-     *
-     * @param  array  $data
-     * @param  Authenticatable|Model  $user
      */
     protected function twoFactorChallengeResponse(array $data, Authenticatable|Model $user): Redirector|RedirectResponse
     {

@@ -25,15 +25,11 @@ class ApiTokens extends Page
 
     /**
      * The create API token permissions.
-     *
-     * @var array
      */
     public array $permissions;
 
     /**
      * The plain text token value.
-     *
-     * @var string|null
      */
     public null|string $plainTextToken = '';
 

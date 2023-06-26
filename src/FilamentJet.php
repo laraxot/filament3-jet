@@ -82,15 +82,11 @@ class FilamentJet
 
     /**
      * The password rules that should be used by FilamentJet.
-     *
-     * @var array
      */
     public static array $passwordRules = [];
 
     /**
      * Register a callback that is responsible for building the authentication pipeline array.
-     *
-     * @param  callable  $callback
      */
     public static function loginThrough(callable $callback): void
     {
@@ -99,8 +95,6 @@ class FilamentJet
 
     /**
      * Register a callback that is responsible for building the authentication pipeline array.
-     *
-     * @param  callable  $callback
      */
     public static function authenticateThrough(callable $callback): void
     {
@@ -140,7 +134,6 @@ class FilamentJet
     /**
      * Find the role with the given key.
      *
-     * @param  string  $key
      * @return \ArtMin96\FilamentJet\Role
      */
     public static function findRole(string $key)
@@ -151,9 +144,6 @@ class FilamentJet
     /**
      * Define a role.
      *
-     * @param  string  $key
-     * @param  string  $name
-     * @param  array  $permissions
      * @return \ArtMin96\FilamentJet\Role
      */
     public static function role(string $key, string $name, array $permissions)
@@ -182,7 +172,6 @@ class FilamentJet
     /**
      * Define the available API token permissions.
      *
-     * @param  array  $permissions
      * @return static
      */
     public static function permissions(array $permissions)
@@ -195,7 +184,6 @@ class FilamentJet
     /**
      * Define the default permissions that should be available to new API tokens.
      *
-     * @param  array  $permissions
      * @return static
      */
     public static function defaultApiTokenPermissions(array $permissions)
@@ -208,7 +196,6 @@ class FilamentJet
     /**
      * Return the permissions in the given list that are actually defined permissions for the application.
      *
-     * @param  array  $permissions
      * @return array
      */
     public static function validPermissions(array $permissions)
@@ -383,7 +370,6 @@ class FilamentJet
     /**
      * Find a user instance by the given email address or fail.
      *
-     * @param  string  $email
      * @return mixed
      */
     public static function findUserByEmailOrFail(string $email)
@@ -416,7 +402,6 @@ class FilamentJet
     /**
      * Specify the user model that should be used by FilamentJet.
      *
-     * @param  string  $model
      * @return static
      */
     public static function useUserModel(string $model)
@@ -451,7 +436,6 @@ class FilamentJet
     /**
      * Specify the team model that should be used by FilamentJet.
      *
-     * @param  string  $model
      * @return static
      */
     public static function useTeamModel(string $model)
@@ -474,7 +458,6 @@ class FilamentJet
     /**
      * Specify the membership model that should be used by FilamentJet.
      *
-     * @param  string  $model
      * @return static
      */
     public static function useMembershipModel(string $model)
@@ -497,7 +480,6 @@ class FilamentJet
     /**
      * Specify the team invitation model that should be used by FilamentJet.
      *
-     * @param  string  $model
      * @return static
      */
     public static function useTeamInvitationModel(string $model)
@@ -510,7 +492,6 @@ class FilamentJet
     /**
      * Register a class / callback that should be used to update user profile information.
      *
-     * @param  string  $class
      * @return void
      */
     public static function updateUserProfileInformationUsing(string $class)
@@ -521,7 +502,6 @@ class FilamentJet
     /**
      * Register a class / callback that should be used to update user passwords.
      *
-     * @param  string  $class
      * @return void
      */
     public static function updateUserPasswordsUsing(string $class)
@@ -532,7 +512,6 @@ class FilamentJet
     /**
      * Register a class / callback that should be used to create users.
      *
-     * @param  string  $class
      * @return void
      */
     public static function createUsersUsing(string $class)
@@ -543,7 +522,6 @@ class FilamentJet
     /**
      * Register a class / callback that should be used to create teams.
      *
-     * @param  string  $class
      * @return void
      */
     public static function createTeamsUsing(string $class)
@@ -554,7 +532,6 @@ class FilamentJet
     /**
      * Register a class / callback that should be used to update team names.
      *
-     * @param  string  $class
      * @return void
      */
     public static function updateTeamNamesUsing(string $class)
@@ -565,7 +542,6 @@ class FilamentJet
     /**
      * Register a class / callback that should be used to add team members.
      *
-     * @param  string  $class
      * @return void
      */
     public static function addTeamMembersUsing(string $class)
@@ -576,7 +552,6 @@ class FilamentJet
     /**
      * Register a class / callback that should be used to add team members.
      *
-     * @param  string  $class
      * @return void
      */
     public static function inviteTeamMembersUsing(string $class)
@@ -587,7 +562,6 @@ class FilamentJet
     /**
      * Register a class / callback that should be used to remove team members.
      *
-     * @param  string  $class
      * @return void
      */
     public static function removeTeamMembersUsing(string $class)
@@ -598,7 +572,6 @@ class FilamentJet
     /**
      * Register a class / callback that should be used to delete teams.
      *
-     * @param  string  $class
      * @return void
      */
     public static function deleteTeamsUsing(string $class)
@@ -609,7 +582,6 @@ class FilamentJet
     /**
      * Register a class / callback that should be used to delete users.
      *
-     * @param  string  $class
      * @return void
      */
     public static function deleteUsersUsing(string $class)
@@ -619,8 +591,6 @@ class FilamentJet
 
     /**
      * Register a class / callback that should be used to reset user passwords.
-     *
-     * @param  string  $class
      */
     public static function resetUserPasswordsUsing(string $class): void
     {

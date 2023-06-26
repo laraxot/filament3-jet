@@ -46,8 +46,6 @@ class TwoFactorLogin extends CardPage
 
     /**
      * Determine if the request has a valid two factor code.
-     *
-     * @param  string|null  $code
      */
     public function hasValidCode(null|string $code): bool
     {
@@ -62,8 +60,6 @@ class TwoFactorLogin extends CardPage
 
     /**
      * Get the valid recovery code if one exists on the request.
-     *
-     * @param  string|null  $recoveryCode
      */
     public function validRecoveryCode(null|string $recoveryCode): null|string
     {

@@ -12,7 +12,6 @@ use App\Actions\FilamentJet\ResetUserPassword;
 use App\Actions\FilamentJet\UpdateTeamName;
 use App\Actions\FilamentJet\UpdateUserPassword;
 use App\Actions\FilamentJet\UpdateUserProfileInformation;
-use ArtMin96\FilamentJet\Filament\Pages\CreateTeam as CreateTeamPage;
 use ArtMin96\FilamentJet\Console\InstallCommand;
 use ArtMin96\FilamentJet\Contracts\TwoFactorAuthenticationProvider as TwoFactorAuthenticationProviderContract;
 use ArtMin96\FilamentJet\Filament\Pages\Account;
@@ -23,6 +22,7 @@ use ArtMin96\FilamentJet\Filament\Pages\Auth\PasswordReset\RequestPasswordReset;
 use ArtMin96\FilamentJet\Filament\Pages\Auth\PasswordReset\ResetPassword;
 use ArtMin96\FilamentJet\Filament\Pages\Auth\Register;
 use ArtMin96\FilamentJet\Filament\Pages\Auth\TwoFactorLogin;
+use ArtMin96\FilamentJet\Filament\Pages\CreateTeam as CreateTeamPage;
 use ArtMin96\FilamentJet\Filament\Pages\TeamSettings;
 use ArtMin96\FilamentJet\Http\Livewire\ApiTokensTable;
 use ArtMin96\FilamentJet\Http\Livewire\LogoutOtherBrowserSessions;
@@ -181,8 +181,6 @@ class FilamentJetServiceProvider extends PluginServiceProvider
 
     /**
      * Register the given component.
-     *
-     * @param  string  $component
      */
     protected function registerComponent(string $component): void
     {
@@ -218,7 +216,7 @@ class FilamentJetServiceProvider extends PluginServiceProvider
                     'personal-data-exports' => [
                         'driver' => 'local',
                         'root' => storage_path('app/personal-data-exports'),
-                    ]
+                    ],
                 ])
                 ->toArray()
         );

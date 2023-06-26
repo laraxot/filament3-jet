@@ -54,7 +54,6 @@ trait HasTwoFactorAuthentication
     /**
      * Enable two factor authentication for the user.
      *
-     * @param  EnableTwoFactorAuthentication  $enable
      * @return void
      */
     public function enableTwoFactorAuthentication(EnableTwoFactorAuthentication $enable)
@@ -73,7 +72,6 @@ trait HasTwoFactorAuthentication
     /**
      * Confirm two factor authentication for the user.
      *
-     * @param  ConfirmTwoFactorAuthentication  $confirm
      * @return void
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -97,7 +95,6 @@ trait HasTwoFactorAuthentication
     /**
      * Generate new recovery codes for the user.
      *
-     * @param  \ArtMin96\FilamentJet\Actions\GenerateNewRecoveryCodes  $generate
      * @return void
      */
     public function regenerateRecoveryCodes(GenerateNewRecoveryCodes $generate)
@@ -115,7 +112,6 @@ trait HasTwoFactorAuthentication
     /**
      * Disable two factor authentication for the user.
      *
-     * @param  \ArtMin96\FilamentJet\Actions\DisableTwoFactorAuthentication  $disable
      * @return void
      */
     public function disableTwoFactorAuthentication(DisableTwoFactorAuthentication $disable)

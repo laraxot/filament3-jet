@@ -13,9 +13,6 @@ trait CanDeleteAccount
 {
     /**
      * Delete the current user.
-     *
-     * @param  Request  $request
-     * @param  DeletesUsers  $deleter
      */
     public function deleteAccount(Request $request, DeletesUsers $deleter): Redirector|RedirectResponse
     {

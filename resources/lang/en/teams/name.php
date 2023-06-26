@@ -19,7 +19,7 @@ return [
     ],
 
     'messages' => [
-        'updated' => 'The team name has been successfully updated.'
+        'updated' => 'The team name has been successfully updated.',
     ],
 
 ];

@@ -48,8 +48,6 @@ class CreateNewUser implements CreatesNewUsers
 
     /**
      * Create a personal team for the user.
-     *
-     * @param  Model|Authenticatable  $user
      */
     protected function createTeam(Model|Authenticatable $user): void
     {

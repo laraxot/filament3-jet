@@ -95,8 +95,8 @@ class Account extends Page
                 ->hintAction(
                     ! empty(config('filament-jet.profile.login_field.hint_action')) && Features::enabled(Features::emailVerification())
                         ? Action::make('newEmailVerifyNote')
-                        ->tooltip(config('filament-jet.profile.login_field.hint_action.tooltip'))
-                        ->icon(config('filament-jet.profile.login_field.hint_action.icon'))
+                            ->tooltip(config('filament-jet.profile.login_field.hint_action.tooltip'))
+                            ->icon(config('filament-jet.profile.login_field.hint_action.icon'))
                         : null
                 )
                 ->email(fn (): bool => FilamentJet::username() === 'email')

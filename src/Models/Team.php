@@ -54,7 +54,6 @@ abstract class Team extends Model
     /**
      * Determine if the given email address belongs to a user on the team.
      *
-     * @param  string  $email
      * @return bool
      */
     public function hasUserWithEmail(string $email)
