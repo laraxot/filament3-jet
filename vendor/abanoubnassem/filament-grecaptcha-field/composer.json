@@ -1,0 +1,74 @@
+{
+    "name": "abanoubnassem/filament-grecaptcha-field",
+    "description": "Provides a Google reCaptcha V2 field for the Filament Forms",
+    "keywords": [
+        "AbanoubNassem",
+        "laravel",
+        "filament-grecaptcha-field",
+        "recaptcha",
+        "grecaptcha",
+        "google",
+        "captcha"
+    ],
+    "homepage": "https://github.com/abanoubnassem/filament-grecaptcha-field",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AbanoubNassem",
+            "email": "abanoubnassemmousa@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0|^8.1",
+        "anhskohbo/no-captcha": "^3.4",
+        "filament/forms": "^2.16",
+        "illuminate/contracts": "^9.0|^10.0",
+        "spatie/laravel-package-tools": "^1.13.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "AbanoubNassem\\FilamentGRecaptchaField\\": "src",
+            "AbanoubNassem\\FilamentGRecaptchaField\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AbanoubNassem\\FilamentGRecaptchaField\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AbanoubNassem\\FilamentGRecaptchaField\\FilamentGRecaptchaFieldServiceProvider"
+            ],
+            "aliases": {
+                "FilamentGRecaptchaField": "AbanoubNassem\\FilamentGRecaptchaField\\Facades\\FilamentGRecaptchaField"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
