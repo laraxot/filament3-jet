@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use Modules\User\Models\Team;
-use Modules\User\Models\User;
 use ArtMin96\FilamentJet\Features;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
 
 class UserFactory extends Factory
 {

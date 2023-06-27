@@ -2,13 +2,13 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
-use Modules\User\Models\Team;
-use Modules\User\Models\User;
 use ArtMin96\FilamentJet\Events\TeamMemberUpdated;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Rules\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
 
 class UpdateTeamMemberRole
 {

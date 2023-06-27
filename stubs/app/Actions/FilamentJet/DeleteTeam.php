@@ -2,8 +2,8 @@
 
 namespace App\Actions\FilamentJet;
 
-use Modules\User\Models\Team;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
+use Modules\User\Models\Team;
 
 class DeleteTeam implements DeletesTeams
 {
