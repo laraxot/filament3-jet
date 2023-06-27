@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use Modules\User\Models\Team;
 use App\Policies\TeamPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Modules\User\Models\Team;
 
 class AuthServiceProvider extends ServiceProvider
 {

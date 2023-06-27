@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TeamPolicy
 {

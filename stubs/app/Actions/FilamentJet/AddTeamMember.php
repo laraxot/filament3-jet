@@ -2,13 +2,13 @@
 
 namespace App\Actions\FilamentJet;
 
-use Modules\User\Models\Team;
-use Modules\User\Models\User;
 use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
 use ArtMin96\FilamentJet\Events\AddingTeamMember;
 use ArtMin96\FilamentJet\Events\TeamMemberAdded;
 use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Support\Facades\Gate;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
 
 class AddTeamMember implements AddsTeamMembers
 {

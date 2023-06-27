@@ -2,11 +2,11 @@
 
 namespace App\Actions\FilamentJet;
 
-use Modules\User\Models\Team;
-use Modules\User\Models\User;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
 use Illuminate\Support\Facades\DB;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
 
 class DeleteUser implements DeletesUsers
 {
