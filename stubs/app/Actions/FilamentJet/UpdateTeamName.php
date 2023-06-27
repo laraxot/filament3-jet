@@ -2,8 +2,8 @@
 
 namespace App\Actions\FilamentJet;
 
-use App\Models\Team;
-use App\Models\User;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
 use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use Illuminate\Support\Facades\Gate;
 

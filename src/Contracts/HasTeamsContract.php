@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ArtMin96\FilamentJet\Contracts;
 
-interface HasTeamsContract
-{
+interface HasTeamsContract {
     /**
      * Determine if the given team is the current team.
      *
-     * @param  mixed  $team
+     * @param mixed $team
+     *
      * @return bool
      */
     public function isCurrentTeam($team);
@@ -22,7 +24,8 @@ interface HasTeamsContract
     /**
      * Switch the user's context to the given team.
      *
-     * @param  mixed  $team
+     * @param mixed $team
+     *
      * @return bool
      */
     public function switchTeam($team);
@@ -51,14 +54,15 @@ interface HasTeamsContract
     /**
      * Get the user's "personal" team.
      *
-     * @return \App\Models\Team
+     * @return \Modules\User\Models\Team
      */
     public function personalTeam();
 
     /**
      * Determine if the user owns the given team.
      *
-     * @param  mixed  $team
+     * @param mixed $team
+     *
      * @return bool
      */
     public function ownsTeam($team);
@@ -66,7 +70,8 @@ interface HasTeamsContract
     /**
      * Determine if the user belongs to the given team.
      *
-     * @param  mixed  $team
+     * @param mixed $team
+     *
      * @return bool
      */
     public function belongsToTeam($team);
@@ -74,7 +79,8 @@ interface HasTeamsContract
     /**
      * Get the role that the user has on the team.
      *
-     * @param  mixed  $team
+     * @param mixed $team
+     *
      * @return \ArtMin96\FilamentJet\Role|null
      */
     public function teamRole($team);
@@ -82,7 +88,8 @@ interface HasTeamsContract
     /**
      * Determine if the user has the given role on the given team.
      *
-     * @param  mixed  $team
+     * @param mixed $team
+     *
      * @return bool
      */
     public function hasTeamRole($team, string $role);
@@ -90,7 +97,8 @@ interface HasTeamsContract
     /**
      * Get the user's permissions for the given team.
      *
-     * @param  mixed  $team
+     * @param mixed $team
+     *
      * @return array
      */
     public function teamPermissions($team);
@@ -98,7 +106,8 @@ interface HasTeamsContract
     /**
      * Determine if the user has the given permission on the given team.
      *
-     * @param  mixed  $team
+     * @param mixed $team
+     *
      * @return bool
      */
     public function hasTeamPermission($team, string $permission);

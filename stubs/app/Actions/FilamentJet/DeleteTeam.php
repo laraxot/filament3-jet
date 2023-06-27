@@ -2,7 +2,7 @@
 
 namespace App\Actions\FilamentJet;
 
-use App\Models\Team;
+use Modules\User\Models\Team;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 
 class DeleteTeam implements DeletesTeams
