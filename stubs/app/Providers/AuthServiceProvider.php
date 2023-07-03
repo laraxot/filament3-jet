@@ -3,9 +3,12 @@
 namespace App\Providers;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 >>>>>>> 798d2d5 (.)
+=======
+>>>>>>> 88c140b (Fix styling)
 use App\Policies\TeamPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Modules\User\Models\Team;

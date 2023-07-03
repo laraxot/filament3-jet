@@ -3,9 +3,12 @@
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 >>>>>>> 798d2d5 (.)
+=======
+>>>>>>> 88c140b (Fix styling)
 use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
 use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
 use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;

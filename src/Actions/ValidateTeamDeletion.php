@@ -3,9 +3,12 @@
 namespace ArtMin96\FilamentJet\Actions;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 >>>>>>> 798d2d5 (.)
+=======
+>>>>>>> 88c140b (Fix styling)
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Gate;

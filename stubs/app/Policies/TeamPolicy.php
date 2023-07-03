@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
@@ -10,6 +11,11 @@ use Modules\User\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
+=======
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
+>>>>>>> 88c140b (Fix styling)
 
 class TeamPolicy
 {

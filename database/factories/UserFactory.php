@@ -3,10 +3,13 @@
 namespace Database\Factories;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
 >>>>>>> 798d2d5 (.)
+=======
+>>>>>>> 88c140b (Fix styling)
 use ArtMin96\FilamentJet\Features;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;

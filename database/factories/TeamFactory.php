@@ -5,15 +5,21 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\User\Models\Team;
 =======
 use Modules\User\Models\Team;
 use Illuminate\Database\Eloquent\Factories\Factory;
 >>>>>>> 798d2d5 (.)
+=======
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\User\Models\Team;
+>>>>>>> 88c140b (Fix styling)
 use Modules\User\Models\User;
 
-class TeamFactory extends Factory {
+class TeamFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -26,7 +32,8 @@ class TeamFactory extends Factory {
      *
      * @return array<string, mixed>
      */
-    public function definition(): array {
+    public function definition(): array
+    {
         return [
             'name' => $this->faker->unique()->company(),
             'user_id' => User::factory(),
