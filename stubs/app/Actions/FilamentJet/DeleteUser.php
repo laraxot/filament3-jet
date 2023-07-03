@@ -2,6 +2,10 @@
 
 namespace App\Actions\FilamentJet;
 
+<<<<<<< HEAD
+=======
+use Modules\User\Models\User;
+>>>>>>> 798d2d5 (.)
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
 use Modules\User\Models\User;
 

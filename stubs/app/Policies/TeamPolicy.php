@@ -2,6 +2,11 @@
 
 namespace App\Policies;
 
+<<<<<<< HEAD
+=======
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
+>>>>>>> 798d2d5 (.)
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\User\Models\Team;
 use Modules\User\Models\User;

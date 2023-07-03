@@ -2,6 +2,10 @@
 
 namespace App\Actions\FilamentJet;
 
+<<<<<<< HEAD
+=======
+use Modules\User\Models\Team;
+>>>>>>> 798d2d5 (.)
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
