@@ -2,7 +2,7 @@
 
 namespace App\Actions\FilamentJet;
 
-use App\Models\User;
+use Modules\User\Models\User;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserPasswords;
 use ArtMin96\FilamentJet\Traits\PasswordValidationRules;
 use Illuminate\Support\Facades\Hash;

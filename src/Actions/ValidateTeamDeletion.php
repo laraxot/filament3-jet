@@ -2,7 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
-use App\Models\Team;
+use Modules\User\Models\Team;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Gate;

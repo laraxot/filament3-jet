@@ -2,7 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-use App\Models\Team;
+use Modules\User\Models\Team;
 use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
 use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
 use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;

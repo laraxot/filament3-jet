@@ -2,7 +2,7 @@
 
 namespace App\Actions\FilamentJet;
 
-use App\Models\User;
+use Modules\User\Models\User;
 use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;

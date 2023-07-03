@@ -2,8 +2,8 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
-use App\Models\Team;
-use App\Models\User;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
 use ArtMin96\FilamentJet\Events\TeamMemberUpdated;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Rules\Role;
