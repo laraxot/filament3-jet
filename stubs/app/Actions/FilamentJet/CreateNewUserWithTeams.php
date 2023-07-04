@@ -1,11 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Actions\FilamentJet;
 
-<<<<<<< HEAD
-=======
-use Modules\User\Models\Team;
->>>>>>> 798d2d5 (.)
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
@@ -21,7 +19,7 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Create a newly registered user.
      *
-     * @param  array<string, string>  $input
+     * @param array<string, string> $input
      */
     public function create(array $input): Model|Authenticatable
     {
@@ -31,7 +29,6 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]), function ($user) {
-
                 if (Features::enabled(Features::emailVerification())) {
                     app()->bind(
                         \Illuminate\Auth\Listeners\SendEmailVerificationNotification::class,

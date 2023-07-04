@@ -1,11 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Actions\FilamentJet;
 
-<<<<<<< HEAD
-=======
-use Modules\User\Models\User;
->>>>>>> 798d2d5 (.)
 use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +15,7 @@ class ResetUserPassword implements ResetsUserPasswords
     /**
      * Validate and reset the user's forgotten password.
      *
-     * @param  array<string, string>  $input
+     * @param array<string, string> $input
      */
     public function reset(User $user, array $input): void
     {

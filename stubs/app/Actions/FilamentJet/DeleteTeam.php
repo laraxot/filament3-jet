@@ -1,11 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Actions\FilamentJet;
 
-<<<<<<< HEAD
-=======
-use Modules\User\Models\Team;
->>>>>>> 798d2d5 (.)
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use Modules\User\Models\Team;
 
