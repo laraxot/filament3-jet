@@ -2,14 +2,6 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-use Modules\User\Models\Team;
-use Modules\User\Models\User;
->>>>>>> 798d2d5 (.)
-=======
->>>>>>> 88c140b (Fix styling)
 use ArtMin96\FilamentJet\Events\TeamMemberUpdated;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Rules\Role;

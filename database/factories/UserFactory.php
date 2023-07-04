@@ -2,14 +2,6 @@
 
 namespace Database\Factories;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-use Modules\User\Models\Team;
-use Modules\User\Models\User;
->>>>>>> 798d2d5 (.)
-=======
->>>>>>> 88c140b (Fix styling)
 use ArtMin96\FilamentJet\Features;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -62,14 +54,14 @@ class UserFactory extends Factory
      */
     public function withPersonalTeam(): static
     {
-        if (! Features::hasTeamFeatures()) {
+        if (!Features::hasTeamFeatures()) {
             return $this->state([]);
         }
 
         return $this->has(
             Team::factory()
                 ->state(function (array $attributes, User $user) {
-                    return ['name' => $user->name.'\'s Team', 'user_id' => $user->id, 'personal_team' => true];
+                    return ['name' => $user->name . '\'s Team', 'user_id' => $user->id, 'personal_team' => true];
                 }),
             'ownedTeams'
         );

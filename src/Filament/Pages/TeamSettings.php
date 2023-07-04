@@ -2,13 +2,6 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-use Modules\User\Models\Team;
->>>>>>> 798d2d5 (.)
-=======
->>>>>>> 88c140b (Fix styling)
 use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
 use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
 use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
@@ -70,7 +63,7 @@ class TeamSettings extends Page
     {
         $this->team = $this->user->currentTeam;
 
-        if (! $this->team) {
+        if (!$this->team) {
             Notification::make()
                 ->title(__('filament-jet::teams/messages.current_team_not_exists'))
                 ->warning()
@@ -118,7 +111,7 @@ class TeamSettings extends Page
                             ->label(__('filament-jet::teams/name.fields.name'))
                             ->required()
                             ->maxLength(255)
-                            ->disabled(! Gate::check('update', $this->team)),
+                            ->disabled(!Gate::check('update', $this->team)),
                     ])
                     ->statePath('teamState'),
                 'addTeamMemberForm' => $this->makeForm()
@@ -155,9 +148,10 @@ class TeamSettings extends Page
                                 ])->toArray()
                             )
                             ->columns(1)
-                            ->rules(FilamentJet::hasRoles()
-                                ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
-                                : []
+                            ->rules(
+                                FilamentJet::hasRoles()
+                                    ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
+                                    : []
                             ),
                     ]),
             ]
@@ -197,9 +191,10 @@ class TeamSettings extends Page
                             fn ($state) => $this->currentRole = $state
                         )
                         ->columns(1)
-                        ->rules(FilamentJet::hasRoles()
-                            ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
-                            : []
+                        ->rules(
+                            FilamentJet::hasRoles()
+                                ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
+                                : []
                         ),
                 ]),
         ];
@@ -258,7 +253,7 @@ class TeamSettings extends Page
      */
     public function cancelTeamInvitation(int $invitationId): void
     {
-        if (! empty($invitationId)) {
+        if (!empty($invitationId)) {
             $model = FilamentJet::teamInvitationModel();
 
             $model::whereKey($invitationId)->delete();
