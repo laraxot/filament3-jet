@@ -2,6 +2,11 @@
 
 namespace App\Actions\FilamentJet;
 
+<<<<<<< HEAD
+=======
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
+>>>>>>> 798d2d5 (.)
 use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use Illuminate\Support\Facades\Gate;
 use Modules\User\Models\Team;

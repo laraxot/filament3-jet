@@ -2,6 +2,10 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
+<<<<<<< HEAD
+=======
+use Modules\User\Models\Team;
+>>>>>>> 798d2d5 (.)
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Gate;

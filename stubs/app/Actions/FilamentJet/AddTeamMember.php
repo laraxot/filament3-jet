@@ -2,6 +2,11 @@
 
 namespace App\Actions\FilamentJet;
 
+<<<<<<< HEAD
+=======
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
+>>>>>>> 798d2d5 (.)
 use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
 use ArtMin96\FilamentJet\Events\AddingTeamMember;
 use ArtMin96\FilamentJet\Events\TeamMemberAdded;
