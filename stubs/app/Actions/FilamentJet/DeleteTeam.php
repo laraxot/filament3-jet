@@ -1,11 +1,9 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Actions\FilamentJet;
 
+use App\Models\Team;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
-use Modules\User\Models\Team;
 
 class DeleteTeam implements DeletesTeams
 {

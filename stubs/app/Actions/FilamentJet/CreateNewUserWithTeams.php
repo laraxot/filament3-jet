@@ -1,9 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Actions\FilamentJet;
 
+use App\Models\Team;
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
@@ -12,7 +11,6 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Modules\User\Models\Team;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -29,6 +27,7 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]), function ($user) {
+
                 if (Features::enabled(Features::emailVerification())) {
                     app()->bind(
                         \Illuminate\Auth\Listeners\SendEmailVerificationNotification::class,

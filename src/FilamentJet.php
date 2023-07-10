@@ -57,28 +57,28 @@ class FilamentJet
      *
      * @var string
      */
-    public static $userModel = 'Modules\\User\\Models\\User';
+    public static $userModel = 'App\\Models\\User';
 
     /**
      * The team model that should be used by FilamentJet.
      *
      * @var string
      */
-    public static $teamModel = 'Modules\\User\\Models\\Team';
+    public static $teamModel = 'App\\Models\\Team';
 
     /**
      * The membership model that should be used by FilamentJet.
      *
      * @var string
      */
-    public static $membershipModel = 'Modules\\User\\Models\\Membership';
+    public static $membershipModel = 'App\\Models\\Membership';
 
     /**
      * The team invitation model that should be used by FilamentJet.
      *
      * @var string
      */
-    public static $teamInvitationModel = 'Modules\\User\\Models\\TeamInvitation';
+    public static $teamInvitationModel = 'App\\Models\\TeamInvitation';
 
     /**
      * The password rules that should be used by FilamentJet.

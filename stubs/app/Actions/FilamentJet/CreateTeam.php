@@ -1,14 +1,14 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Actions\FilamentJet;
 
+use App\Models\Team;
+use App\Models\User;
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Events\AddingTeam;
 use ArtMin96\FilamentJet\FilamentJet;
+use ArtMin96\FilamentJet\Contracts\HasTeamContract;
 use Illuminate\Support\Facades\Gate;
-use Modules\User\Models\Team;
 
 class CreateTeam implements CreatesTeams
 {
@@ -17,7 +17,7 @@ class CreateTeam implements CreatesTeams
      *
      * @param  array<string, string>  $input
      */
-    public function create(User $user, array $input): Team
+    public function create(\Filament\Models\Contracts\FilamentUser $user, array $input): Team
     {
         Gate::forUser($user)->authorize('create', FilamentJet::newTeamModel());
 

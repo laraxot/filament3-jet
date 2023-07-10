@@ -1,14 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Actions\FilamentJet;
 
+use App\Models\User;
 use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Modules\User\Models\User;
 
 class ResetUserPassword implements ResetsUserPasswords
 {
