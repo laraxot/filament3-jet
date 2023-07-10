@@ -3,11 +3,9 @@
 namespace App\Actions\FilamentJet;
 
 use App\Models\Team;
-use App\Models\User;
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Events\AddingTeam;
 use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Contracts\HasTeamContract;
 use Illuminate\Support\Facades\Gate;
 
 class CreateTeam implements CreatesTeams
