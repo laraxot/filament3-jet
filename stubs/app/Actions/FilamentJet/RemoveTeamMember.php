@@ -2,13 +2,13 @@
 
 namespace App\Actions\FilamentJet;
 
-use App\Models\Team;
-use App\Models\User;
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 use ArtMin96\FilamentJet\Events\TeamMemberRemoved;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
 
 class RemoveTeamMember implements RemovesTeamMembers
 {
@@ -31,8 +31,10 @@ class RemoveTeamMember implements RemovesTeamMembers
      */
     protected function authorize(User $user, Team $team, User $teamMember): void
     {
-        if (! Gate::forUser($user)->check('removeTeamMember', $team) &&
-            $user->id !== $teamMember->id) {
+        if (
+            ! Gate::forUser($user)->check('removeTeamMember', $team) &&
+            $user->id !== $teamMember->id
+        ) {
             throw new AuthorizationException;
         }
     }

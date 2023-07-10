@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ArtMin96\FilamentJet\Contracts;
 
 interface HasTeamsContract
@@ -51,7 +53,7 @@ interface HasTeamsContract
     /**
      * Get the user's "personal" team.
      *
-     * @return \App\Models\Team
+     * @return \Modules\User\Models\Team
      */
     public function personalTeam();
 

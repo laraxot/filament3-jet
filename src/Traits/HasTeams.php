@@ -95,7 +95,7 @@ trait HasTeams
     /**
      * Get the user's "personal" team.
      *
-     * @return \App\Models\Team
+     * @return \Modules\User\Models\Team
      */
     public function personalTeam()
     {

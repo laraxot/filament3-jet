@@ -43,7 +43,7 @@ abstract class Team extends Model
     /**
      * Determine if the given user belongs to the team.
      *
-     * @param  \App\Models\User  $user
+     * @param  \Modules\User\Models\User  $user
      * @return bool
      */
     public function hasUser($user)
@@ -66,7 +66,7 @@ abstract class Team extends Model
     /**
      * Determine if the given user has the given permission on the team.
      *
-     * @param  \App\Models\User  $user
+     * @param  \Modules\User\Models\User  $user
      * @param  string  $permission
      * @return bool
      */
@@ -88,7 +88,7 @@ abstract class Team extends Model
     /**
      * Remove the given user from the team.
      *
-     * @param  \App\Models\User  $user
+     * @param  \Modules\User\Models\User  $user
      * @return void
      */
     public function removeUser($user)

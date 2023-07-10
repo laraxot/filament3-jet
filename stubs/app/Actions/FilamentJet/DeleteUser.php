@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Actions\FilamentJet;
 
-use App\Models\User;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
+use Modules\User\Models\User;
 
 class DeleteUser implements DeletesUsers
 {
