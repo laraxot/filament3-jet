@@ -238,11 +238,12 @@ class FilamentJetServiceProvider extends PluginServiceProvider
 
             if (config('filament-jet.user_menu.switchable_team', true)) {
                 Livewire::component('switchable-team', SwitchableTeam::class);
-
+                
                 Filament::registerRenderHook(
                     'user-menu.start',
                     fn (): string => Blade::render('@livewire(\'switchable-team\')'),
                 );
+                
             }
 
             if (config('filament-jet.user_menu.team_settings.show') ||
