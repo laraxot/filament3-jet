@@ -2,11 +2,11 @@
 
 namespace App\Actions\FilamentJet;
 
-use Modules\User\Models\Team;
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Events\AddingTeam;
 use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Support\Facades\Gate;
+use Modules\User\Models\Team;
 
 class CreateTeam implements CreatesTeams
 {

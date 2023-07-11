@@ -2,7 +2,6 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-use Modules\User\Models\Team;
 use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
 use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
 use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
@@ -29,6 +28,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Unique;
 use Livewire\Redirector;
+use Modules\User\Models\Team;
 use Suleymanozev\FilamentRadioButtonField\Forms\Components\RadioButton;
 
 class TeamSettings extends Page

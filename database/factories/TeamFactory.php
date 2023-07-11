@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TeamFactory extends Factory
 {

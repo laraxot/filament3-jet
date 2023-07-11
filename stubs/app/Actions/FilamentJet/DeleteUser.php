@@ -2,8 +2,8 @@
 
 namespace App\Actions\FilamentJet;
 
-use Modules\User\Models\User;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
+use Modules\User\Models\User;
 
 class DeleteUser implements DeletesUsers
 {

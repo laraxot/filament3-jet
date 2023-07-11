@@ -2,10 +2,10 @@
 
 namespace App\Actions\FilamentJet;
 
-use Modules\User\Models\Team;
-use Modules\User\Models\User;
 use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use Illuminate\Support\Facades\Gate;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
 
 class UpdateTeamName implements UpdatesTeamNames
 {

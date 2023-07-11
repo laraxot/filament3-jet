@@ -2,7 +2,6 @@
 
 namespace App\Actions\FilamentJet;
 
-use Modules\User\Models\Team;
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
@@ -11,6 +10,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Modules\User\Models\Team;
 
 class CreateNewUser implements CreatesNewUsers
 {
