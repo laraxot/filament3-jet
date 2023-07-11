@@ -11,14 +11,14 @@ abstract class TwoFactorAuthenticationEvent
     /**
      * The user instance.
      *
-     * @var \App\Models\User
+     * @var \Modules\User\Models\User
      */
     public $user;
 
     /**
      * Create a new event instance.
      *
-     * @param  \App\Models\User  $user
+     * @param  \Modules\User\Models\User  $user
      * @return void
      */
     public function __construct($user)
