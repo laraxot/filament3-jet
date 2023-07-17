@@ -10,6 +10,7 @@ trait RedirectsActions
      * Get the redirect response for the given action.
      *
      * @param  mixed  $action
+     * @return Response
      */
     public function redirectPath($action): string
     {

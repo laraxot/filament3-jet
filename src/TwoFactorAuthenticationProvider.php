@@ -25,7 +25,7 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
     /**
      * Create a new two factor authentication provider instance.
      *
-     * @param  \Illuminate\Contracts\Cache\Repository|null  $cache
+     * @param  \Illuminate\Cache\Repository|null  $cache
      * @return void
      */
     public function __construct(Google2FA $engine, Repository $cache = null)
@@ -77,7 +77,7 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
         }
 
         $timestamp = $this->engine->verifyKeyNewer(
-            $secret, $code, optional($this->cache)->get($key = 'filament-jet.2fa_codes.'.md5($code))
+            $secret, $code, $this->cache?->get($key = 'filament-jet.2fa_codes.'.md5($code))
         );
 
         if ($timestamp !== false) {
@@ -85,7 +85,7 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
                 $timestamp = $this->engine->getTimestamp();
             }
 
-            optional($this->cache)->put($key, $timestamp, ($this->engine->getWindow() ?: 1) * 60);
+            $this->cache?->put($key, $timestamp, ($this->engine->getWindow() ?: 1) * 60);
 
             return true;
         }
