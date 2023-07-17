@@ -7,7 +7,6 @@ use ArtMin96\FilamentJet\Events\AddingTeam;
 use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Support\Facades\Gate;
 
-
 class CreateTeam implements CreatesTeams
 {
     /**
