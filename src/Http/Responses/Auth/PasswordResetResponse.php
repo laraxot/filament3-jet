@@ -11,6 +11,6 @@ class PasswordResetResponse implements Responsable
 {
     public function toResponse($request): RedirectResponse|Redirector
     {
-        return redirect()->to(Filament::getUrl());
+        return redirect()->to(strval(Filament::getUrl()));
     }
 }
