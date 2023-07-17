@@ -22,7 +22,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\Rules\Password;
 
-class FilamentJet
+final class FilamentJet
 {
     /**
      * The callback that is responsible for building the authentication pipeline array, if applicable.
