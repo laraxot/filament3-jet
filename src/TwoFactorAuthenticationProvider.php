@@ -25,7 +25,6 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
     /**
      * Create a new two factor authentication provider instance.
      *
-     * @param  \Illuminate\Cache\Repository  $cache
      * @return void
      */
     public function __construct(Google2FA $engine, Repository $cache)
