@@ -24,13 +24,13 @@ class Register extends CardPage
 
     protected static string $view = 'filament-jet::filament.pages.auth.register';
 
-    public null|string $email = '';
+    public ?string $email = '';
 
-    public null|string $name = '';
+    public ?string $name = '';
 
-    public null|string $password = '';
+    public ?string $password = '';
 
-    public null|string $passwordConfirmation = '';
+    public ?string $passwordConfirmation = '';
 
     public function mount(): void
     {

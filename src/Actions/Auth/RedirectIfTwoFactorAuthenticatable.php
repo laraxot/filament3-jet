@@ -82,7 +82,7 @@ class RedirectIfTwoFactorAuthenticatable
      * @param  array<string, string>  $data
      * @param  Authenticatable|null  $user
      */
-    protected function fireFailedEvent(array $data, Authenticatable|Model|null $user = null): void
+    protected function fireFailedEvent(array $data, Authenticatable|Model $user = null): void
     {
         event(new Failed(config('filament.auth.guard'), $user, [
             FilamentJet::username() => $data[FilamentJet::username()],
