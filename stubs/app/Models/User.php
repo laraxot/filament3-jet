@@ -27,7 +27,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, ExportsPe
      *
      * @var string<int, string>
      */
-    protected $fillable = [
+    protected array $fillable = [
         'name',
         'email',
         'password',

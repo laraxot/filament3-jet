@@ -13,7 +13,7 @@ class TeamInvitation extends FilamentJetTeamInvitation
      *
      * @var string<int, string>
      */
-    protected $fillable = [
+    protected array $fillable = [
         'email',
         'role',
     ];
