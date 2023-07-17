@@ -2,8 +2,8 @@
 
 namespace ArtMin96\FilamentJet\Http\Livewire\Traits\Properties;
 
-use Illuminate\Support\Collection;
 use ArtMin96\FilamentJet\FilamentJet;
+use Illuminate\Support\Collection;
 
 trait HasSanctumPermissionsProperty
 {

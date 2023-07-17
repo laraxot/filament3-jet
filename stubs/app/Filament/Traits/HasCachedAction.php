@@ -12,7 +12,7 @@ trait HasCachedAction
             return $action;
         }
 
-        if(!method_exists($this, 'getHiddenActions')){
+        if (! method_exists($this, 'getHiddenActions')) {
             throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 
