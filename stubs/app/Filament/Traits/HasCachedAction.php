@@ -12,6 +12,10 @@ trait HasCachedAction
             return $action;
         }
 
+        if(!method_exists($this, 'getHiddenActions')){
+            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        }
+
         foreach ($this->getHiddenActions() as $action) {
             if ($name === $action->getName()) {
                 return $action->livewire($this);
