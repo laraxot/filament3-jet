@@ -2,11 +2,11 @@
 
 namespace App\Actions\FilamentJet;
 
-use Illuminate\Support\Facades\Gate;
-use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Events\AddingTeam;
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Events\AddingTeam;
+use ArtMin96\FilamentJet\FilamentJet;
+use Illuminate\Support\Facades\Gate;
 
 class CreateTeam implements CreatesTeams
 {
@@ -21,11 +21,11 @@ class CreateTeam implements CreatesTeams
 
         AddingTeam::dispatch($user);
 
-        if(!method_exists($user, 'ownedTeams')){
+        if (! method_exists($user, 'ownedTeams')) {
             throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 
-        if(!method_exists($user, 'switchTeam')){
+        if (! method_exists($user, 'switchTeam')) {
             throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 
