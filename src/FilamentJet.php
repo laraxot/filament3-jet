@@ -22,7 +22,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\Rules\Password;
 
-class FilamentJet
+final class FilamentJet
 {
     /**
      * The callback that is responsible for building the authentication pipeline array, if applicable.
@@ -90,7 +90,7 @@ class FilamentJet
      */
     public static function loginThrough(callable $callback): void
     {
-        static::authenticateThrough($callback);
+        self::authenticateThrough($callback);
     }
 
     /**
@@ -98,7 +98,7 @@ class FilamentJet
      */
     public static function authenticateThrough(callable $callback): void
     {
-        static::$authenticateThroughCallback = $callback;
+        self::$authenticateThroughCallback = $callback;
     }
 
     /**
@@ -128,7 +128,7 @@ class FilamentJet
      */
     public static function hasRoles()
     {
-        return count(static::$roles) > 0;
+        return count(self::$roles) > 0;
     }
 
     /**
@@ -138,7 +138,7 @@ class FilamentJet
      */
     public static function findRole(string $key)
     {
-        return static::$roles[$key] ?? null;
+        return self::$roles[$key] ?? null;
     }
 
     /**
@@ -148,7 +148,7 @@ class FilamentJet
      */
     public static function role(string $key, string $name, array $permissions)
     {
-        static::$permissions = collect(array_merge(static::$permissions, $permissions))
+        self::$permissions = collect(array_merge(self::$permissions, $permissions))
             ->unique()
             ->sort()
             ->values()
@@ -166,7 +166,7 @@ class FilamentJet
      */
     public static function hasPermissions()
     {
-        return count(static::$permissions) > 0;
+        return count(self::$permissions) > 0;
     }
 
     /**
@@ -176,9 +176,9 @@ class FilamentJet
      */
     public static function permissions(array $permissions)
     {
-        static::$permissions = $permissions;
+        self::$permissions = $permissions;
 
-        return new static;
+        return new self;
     }
 
     /**
@@ -188,9 +188,9 @@ class FilamentJet
      */
     public static function defaultApiTokenPermissions(array $permissions)
     {
-        static::$defaultPermissions = $permissions;
+        self::$defaultPermissions = $permissions;
 
-        return new static;
+        return new self;
     }
 
     /**
@@ -200,7 +200,7 @@ class FilamentJet
      */
     public static function validPermissions(array $permissions)
     {
-        return array_values(array_intersect($permissions, static::$permissions));
+        return array_values(array_intersect($permissions, self::$permissions));
     }
 
     /**
@@ -243,7 +243,7 @@ class FilamentJet
     {
         return (array_key_exists(HasTeams::class, class_uses_recursive($user)) ||
                 method_exists($user, 'currentTeam')) &&
-            static::hasTeamFeatures();
+            self::hasTeamFeatures();
     }
 
     /**
@@ -364,7 +364,7 @@ class FilamentJet
      */
     public static function findUserByIdOrFail($id)
     {
-        return static::newUserModel()->where('id', $id)->firstOrFail();
+        return self::newUserModel()->where('id', $id)->firstOrFail();
     }
 
     /**
@@ -374,7 +374,7 @@ class FilamentJet
      */
     public static function findUserByEmailOrFail(string $email)
     {
-        return static::newUserModel()->where('email', $email)->firstOrFail();
+        return self::newUserModel()->where('email', $email)->firstOrFail();
     }
 
     /**
@@ -384,7 +384,7 @@ class FilamentJet
      */
     public static function userModel()
     {
-        return static::$userModel;
+        return self::$userModel;
     }
 
     /**
@@ -394,7 +394,7 @@ class FilamentJet
      */
     public static function newUserModel()
     {
-        $model = static::userModel();
+        $model = self::userModel();
 
         return new $model;
     }
@@ -406,9 +406,9 @@ class FilamentJet
      */
     public static function useUserModel(string $model)
     {
-        static::$userModel = $model;
+        self::$userModel = $model;
 
-        return new static;
+        return new self;
     }
 
     /**
@@ -429,7 +429,7 @@ class FilamentJet
      */
     public static function newTeamModel()
     {
-        $model = static::teamModel();
+        $model = self::teamModel();
 
         return new $model;
     }
@@ -441,9 +441,9 @@ class FilamentJet
      */
     public static function useTeamModel(string $model)
     {
-        static::$teamModel = $model;
+        self::$teamModel = $model;
 
-        return new static;
+        return new self;
     }
 
     /**
@@ -453,7 +453,7 @@ class FilamentJet
      */
     public static function membershipModel()
     {
-        return static::$membershipModel;
+        return self::$membershipModel;
     }
 
     /**
@@ -463,9 +463,9 @@ class FilamentJet
      */
     public static function useMembershipModel(string $model)
     {
-        static::$membershipModel = $model;
+        self::$membershipModel = $model;
 
-        return new static;
+        return new self;
     }
 
     /**
@@ -486,9 +486,9 @@ class FilamentJet
      */
     public static function useTeamInvitationModel(string $model)
     {
-        static::$teamInvitationModel = $model;
+        self::$teamInvitationModel = $model;
 
-        return new static;
+        return new self;
     }
 
     /**
@@ -621,12 +621,12 @@ class FilamentJet
 
     public static function setPasswordRules(array $rules): void
     {
-        static::$passwordRules = $rules ?: Password::default();
+        self::$passwordRules = $rules ?: Password::default();
     }
 
     public static function getPasswordRules(): array
     {
-        return static::$passwordRules;
+        return self::$passwordRules;
     }
 
     /**
