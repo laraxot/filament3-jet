@@ -6,6 +6,6 @@ class Jet
 {
     public function getTwoFactorLoginSessionPrefix(): string
     {
-        return Features::getOption(Features::twoFactorAuthentication(), 'authentication.session_prefix');
+        return strval(Features::getOption(Features::twoFactorAuthentication(), 'authentication.session_prefix'));
     }
 }

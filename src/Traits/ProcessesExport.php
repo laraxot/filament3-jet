@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Bus;
 
 trait ProcessesExport
 {
-    public $exportBatchId = null;
+    public ?int $exportBatchId = null;
 
-    public $exportProgress = 0;
+    public int $exportProgress = 0;
 
     /**
      * @throws \Throwable
