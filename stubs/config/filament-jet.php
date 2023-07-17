@@ -274,4 +274,10 @@ return [
     */
 
     'passwords' => config('auth.defaults.passwords'),
+
+    'models' => [
+        'membership' => App\Models\Membership::class,
+        'team' => App\Models\Team::class,
+        'team_invitation' => App\Models\TeamInvitation::class,
+    ],
 ];

@@ -418,7 +418,8 @@ class FilamentJet
      */
     public static function teamModel()
     {
-        return static::$teamModel;
+        // return static::$teamModel;
+        return config('filament-jet.models.team');
     }
 
     /**
@@ -474,7 +475,8 @@ class FilamentJet
      */
     public static function teamInvitationModel()
     {
-        return static::$teamInvitationModel;
+        // return static::$teamInvitationModel;
+        return config('filament-jet.models.team_invitation');
     }
 
     /**
