@@ -6,7 +6,7 @@ use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Events\AddingTeam;
 use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Support\Facades\Gate;
-use Modules\User\Models\Team;
+
 
 class CreateTeam implements CreatesTeams
 {
