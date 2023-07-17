@@ -22,9 +22,9 @@ class TwoFactorLogin extends CardPage
 {
     use WithRateLimiting;
 
-    public null|string $code = '';
+    public ?string $code = '';
 
-    public null|string $recoveryCode = '';
+    public ?string $recoveryCode = '';
 
     public bool $usingRecoveryCode = false;
 
@@ -47,7 +47,7 @@ class TwoFactorLogin extends CardPage
     /**
      * Determine if the request has a valid two factor code.
      */
-    public function hasValidCode(null|string $code): bool
+    public function hasValidCode(?string $code): bool
     {
         return $code && tap(app(TwoFactorAuthenticationProvider::class)->verify(
             decrypt($this->challengedUser()->two_factor_secret), $code
@@ -61,7 +61,7 @@ class TwoFactorLogin extends CardPage
     /**
      * Get the valid recovery code if one exists on the request.
      */
-    public function validRecoveryCode(null|string $recoveryCode): null|string
+    public function validRecoveryCode(?string $recoveryCode): ?string
     {
         if (! $recoveryCode) {
             return null;

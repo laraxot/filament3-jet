@@ -15,7 +15,7 @@ trait HasProfilePhoto
     /**
      * Update the user's profile photo.
      */
-    public function updateProfilePhoto(null|string $photo): void
+    public function updateProfilePhoto(?string $photo): void
     {
         tap($this->profile_photo_path, function ($previous) use ($photo) {
             $this->forceFill([
