@@ -12,7 +12,7 @@ trait RedirectsActions
      * @param  mixed  $action
      * @return Response
      */
-    public function redirectPath($action): string
+    public function redirectPath($action)
     {
         if (method_exists($action, 'redirectTo')) {
             $response = $action->redirectTo();

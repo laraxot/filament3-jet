@@ -18,17 +18,17 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
     /**
      * The cache repository implementation.
      *
-     * @var \Illuminate\Contracts\Cache\Repository|null
+     * @var \Illuminate\Contracts\Cache\Repository
      */
     protected $cache;
 
     /**
      * Create a new two factor authentication provider instance.
      *
-     * @param  \Illuminate\Cache\Repository|null  $cache
+     * @param  \Illuminate\Cache\Repository  $cache
      * @return void
      */
-    public function __construct(Google2FA $engine, Repository $cache = null)
+    public function __construct(Google2FA $engine, Repository $cache)
     {
         $this->engine = $engine;
         $this->cache = $cache;
@@ -77,7 +77,7 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
         }
 
         $timestamp = $this->engine->verifyKeyNewer(
-            $secret, $code, $this->cache?->get($key = 'filament-jet.2fa_codes.'.md5($code))
+            $secret, $code, intval($this->cache->get($key = 'filament-jet.2fa_codes.'.md5($code)))
         );
 
         if ($timestamp !== false) {
@@ -85,7 +85,7 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
                 $timestamp = $this->engine->getTimestamp();
             }
 
-            $this->cache?->put($key, $timestamp, ($this->engine->getWindow() ?: 1) * 60);
+            $this->cache->put($key, $timestamp, ($this->engine->getWindow() ?: 1) * 60);
 
             return true;
         }
