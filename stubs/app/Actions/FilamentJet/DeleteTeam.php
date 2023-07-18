@@ -2,15 +2,16 @@
 
 namespace App\Actions\FilamentJet;
 
+
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
-use Modules\User\Models\Team;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
 
 class DeleteTeam implements DeletesTeams
 {
     /**
      * Delete the given team.
      */
-    public function delete(Team $team): void
+    public function delete(TeamContract $team): void
     {
         $team->purge();
     }

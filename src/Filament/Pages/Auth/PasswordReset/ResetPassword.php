@@ -2,23 +2,30 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages\Auth\PasswordReset;
 
-use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
-use ArtMin96\FilamentJet\Features;
-use ArtMin96\FilamentJet\Filament\Pages\CardPage;
-use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Http\Responses\Auth\Contracts\PasswordResetResponse;
-use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
-use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Filament\Facades\Filament;
+use ArtMin96\FilamentJet\Features;
+use ArtMin96\FilamentJet\FilamentJet;
+use Filament\Forms\ComponentContainer;
+use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\CanResetPassword;
-use Illuminate\Contracts\Auth\PasswordBroker;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Password;
+use ArtMin96\FilamentJet\Filament\Pages\CardPage;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
+use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
 use Phpsa\FilamentPasswordReveal\Password as PasswordInput;
+use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use ArtMin96\FilamentJet\Http\Responses\Auth\Contracts\PasswordResetResponse;
 
+/**
+ * Undocumented class
+ * @property HasTeamsContract $user
+ * @property ComponentContainer $form
+ */
 class ResetPassword extends CardPage
 {
     use WithRateLimiting;

@@ -2,6 +2,11 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
+/**
+ * ArtMin96\FilamentJet\Contracts\HasTeamsContract
+ *
+ * @property int $id
+ */
 interface HasTeamsContract
 {
     /**

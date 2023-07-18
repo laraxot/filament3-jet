@@ -2,10 +2,15 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+
 /**
- * @method void delete(\Illuminate\Database\Eloquent\Model $team)
+ * ---
  */
 interface DeletesTeams
 {
-    //
+    /**
+     * ---
+     */
+    public function delete(TeamContract $team):void;
 }

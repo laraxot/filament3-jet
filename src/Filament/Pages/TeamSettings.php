@@ -2,35 +2,43 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
-use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
-use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
-use ArtMin96\FilamentJet\Contracts\DeletesTeams;
-use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
-use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
-use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
-use ArtMin96\FilamentJet\Features;
-use ArtMin96\FilamentJet\Filament\Actions\AlwaysAskPasswordConfirmationAction;
-use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
-use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
-use ArtMin96\FilamentJet\Role;
-use ArtMin96\FilamentJet\Traits\RedirectsActions;
 use Closure;
+use Filament\Pages\Page;
+use Livewire\Redirector;
+use ArtMin96\FilamentJet\Role;
 use Filament\Facades\Filament;
+use Illuminate\Validation\Rule;
+use ArtMin96\FilamentJet\Features;
+use Filament\Pages\Actions\Action;
+use Illuminate\Support\Facades\Gate;
+use ArtMin96\FilamentJet\FilamentJet;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rules\Unique;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Filament\Pages\Actions\Action;
-use Filament\Pages\Page;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Unique;
-use Livewire\Redirector;
-use Modules\User\Models\Team;
+use ArtMin96\FilamentJet\Contracts\DeletesTeams;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Traits\RedirectsActions;
+use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
+use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
+use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
+use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
+use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
+use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
+use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
 use Suleymanozev\FilamentRadioButtonField\Forms\Components\RadioButton;
+use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use ArtMin96\FilamentJet\Filament\Actions\AlwaysAskPasswordConfirmationAction;
 
+/**
+ * Undocumented trait
+ * @property HasTeamsContract $user
+ * @property ComponentContainer $form
+ * @property ComponentContainer $updateTeamNameForm
+ * @property ComponentContainer $addTeamMemberForm
+ * @property array $roles
+ */
 class TeamSettings extends Page
 {
     use HasCachedAction;
@@ -39,7 +47,7 @@ class TeamSettings extends Page
 
     protected static string $view = 'filament-jet::filament.pages.team-settings';
 
-    public ?Team $team;
+    public ?TeamContract $team;
 
     public ?array $teamState = [];
 

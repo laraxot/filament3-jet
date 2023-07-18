@@ -2,10 +2,11 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
+use Illuminate\Support\Facades\Gate;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Support\Facades\Gate;
-use Modules\User\Models\Team;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+
 
 class ValidateTeamDeletion
 {

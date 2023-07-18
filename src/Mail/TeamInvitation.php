@@ -2,11 +2,12 @@
 
 namespace ArtMin96\FilamentJet\Mail;
 
-use ArtMin96\FilamentJet\Models\TeamInvitation as TeamInvitationModel;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Queue\SerializesModels;
+use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
 
 class TeamInvitation extends Mailable
 {
@@ -15,12 +16,12 @@ class TeamInvitation extends Mailable
     /**
      * The team invitation instance.
      */
-    public TeamInvitationModel $invitation;
+    public TeamInvitationContract $invitation;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(TeamInvitationModel $invitation)
+    public function __construct(TeamInvitationContract $invitation)
     {
         $this->invitation = $invitation;
     }

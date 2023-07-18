@@ -19,8 +19,13 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     public function update(Model|Authenticatable $user, array $input): void
     {
         if (Features::managesProfilePhotos()) {
+<<<<<<< HEAD
             if (! method_exists($user, 'updateProfilePhoto')) {
                 throw new \Exception('['.__LINE__.']['.__FILE__.']');
+=======
+             if(!method_exists($user,'updateProfilePhoto')){
+                throw new \Exception('method updateProfilePhoto not exists in user');
+>>>>>>> e362d7c4 (up)
             }
             $user->updateProfilePhoto($input['profile_photo_path']);
         }

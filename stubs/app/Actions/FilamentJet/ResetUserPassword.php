@@ -24,6 +24,9 @@ class ResetUserPassword implements ResetsUserPasswords
             'password' => Hash::make($input['password']),
             'remember_token' => Str::random(60),
         ])->save();
+        if(!$user instanceof \Illuminate\Contracts\Auth\Authenticatable){
+            throw new \Exception('user must implements Authenticatable');
+        }
 
         event(new PasswordReset($user));
     }

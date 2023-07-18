@@ -2,9 +2,19 @@
 
 namespace App\Policies;
 
+<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\User\Models\User;
+=======
+use Modules\User\Models\User;
+
+
+//use Filament\Models\Contracts\FilamentUser as UserContract;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use Illuminate\Auth\Access\HandlesAuthorization;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+>>>>>>> e362d7c4 (up)
 
 class TeamPolicy
 {
@@ -13,7 +23,7 @@ class TeamPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user): bool
+    public function viewAny(UserContract $user): bool
     {
         return true;
     }
@@ -21,7 +31,7 @@ class TeamPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, TeamContract $team): bool
+    public function view(UserContract $user, TeamContract $team): bool
     {
         return $user->belongsToTeam($team);
     }
@@ -29,7 +39,7 @@ class TeamPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(UserContract $user): bool
     {
         return true;
     }
@@ -37,7 +47,7 @@ class TeamPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, TeamContract $team): bool
+    public function update(UserContract $user, TeamContract $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -45,7 +55,7 @@ class TeamPolicy
     /**
      * Determine whether the user can add team members.
      */
-    public function addTeamMember(User $user, TeamContract $team): bool
+    public function addTeamMember(UserContract $user, TeamContract $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -53,7 +63,7 @@ class TeamPolicy
     /**
      * Determine whether the user can update team member permissions.
      */
-    public function updateTeamMember(User $user, TeamContract $team): bool
+    public function updateTeamMember(UserContract $user, TeamContract $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -61,7 +71,7 @@ class TeamPolicy
     /**
      * Determine whether the user can remove team members.
      */
-    public function removeTeamMember(User $user, TeamContract $team): bool
+    public function removeTeamMember(UserContract $user, TeamContract $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -69,7 +79,7 @@ class TeamPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, TeamContract $team): bool
+    public function delete(UserContract $user, TeamContract $team): bool
     {
         return $user->ownsTeam($team);
     }

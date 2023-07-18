@@ -2,8 +2,13 @@
 
 namespace App\Actions\FilamentJet;
 
+use Illuminate\Support\Facades\DB;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
+<<<<<<< HEAD
+=======
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+>>>>>>> e362d7c4 (up)
 use Filament\Models\Contracts\FilamentUser as UserContract;
 use Illuminate\Support\Facades\DB;
 
@@ -37,6 +42,9 @@ class DeleteUser implements DeletesUsers
                 throw new \Exception('['.__LINE__.']['.__FILE__.']');
             }
             $this->deleteTeams($user);
+            if(!method_exists($user,'deleteProfilePhoto')){
+                throw new \Exception('method deleteProfilePhoto is missing on user');
+            }
             $user->deleteProfilePhoto();
             $user->tokens->each->delete();
             $user->delete();
@@ -53,7 +61,7 @@ class DeleteUser implements DeletesUsers
         }
         $user->teams()->detach();
 
-        $user->ownedTeams->each(function (Team $team) {
+        $user->ownedTeams->each(function (TeamContract $team) {
             $this->deletesTeams->delete($team);
         });
     }

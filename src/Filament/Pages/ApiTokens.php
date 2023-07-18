@@ -2,14 +2,22 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
-use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasSanctumPermissionsProperty;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
-use Filament\Forms\Components\CheckboxList;
-use Filament\Forms\Components\TextInput;
 use Filament\Pages\Page;
+use ArtMin96\FilamentJet\FilamentJet;
+use Filament\Forms\ComponentContainer;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\CheckboxList;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
+use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
+use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasSanctumPermissionsProperty;
 
+/**
+ * Undocumented class
+ *
+ * @property HasTeamsContract $user
+ * @property ComponentContainer $form
+ */
 class ApiTokens extends Page
 {
     use HasCachedAction;

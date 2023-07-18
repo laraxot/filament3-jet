@@ -2,19 +2,26 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages\Auth\PasswordReset;
 
-use ArtMin96\FilamentJet\Features;
-use ArtMin96\FilamentJet\Filament\Pages\CardPage;
-use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Notifications\Auth\ResetPassword as ResetPasswordNotification;
-use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
-use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Exception;
 use Filament\Facades\Filament;
+use ArtMin96\FilamentJet\Features;
+use ArtMin96\FilamentJet\FilamentJet;
+use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Contracts\Auth\CanResetPassword;
+use ArtMin96\FilamentJet\Filament\Pages\CardPage;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
+use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use ArtMin96\FilamentJet\Notifications\Auth\ResetPassword as ResetPasswordNotification;
 
+/**
+ * Undocumented class
+ * @property HasTeamsContract $user
+ * @property ComponentContainer $form
+ */
 class RequestPasswordReset extends CardPage
 {
     use WithRateLimiting;

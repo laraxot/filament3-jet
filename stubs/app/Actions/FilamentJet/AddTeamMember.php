@@ -2,10 +2,19 @@
 
 namespace App\Actions\FilamentJet;
 
+<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
 use ArtMin96\FilamentJet\Events\AddingTeamMember;
 use ArtMin96\FilamentJet\Events\TeamMemberAdded;
 use ArtMin96\FilamentJet\FilamentJet;
+=======
+use Illuminate\Support\Facades\Gate;
+use ArtMin96\FilamentJet\FilamentJet;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Events\TeamMemberAdded;
+use ArtMin96\FilamentJet\Events\AddingTeamMember;
+use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
+>>>>>>> e362d7c4 (up)
 use Filament\Models\Contracts\FilamentUser as UserContract;
 use Illuminate\Support\Facades\Gate;
 

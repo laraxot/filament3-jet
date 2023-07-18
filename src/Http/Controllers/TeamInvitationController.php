@@ -2,15 +2,16 @@
 
 namespace ArtMin96\FilamentJet\Http\Controllers;
 
-use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
+use Illuminate\Http\Request;
 use ArtMin96\FilamentJet\Features;
+use Illuminate\Routing\Controller;
+
+use Illuminate\Support\Facades\Gate;
 use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Models\TeamInvitation;
 use Filament\Notifications\Notification;
 use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Gate;
+use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
+use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
 
 class TeamInvitationController extends Controller
 {
@@ -19,7 +20,7 @@ class TeamInvitationController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function accept(Request $request, TeamInvitation $invitation)
+    public function accept(Request $request, TeamInvitationContract $invitation)
     {
         if (! Features::hasTeamFeatures()) {
             $invitation->delete();
@@ -62,7 +63,7 @@ class TeamInvitationController extends Controller
      *
      * @throws AuthorizationException
      */
-    public function destroy(Request $request, TeamInvitation $invitation)
+    public function destroy(Request $request, TeamInvitationContract $invitation)
     {
         if (! Gate::forUser($request->user())->check('removeTeamMember', $invitation->team)) {
             throw new AuthorizationException;

@@ -2,22 +2,31 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages\Auth;
 
-use ArtMin96\FilamentJet\Contracts\TwoFactorAuthenticationProvider;
-use ArtMin96\FilamentJet\Events\RecoveryCodeReplaced;
-use ArtMin96\FilamentJet\Features;
-use ArtMin96\FilamentJet\Filament\Pages\CardPage;
-use ArtMin96\FilamentJet\Http\Responses\Auth\Contracts\TwoFactorLoginResponse;
-use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
-use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use Livewire\Redirector;
 use Filament\Facades\Filament;
+use ArtMin96\FilamentJet\Features;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Facades\Blade;
+use Filament\Forms\ComponentContainer;
+use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\HtmlString;
-use Livewire\Redirector;
+use ArtMin96\FilamentJet\Filament\Pages\CardPage;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
+use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use ArtMin96\FilamentJet\Events\RecoveryCodeReplaced;
+use ArtMin96\FilamentJet\Contracts\TwoFactorAuthenticationProvider;
+use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use ArtMin96\FilamentJet\Http\Responses\Auth\Contracts\TwoFactorLoginResponse;
 
+
+/**
+ * Undocumented class
+ * @property HasTeamsContract $user
+ * @property ComponentContainer $form
+ * @property string $sessionPrefix
+ */
 class TwoFactorLogin extends CardPage
 {
     use WithRateLimiting;

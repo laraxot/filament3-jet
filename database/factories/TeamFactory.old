@@ -3,17 +3,19 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\User\Models\Team;
-use Modules\User\Models\User;
+
+
+use Filament\Models\Contracts\FilamentUser as UserContract;
+
 
 class TeamFactory extends Factory
 {
-    /**
+    /*
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Team::class;
+    //protected $model = Team::class;
 
     /**
      * Define the model's default state.
@@ -24,7 +26,7 @@ class TeamFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->company(),
-            'user_id' => User::factory(),
+            //'user_id' => UserContract::factory(),
             'personal_team' => true,
         ];
     }
