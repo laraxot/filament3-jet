@@ -2,7 +2,8 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
-use Filament\Models\Contracts\FilamentUser as UserContract;
+// use Filament\Models\Contracts\FilamentUser as UserContract;
+use ArtMin96\FilamentJet\Models\Contracts\FilamentUser as UserContract;
 
 /**
  * ArtMin96\FilamentJet\Contracts\TeamContract

@@ -5,7 +5,8 @@ namespace App\Actions\FilamentJet;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
-use Filament\Models\Contracts\FilamentUser as UserContract;
+// use Filament\Models\Contracts\FilamentUser as UserContract;
+use ArtMin96\FilamentJet\Models\Contracts\FilamentUser as UserContract;
 use Illuminate\Support\Facades\DB;
 
 class DeleteUser implements DeletesUsers

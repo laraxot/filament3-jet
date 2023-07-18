@@ -12,6 +12,10 @@ use BaconQrCode\Renderer\RendererStyle\Fill;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
 
+/**
+ * @property string $two_factor_confirmed_at
+ */
+
 trait TwoFactorAuthenticatable
 {
     /**
@@ -49,7 +53,7 @@ trait TwoFactorAuthenticatable
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
-        return (array) json_decode((string) decrypt($this->two_factor_recovery_codes), true);
+        return (array) json_decode(decrypt($this->two_factor_recovery_codes), true);
     }
 
     /**
