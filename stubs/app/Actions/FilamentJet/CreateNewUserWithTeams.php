@@ -2,15 +2,7 @@
 
 namespace App\Actions\FilamentJet;
 
-<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
-=======
-use Exception;
-
-<<<<<<< HEAD
->>>>>>> e362d7c4 (up)
-=======
->>>>>>> 0a5e9057 (up)
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
 use Exception;
@@ -19,16 +11,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-<<<<<<< HEAD
 use Modules\User\Models\Team;
-=======
-use ArtMin96\FilamentJet\FilamentJet;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable;
-use ArtMin96\FilamentJet\Contracts\TeamContract;
-use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
->>>>>>> e362d7c4 (up)
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -72,20 +55,10 @@ class CreateNewUser implements CreatesNewUsers
      */
     protected function createTeam(Model|Authenticatable $user): void
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
         if (! method_exists($user, 'ownedTeams')) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
         $user->ownedTeams()->save(Team::forceCreate([
-=======
-        $teamClass=FilamentJet::teamModel();
-        $user->ownedTeams()->save($teamClass::forceCreate([
->>>>>>> e362d7c4 (up)
-=======
-        $teamClass=FilamentJet::teamModel();
-        $user->ownedTeams()->save($teamClass::forceCreate([
->>>>>>> 0a5e9057 (up)
             'user_id' => $user->getKey(),
             'name' => explode(' ', $user->name, 2)[0]."'s Team",
             'personal_team' => true,

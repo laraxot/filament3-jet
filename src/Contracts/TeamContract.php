@@ -37,18 +37,6 @@ interface TeamContract
      */
     public function forceFill(array $attributes);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public function save(): void;
-
-    public function removeUser(): void;
-<<<<<<< HEAD
-
-    public function teamInvitations();
-=======
-=======
-=======
->>>>>>> 0a5e9057 (up)
     /**
      * Save the model to the database.
      *
@@ -132,9 +120,4 @@ interface TeamContract
      * @return void
      */
     public function purge();
-<<<<<<< HEAD
->>>>>>> 0a5e9057 (up)
->>>>>>> e362d7c4 (up)
-=======
->>>>>>> 0a5e9057 (up)
 }
