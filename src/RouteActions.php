@@ -6,8 +6,8 @@ class RouteActions
 {
     public function routePrefix(): string
     {
-        $res=config('filament-jet.route_group_prefix');
-        if(is_string($res)){
+        $res = config('filament-jet.route_group_prefix');
+        if (is_string($res)) {
             return $res;
         }
         throw new \Exception('config filament-jet.route_group_prefix is not a string ');

@@ -34,7 +34,7 @@ class LogoutOtherBrowserSessions extends Component
         }
 
         return collect(
-            DB::connection(config('session.connection')?? '---')->table(config('session.table', 'sessions'))
+            DB::connection(config('session.connection') ?? '---')->table(config('session.table', 'sessions'))
                 ->where('user_id', Auth::user()->getAuthIdentifier())
                 ->orderBy('last_activity', 'desc')
                 ->get()
