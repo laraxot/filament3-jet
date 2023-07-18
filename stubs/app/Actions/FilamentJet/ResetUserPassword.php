@@ -2,12 +2,11 @@
 
 namespace App\Actions\FilamentJet;
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
+use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\Auth\Authenticatable;
-use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
-use Filament\Models\Contracts\FilamentUser as UserContract;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class ResetUserPassword implements ResetsUserPasswords
 {
@@ -18,7 +17,7 @@ class ResetUserPassword implements ResetsUserPasswords
      */
     public function reset(Authenticatable $user, array $input): void
     {
-        if(!method_exists($user,'forceFill')){
+        if (! method_exists($user, 'forceFill')) {
             throw new \Exception('forceFill method not exists in user');
         }
         $user->forceFill([

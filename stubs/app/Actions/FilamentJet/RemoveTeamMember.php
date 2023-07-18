@@ -2,13 +2,13 @@
 
 namespace App\Actions\FilamentJet;
 
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\ValidationException;
+use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Events\TeamMemberRemoved;
-use Illuminate\Auth\Access\AuthorizationException;
-use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 use Filament\Models\Contracts\FilamentUser as UserContract;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\ValidationException;
 
 class RemoveTeamMember implements RemovesTeamMembers
 {

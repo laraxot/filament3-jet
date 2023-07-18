@@ -2,14 +2,14 @@
 
 namespace ArtMin96\FilamentJet\Http\Livewire;
 
-use Livewire\Component;
-use Illuminate\View\View;
-use Filament\Facades\Filament;
-use Illuminate\Support\Collection;
-use ArtMin96\FilamentJet\FilamentJet;
-use Filament\Notifications\Notification;
 use ArtMin96\FilamentJet\Events\TeamSwitched;
+use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use Filament\Facades\Filament;
+use Filament\Notifications\Notification;
+use Illuminate\Support\Collection;
+use Illuminate\View\View;
+use Livewire\Component;
 
 class SwitchableTeam extends Component
 {
@@ -20,7 +20,7 @@ class SwitchableTeam extends Component
     public function mount(): void
     {
         $user = Filament::auth()->user();
-        if($user == null){
+        if ($user == null) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
         $this->teams = $user->allTeams();

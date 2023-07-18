@@ -2,10 +2,10 @@
 
 namespace App\Actions\FilamentJet;
 
-use Illuminate\Support\Facades\Gate;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use Filament\Models\Contracts\FilamentUser as UserContract;
+use Illuminate\Support\Facades\Gate;
 
 class UpdateTeamName implements UpdatesTeamNames
 {

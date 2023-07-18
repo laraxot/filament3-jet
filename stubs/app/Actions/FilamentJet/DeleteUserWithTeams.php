@@ -4,8 +4,8 @@ namespace App\Actions\FilamentJet;
 
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
-use Illuminate\Support\Facades\DB;
 use Filament\Models\Contracts\FilamentUser as UserContract;
+use Illuminate\Support\Facades\DB;
 
 class DeleteUser implements DeletesUsers
 {
@@ -30,10 +30,10 @@ class DeleteUser implements DeletesUsers
     public function delete(UserContract $user): void
     {
         DB::transaction(function () use ($user) {
-            if(!method_exists($user, 'deleteProfilePhoto')){
+            if (! method_exists($user, 'deleteProfilePhoto')) {
                 throw new \Exception('['.__LINE__.']['.__FILE__.']');
             }
-            if(!method_exists($user, 'delete')){
+            if (! method_exists($user, 'delete')) {
                 throw new \Exception('['.__LINE__.']['.__FILE__.']');
             }
             $this->deleteTeams($user);
@@ -48,7 +48,7 @@ class DeleteUser implements DeletesUsers
      */
     protected function deleteTeams(UserContract $user): void
     {
-        if(!method_exists($user, 'teams')){
+        if (! method_exists($user, 'teams')) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
         $user->teams()->detach();

@@ -12,10 +12,10 @@ class DeleteUser implements DeletesUsers
      */
     public function delete(UserContract $user): void
     {
-        if(!method_exists($user, 'deleteProfilePhoto')){
+        if (! method_exists($user, 'deleteProfilePhoto')) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
-        if(!method_exists($user, 'delete')){
+        if (! method_exists($user, 'delete')) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
         $user->deleteProfilePhoto();
