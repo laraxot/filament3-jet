@@ -4,9 +4,8 @@ namespace App\Actions\FilamentJet;
 
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\FilamentJet;
-use Illuminate\Support\Facades\Hash;
 use Filament\Models\Contracts\FilamentUser as UserContract;
-
+use Illuminate\Support\Facades\Hash;
 
 class CreateNewUser implements CreatesNewUsers
 {

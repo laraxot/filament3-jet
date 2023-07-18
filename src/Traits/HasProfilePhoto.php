@@ -71,7 +71,7 @@ trait HasProfilePhoto
 
     public function filamentDefaultAvatar(): string
     {
-        return app((string)config('filament.default_avatar_provider'))->get($this);
+        return app((string) config('filament.default_avatar_provider'))->get($this);
     }
 
     /**

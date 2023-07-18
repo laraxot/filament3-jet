@@ -6,9 +6,8 @@ use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
 use ArtMin96\FilamentJet\Events\AddingTeamMember;
 use ArtMin96\FilamentJet\Events\TeamMemberAdded;
 use ArtMin96\FilamentJet\FilamentJet;
-use Illuminate\Support\Facades\Gate;
 use Filament\Models\Contracts\FilamentUser as UserContract;
-
+use Illuminate\Support\Facades\Gate;
 
 class AddTeamMember implements AddsTeamMembers
 {

@@ -2,10 +2,9 @@
 
 namespace App\Policies;
 
-use Modules\User\Models\User;
-
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\User\Models\User;
 
 class TeamPolicy
 {
