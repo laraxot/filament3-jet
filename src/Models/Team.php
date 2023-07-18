@@ -3,7 +3,7 @@
 namespace ArtMin96\FilamentJet\Models;
 
 use ArtMin96\FilamentJet\FilamentJet;
-use Filament\Models\Contracts\FilamentUser as UserContract;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;;
 use Illuminate\Database\Eloquent\Model;
 
 /**

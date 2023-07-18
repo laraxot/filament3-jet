@@ -4,6 +4,10 @@ namespace ArtMin96\FilamentJet\Filament\Traits;
 
 use Filament\Pages\Actions\Action;
 
+/**
+ * Undocumented trait
+ * @method array getHiddenActions()
+ */
 trait HasCachedAction
 {
     public function getCachedAction(string $name): ?Action

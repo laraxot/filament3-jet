@@ -20,11 +20,12 @@ use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Password;
 use Phpsa\FilamentPasswordReveal\Password as PasswordInput;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 /**
  * Undocumented class
  *
- * @property HasTeamsContract $user
+ * @property UserContract $user
  * @property ComponentContainer $form
  */
 class ResetPassword extends CardPage

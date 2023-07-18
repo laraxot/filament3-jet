@@ -11,6 +11,7 @@ use Filament\Notifications\Notification;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\View\View;
 use Livewire\Component;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 class SwitchableTeam extends Component
 {
@@ -23,8 +24,8 @@ class SwitchableTeam extends Component
     public function mount(): void
     {
         $this->user = Filament::auth()->user();
-        if ($this->user == null) {
-            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        if (! $this->user instanceof UserContract) {
+            throw new \Exception('user not have usercontract');
         }
         $this->teams = $this->user->allTeams();
     }

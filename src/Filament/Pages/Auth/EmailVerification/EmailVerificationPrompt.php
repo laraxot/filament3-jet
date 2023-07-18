@@ -14,11 +14,12 @@ use Filament\Facades\Filament;
 use Filament\Forms\ComponentContainer;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 /**
  * Undocumented class
  *
- * @property HasTeamsContract $user
+ * @property UserContract $user
  * @property ComponentContainer $form
  */
 class EmailVerificationPrompt extends CardPage

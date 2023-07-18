@@ -2,9 +2,10 @@
 
 namespace ArtMin96\FilamentJet\Events;
 
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Foundation\Events\Dispatchable;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use Illuminate\Broadcasting\InteractsWithSockets;
 
 abstract class TeamEvent
 {
@@ -13,17 +14,15 @@ abstract class TeamEvent
     /**
      * The team instance.
      *
-     * @var \Modules\User\Models\Team
      */
-    public $team;
+    public TeamContract $team;
 
     /**
      * Create a new event instance.
      *
-     * @param  \Modules\User\Models\Team  $team
      * @return void
      */
-    public function __construct($team)
+    public function __construct(TeamContract $team)
     {
         $this->team = $team;
     }

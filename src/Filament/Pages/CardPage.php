@@ -5,11 +5,12 @@ namespace ArtMin96\FilamentJet\Filament\Pages;
 use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
 use Filament\Forms\ComponentContainer;
 use Filament\Pages\Page;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 /**
  * Undocumented class
  *
- * @property HasTeamsContract $user
+ * @property UserContract $user
  * @property ComponentContainer $form
  */
 abstract class CardPage extends Page

@@ -2,26 +2,28 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages\Auth;
 
-use App\Actions\FilamentJet\CreateNewUser;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
-use ArtMin96\FilamentJet\Features;
-use ArtMin96\FilamentJet\Filament\Pages\CardPage;
-use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Traits\RedirectsActions;
-use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
-use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use Livewire\Redirector;
 use Filament\Facades\Filament;
+use ArtMin96\FilamentJet\Features;
+use Illuminate\Support\HtmlString;
+use ArtMin96\FilamentJet\FilamentJet;
+use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Illuminate\Support\HtmlString;
-use Livewire\Redirector;
 use Phpsa\FilamentPasswordReveal\Password;
+use ArtMin96\FilamentJet\Actions\CreateNewUser;
+use ArtMin96\FilamentJet\Filament\Pages\CardPage;
+use ArtMin96\FilamentJet\Traits\RedirectsActions;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
+use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 
 /**
  * Undocumented class
  *
- * @property HasTeamsContract $user
+ * @property UserContract $user
  * @property ComponentContainer $form
  */
 class Register extends CardPage
@@ -58,7 +60,13 @@ class Register extends CardPage
         return Features::optionEnabled(Features::registration(), 'has_brand');
     }
 
-    public function register(CreateNewUser $creator): ?Redirector
+    /**
+     * Undocumented function
+     *
+     * @param CreateNewUser $creator
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     */
+    public function register(CreateNewUser $creator)
     {
         $rateLimitingOptionEnabled = Features::getOption(Features::registration(), 'rate_limiting.enabled');
 

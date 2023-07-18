@@ -16,11 +16,12 @@ use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Support\Facades\Password;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 /**
  * Undocumented class
  *
- * @property HasTeamsContract $user
+ * @property UserContract $user
  * @property ComponentContainer $form
  */
 class RequestPasswordReset extends CardPage

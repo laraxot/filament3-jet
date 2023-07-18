@@ -2,16 +2,17 @@
 
 namespace ArtMin96\FilamentJet;
 
-use App\Actions\FilamentJet\AddTeamMember;
-use App\Actions\FilamentJet\CreateTeam;
-use App\Actions\FilamentJet\DeleteTeam;
-use App\Actions\FilamentJet\DeleteUser;
-use App\Actions\FilamentJet\InviteTeamMember;
-use App\Actions\FilamentJet\RemoveTeamMember;
-use App\Actions\FilamentJet\ResetUserPassword;
-use App\Actions\FilamentJet\UpdateTeamName;
-use App\Actions\FilamentJet\UpdateUserPassword;
-use App\Actions\FilamentJet\UpdateUserProfileInformation;
+use ArtMin96\FilamentJet\Actions\AddTeamMember;
+use ArtMin96\FilamentJet\Actions\CreateTeam;
+use ArtMin96\FilamentJet\Actions\DeleteTeam;
+use ArtMin96\FilamentJet\Actions\DeleteUser;
+use ArtMin96\FilamentJet\Actions\InviteTeamMember;
+use ArtMin96\FilamentJet\Actions\RemoveTeamMember;
+use ArtMin96\FilamentJet\Actions\ResetUserPassword;
+use ArtMin96\FilamentJet\Actions\UpdateTeamName;
+use ArtMin96\FilamentJet\Actions\UpdateUserPassword;
+use ArtMin96\FilamentJet\Actions\UpdateUserProfileInformation;
+
 use ArtMin96\FilamentJet\Console\InstallCommand;
 use ArtMin96\FilamentJet\Contracts\TwoFactorAuthenticationProvider as TwoFactorAuthenticationProviderContract;
 use ArtMin96\FilamentJet\Filament\Pages\Account;

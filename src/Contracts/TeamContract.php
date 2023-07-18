@@ -2,8 +2,8 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
-// use Filament\Models\Contracts\FilamentUser as UserContract;
-use ArtMin96\FilamentJet\Models\Contracts\FilamentUser as UserContract;
+// use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 /**
  * ArtMin96\FilamentJet\Contracts\TeamContract
@@ -121,4 +121,23 @@ interface TeamContract
      * @return void
      */
     public function purge();
+
+    /**
+     * Get the disk that profile photos should be stored on.
+     */
+    public function profilePhotoDisk(): string;
+
+     /**
+     * Duplicate the instance and unset all the loaded relations.
+     *
+     * @return $this
+     */
+    public function withoutRelations();
+
+    /**
+     * Get a fresh instance of the batch represented by this ID.
+     *
+     * @return self
+     */
+    public function fresh();
 }

@@ -2,38 +2,41 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-use ArtMin96\FilamentJet\Actions\DisableTwoFactorAuthentication;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
-use ArtMin96\FilamentJet\Contracts\UpdatesUserPasswords;
-use ArtMin96\FilamentJet\Contracts\UpdatesUserProfileInformation;
-use ArtMin96\FilamentJet\Features;
-use ArtMin96\FilamentJet\Filament\Traits\CanDeleteAccount;
-use ArtMin96\FilamentJet\Filament\Traits\CanLogoutOtherBrowserSessions;
-use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
-use ArtMin96\FilamentJet\Filament\Traits\HasHiddenAction;
-use ArtMin96\FilamentJet\Filament\Traits\HasTwoFactorAuthentication;
-use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
-use ArtMin96\FilamentJet\Traits\ProcessesExport;
+use Filament\Pages\Page;
+use Livewire\Redirector;
+use Illuminate\Bus\Batch;
 use Filament\Facades\Filament;
+use ArtMin96\FilamentJet\Features;
+use ArtMin96\FilamentJet\FilamentJet;
 use Filament\Forms\ComponentContainer;
-use Filament\Forms\Components\Actions\Action;
-use Filament\Forms\Components\FileUpload;
+use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Filament\Pages\Page;
-use Illuminate\Support\Facades\Storage;
-use Livewire\Redirector;
+use Filament\Forms\Components\FileUpload;
 use Phpsa\FilamentPasswordReveal\Password;
+use Filament\Forms\Components\Actions\Action;
+use ArtMin96\FilamentJet\Traits\ProcessesExport;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
+use ArtMin96\FilamentJet\Contracts\UpdatesUserPasswords;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
+use ArtMin96\FilamentJet\Filament\Traits\HasHiddenAction;
+use ArtMin96\FilamentJet\Filament\Traits\CanDeleteAccount;
+use ArtMin96\FilamentJet\Actions\DisableTwoFactorAuthentication;
+use ArtMin96\FilamentJet\Contracts\UpdatesUserProfileInformation;
+use ArtMin96\FilamentJet\Filament\Traits\HasTwoFactorAuthentication;
+use ArtMin96\FilamentJet\Filament\Traits\CanLogoutOtherBrowserSessions;
+use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 /**
  * Undocumented class
  *
- * @property HasTeamsContract $user
+ * @property UserContract $user
  * @property ComponentContainer $form
  * @property ComponentContainer $updateProfileInformationForm
  * @property ComponentContainer $updatePasswordForm
+ * @property ?Batch $exportBatch
  */
 class Account extends Page
 {

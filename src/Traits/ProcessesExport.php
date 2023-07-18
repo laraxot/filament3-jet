@@ -6,6 +6,10 @@ use ArtMin96\FilamentJet\Jobs\CreatePersonalDataExportJob;
 use Illuminate\Bus\Batch;
 use Illuminate\Support\Facades\Bus;
 
+/**
+ * Undocumented trait
+ * @property ?Batch $exportBatch
+ */
 trait ProcessesExport
 {
     public ?int $exportBatchId = null;

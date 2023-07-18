@@ -14,7 +14,7 @@ use Filament\Notifications\Notification;
 /**
  * Undocumented trait
  *
- * @property HasTeamsContract $user
+ * @property UserContract $user
  */
 trait HasTwoFactorAuthentication
 {
