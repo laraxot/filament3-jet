@@ -2,21 +2,22 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages\Auth\EmailVerification;
 
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
+use ArtMin96\FilamentJet\Features;
+use ArtMin96\FilamentJet\Filament\Pages\CardPage;
+use ArtMin96\FilamentJet\FilamentJet;
+use ArtMin96\FilamentJet\Notifications\Auth\VerifyEmail;
+use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Exception;
 use Filament\Facades\Filament;
-use ArtMin96\FilamentJet\Features;
-use ArtMin96\FilamentJet\FilamentJet;
 use Filament\Forms\ComponentContainer;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use ArtMin96\FilamentJet\Filament\Pages\CardPage;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
-use DanHarrin\LivewireRateLimiting\WithRateLimiting;
-use ArtMin96\FilamentJet\Notifications\Auth\VerifyEmail;
-use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 
 /**
  * Undocumented class
+ *
  * @property HasTeamsContract $user
  * @property ComponentContainer $form
  */

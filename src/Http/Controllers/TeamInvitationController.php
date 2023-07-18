@@ -2,16 +2,15 @@
 
 namespace ArtMin96\FilamentJet\Http\Controllers;
 
-use Illuminate\Http\Request;
+use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
+use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
 use ArtMin96\FilamentJet\Features;
-use Illuminate\Routing\Controller;
-
-use Illuminate\Support\Facades\Gate;
 use ArtMin96\FilamentJet\FilamentJet;
 use Filament\Notifications\Notification;
 use Illuminate\Auth\Access\AuthorizationException;
-use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
-use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class TeamInvitationController extends Controller
 {

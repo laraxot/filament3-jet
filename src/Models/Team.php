@@ -3,8 +3,8 @@
 namespace ArtMin96\FilamentJet\Models;
 
 use ArtMin96\FilamentJet\FilamentJet;
-use Illuminate\Database\Eloquent\Model;
 use Filament\Models\Contracts\FilamentUser as UserContract;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * ArtMin96\FilamentJet\Models\Team
@@ -20,6 +20,7 @@ use Filament\Models\Contracts\FilamentUser as UserContract;
  * @property-read int|null $team_invitations_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
  * @property-read int|null $users_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Team newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Team query()
@@ -29,6 +30,7 @@ use Filament\Models\Contracts\FilamentUser as UserContract;
  * @method static \Illuminate\Database\Eloquent\Builder|Team wherePersonalTeam($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 abstract class Team extends Model

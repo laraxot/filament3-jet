@@ -7,7 +7,6 @@ use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
 use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
-use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
 
@@ -16,11 +15,12 @@ class SwitchableTeam extends Component
     use HasUserProperty;
 
     public $teams;
+
     public $user;
 
     public function mount(): void
     {
-        $this->user=Filament::auth()->user();
+        $this->user = Filament::auth()->user();
         $this->teams = $this->user->allTeams();
     }
 

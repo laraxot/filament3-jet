@@ -2,32 +2,31 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages\Auth;
 
-use Livewire\Redirector;
-use Filament\Facades\Filament;
-use Illuminate\Routing\Pipeline;
-use ArtMin96\FilamentJet\Features;
-use Illuminate\Support\HtmlString;
-use ArtMin96\FilamentJet\FilamentJet;
-use Illuminate\Support\Facades\Blade;
-use Filament\Forms\Components\Checkbox;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
-use Phpsa\FilamentPasswordReveal\Password;
-use Illuminate\Contracts\Auth\Authenticatable;
-use ArtMin96\FilamentJet\Filament\Pages\CardPage;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
-use DanHarrin\LivewireRateLimiting\WithRateLimiting;
-use Filament\Http\Responses\Auth\Contracts\LoginResponse;
 use ArtMin96\FilamentJet\Actions\Auth\AttemptToAuthenticate;
 use ArtMin96\FilamentJet\Actions\Auth\PrepareAuthenticatedSession;
-use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use ArtMin96\FilamentJet\Actions\Auth\RedirectIfTwoFactorAuthenticatable;
-
-
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
+use ArtMin96\FilamentJet\Features;
+use ArtMin96\FilamentJet\Filament\Pages\CardPage;
+use ArtMin96\FilamentJet\FilamentJet;
+use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use Filament\Facades\Filament;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\TextInput;
+use Filament\Http\Responses\Auth\Contracts\LoginResponse;
+use Filament\Notifications\Notification;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Routing\Pipeline;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\HtmlString;
+use Livewire\Redirector;
+use Phpsa\FilamentPasswordReveal\Password;
 
 /**
  * Undocumented class
+ *
  * @property HasTeamsContract $user
  * @property ComponentContainer $form
  */

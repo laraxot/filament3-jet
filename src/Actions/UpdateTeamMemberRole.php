@@ -2,14 +2,13 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Events\TeamMemberUpdated;
+use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Rules\Role;
 use Illuminate\Support\Facades\Gate;
-use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Support\Facades\Validator;
-
-use ArtMin96\FilamentJet\Contracts\TeamContract;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
-use ArtMin96\FilamentJet\Events\TeamMemberUpdated;
 
 class UpdateTeamMemberRole
 {

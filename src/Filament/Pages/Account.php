@@ -2,33 +2,34 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-use Filament\Pages\Page;
-use Livewire\Redirector;
-use Filament\Facades\Filament;
-use ArtMin96\FilamentJet\Features;
-use ArtMin96\FilamentJet\FilamentJet;
-use Filament\Forms\ComponentContainer;
-use Illuminate\Support\Facades\Storage;
-use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
-use Filament\Forms\Components\FileUpload;
-use Phpsa\FilamentPasswordReveal\Password;
-use Filament\Forms\Components\Actions\Action;
-use ArtMin96\FilamentJet\Traits\ProcessesExport;
+use ArtMin96\FilamentJet\Actions\DisableTwoFactorAuthentication;
 use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserPasswords;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use ArtMin96\FilamentJet\Contracts\UpdatesUserProfileInformation;
+use ArtMin96\FilamentJet\Features;
+use ArtMin96\FilamentJet\Filament\Traits\CanDeleteAccount;
+use ArtMin96\FilamentJet\Filament\Traits\CanLogoutOtherBrowserSessions;
 use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
 use ArtMin96\FilamentJet\Filament\Traits\HasHiddenAction;
-use ArtMin96\FilamentJet\Filament\Traits\CanDeleteAccount;
-use ArtMin96\FilamentJet\Actions\DisableTwoFactorAuthentication;
-use ArtMin96\FilamentJet\Contracts\UpdatesUserProfileInformation;
 use ArtMin96\FilamentJet\Filament\Traits\HasTwoFactorAuthentication;
-use ArtMin96\FilamentJet\Filament\Traits\CanLogoutOtherBrowserSessions;
+use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use ArtMin96\FilamentJet\Traits\ProcessesExport;
+use Filament\Facades\Filament;
+use Filament\Forms\ComponentContainer;
+use Filament\Forms\Components\Actions\Action;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
+use Filament\Pages\Page;
+use Illuminate\Support\Facades\Storage;
+use Livewire\Redirector;
+use Phpsa\FilamentPasswordReveal\Password;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 /**
  * Undocumented class
+ *
  * @property HasTeamsContract $user
  * @property ComponentContainer $form
  * @property ComponentContainer $updateProfileInformationForm
