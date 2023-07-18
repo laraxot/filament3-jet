@@ -47,7 +47,7 @@ class ResetPassword extends CardPage
             redirect()->intended(Filament::getUrl());
         }
 
-        if(is_array(request()->query('token'))){
+        if (is_array(request()->query('token'))) {
             throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 
