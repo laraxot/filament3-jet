@@ -22,7 +22,12 @@ trait ProcessesExport
             ->allowFailures()
             ->dispatch();
 
-        $this->exportBatchId = $batch->id;
+        /**
+         * @var int|null
+         */
+        $batch_id = (int) $batch->id;
+
+        $this->exportBatchId = $batch_id;
     }
 
     public function getExportBatchProperty(): ?Batch
@@ -31,7 +36,7 @@ trait ProcessesExport
             return null;
         }
 
-        return Bus::findBatch($this->exportBatchId);
+        return Bus::findBatch((string) $this->exportBatchId);
     }
 
     public function updateExportProgress(): void

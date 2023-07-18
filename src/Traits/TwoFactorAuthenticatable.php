@@ -45,7 +45,11 @@ trait TwoFactorAuthenticatable
      */
     public function recoveryCodes()
     {
-        return (array) json_decode(decrypt($this->two_factor_recovery_codes), true);
+        if($this->two_factor_recovery_codes == null){
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
+
+        return (array) json_decode((string) decrypt($this->two_factor_recovery_codes), true);
     }
 
     /**
@@ -56,6 +60,14 @@ trait TwoFactorAuthenticatable
      */
     public function replaceRecoveryCode($code)
     {
+        if($code == null){
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
+
+        if($this->two_factor_recovery_codes == null){
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
+
         $this->forceFill([
             'two_factor_recovery_codes' => encrypt(str_replace(
                 $code,
@@ -89,10 +101,20 @@ trait TwoFactorAuthenticatable
      */
     public function twoFactorQrCodeUrl()
     {
+        $app_name = (string) config('app.name');
+        if($app_name == null){
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
+
+        if($this->two_factor_secret == null){
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
+
         return app(TwoFactorAuthenticationProvider::class)->qrCodeUrl(
-            config('app.name'),
+            // config('app.name'),
+            $app_name,
             $this->{FilamentJet::username()},
-            decrypt($this->two_factor_secret)
+            (string) decrypt($this->two_factor_secret)
         );
     }
 }

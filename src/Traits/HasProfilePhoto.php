@@ -63,6 +63,9 @@ trait HasProfilePhoto
      */
     public function photoExists(): bool
     {
+        if($this->profile_photo_path == null){
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
         return Storage::disk($this->profilePhotoDisk())->exists($this->profile_photo_path);
     }
 
@@ -76,7 +79,7 @@ trait HasProfilePhoto
      */
     public function profilePhotoDisk(): string
     {
-        return (string) isset($_ENV['VAPOR_ARTIFACT_NAME']) ? 's3' : config('filament-jet.profile_photo_disk', 'public');
+        return isset($_ENV['VAPOR_ARTIFACT_NAME']) ? 's3' : (string) config('filament-jet.profile_photo_disk', 'public');
     }
 
     /**
