@@ -2,11 +2,12 @@
 
 namespace App\Actions\FilamentJet;
 
-use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
-use ArtMin96\FilamentJet\Events\InvitingTeamMember;
-use ArtMin96\FilamentJet\Mail\TeamInvitation;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
+use ArtMin96\FilamentJet\Mail\TeamInvitation;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Events\InvitingTeamMember;
+use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
 use Filament\Models\Contracts\FilamentUser as UserContract;
 
 class InviteTeamMember implements InvitesTeamMembers

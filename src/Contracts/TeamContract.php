@@ -11,4 +11,8 @@ interface TeamContract
      * @return $this
      */
     public function forceFill(array $attributes);
+
+    public function save(): void;
+
+    public function removeUser(): void;
 }
