@@ -76,14 +76,16 @@ use Modules\User\Models\Team;
 >>>>>>> ac955b82 (.)
 =======
 use App\Models\Team;
+<<<<<<< HEAD
 use App\Models\User;
 >>>>>>> 7eb101f0 (up)
+=======
+>>>>>>> 805c032a (Fix styling)
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Events\AddingTeam;
 use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Contracts\HasTeamContract;
 use Illuminate\Support\Facades\Gate;
 
 class CreateTeam implements CreatesTeams
