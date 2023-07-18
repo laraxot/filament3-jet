@@ -16,6 +16,7 @@ class SwitchableTeam extends Component
     use HasUserProperty;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public Collection $teams;
 
     public function mount(): void
@@ -35,6 +36,15 @@ class SwitchableTeam extends Component
         $this->user=Filament::auth()->user();
         $this->teams = $this->user->allTeams();
 >>>>>>> e362d7c4 (up)
+=======
+    public $teams;
+    public $user;
+
+    public function mount(): void
+    {
+        $this->user=Filament::auth()->user();
+        $this->teams = $this->user->allTeams();
+>>>>>>> 0a5e9057 (up)
     }
 
     /**

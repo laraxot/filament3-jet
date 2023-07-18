@@ -7,7 +7,10 @@ use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 =======
 use Exception;
 
+<<<<<<< HEAD
 >>>>>>> e362d7c4 (up)
+=======
+>>>>>>> 0a5e9057 (up)
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
 use Exception;
@@ -70,6 +73,7 @@ class CreateNewUser implements CreatesNewUsers
     protected function createTeam(Model|Authenticatable $user): void
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (! method_exists($user, 'ownedTeams')) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
@@ -78,6 +82,10 @@ class CreateNewUser implements CreatesNewUsers
         $teamClass=FilamentJet::teamModel();
         $user->ownedTeams()->save($teamClass::forceCreate([
 >>>>>>> e362d7c4 (up)
+=======
+        $teamClass=FilamentJet::teamModel();
+        $user->ownedTeams()->save($teamClass::forceCreate([
+>>>>>>> 0a5e9057 (up)
             'user_id' => $user->getKey(),
             'name' => explode(' ', $user->name, 2)[0]."'s Team",
             'personal_team' => true,

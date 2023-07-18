@@ -15,7 +15,10 @@ use Illuminate\Auth\Access\AuthorizationException;
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 //use Filament\Models\Contracts\FilamentUser as UserContract;
 use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+<<<<<<< HEAD
 >>>>>>> e362d7c4 (up)
+=======
+>>>>>>> 0a5e9057 (up)
 
 class RemoveTeamMember implements RemovesTeamMembers
 {

@@ -4,6 +4,8 @@ namespace App\Policies;
 
 <<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\TeamContract;
+//use Filament\Models\Contracts\FilamentUser as UserContract;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\User\Models\User;
 =======

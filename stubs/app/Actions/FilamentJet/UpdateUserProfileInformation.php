@@ -20,12 +20,17 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     {
         if (Features::managesProfilePhotos()) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (! method_exists($user, 'updateProfilePhoto')) {
                 throw new \Exception('['.__LINE__.']['.__FILE__.']');
 =======
              if(!method_exists($user,'updateProfilePhoto')){
                 throw new \Exception('method updateProfilePhoto not exists in user');
 >>>>>>> e362d7c4 (up)
+=======
+             if(!method_exists($user,'updateProfilePhoto')){
+                throw new \Exception('method updateProfilePhoto not exists in user');
+>>>>>>> 0a5e9057 (up)
             }
             $user->updateProfilePhoto($input['profile_photo_path']);
         }

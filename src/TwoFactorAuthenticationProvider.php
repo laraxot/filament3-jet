@@ -83,7 +83,10 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
         /** @var int  $oldTimestamp */
         $oldTimestamp=$this->cache->get($key = 'filament-jet.2fa_codes.'.md5($code));
         $timestamp = $this->engine->verifyKeyNewer($secret, $code, $oldTimestamp);
+<<<<<<< HEAD
 >>>>>>> e362d7c4 (up)
+=======
+>>>>>>> 0a5e9057 (up)
 
         if ($timestamp !== false) {
             if ($timestamp === true) {

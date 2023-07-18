@@ -6,9 +6,13 @@ use Illuminate\Support\Facades\DB;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 >>>>>>> e362d7c4 (up)
+=======
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+>>>>>>> 0a5e9057 (up)
 use Filament\Models\Contracts\FilamentUser as UserContract;
 use Illuminate\Support\Facades\DB;
 
