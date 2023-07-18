@@ -8,7 +8,6 @@ use ArtMin96\FilamentJet\Role;
  * Undocumented interface
  * @property string $email
  * @property ?string $role
- * @property string $team
  *
  * @mixin \Eloquent
  */
