@@ -8,6 +8,10 @@ declare(strict_types=1);
 namespace App\Actions\FilamentJet;
 >>>>>>> 89797fce (.)
 
+<<<<<<< HEAD
+=======
+use App\Models\Team;
+>>>>>>> d4b8c7b8 (Fix styling)
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
