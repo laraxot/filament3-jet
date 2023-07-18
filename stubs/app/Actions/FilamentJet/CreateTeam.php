@@ -32,6 +32,7 @@ use App\Models\Team;
 >>>>>>> e618ae9f (rebase)
 =======
 use App\Models\Team;
+<<<<<<< HEAD
 >>>>>>> eee9f5f (Fix styling)
 =======
 use Modules\User\Models\Team;
@@ -41,7 +42,12 @@ use Modules\User\Models\Team;
 =======
 =======
 >>>>>>> 88c140b (Fix styling)
+<<<<<<< HEAD
 >>>>>>> e618ae9f (rebase)
+=======
+=======
+>>>>>>> eee9f5f0 (Fix styling)
+>>>>>>> 0179c242 (.)
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
