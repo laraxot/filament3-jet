@@ -7,15 +7,14 @@ use ArtMin96\FilamentJet\Events\InvitingTeamMember;
 use ArtMin96\FilamentJet\Mail\TeamInvitation;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
-use Modules\User\Models\Team;
-use Modules\User\Models\User;
+use Filament\Models\Contracts\FilamentUser as UserContract;
 
 class InviteTeamMember implements InvitesTeamMembers
 {
     /**
      * Invite a new team member to the given team.
      */
-    public function invite(User $user, Team $team, string $email, string $role = null): void
+    public function invite(UserContract $user, TeamContract $team, string $email, string $role = null): void
     {
         Gate::forUser($user)->authorize('addTeamMember', $team);
 

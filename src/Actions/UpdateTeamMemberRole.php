@@ -15,7 +15,7 @@ class UpdateTeamMemberRole
     /**
      * Update the role for the given team member.
      */
-    public function update(User $user, Team $team, int $teamMemberId, string $role)
+    public function update(User $user, TeamContract $team, int $teamMemberId, string $role)
     {
         Gate::forUser($user)->authorize('updateTeamMember', $team);
 

@@ -12,7 +12,7 @@ class ValidateTeamDeletion
     /**
      * Validate that the team can be deleted by the given user.
      */
-    public function validate(Authenticatable $user, Team $team): void
+    public function validate(Authenticatable $user, TeamContract $team): void
     {
         Gate::forUser($user)->authorize('delete', $team);
 

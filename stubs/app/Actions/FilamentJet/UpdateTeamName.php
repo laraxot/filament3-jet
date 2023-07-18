@@ -2,10 +2,10 @@
 
 namespace App\Actions\FilamentJet;
 
-use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use Illuminate\Support\Facades\Gate;
-use Modules\User\Models\Team;
-use Modules\User\Models\User;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
+use Filament\Models\Contracts\FilamentUser as UserContract;
 
 class UpdateTeamName implements UpdatesTeamNames
 {
@@ -14,7 +14,7 @@ class UpdateTeamName implements UpdatesTeamNames
      *
      * @param  array<string, string>  $input
      */
-    public function update(User $user, Team $team, array $input): void
+    public function update(UserContract $user, TeamContract $team, array $input): void
     {
         Gate::forUser($user)->authorize('update', $team);
 

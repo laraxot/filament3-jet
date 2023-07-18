@@ -2,9 +2,10 @@
 
 namespace App\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
-use Modules\User\Models\Team;
 use Modules\User\Models\User;
+
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TeamPolicy
 {
@@ -21,7 +22,7 @@ class TeamPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Team $team): bool
+    public function view(User $user, TeamContract $team): bool
     {
         return $user->belongsToTeam($team);
     }
@@ -37,7 +38,7 @@ class TeamPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Team $team): bool
+    public function update(User $user, TeamContract $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -45,7 +46,7 @@ class TeamPolicy
     /**
      * Determine whether the user can add team members.
      */
-    public function addTeamMember(User $user, Team $team): bool
+    public function addTeamMember(User $user, TeamContract $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -53,7 +54,7 @@ class TeamPolicy
     /**
      * Determine whether the user can update team member permissions.
      */
-    public function updateTeamMember(User $user, Team $team): bool
+    public function updateTeamMember(User $user, TeamContract $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -61,7 +62,7 @@ class TeamPolicy
     /**
      * Determine whether the user can remove team members.
      */
-    public function removeTeamMember(User $user, Team $team): bool
+    public function removeTeamMember(User $user, TeamContract $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -69,7 +70,7 @@ class TeamPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Team $team): bool
+    public function delete(User $user, TeamContract $team): bool
     {
         return $user->ownsTeam($team);
     }

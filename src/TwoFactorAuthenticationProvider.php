@@ -74,9 +74,10 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
         if (is_int($customWindow = config('filament-jet-options.two-factor-authentication.window'))) {
             $this->engine->setWindow($customWindow);
         }
-
+        /** @var int  $oldTimestamp */
+        $oldTimestamp=$this->cache->get($key = 'filament-jet.2fa_codes.'.md5($code));
         $timestamp = $this->engine->verifyKeyNewer(
-            $secret, $code, intval($this->cache->get($key = 'filament-jet.2fa_codes.'.md5($code)))
+            $secret, $code, $oldTimestamp)
         );
 
         if ($timestamp !== false) {

@@ -2,15 +2,16 @@
 
 namespace App\Actions\FilamentJet;
 
-use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
+use Exception;
+use Modules\User\Models\Team;
 use ArtMin96\FilamentJet\Features;
-use ArtMin96\FilamentJet\FilamentJet;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Modules\User\Models\Team;
+use ArtMin96\FilamentJet\FilamentJet;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
+use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -33,6 +34,9 @@ class CreateNewUser implements CreatesNewUsers
                         \Illuminate\Auth\Listeners\SendEmailVerificationNotification::class,
                         \ArtMin96\FilamentJet\Listeners\Auth\SendEmailVerificationNotification::class,
                     );
+                }
+                if(!$user instanceof \Illuminate\Contracts\Auth\Authenticatable){
+                    throw new Exception('user must implements Authenticatable');
                 }
 
                 event(new Registered($user));
