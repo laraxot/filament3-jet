@@ -15,7 +15,7 @@ trait ProcessesExport
     /**
      * @throws \Throwable
      */
-    public function export()
+    public function export(): void
     {
         $batch = Bus::batch(new CreatePersonalDataExportJob($this->user))
             ->name('export personal data')
@@ -34,7 +34,7 @@ trait ProcessesExport
         return Bus::findBatch($this->exportBatchId);
     }
 
-    public function updateExportProgress()
+    public function updateExportProgress(): void
     {
         $this->exportProgress = $this->exportBatch->progress();
     }

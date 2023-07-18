@@ -15,4 +15,6 @@ interface TeamContract
     public function save(): void;
 
     public function removeUser(): void;
+
+    public function teamInvitations();
 }

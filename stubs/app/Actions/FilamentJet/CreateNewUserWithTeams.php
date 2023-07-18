@@ -55,6 +55,9 @@ class CreateNewUser implements CreatesNewUsers
      */
     protected function createTeam(Model|Authenticatable $user): void
     {
+        if(!method_exists($user, 'ownedTeams')){
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
         $user->ownedTeams()->save(Team::forceCreate([
             'user_id' => $user->getKey(),
             'name' => explode(' ', $user->name, 2)[0]."'s Team",

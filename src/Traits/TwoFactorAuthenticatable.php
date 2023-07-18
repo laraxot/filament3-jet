@@ -29,7 +29,7 @@ trait TwoFactorAuthenticatable
         return ! is_null($this->two_factor_secret);
     }
 
-    public function hasConfirmedTwoFactorAuthentication()
+    public function hasConfirmedTwoFactorAuthentication(): bool
     {
         if (FilamentJet::confirmsTwoFactorAuthentication()) {
             return ! is_null($this->two_factor_confirmed_at);
@@ -45,7 +45,7 @@ trait TwoFactorAuthenticatable
      */
     public function recoveryCodes()
     {
-        return json_decode(decrypt($this->two_factor_recovery_codes), true);
+        return (array) json_decode(decrypt($this->two_factor_recovery_codes), true);
     }
 
     /**

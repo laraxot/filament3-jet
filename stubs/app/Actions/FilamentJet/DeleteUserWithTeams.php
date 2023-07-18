@@ -30,6 +30,12 @@ class DeleteUser implements DeletesUsers
     public function delete(UserContract $user): void
     {
         DB::transaction(function () use ($user) {
+            if(!method_exists($user, 'deleteProfilePhoto')){
+                throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            }
+            if(!method_exists($user, 'delete')){
+                throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            }
             $this->deleteTeams($user);
             $user->deleteProfilePhoto();
             $user->tokens->each->delete();
@@ -42,6 +48,9 @@ class DeleteUser implements DeletesUsers
      */
     protected function deleteTeams(UserContract $user): void
     {
+        if(!method_exists($user, 'teams')){
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
         $user->teams()->detach();
 
         $user->ownedTeams->each(function (Team $team) {

@@ -2,23 +2,29 @@
 
 namespace ArtMin96\FilamentJet\Http\Livewire;
 
-use ArtMin96\FilamentJet\Events\TeamSwitched;
-use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
-use Filament\Facades\Filament;
-use Filament\Notifications\Notification;
-use Illuminate\View\View;
 use Livewire\Component;
+use Illuminate\View\View;
+use Filament\Facades\Filament;
+use Illuminate\Support\Collection;
+use ArtMin96\FilamentJet\FilamentJet;
+use Filament\Notifications\Notification;
+use ArtMin96\FilamentJet\Events\TeamSwitched;
+use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
 
 class SwitchableTeam extends Component
 {
     use HasUserProperty;
 
-    public $teams;
+    public Collection $teams;
 
     public function mount(): void
     {
-        $this->teams = Filament::auth()->user()->allTeams();
+        $user = Filament::auth()->user();
+        if($user == null){
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
+        $this->teams = $user->allTeams();
+        // $this->teams = Filament::auth()->user()->allTeams();
     }
 
     /**
@@ -26,7 +32,7 @@ class SwitchableTeam extends Component
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function switchTeam($teamId)
+    public function switchTeam(string $teamId)
     {
         $team = FilamentJet::newTeamModel()->findOrFail($teamId);
 
