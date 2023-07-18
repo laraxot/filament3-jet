@@ -11,7 +11,7 @@ class Features
      */
     public static function enabled(string $feature)
     {
-        return in_array($feature, config('filament-jet.features', []));
+        return in_array($feature, (array) config('filament-jet.features', []));
     }
 
     /**

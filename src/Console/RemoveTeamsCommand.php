@@ -21,7 +21,7 @@ class RemoveTeamsCommand extends Command
      */
     protected $description = 'Remove teams components and resources from Filament Jet';
 
-    public function handle()
+    public function handle(): void
     {
         // Models...
         (new Filesystem)->delete(app_path('Models/Membership.php'));

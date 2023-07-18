@@ -29,6 +29,10 @@ class CreateTeam extends Page
 
     protected static function shouldRegisterNavigation(): bool
     {
+        if(!is_bool(config('filament-jet.should_register_navigation.create_team'))){
+            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        }
+
         return config('filament-jet.should_register_navigation.create_team');
     }
 
@@ -52,7 +56,7 @@ class CreateTeam extends Page
     /**
      * Create a new team.
      */
-    public function createTeam(CreatesTeams $creator): Redirector
+    public function createTeam(CreatesTeams $creator): \Illuminate\Http\Response
     {
         $creator->create($this->user, $this->createTeamState);
 
