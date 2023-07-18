@@ -2,7 +2,6 @@
 
 namespace App\Actions\FilamentJet;
 
-
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 

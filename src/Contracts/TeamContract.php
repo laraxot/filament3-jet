@@ -1,6 +1,7 @@
 <?php
 
 namespace ArtMin96\FilamentJet\Contracts;
+
 use Filament\Models\Contracts\FilamentUser as UserContract;
 
 /**
@@ -17,6 +18,7 @@ use Filament\Models\Contracts\FilamentUser as UserContract;
  * @property-read int|null $team_invitations_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
  * @property-read int|null $users_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Team newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Team query()
@@ -26,6 +28,7 @@ use Filament\Models\Contracts\FilamentUser as UserContract;
  * @method static \Illuminate\Database\Eloquent\Builder|Team wherePersonalTeam($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 interface TeamContract
@@ -40,15 +43,13 @@ interface TeamContract
     /**
      * Save the model to the database.
      *
-     * @param  array  $options
      * @return bool
      */
     public function save(array $options = []);
 
-     /**
+    /**
      * Save a new model and return the instance. Allow mass-assignment.
      *
-     * @param  array  $attributes
      * @return \Illuminate\Database\Eloquent\Model|$this
      */
     public function forceCreate(array $attributes);
@@ -77,7 +78,7 @@ interface TeamContract
     /**
      * Determine if the given user belongs to the team.
      *
-     * @param  UserContract   $user
+     * @param  UserContract  $user
      * @return bool
      */
     public function hasUser($user);
@@ -92,7 +93,7 @@ interface TeamContract
     /**
      * Determine if the given user has the given permission on the team.
      *
-     * @param  UserContract   $user
+     * @param  UserContract  $user
      * @param  string  $permission
      * @return bool
      */
@@ -108,11 +109,10 @@ interface TeamContract
     /**
      * Remove the given user from the team.
      *
-     * @param  UserContract   $user
+     * @param  UserContract  $user
      * @return void
      */
     public function removeUser($user);
-
 
     /**
      * Purge all of the team's resources.

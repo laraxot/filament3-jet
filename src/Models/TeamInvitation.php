@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Modules\Quaeris\Models\Customer $team
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation query()
@@ -24,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereRole($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereTeamId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 abstract class TeamInvitation extends Model

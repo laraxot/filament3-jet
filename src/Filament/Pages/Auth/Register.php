@@ -2,24 +2,25 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages\Auth;
 
-use Livewire\Redirector;
-use Filament\Facades\Filament;
+use App\Actions\FilamentJet\CreateNewUser;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
 use ArtMin96\FilamentJet\Features;
-use Illuminate\Support\HtmlString;
+use ArtMin96\FilamentJet\Filament\Pages\CardPage;
 use ArtMin96\FilamentJet\FilamentJet;
+use ArtMin96\FilamentJet\Traits\RedirectsActions;
+use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use Filament\Facades\Filament;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use App\Actions\FilamentJet\CreateNewUser;
+use Illuminate\Support\HtmlString;
+use Livewire\Redirector;
 use Phpsa\FilamentPasswordReveal\Password;
-use ArtMin96\FilamentJet\Filament\Pages\CardPage;
-use ArtMin96\FilamentJet\Traits\RedirectsActions;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
-use DanHarrin\LivewireRateLimiting\WithRateLimiting;
-use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 
 /**
  * Undocumented class
+ *
  * @property HasTeamsContract $user
  * @property ComponentContainer $form
  */

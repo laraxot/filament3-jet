@@ -2,17 +2,18 @@
 
 namespace ArtMin96\FilamentJet\Filament\Traits;
 
+use ArtMin96\FilamentJet\Actions\ConfirmTwoFactorAuthentication;
+use ArtMin96\FilamentJet\Actions\DisableTwoFactorAuthentication;
+use ArtMin96\FilamentJet\Actions\EnableTwoFactorAuthentication;
+use ArtMin96\FilamentJet\Actions\GenerateNewRecoveryCodes;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
 use ArtMin96\FilamentJet\Features;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
-use ArtMin96\FilamentJet\Actions\GenerateNewRecoveryCodes;
-use ArtMin96\FilamentJet\Actions\EnableTwoFactorAuthentication;
-use ArtMin96\FilamentJet\Actions\ConfirmTwoFactorAuthentication;
-use ArtMin96\FilamentJet\Actions\DisableTwoFactorAuthentication;
 
 /**
  * Undocumented trait
+ *
  * @property HasTeamsContract $user
  */
 trait HasTwoFactorAuthentication

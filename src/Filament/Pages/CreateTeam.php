@@ -2,18 +2,19 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-use Filament\Pages\Page;
-use Livewire\Redirector;
+use ArtMin96\FilamentJet\Contracts\CreatesTeams;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
+use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use ArtMin96\FilamentJet\Traits\RedirectsActions;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use ArtMin96\FilamentJet\Contracts\CreatesTeams;
-use ArtMin96\FilamentJet\Traits\RedirectsActions;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use Filament\Pages\Page;
+use Livewire\Redirector;
 
 /**
  * Undocumented class
+ *
  * @property HasTeamsContract $user
  * @property ComponentContainer $form
  */

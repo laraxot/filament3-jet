@@ -25,7 +25,7 @@ class InviteTeamMember implements InvitesTeamMembers
             'email' => $email,
             'role' => $role,
         ]);
-        if(!$invitation instanceof TeamInvitationContract){
+        if (! $invitation instanceof TeamInvitationContract) {
             throw new \Exception('invitation must implements TeamInvitationContract');
         }
 

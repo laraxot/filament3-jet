@@ -7,6 +7,7 @@ use Illuminate\Auth\Notifications\ResetPassword as BaseNotification;
 
 /**
  * Undocumented class
+ *
  * @property ComponentContainer $form
  */
 class ResetPassword extends BaseNotification

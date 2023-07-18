@@ -2,12 +2,11 @@
 
 namespace ArtMin96\FilamentJet\Mail;
 
-
+use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Queue\SerializesModels;
-use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
+use Illuminate\Support\Facades\URL;
 
 class TeamInvitation extends Mailable
 {

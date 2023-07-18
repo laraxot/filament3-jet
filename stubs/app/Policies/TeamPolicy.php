@@ -2,13 +2,11 @@
 
 namespace App\Policies;
 
-use Modules\User\Models\User;
-
-
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 //use Filament\Models\Contracts\FilamentUser as UserContract;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use Modules\User\Models\User;
 
 class TeamPolicy
 {

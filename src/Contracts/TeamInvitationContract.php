@@ -7,5 +7,6 @@ namespace ArtMin96\FilamentJet\Contracts;
  *
  * @mixin \Eloquent
  */
-interface TeamInvitationContract {
+interface TeamInvitationContract
+{
 }
