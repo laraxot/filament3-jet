@@ -45,7 +45,7 @@ trait TwoFactorAuthenticatable
      */
     public function recoveryCodes()
     {
-        if($this->two_factor_recovery_codes == null){
+        if ($this->two_factor_recovery_codes == null) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
@@ -60,11 +60,11 @@ trait TwoFactorAuthenticatable
      */
     public function replaceRecoveryCode($code)
     {
-        if($code == null){
+        if ($code == null) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
-        if($this->two_factor_recovery_codes == null){
+        if ($this->two_factor_recovery_codes == null) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
@@ -102,11 +102,11 @@ trait TwoFactorAuthenticatable
     public function twoFactorQrCodeUrl()
     {
         $app_name = (string) config('app.name');
-        if($app_name == null){
+        if ($app_name == null) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
-        if($this->two_factor_secret == null){
+        if ($this->two_factor_secret == null) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
