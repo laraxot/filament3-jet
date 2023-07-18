@@ -13,7 +13,7 @@ class AttemptToAuthenticate
     /**
      * The guard implementation.
      */
-    protected $guard;
+    protected StatefulGuard $guard;
 
     /**
      * Create a new controller instance.
@@ -25,9 +25,14 @@ class AttemptToAuthenticate
 
     /**
      * @param  array<string, string>  $data
+     * @return array|null
      */
     public function handle(array $data, Closure $next)
     {
+        if(is_string($data['remember'])){
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
+
         if ($this->guard->attempt([
             FilamentJet::username() => $data[FilamentJet::username()],
             'password' => $data['password'],
@@ -55,6 +60,10 @@ class AttemptToAuthenticate
      */
     protected function fireFailedEvent(array $data): void
     {
+        if(!is_string(config('filament.auth.guard'))){
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
+
         event(new Failed(config('filament.auth.guard'), null, [
             FilamentJet::username() => $data[FilamentJet::username()],
             'password' => $data['password'],
