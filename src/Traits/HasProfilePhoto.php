@@ -72,7 +72,7 @@ trait HasProfilePhoto
 
     public function filamentDefaultAvatar(): string
     {
-        return app((string) config('filament.default_avatar_provider'))->get($this);
+        return app(config('filament.default_avatar_provider'))->get($this);
     }
 
     /**
@@ -80,7 +80,7 @@ trait HasProfilePhoto
      */
     public function profilePhotoDisk(): string
     {
-        return isset($_ENV['VAPOR_ARTIFACT_NAME']) ? 's3' : (string) config('filament-jet.profile_photo_disk', 'public');
+        return isset($_ENV['VAPOR_ARTIFACT_NAME']) ? 's3' : config('filament-jet.profile_photo_disk', 'public');
     }
 
     /**
