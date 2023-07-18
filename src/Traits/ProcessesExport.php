@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Bus;
 
 /**
  * Undocumented trait
+ *
  * @property ?Batch $exportBatch
  */
 trait ProcessesExport

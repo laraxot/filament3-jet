@@ -2,36 +2,36 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-use Closure;
-use Filament\Pages\Page;
-use Livewire\Redirector;
-use ArtMin96\FilamentJet\Role;
-use Filament\Facades\Filament;
-use Illuminate\Validation\Rule;
-use ArtMin96\FilamentJet\Features;
-use Filament\Pages\Actions\Action;
-use Illuminate\Support\Facades\Gate;
-use ArtMin96\FilamentJet\FilamentJet;
-use Filament\Forms\ComponentContainer;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Validation\Rules\Unique;
-use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
-use Illuminate\Contracts\Auth\Authenticatable;
-use ArtMin96\FilamentJet\Contracts\DeletesTeams;
-use ArtMin96\FilamentJet\Contracts\TeamContract;
-use ArtMin96\FilamentJet\Traits\RedirectsActions;
-use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
-use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
 use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
+use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
+use ArtMin96\FilamentJet\Contracts\DeletesTeams;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
-use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
-use Suleymanozev\FilamentRadioButtonField\Forms\Components\RadioButton;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
+use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\Filament\Actions\AlwaysAskPasswordConfirmationAction;
+use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
+use ArtMin96\FilamentJet\FilamentJet;
+use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use ArtMin96\FilamentJet\Role;
+use ArtMin96\FilamentJet\Traits\RedirectsActions;
+use Closure;
+use Filament\Facades\Filament;
+use Filament\Forms\ComponentContainer;
+use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
+use Filament\Pages\Actions\Action;
+use Filament\Pages\Page;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Unique;
+use Livewire\Redirector;
+use Suleymanozev\FilamentRadioButtonField\Forms\Components\RadioButton;
 
 /**
  * Undocumented trait
@@ -278,6 +278,7 @@ class TeamSettings extends Page
 
     /**
      * Delete the team.
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function deleteTeam(ValidateTeamDeletion $validator, DeletesTeams $deleter)

@@ -12,7 +12,6 @@ use ArtMin96\FilamentJet\Actions\ResetUserPassword;
 use ArtMin96\FilamentJet\Actions\UpdateTeamName;
 use ArtMin96\FilamentJet\Actions\UpdateUserPassword;
 use ArtMin96\FilamentJet\Actions\UpdateUserProfileInformation;
-
 use ArtMin96\FilamentJet\Console\InstallCommand;
 use ArtMin96\FilamentJet\Contracts\TwoFactorAuthenticationProvider as TwoFactorAuthenticationProviderContract;
 use ArtMin96\FilamentJet\Filament\Pages\Account;

@@ -2,11 +2,11 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
-use ArtMin96\FilamentJet\Events\TeamMemberRemoved;
 // use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Events\TeamMemberRemoved;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;

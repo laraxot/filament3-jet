@@ -3,10 +3,10 @@
 namespace ArtMin96\FilamentJet\Actions;
 
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Events\AddingTeam;
 use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;;
 use Illuminate\Support\Facades\Gate;
 
 class CreateTeam implements CreatesTeams
@@ -35,7 +35,7 @@ class CreateTeam implements CreatesTeams
             'personal_team' => false,
         ]));
 
-        if(!$team instanceof TeamContract){
+        if (! $team instanceof TeamContract) {
             throw new \Exception('team not have TeamContract');
         }
 

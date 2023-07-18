@@ -3,7 +3,6 @@
 namespace ArtMin96\FilamentJet\Contracts;
 
 use Laravel\Sanctum\Contracts\HasApiTokens;
-use ArtMin96\FilamentJet\Contracts\TeamContract;
 
 /**
  * ArtMin96\FilamentJet\Contracts\HasTeamsContract
@@ -11,8 +10,9 @@ use ArtMin96\FilamentJet\Contracts\TeamContract;
  * @property int $id
  * @property TeamContract $currentTeam
  * @property array $tokens
+ *
  * @method self fresh()
-  */
+ */
 interface HasTeamsContract extends HasApiTokens
 {
     /**

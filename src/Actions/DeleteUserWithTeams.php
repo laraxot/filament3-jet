@@ -4,11 +4,10 @@ namespace ArtMin96\FilamentJet\Actions;
 
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
-use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 // use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;;
 //use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
-
+use ArtMin96\FilamentJet\Contracts\TeamContract;
 use Illuminate\Support\Facades\DB;
 
 class DeleteUser implements DeletesUsers

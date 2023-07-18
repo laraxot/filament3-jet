@@ -24,6 +24,7 @@ use Livewire\Component;
 
 /**
  * Undocumented class
+ *
  * @property Collection $sanctumPermissions
  */
 class ApiTokensTable extends Component implements HasTable

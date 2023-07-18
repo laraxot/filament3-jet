@@ -2,17 +2,16 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-use Filament\Pages\Page;
-use ArtMin96\FilamentJet\FilamentJet;
-use Filament\Forms\ComponentContainer;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\CheckboxList;
-use Illuminate\Database\Eloquent\Collection;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
-use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasSanctumPermissionsProperty;
 use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
+use ArtMin96\FilamentJet\FilamentJet;
+use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasSanctumPermissionsProperty;
+use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use Filament\Forms\ComponentContainer;
+use Filament\Forms\Components\CheckboxList;
+use Filament\Forms\Components\TextInput;
+use Filament\Pages\Page;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Undocumented class
@@ -20,6 +19,7 @@ use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
  * @property UserContract $user
  * @property ComponentContainer $form
  * @property Collection $sanctumPermissions
+ *
  * @method array getHiddenActions()
  */
 class ApiTokens extends Page

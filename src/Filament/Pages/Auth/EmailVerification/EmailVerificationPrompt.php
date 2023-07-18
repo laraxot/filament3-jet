@@ -2,7 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages\Auth\EmailVerification;
 
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\Filament\Pages\CardPage;
 use ArtMin96\FilamentJet\FilamentJet;
@@ -14,7 +14,6 @@ use Filament\Facades\Filament;
 use Filament\Forms\ComponentContainer;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 /**
  * Undocumented class

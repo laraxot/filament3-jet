@@ -2,7 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages\Auth\PasswordReset;
 
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\Filament\Pages\CardPage;
 use ArtMin96\FilamentJet\FilamentJet;
@@ -16,7 +16,6 @@ use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Support\Facades\Password;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 /**
  * Undocumented class

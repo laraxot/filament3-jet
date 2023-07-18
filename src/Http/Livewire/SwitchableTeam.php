@@ -2,6 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Http\Livewire;
 
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Events\TeamSwitched;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
@@ -11,7 +12,6 @@ use Filament\Notifications\Notification;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\View\View;
 use Livewire\Component;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 class SwitchableTeam extends Component
 {

@@ -6,6 +6,7 @@ use Filament\Pages\Actions\Action;
 
 /**
  * Undocumented trait
+ *
  * @method array getHiddenActions()
  */
 trait HasCachedAction

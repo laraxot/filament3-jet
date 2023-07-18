@@ -6,7 +6,6 @@ use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-
 class TeamPolicy
 {
     use HandlesAuthorization;

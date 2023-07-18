@@ -3,8 +3,8 @@
 namespace ArtMin96\FilamentJet\Actions;
 
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;;
 use Illuminate\Support\Facades\Hash;
 
 class CreateNewUser implements CreatesNewUsers

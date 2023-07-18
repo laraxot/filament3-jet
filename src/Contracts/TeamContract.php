@@ -127,7 +127,7 @@ interface TeamContract
      */
     public function profilePhotoDisk(): string;
 
-     /**
+    /**
      * Duplicate the instance and unset all the loaded relations.
      *
      * @return $this

@@ -4,7 +4,6 @@ namespace ArtMin96\FilamentJet\Models;
 
 use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Database\Eloquent\Model;
-use ArtMin96\FilamentJet\Contracts\TeamContract;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**

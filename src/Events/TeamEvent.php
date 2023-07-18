@@ -2,10 +2,10 @@
 
 namespace ArtMin96\FilamentJet\Events;
 
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Foundation\Events\Dispatchable;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
 abstract class TeamEvent
 {
@@ -13,7 +13,6 @@ abstract class TeamEvent
 
     /**
      * The team instance.
-     *
      */
     public TeamContract $team;
 

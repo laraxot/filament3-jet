@@ -2,7 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages\Auth;
 
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Contracts\TwoFactorAuthenticationProvider;
 use ArtMin96\FilamentJet\Events\RecoveryCodeReplaced;
 use ArtMin96\FilamentJet\Features;
@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
 use Livewire\Redirector;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 /**
  * Undocumented class

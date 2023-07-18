@@ -2,10 +2,10 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Contracts\TwoFactorAuthenticationProvider;
 use ArtMin96\FilamentJet\Events\TwoFactorAuthenticationConfirmed;
 use Illuminate\Validation\ValidationException;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 class ConfirmTwoFactorAuthentication
 {

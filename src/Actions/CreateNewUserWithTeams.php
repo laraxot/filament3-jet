@@ -58,7 +58,7 @@ class CreateNewUser implements CreatesNewUsers
         if (! method_exists($user, 'ownedTeams')) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
-        $teamClass=FilamentJet::teamModel();
+        $teamClass = FilamentJet::teamModel();
         $user->ownedTeams()->save($teamClass::forceCreate([
             'user_id' => $user->getKey(),
             'name' => explode(' ', $user->name, 2)[0]."'s Team",

@@ -2,9 +2,8 @@
 
 namespace ArtMin96\FilamentJet\Events;
 
-use Illuminate\Foundation\Events\Dispatchable;
 use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
-
+use Illuminate\Foundation\Events\Dispatchable;
 
 class RecoveryCodesGenerated
 {

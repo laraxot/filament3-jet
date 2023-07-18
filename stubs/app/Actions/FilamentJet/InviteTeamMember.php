@@ -2,12 +2,12 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
 use ArtMin96\FilamentJet\Events\InvitingTeamMember;
 use ArtMin96\FilamentJet\Mail\TeamInvitation;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 
