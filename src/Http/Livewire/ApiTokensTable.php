@@ -27,6 +27,11 @@ class ApiTokensTable extends Component implements HasTable
     use InteractsWithTable;
     use HasSanctumPermissionsProperty;
 
+    /**
+     * Undocumented variable.
+     *
+     * @var array
+     */
     protected $listeners = [
         'tokenCreated' => '$refresh',
     ];
@@ -58,7 +63,7 @@ class ApiTokensTable extends Component implements HasTable
                 ->searchable()
                 ->sortable()
                 ->formatStateUsing(
-                    fn (?string $state): ?string => $state ? Carbon::parse($state)->diffForHumans() : __('filament-jet::api.table.never')
+                    fn (?string $state): string => $state ? Carbon::parse($state)->diffForHumans() : __('filament-jet::api.table.never')
                 ),
         ];
     }
@@ -111,7 +116,7 @@ class ApiTokensTable extends Component implements HasTable
         ];
     }
 
-    public function edit(Model $record, array $data)
+    public function edit(Model $record, array $data): void
     {
         $record->forceFill([
             'abilities' => FilamentJet::validPermissions($data['abilities']),
@@ -120,7 +125,7 @@ class ApiTokensTable extends Component implements HasTable
         Filament::notify('success', __('filament-jet::api.update.notify'));
     }
 
-    public function delete(Model $record)
+    public function delete(Model $record): void
     {
         $record->delete();
 
