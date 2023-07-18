@@ -10,7 +10,6 @@ use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
-use Livewire\Redirector;
 
 /**
  * Undocumented class
@@ -29,7 +28,7 @@ class CreateTeam extends Page
 
     protected static function shouldRegisterNavigation(): bool
     {
-        if(!is_bool(config('filament-jet.should_register_navigation.create_team'))){
+        if (! is_bool(config('filament-jet.should_register_navigation.create_team'))) {
             throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 

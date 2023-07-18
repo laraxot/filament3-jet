@@ -84,7 +84,7 @@ trait HasTwoFactorAuthentication
      */
     public function confirmTwoFactorAuthentication(ConfirmTwoFactorAuthentication $confirm)
     {
-        if($this->two_factor_code == null){
+        if ($this->two_factor_code == null) {
             throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 
