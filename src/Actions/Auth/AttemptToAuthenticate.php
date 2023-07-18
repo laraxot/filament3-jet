@@ -29,7 +29,7 @@ class AttemptToAuthenticate
      */
     public function handle(array $data, Closure $next)
     {
-        if(is_string($data['remember'])){
+        if (is_string($data['remember'])) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
@@ -60,7 +60,7 @@ class AttemptToAuthenticate
      */
     protected function fireFailedEvent(array $data): void
     {
-        if(!is_string(config('filament.auth.guard'))){
+        if (! is_string(config('filament.auth.guard'))) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
