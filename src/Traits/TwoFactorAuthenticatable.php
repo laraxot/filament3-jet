@@ -15,7 +15,6 @@ use BaconQrCode\Writer;
 /**
  * @property string $two_factor_confirmed_at
  */
-
 trait TwoFactorAuthenticatable
 {
     /**
