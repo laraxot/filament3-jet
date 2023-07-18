@@ -16,9 +16,9 @@ class SwitchableTeam extends Component
 {
     use HasUserProperty;
 
-    public ?Team $teams;
+    public $teams;
 
-    public ?User $user;
+    public $user;
 
     public function mount(): void
     {
