@@ -10,6 +10,7 @@ namespace ArtMin96\FilamentJet\Filament\Pages;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 >>>>>>> 39fcb522 (rebase)
@@ -39,6 +40,9 @@ use Modules\User\Models\Team;
 =======
 use App\Models\Team;
 >>>>>>> 7eb101f0 (up)
+=======
+use Modules\User\Models\Team;
+>>>>>>> 0da7d9b6 (up)
 use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
 use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
 use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;

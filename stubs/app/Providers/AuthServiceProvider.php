@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -42,11 +45,15 @@ use Modules\User\Models\Team;
 use App\Models\Team;
 >>>>>>> 7eb101f0 (up)
 use App\Policies\TeamPolicy;
+<<<<<<< HEAD
 >>>>>>> 080a5a33 (.)
+=======
+=======
+>>>>>>> 0da7d9b6 (up)
+>>>>>>> 51a866c6 (.)
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
-class AuthServiceProvider extends ServiceProvider
-{
+class AuthServiceProvider extends ServiceProvider {
     /**
      * The policy mappings for the application.
      *
@@ -59,8 +66,7 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Register any authentication / authorization services.
      */
-    public function boot(): void
-    {
+    public function boot(): void {
         $this->registerPolicies();
     }
 }

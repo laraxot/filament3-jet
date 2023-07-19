@@ -19,6 +19,7 @@ namespace App\Actions\FilamentJet;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\User;
 >>>>>>> 39fcb522 (rebase)
@@ -48,6 +49,9 @@ use Modules\User\Models\User;
 =======
 use App\Models\User;
 >>>>>>> 7eb101f0 (up)
+=======
+use Modules\User\Models\User;
+>>>>>>> 0da7d9b6 (up)
 use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Auth\Events\PasswordReset;

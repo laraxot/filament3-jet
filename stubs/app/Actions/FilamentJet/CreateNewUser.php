@@ -10,6 +10,7 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\User;
 >>>>>>> 39fcb522 (rebase)
@@ -39,6 +40,9 @@ use Modules\User\Models\User;
 =======
 use App\Models\User;
 >>>>>>> 7eb101f0 (up)
+=======
+use Modules\User\Models\User;
+>>>>>>> 0da7d9b6 (up)
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\FilamentJet;
