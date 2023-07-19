@@ -5,6 +5,7 @@ namespace App\Policies;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 =======
@@ -12,6 +13,8 @@ use ArtMin96\FilamentJet\Contracts\UserContract;
 >>>>>>> c48cfbe5 (.)
 =======
 >>>>>>> eeea3efa (.)
+=======
+>>>>>>> 34a1dda4 (.)
 <<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
@@ -26,6 +29,8 @@ use Modules\User\Models\User;
 =======
 =======
 =======
+>>>>>>> e618ae9f (rebase)
+=======
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
 >>>>>>> 798d2d5 (.)
@@ -33,8 +38,19 @@ use Modules\User\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
+<<<<<<< HEAD
 >>>>>>> 354a30e7 (Fix styling)
+<<<<<<< HEAD
 >>>>>>> c48cfbe5 (.)
+=======
+=======
+=======
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
+>>>>>>> 88c140b (Fix styling)
+>>>>>>> e618ae9f (rebase)
+>>>>>>> 34a1dda4 (.)
 
 class TeamPolicy
 {
