@@ -12,6 +12,7 @@ namespace App\Actions\FilamentJet;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\User;
 >>>>>>> 39fcb522 (rebase)
@@ -29,6 +30,8 @@ use Modules\User\Models\User;
 =======
 >>>>>>> 88c140b (Fix styling)
 >>>>>>> e618ae9f (rebase)
+=======
+>>>>>>> 37a50ce5 (.)
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 

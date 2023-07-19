@@ -6,6 +6,7 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
@@ -25,6 +26,8 @@ use Modules\User\Models\User;
 =======
 >>>>>>> 88c140b (Fix styling)
 >>>>>>> e618ae9f (rebase)
+=======
+>>>>>>> 37a50ce5 (.)
 use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;

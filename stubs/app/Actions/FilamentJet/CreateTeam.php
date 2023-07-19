@@ -14,6 +14,7 @@ namespace App\Actions\FilamentJet;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use App\Models\Team;
 >>>>>>> d4b8c7b8 (Fix styling)
@@ -48,6 +49,8 @@ use Modules\User\Models\Team;
 =======
 >>>>>>> eee9f5f0 (Fix styling)
 >>>>>>> 0179c242 (.)
+=======
+>>>>>>> 37a50ce5 (.)
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
