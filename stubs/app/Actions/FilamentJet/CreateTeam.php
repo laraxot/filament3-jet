@@ -35,6 +35,10 @@ class CreateTeam implements CreatesTeams
             'personal_team' => false,
         ]));
 
+         if (! $team instanceof TeamContract) {
+            throw new \Exception('team not have TeamContract');
+        }
+
         return $team;
     }
 }

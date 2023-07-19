@@ -2,10 +2,11 @@
 
 namespace ArtMin96\FilamentJet\Traits;
 
-use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\OwnerRole;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
+use ArtMin96\FilamentJet\OwnerRole;
+use ArtMin96\FilamentJet\FilamentJet;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
 
 trait HasTeams
 {
@@ -95,9 +96,8 @@ trait HasTeams
     /**
      * Get the user's "personal" team.
      *
-     * @return \Modules\User\Models\Team
      */
-    public function personalTeam()
+    public function personalTeam():TeamContract
     {
         return $this->ownedTeams->where('personal_team', true)->first();
     }
