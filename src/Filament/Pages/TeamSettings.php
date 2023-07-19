@@ -9,6 +9,7 @@ namespace ArtMin96\FilamentJet\Filament\Pages;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 >>>>>>> 39fcb522 (rebase)
@@ -35,6 +36,9 @@ use Modules\User\Models\Team;
 >>>>>>> 0b6c922d (rebase)
 =======
 >>>>>>> ff924dba (up)
+=======
+use App\Models\Team;
+>>>>>>> 7eb101f0 (up)
 use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
 use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
 use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
@@ -197,6 +201,7 @@ class TeamSettings extends Page
                                 ])->toArray()
                             )
                             ->columns(1)
+<<<<<<< HEAD
                             ->rules(
                                 FilamentJet::hasRoles()
 <<<<<<< HEAD
@@ -206,6 +211,11 @@ class TeamSettings extends Page
                                     ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
                                     : []
 >>>>>>> 89797fce (.)
+=======
+                            ->rules(FilamentJet::hasRoles()
+                                ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
+                                : []
+>>>>>>> 59fd8d2c (.)
                             ),
                     ]),
             ]
@@ -245,6 +255,7 @@ class TeamSettings extends Page
                             fn ($state) => $this->currentRole = $state
                         )
                         ->columns(1)
+<<<<<<< HEAD
                         ->rules(
                             FilamentJet::hasRoles()
 <<<<<<< HEAD
@@ -254,6 +265,11 @@ class TeamSettings extends Page
                                 ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
                                 : []
 >>>>>>> 89797fce (.)
+=======
+                        ->rules(FilamentJet::hasRoles()
+                            ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
+                            : []
+>>>>>>> 59fd8d2c (.)
                         ),
                 ]),
         ];

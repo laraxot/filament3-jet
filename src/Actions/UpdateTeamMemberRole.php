@@ -9,6 +9,7 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 =======
@@ -24,6 +25,8 @@ use ArtMin96\FilamentJet\Contracts\UserContract;
 >>>>>>> 03232643 (.)
 =======
 >>>>>>> fe9c3c3d (.)
+=======
+>>>>>>> 59fd8d2c (.)
 <<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
@@ -71,7 +74,14 @@ use Modules\User\Models\User;
 =======
 =======
 >>>>>>> ff924dba (up)
+<<<<<<< HEAD
 >>>>>>> fe9c3c3d (.)
+=======
+=======
+use App\Models\Team;
+use App\Models\User;
+>>>>>>> 7eb101f0 (up)
+>>>>>>> 59fd8d2c (.)
 use ArtMin96\FilamentJet\Events\TeamMemberUpdated;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Rules\Role;

@@ -1,13 +1,17 @@
 <?php
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 namespace ArtMin96\FilamentJet\Actions;
 =======
 declare(strict_types=1);
 
+=======
+>>>>>>> 59fd8d2c (.)
 namespace App\Actions\FilamentJet;
 >>>>>>> 89797fce (.)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -41,6 +45,9 @@ use Modules\User\Models\Team;
 >>>>>>> 0b6c922d (rebase)
 =======
 >>>>>>> ac955b82 (.)
+=======
+use App\Models\Team;
+>>>>>>> 7eb101f0 (up)
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Features;
@@ -65,6 +72,7 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]), function ($user) {
+
                 if (Features::enabled(Features::emailVerification())) {
                     app()->bind(
                         \Illuminate\Auth\Listeners\SendEmailVerificationNotification::class,

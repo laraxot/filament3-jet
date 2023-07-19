@@ -9,6 +9,7 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
@@ -37,6 +38,10 @@ use Modules\User\Models\User;
 >>>>>>> 0b6c922d (rebase)
 =======
 >>>>>>> ac955b82 (.)
+=======
+use App\Models\Team;
+use App\Models\User;
+>>>>>>> 7eb101f0 (up)
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
@@ -67,6 +72,7 @@ class RemoveTeamMember implements RemovesTeamMembers
      */
     protected function authorize(UserContract $user, TeamContract $team, UserContract $teamMember): void
     {
+<<<<<<< HEAD
         if (
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -79,6 +85,10 @@ class RemoveTeamMember implements RemovesTeamMembers
 >>>>>>> 4bcd417b (Fix styling)
             $user->id !== $teamMember->id
         ) {
+=======
+        if (! Gate::forUser($user)->check('removeTeamMember', $team) &&
+            $user->id !== $teamMember->id) {
+>>>>>>> 7eb101f0 (up)
             throw new AuthorizationException;
         }
     }

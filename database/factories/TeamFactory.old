@@ -9,6 +9,7 @@ namespace Database\Factories;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 5be9ebe5 (rebase)
 =======
@@ -59,6 +60,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\User\Models\Team;
 >>>>>>> ff924dba (up)
 use Modules\User\Models\User;
+=======
+use App\Models\Team;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
+>>>>>>> 7eb101f0 (up)
 
 class TeamFactory extends Factory
 {

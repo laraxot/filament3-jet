@@ -1,9 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Providers;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -39,6 +38,9 @@ use Modules\User\Models\Team;
 >>>>>>> 0b6c922d (rebase)
 =======
 >>>>>>> ac955b82 (.)
+=======
+use App\Models\Team;
+>>>>>>> 7eb101f0 (up)
 use App\Policies\TeamPolicy;
 >>>>>>> 080a5a33 (.)
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;

@@ -490,7 +490,11 @@ use ArtMin96\FilamentJet\Features;
 
 ### Email Verification
 
+<<<<<<< HEAD
 To get started, verify that your `User` model implements the `Illuminate\Contracts\Auth\MustVerifyEmail` contract
+=======
+To get started, verify that your `App\Models\User` model implements the `Illuminate\Contracts\Auth\MustVerifyEmail` contract
+>>>>>>> 59fd8d2c (.)
 
 ```php
 use Illuminate\Contracts\Auth\MustVerifyEmail;

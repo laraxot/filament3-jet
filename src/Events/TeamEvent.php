@@ -13,12 +13,21 @@ abstract class TeamEvent
 
     /**
      * The team instance.
+<<<<<<< HEAD
+=======
+     *
+     * @var \App\Models\Team
+>>>>>>> 59fd8d2c (.)
      */
     public TeamContract $team;
 
     /**
      * Create a new event instance.
      *
+<<<<<<< HEAD
+=======
+     * @param  \App\Models\Team  $team
+>>>>>>> 59fd8d2c (.)
      * @return void
      */
     public function __construct(TeamContract $team)

@@ -212,6 +212,11 @@ interface HasTeamsContract
 
     /**
      * Get the user's "personal" team.
+<<<<<<< HEAD
+=======
+     *
+     * @return \App\Models\Team
+>>>>>>> 59fd8d2c (.)
      */
     public function personalTeam(): ?TeamContract;
 
