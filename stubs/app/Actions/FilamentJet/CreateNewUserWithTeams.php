@@ -3,12 +3,19 @@
 namespace ArtMin96\FilamentJet\Actions;
 
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
+<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\UserContract;
+=======
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+>>>>>>> 18d57393 (Fix styling)
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
 use Exception;
 use Illuminate\Auth\Events\Registered;
+<<<<<<< HEAD
 use Illuminate\Contracts\Auth\Authenticatable;
+=======
+>>>>>>> 18d57393 (Fix styling)
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
