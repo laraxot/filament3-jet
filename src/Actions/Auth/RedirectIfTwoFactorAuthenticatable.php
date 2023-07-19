@@ -2,11 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Actions\Auth;
 
-<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\UserContract;
-=======
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
->>>>>>> 18d57393 (Fix styling)
 use ArtMin96\FilamentJet\Events\TwoFactorAuthenticationChallenged;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Traits\TwoFactorAuthenticatable;

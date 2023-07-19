@@ -106,11 +106,8 @@ interface TeamContract extends ModelContract
     /* --non qui
      * Get the disk that profile photos should be stored on.
 
-<<<<<<< HEAD
     public function profilePhotoDisk(): string;
     */
-=======
->>>>>>> 18d57393 (Fix styling)
     /**
      * Get a fresh instance of the batch represented by this ID.
      *

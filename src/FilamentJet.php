@@ -7,20 +7,13 @@ use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
-<<<<<<< HEAD
-=======
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
->>>>>>> 18d57393 (Fix styling)
 use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserProfileInformation;
-<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\UserContract;
-=======
->>>>>>> 18d57393 (Fix styling)
 use ArtMin96\FilamentJet\Traits\HasTeams;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -242,7 +235,7 @@ final class FilamentJet
     public static function userHasTeamFeatures(UserContract $user): bool
     {
         return (array_key_exists(HasTeams::class, class_uses_recursive($user)) ||
-            method_exists($user, 'currentTeam')) &&
+                method_exists($user, 'currentTeam')) &&
             self::hasTeamFeatures();
     }
 

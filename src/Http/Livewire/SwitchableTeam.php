@@ -2,11 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Http\Livewire;
 
-<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\UserContract;
-=======
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
->>>>>>> 18d57393 (Fix styling)
 use ArtMin96\FilamentJet\Events\TeamSwitched;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
@@ -30,12 +26,9 @@ class SwitchableTeam extends Component
         if ($user == null) {
             return; //persa sessione
         }
-<<<<<<< HEAD
         if (! $user instanceof UserContract) {
             throw new \Exception('['.get_class($user).'] not implements ArtMin96\FilamentJet\Contracts\HasTeamsContract ');
         }
-=======
->>>>>>> 18d57393 (Fix styling)
         $this->user = $user;
         $this->teams = $this->user->allTeams();
     }
