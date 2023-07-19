@@ -1,6 +1,12 @@
 <?php
 
+<<<<<<< HEAD
 namespace ArtMin96\FilamentJet\Actions;
+=======
+declare(strict_types=1);
+
+namespace App\Actions\FilamentJet;
+>>>>>>> 89797fce (.)
 
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
 use ArtMin96\FilamentJet\Contracts\UserContract;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .idea
 .phpunit.result.cache
 build
@@ -7,3 +8,6 @@ docs
 vendor
 node_modules
 *.lock
+=======
+/vendor
+>>>>>>> 89797fce (.)

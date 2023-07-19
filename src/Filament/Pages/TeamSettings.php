@@ -166,8 +166,13 @@ class TeamSettings extends Page
                             ->columns(1)
                             ->rules(
                                 FilamentJet::hasRoles()
+<<<<<<< HEAD
                                 ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role()]
                                 : []
+=======
+                                    ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
+                                    : []
+>>>>>>> 89797fce (.)
                             ),
                     ]),
             ]
@@ -209,8 +214,13 @@ class TeamSettings extends Page
                         ->columns(1)
                         ->rules(
                             FilamentJet::hasRoles()
+<<<<<<< HEAD
                             ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role()]
                             : []
+=======
+                                ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
+                                : []
+>>>>>>> 89797fce (.)
                         ),
                 ]),
         ];
