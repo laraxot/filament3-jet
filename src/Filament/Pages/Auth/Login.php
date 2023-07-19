@@ -54,12 +54,20 @@ class Login extends CardPage
 
     protected function getCardWidth(): string
     {
-        return Features::getOption(Features::login(), 'card_width');
+        $res= Features::getOption(Features::login(), 'card_width');
+        if(!is_string($res)){
+            throw new \Exception('wip');
+        }
+        return $res;
     }
 
     protected function hasBrand(): bool
     {
-        return Features::optionEnabled(Features::login(), 'has_brand');
+        $res= Features::optionEnabled(Features::login(), 'has_brand');
+        if(!is_bool($res)){
+            throw new \Exception('wip');
+        }
+        return $res;
     }
 
     public function authenticate(): null|LoginResponse|Redirector

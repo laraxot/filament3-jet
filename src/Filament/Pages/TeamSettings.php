@@ -4,34 +4,36 @@ declare(strict_types=1);
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
-use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
-use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
-use ArtMin96\FilamentJet\Contracts\DeletesTeams;
-use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
-use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
-use ArtMin96\FilamentJet\Contracts\TeamContract;
-use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
-use ArtMin96\FilamentJet\Contracts\UserContract;
-use ArtMin96\FilamentJet\Features;
-use ArtMin96\FilamentJet\Filament\Actions\AlwaysAskPasswordConfirmationAction;
-use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
-use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use Filament\Pages\Page;
+use Livewire\Redirector;
 use ArtMin96\FilamentJet\Role;
-use ArtMin96\FilamentJet\Traits\RedirectsActions;
 use Filament\Facades\Filament;
+use Illuminate\Validation\Rule;
+use ArtMin96\FilamentJet\Features;
+use Filament\Pages\Actions\Action;
+use Illuminate\Support\Facades\Gate;
+use ArtMin96\FilamentJet\FilamentJet;
 use Filament\Forms\ComponentContainer;
+use Illuminate\Validation\Rules\Unique;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Filament\Pages\Actions\Action;
-use Filament\Pages\Page;
+use ArtMin96\FilamentJet\Datas\FilamentData;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Unique;
-use Livewire\Redirector;
+use ArtMin96\FilamentJet\Datas\FilamentJetData;
+use ArtMin96\FilamentJet\Contracts\DeletesTeams;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
+use ArtMin96\FilamentJet\Traits\RedirectsActions;
+use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
+use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
+use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
+use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
+use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
+use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
+use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
 use Suleymanozev\FilamentRadioButtonField\Forms\Components\RadioButton;
+use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use ArtMin96\FilamentJet\Filament\Actions\AlwaysAskPasswordConfirmationAction;
 
 /**
  * Undocumented trait.
@@ -50,9 +52,9 @@ class TeamSettings extends Page
 
     protected static string $view = 'filament-jet::filament.pages.team-settings';
 
-    public ?TeamContract $team;
+    public TeamContract $team;
 
-    public ?array $teamState = [];
+    public array $teamState = [];
 
     public ?array $addTeamMemberState = [];
 
@@ -69,7 +71,10 @@ class TeamSettings extends Page
     /**
      * The current role for the user that is having their role managed.
      */
-    public ?string $currentRole = null;
+    public string $currentRole;
+
+
+
 
     /**
      * Undocumented function.
@@ -78,23 +83,25 @@ class TeamSettings extends Page
      */
     public function mount()
     {
-        $this->team = $this->user->currentTeam;
+        $team = $this->user->currentTeam;
 
-        if (! $this->team) {
+        if (! $team) {
             Notification::make()
                 ->title(__('filament-jet::teams/messages.current_team_not_exists'))
                 ->warning()
                 ->send();
-
-            return redirect(config('filament.path'));
+            $filamentData=FilamentData::make();
+            return redirect( $filamentData->path);
         }
-
+        $this->team=$team;
         $this->updateTeamNameForm->fill($this->team->withoutRelations()->toArray());
     }
 
     protected static function shouldRegisterNavigation(): bool
     {
-        return config('filament-jet.should_register_navigation.team_settings');
+        $filamentJetData=FilamentJetData::make();
+        return $filamentJetData->should_register_navigation->team_settings;
+        //return config('filament-jet.should_register_navigation.team_settings');
     }
 
     /**
@@ -145,7 +152,7 @@ class TeamSettings extends Page
                                     ? '' : Rule::exists(table: FilamentJet::userModel(), column: 'email'),
                                 function () {
                                     return function (string $attribute, $value, \Closure $fail) {
-                                        if ($this->team?->hasUserWithEmail($value)) {
+                                        if ($this->team->hasUserWithEmail($value)) {
                                             $fail(__('filament-jet::teams/add-member.messages.already_belongs_to_team'));
                                         }
                                     };
@@ -291,7 +298,7 @@ class TeamSettings extends Page
      */
     public function deleteTeam(ValidateTeamDeletion $validator, DeletesTeams $deleter)
     {
-        $validator->validate(Filament::auth()->user(), $this->team);
+        $validator->validate($this->user, $this->team);
 
         $deleter->delete($this->team);
 
@@ -343,8 +350,8 @@ class TeamSettings extends Page
             ->title(__('filament-jet::teams/members.messages.leave'))
             ->success()
             ->send();
-
-        return redirect(config('filament.path'));
+        $filamentData=FilamentData::make();
+        return redirect($filamentData->path);
     }
 
     /**
@@ -353,10 +360,10 @@ class TeamSettings extends Page
     public function manageRole(int $userId): void
     {
         $this->managingRoleFor = FilamentJet::findUserByIdOrFail($userId);
-        $this->currentRole = $this->managingRoleFor->teamRole($this->team)->key;
+        $this->currentRole = $this->managingRoleFor->teamRole($this->team)?->key ?? 'none';
 
         $this->mountAction('manage_role');
-        $this->getMountedActionForm()->fill(['role' => $this->currentRole]);
+        $this->getMountedActionForm()?->fill(['role' => $this->currentRole]);
     }
 
     /**

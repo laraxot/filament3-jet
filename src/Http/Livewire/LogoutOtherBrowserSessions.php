@@ -2,13 +2,14 @@
 
 namespace ArtMin96\FilamentJet\Http\Livewire;
 
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 use Illuminate\View\View;
 use Jenssegers\Agent\Agent;
-use Livewire\Component;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use ArtMin96\FilamentJet\Datas\SessionData;
 
 class LogoutOtherBrowserSessions extends Component
 {
@@ -29,23 +30,9 @@ class LogoutOtherBrowserSessions extends Component
      */
     public function getSessionsProperty(): Collection
     {
-        if (config('session.driver') !== 'database') {
-            return collect();
-        }
 
-        return collect(
-            DB::connection(config('session.connection') ?? '---')->table(config('session.table', 'sessions'))
-                ->where('user_id', Auth::user()->getAuthIdentifier())
-                ->orderBy('last_activity', 'desc')
-                ->get()
-        )->map(function ($session) {
-            return (object) [
-                'agent' => $this->createAgent($session),
-                'ip_address' => $session->ip_address,
-                'is_current_device' => $session->id === request()->session()->getId(),
-                'last_active' => Carbon::createFromTimestamp($session->last_activity)->diffForHumans(),
-            ];
-        });
+        $sessionData=SessionData::make();
+        return $sessionData->getSessionsProperty();
     }
 
     /**

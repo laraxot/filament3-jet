@@ -40,8 +40,8 @@ class RedirectIfTwoFactorAuthenticatable
         $user = $this->validateCredentials($data);
 
         if (FilamentJet::confirmsTwoFactorAuthentication()) {
-            if (optional($user)->two_factor_secret &&
-                ! is_null(optional($user)->two_factor_confirmed_at) &&
+            if ($user->two_factor_secret &&
+                ! is_null($user->two_factor_confirmed_at) &&
                 in_array(TwoFactorAuthenticatable::class, class_uses_recursive($user))) {
                 return $this->twoFactorChallengeResponse($data, $user);
             } else {

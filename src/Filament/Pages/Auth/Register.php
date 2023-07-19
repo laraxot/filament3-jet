@@ -50,12 +50,20 @@ class Register extends CardPage
 
     protected function getCardWidth(): string
     {
-        return Features::getOption(Features::registration(), 'card_width');
+        $res=Features::getOption(Features::registration(), 'card_width');
+        if(!is_string($res)){
+            throw new \Exception('wip');
+        }
+        return $res;
     }
 
     protected function hasBrand(): bool
     {
-        return Features::optionEnabled(Features::registration(), 'has_brand');
+        $res= Features::optionEnabled(Features::registration(), 'has_brand');
+        if(!is_bool($res)){
+            throw new \Exception('wip');
+        }
+        return $res;
     }
 
     /**

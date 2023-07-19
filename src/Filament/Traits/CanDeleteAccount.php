@@ -4,6 +4,7 @@ namespace ArtMin96\FilamentJet\Filament\Traits;
 
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
 use ArtMin96\FilamentJet\Contracts\UserContract;
+use ArtMin96\FilamentJet\Datas\FilamentData;
 use Filament\Facades\Filament;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ trait CanDeleteAccount
             $request->session()->invalidate();
             $request->session()->regenerateToken();
         }
-
-        return redirect(config('filament.path'));
+        $filamentData=FilamentData::make();
+        return redirect($filamentData->path);
     }
 }

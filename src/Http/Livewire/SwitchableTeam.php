@@ -2,7 +2,9 @@
 
 namespace ArtMin96\FilamentJet\Http\Livewire;
 
+use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
+use ArtMin96\FilamentJet\Datas\FilamentData;
 use ArtMin96\FilamentJet\Events\TeamSwitched;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
@@ -43,7 +45,10 @@ class SwitchableTeam extends Component
         $team = FilamentJet::newTeamModel()->findOrFail($teamId);
 
         if ($this->user == null) {
-            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            throw new \Exception('wip');
+        }
+        if(!$team instanceof TeamContract){
+            throw new \Exception('wip');
         }
 
         if (! $this->user->switchTeam($team)) {
@@ -56,8 +61,9 @@ class SwitchableTeam extends Component
             ->title(__('Team switched'))
             ->success()
             ->send();
+        $filamentData=FilamentData::make();
 
-        return redirect(config('filament.path'), 303);
+        return redirect($filamentData->path, 303);
     }
 
     public function render(): View
