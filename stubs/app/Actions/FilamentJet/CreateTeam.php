@@ -17,6 +17,7 @@ namespace App\Actions\FilamentJet;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use App\Models\Team;
 >>>>>>> d4b8c7b8 (Fix styling)
@@ -67,6 +68,8 @@ use App\Models\Team;
 use Modules\User\Models\Team;
 >>>>>>> 798d2d5 (.)
 >>>>>>> 0b6c922d (rebase)
+=======
+>>>>>>> ac955b82 (.)
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
@@ -79,7 +82,7 @@ class CreateTeam implements CreatesTeams
     /**
      * Validate and create a new team for the given user.
      *
-     * @param  array<string, string>  $input
+     * @param array<string, string> $input
      */
 <<<<<<< HEAD
     public function create(UserContract $user, array $input): TeamContract
