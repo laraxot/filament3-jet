@@ -2,10 +2,13 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+
 /**
- * @method \Illuminate\Database\Eloquent\Model create(\Filament\Models\Contracts\FilamentUser $user, array $input)
+ *
  */
 interface CreatesTeams
 {
-    //
+    public function create(UserContract $user, array $input): TeamContract;
 }

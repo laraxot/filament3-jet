@@ -14,12 +14,7 @@ interface ModelContract
      */
     public function withoutRelations();
 
-    /**
-     * Get a fresh instance of the batch represented by this ID.
-     *
-     * @return self
-     */
-    public function fresh();
+
 
     /**
      * Fill the model with an array of attributes. Force mass assignment.
@@ -48,4 +43,11 @@ interface ModelContract
      * @return array
      */
     public function toArray();
+
+    /**
+     * Get the value of the model's primary key.
+     *
+     * @return mixed
+     */
+    public function getKey();
 }

@@ -91,6 +91,12 @@ class ApiTokens extends Page
         $this->emit('tokenCreated');
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param object $token
+     * @return void
+     */
     protected function displayTokenValue($token): void
     {
         $this->plainTextToken = explode('|', $token->plainTextToken, 2)[1];

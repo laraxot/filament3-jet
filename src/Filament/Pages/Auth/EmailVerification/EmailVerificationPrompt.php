@@ -27,6 +27,11 @@ class EmailVerificationPrompt extends CardPage
 
     protected static string $view = 'filament-jet::filament.pages.auth.email-verification.email-verification-prompt';
 
+    /**
+     * Undocumented function
+     *
+     * @return mixed
+     */
     public function mount()
     {
         if (! Filament::auth()->check()) {
@@ -73,10 +78,14 @@ class EmailVerificationPrompt extends CardPage
 
         $user = Filament::auth()->user();
 
+
         if (! method_exists($user, 'notify')) {
             $userClass = $user::class;
 
             throw new Exception("Model [{$userClass}] does not have a [notify()] method.");
+        }
+        if (!$user instanceof UserContract) {
+            throw new \Exception('strange things');
         }
 
         $notification = new VerifyEmail();

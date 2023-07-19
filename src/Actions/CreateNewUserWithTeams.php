@@ -20,7 +20,7 @@ class CreateNewUser implements CreatesNewUsers
      *
      * @param  array<string, string>  $input
      */
-    public function create(array $input): Model|Authenticatable
+    public function create(array $input): UserContract
     {
         return DB::transaction(function () use ($input) {
             return tap(FilamentJet::userModel()::create([
@@ -28,7 +28,6 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]), function ($user) {
-
                 if (Features::enabled(Features::emailVerification())) {
                     app()->bind(
                         \Illuminate\Auth\Listeners\SendEmailVerificationNotification::class,
@@ -42,6 +41,9 @@ class CreateNewUser implements CreatesNewUsers
                 event(new Registered($user));
 
                 if (Features::hasTeamFeatures()) {
+                    if (!$user instanceof UserContract) {
+                        throw new \Exception('strange things');
+                    }
                     $this->createTeam($user);
                 }
 

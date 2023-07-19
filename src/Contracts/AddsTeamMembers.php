@@ -2,10 +2,13 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+
 /**
- * @method void add(\Illuminate\Foundation\Auth\User $user, \Illuminate\Database\Eloquent\Model $team, string $email, string $role = null)
+ * ---
  */
 interface AddsTeamMembers
 {
-    //
+    public function add(UserContract $user, TeamContract $team, string $email, string $role = null): void;
 }

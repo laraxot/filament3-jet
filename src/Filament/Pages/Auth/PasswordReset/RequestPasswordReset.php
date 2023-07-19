@@ -74,7 +74,7 @@ class RequestPasswordReset extends CardPage
 
         $status = Password::sendResetLink(
             $data,
-            function (CanResetPassword $user, string $token): void {
+            function (UserContract $user, string $token): void {
                 if (! method_exists($user, 'notify')) {
                     $userClass = $user::class;
 

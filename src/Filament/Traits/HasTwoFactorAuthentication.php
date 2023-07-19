@@ -137,6 +137,11 @@ trait HasTwoFactorAuthentication
             ->send();
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function exportPersonalData()
     {
         $this->export();

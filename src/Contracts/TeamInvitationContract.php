@@ -27,5 +27,5 @@ namespace ArtMin96\FilamentJet\Contracts;
  */
 interface TeamInvitationContract
 {
-    public function delete();
+    public function delete(): void;
 }

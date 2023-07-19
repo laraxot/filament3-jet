@@ -2,10 +2,13 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+
 /**
- * @method void remove(\Illuminate\Foundation\Auth\User $user, \Illuminate\Database\Eloquent\Model $team, \Illuminate\Foundation\Auth\User $teamMember)
+ * ---
  */
 interface RemovesTeamMembers
 {
-    //
+    public function remove(UserContract $user, TeamContract $team, UserContract $teamMember): void;
 }

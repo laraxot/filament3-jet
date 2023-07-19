@@ -95,7 +95,7 @@ class ResetPassword extends CardPage
 
         $status = $this->broker()->reset(
             $data,
-            function (CanResetPassword|Model|Authenticatable $user) use ($data) {
+            function (UserContract $user) use ($data) {
                 app(ResetsUserPasswords::class)->reset($user, $data);
             },
         );

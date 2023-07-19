@@ -116,8 +116,8 @@ class InstallCommand extends Command
             });
 
         // Directories...
-        (new Filesystem)->ensureDirectoryExists(app_path('Actions/FilamentJet'));
-        (new Filesystem)->ensureDirectoryExists(resource_path('markdown'));
+        (new Filesystem())->ensureDirectoryExists(app_path('Actions/FilamentJet'));
+        (new Filesystem())->ensureDirectoryExists(resource_path('markdown'));
 
         // Terms Of Service / Privacy Policy...
         copy(__DIR__.'/../../stubs/resources/markdown/terms.md', resource_path('markdown/terms.md'));
@@ -144,7 +144,7 @@ class InstallCommand extends Command
         $this->replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));
 
         if (! Str::contains(file_get_contents(base_path('routes/web.php')), "'/register'")) {
-            (new Filesystem)->append(base_path('routes/web.php'), $this->routeDefinition());
+            (new Filesystem())->append(base_path('routes/web.php'), $this->routeDefinition());
         }
 
         // Teams...
@@ -156,6 +156,11 @@ class InstallCommand extends Command
         $this->components->info('Filament Jet scaffolding installed successfully.');
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     protected function installTeamStack()
     {
         // ...
@@ -201,9 +206,9 @@ class InstallCommand extends Command
         );
 
         // Directories...
-        (new Filesystem)->ensureDirectoryExists(app_path('Actions/FilamentJet'));
-        (new Filesystem)->ensureDirectoryExists(app_path('Events'));
-        (new Filesystem)->ensureDirectoryExists(app_path('Policies'));
+        (new Filesystem())->ensureDirectoryExists(app_path('Actions/FilamentJet'));
+        (new Filesystem())->ensureDirectoryExists(app_path('Events'));
+        (new Filesystem())->ensureDirectoryExists(app_path('Policies'));
 
         // Service Providers...
         copy(__DIR__.'/../../stubs/app/Providers/AuthServiceProvider.php', app_path('Providers/AuthServiceProvider.php'));
@@ -226,7 +231,7 @@ class InstallCommand extends Command
         copy(__DIR__.'/../../stubs/app/Actions/FilamentJet/CreateNewUserWithTeams.php', app_path('Actions/FilamentJet/CreateNewUser.php'));
 
         // Policies...
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/app/Policies', app_path('Policies'));
+        (new Filesystem())->copyDirectory(__DIR__.'/../../stubs/app/Policies', app_path('Policies'));
 
         // Factories...
         copy(__DIR__.'/../../database/factories/UserFactory.php', base_path('database/factories/UserFactory.php'));

@@ -11,7 +11,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Modules\User\Models\Team;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -20,7 +20,7 @@ class CreateNewUser implements CreatesNewUsers
      *
      * @param  array<string, string>  $input
      */
-    public function create(array $input): Model|Authenticatable
+    public function create(array $input): UserContract
     {
         return DB::transaction(function () use ($input) {
             return tap(FilamentJet::userModel()::create([
@@ -28,7 +28,6 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]), function ($user) {
-
                 if (Features::enabled(Features::emailVerification())) {
                     app()->bind(
                         \Illuminate\Auth\Listeners\SendEmailVerificationNotification::class,
@@ -53,7 +52,7 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Create a personal team for the user.
      */
-    protected function createTeam(Model|Authenticatable $user): void
+    protected function createTeam(UserContract $user): void
     {
         if (! method_exists($user, 'ownedTeams')) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');

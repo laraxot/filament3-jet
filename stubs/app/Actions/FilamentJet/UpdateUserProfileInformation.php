@@ -8,6 +8,7 @@ use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
@@ -16,7 +17,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      *
      * @param  array<string, string>  $input
      */
-    public function update(Model|Authenticatable $user, array $input): void
+    public function update(UserContract $user, array $input): void
     {
         if (Features::managesProfilePhotos()) {
             if (! method_exists($user, 'updateProfilePhoto')) {
@@ -41,7 +42,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      *
      * @param  array<string, string>  $input
      */
-    protected function updateVerifiedUser(Model|Authenticatable $user, array $input): void
+    protected function updateVerifiedUser(UserContract $user, array $input): void
     {
         $user->forceFill([
             'name' => $input['name'],

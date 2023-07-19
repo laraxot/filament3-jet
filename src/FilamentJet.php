@@ -2,25 +2,27 @@
 
 namespace ArtMin96\FilamentJet;
 
-use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
-use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Database\Eloquent\Model;
+use ArtMin96\FilamentJet\Traits\HasTeams;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
+use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
+use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
-use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserProfileInformation;
-use ArtMin96\FilamentJet\Traits\HasTeams;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\CanResetPassword;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Validation\Rules\Password;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 final class FilamentJet
 {
@@ -178,7 +180,7 @@ final class FilamentJet
     {
         self::$permissions = $permissions;
 
-        return new self;
+        return new self();
     }
 
     /**
@@ -190,7 +192,7 @@ final class FilamentJet
     {
         self::$defaultPermissions = $permissions;
 
-        return new self;
+        return new self();
     }
 
     /**
@@ -226,9 +228,8 @@ final class FilamentJet
     /**
      * Determine if FilamentJet is supporting team features.
      *
-     * @return bool
      */
-    public static function hasTeamFeatures()
+    public static function hasTeamFeatures(): bool
     {
         return Features::hasTeamFeatures();
     }
@@ -236,10 +237,8 @@ final class FilamentJet
     /**
      * Determine if a given user model utilizes the "HasTeams" trait.
      *
-     * @param  \Illuminate\Database\Eloquent\Model
-     * @return bool
      */
-    public static function userHasTeamFeatures($user)
+    public static function userHasTeamFeatures(UserContract $user): bool
     {
         return (array_key_exists(HasTeams::class, class_uses_recursive($user)) ||
                 method_exists($user, 'currentTeam')) &&
@@ -396,7 +395,7 @@ final class FilamentJet
     {
         $model = self::userModel();
 
-        return new $model;
+        return new $model();
     }
 
     /**
@@ -408,7 +407,7 @@ final class FilamentJet
     {
         self::$userModel = $model;
 
-        return new self;
+        return new self();
     }
 
     /**
@@ -431,7 +430,7 @@ final class FilamentJet
     {
         $model = self::teamModel();
 
-        return new $model;
+        return new $model();
     }
 
     /**
@@ -443,7 +442,7 @@ final class FilamentJet
     {
         self::$teamModel = $model;
 
-        return new self;
+        return new self();
     }
 
     /**
@@ -465,7 +464,7 @@ final class FilamentJet
     {
         self::$membershipModel = $model;
 
-        return new self;
+        return new self();
     }
 
     /**
@@ -488,7 +487,7 @@ final class FilamentJet
     {
         self::$teamInvitationModel = $model;
 
-        return new self;
+        return new self();
     }
 
     /**
@@ -514,51 +513,51 @@ final class FilamentJet
     /**
      * Register a class / callback that should be used to create users.
      *
-     * @return void
+
      */
-    public static function createUsersUsing(string $class)
+    public static function createUsersUsing(string $class): void
     {
-        return app()->singleton(CreatesNewUsers::class, $class);
+        app()->singleton(CreatesNewUsers::class, $class);
     }
 
     /**
      * Register a class / callback that should be used to create teams.
      *
-     * @return void
+
      */
-    public static function createTeamsUsing(string $class)
+    public static function createTeamsUsing(string $class): void
     {
-        return app()->singleton(CreatesTeams::class, $class);
+        app()->singleton(CreatesTeams::class, $class);
     }
 
     /**
      * Register a class / callback that should be used to update team names.
      *
-     * @return void
+
      */
-    public static function updateTeamNamesUsing(string $class)
+    public static function updateTeamNamesUsing(string $class): void
     {
-        return app()->singleton(UpdatesTeamNames::class, $class);
+        app()->singleton(UpdatesTeamNames::class, $class);
     }
 
     /**
      * Register a class / callback that should be used to add team members.
      *
-     * @return void
+
      */
-    public static function addTeamMembersUsing(string $class)
+    public static function addTeamMembersUsing(string $class): void
     {
-        return app()->singleton(AddsTeamMembers::class, $class);
+        app()->singleton(AddsTeamMembers::class, $class);
     }
 
     /**
      * Register a class / callback that should be used to add team members.
      *
-     * @return void
+
      */
-    public static function inviteTeamMembersUsing(string $class)
+    public static function inviteTeamMembersUsing(string $class): void
     {
-        return app()->singleton(InvitesTeamMembers::class, $class);
+        app()->singleton(InvitesTeamMembers::class, $class);
     }
 
     /**
@@ -566,9 +565,9 @@ final class FilamentJet
      *
      * @return void
      */
-    public static function removeTeamMembersUsing(string $class)
+    public static function removeTeamMembersUsing(string $class): void
     {
-        return app()->singleton(RemovesTeamMembers::class, $class);
+        app()->singleton(RemovesTeamMembers::class, $class);
     }
 
     /**
@@ -576,9 +575,9 @@ final class FilamentJet
      *
      * @return void
      */
-    public static function deleteTeamsUsing(string $class)
+    public static function deleteTeamsUsing(string $class): void
     {
-        return app()->singleton(DeletesTeams::class, $class);
+        app()->singleton(DeletesTeams::class, $class);
     }
 
     /**
@@ -586,9 +585,9 @@ final class FilamentJet
      *
      * @return void
      */
-    public static function deleteUsersUsing(string $class)
+    public static function deleteUsersUsing(string $class): void
     {
-        return app()->singleton(DeletesUsers::class, $class);
+        app()->singleton(DeletesUsers::class, $class);
     }
 
     /**
@@ -599,7 +598,7 @@ final class FilamentJet
         app()->singleton(ResetsUserPasswords::class, $class);
     }
 
-    public static function getVerifyEmailUrl(MustVerifyEmail|Model|Authenticatable $user): string
+    public static function getVerifyEmailUrl(UserContract $user): string
     {
         return URL::temporarySignedRoute(
             config('filament-jet.route_group_prefix').'auth.email-verification.verify',
@@ -611,7 +610,7 @@ final class FilamentJet
         );
     }
 
-    public static function getResetPasswordUrl(string $token, CanResetPassword|Model|Authenticatable $user): string
+    public static function getResetPasswordUrl(string $token, UserContract $user): string
     {
         return URL::signedRoute(config('filament-jet.route_group_prefix').'auth.password-reset.reset', [
             'email' => $user->getEmailForPasswordReset(),

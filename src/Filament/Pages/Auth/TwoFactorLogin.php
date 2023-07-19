@@ -37,10 +37,15 @@ class TwoFactorLogin extends CardPage
 
     public bool $usingRecoveryCode = false;
 
-    public null|Model|Authenticatable $challengedUser = null;
+    public ?UserContract $challengedUser = null;
 
     protected static string $view = 'filament-jet::filament.pages.auth.two-factor-login';
 
+    /**
+     * Undocumented function
+     *
+     * @return mixed
+     */
     public function mount()
     {
         if (! $this->hasChallengedUser()) {
@@ -59,7 +64,8 @@ class TwoFactorLogin extends CardPage
     public function hasValidCode(?string $code): bool
     {
         return $code && tap(app(TwoFactorAuthenticationProvider::class)->verify(
-            decrypt($this->challengedUser()->two_factor_secret), $code
+            decrypt($this->challengedUser()->two_factor_secret),
+            $code
         ), function ($result) {
             if ($result) {
                 session()->forget("{$this->sessionPrefix}login.id");
@@ -93,8 +99,11 @@ class TwoFactorLogin extends CardPage
         if ($this->challengedUser) {
             return true;
         }
-
-        $userModel = Filament::auth()->getProvider()->getModel();
+        $userProvider=Filament::auth()->getProvider();
+        if (!method_exists($userProvider, 'getModel')) {
+            throw new \Exception('getModel not exists in userProvider');
+        }
+        $userModel = $userProvider->getModel();
 
         return session()->has("{$this->sessionPrefix}login.id") &&
             $userModel::find(session()->get("{$this->sessionPrefix}login.id"));
@@ -102,19 +111,27 @@ class TwoFactorLogin extends CardPage
 
     /**
      * Get the user that is attempting the two factor challenge.
+     * @return UserContract|Redirector|\Illuminate\Http\RedirectResponse
      */
-    public function challengedUser(): null|Model|Authenticatable|Redirector
+    public function challengedUser()
     {
         if ($this->challengedUser) {
             return $this->challengedUser;
         }
 
-        $userModel = Filament::auth()->getProvider()->getModel();
+
+        $userProvider=Filament::auth()->getProvider();
+        if (!method_exists($userProvider, 'getModel')) {
+            throw new \Exception('getModel not exists in userProvider');
+        }
+        $userModel = $userProvider->getModel();
+
 
         if (! session()->has("{$this->sessionPrefix}login.id") ||
             ! $user = $userModel::find(session()->get("{$this->sessionPrefix}login.id"))) {
             return redirect()->to(jetRouteActions()->loginRoute());
         }
+
 
         return $this->challengedUser = $user;
     }
@@ -173,6 +190,10 @@ class TwoFactorLogin extends CardPage
             $this->addError($key, $message);
 
             return null;
+        }
+
+        if (!$user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
+            throw new \Exception('strange things');
         }
 
         Filament::auth()->login($user, $this->remember());

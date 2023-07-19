@@ -2,10 +2,13 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+
 /**
- * @method void update(\Illuminate\Foundation\Auth\User $user, \Illuminate\Database\Eloquent\Model $team, array $input)
+ * ---
  */
 interface UpdatesTeamNames
 {
-    //
+    public function update(UserContract $user, TeamContract $team, array $input): void;
 }

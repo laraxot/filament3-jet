@@ -43,7 +43,7 @@ class Login extends CardPage
 
     public bool $remember = false;
 
-    public null|Model|Authenticatable $user = null;
+    public null|UserContract $user = null;
 
     public function mount(): void
     {

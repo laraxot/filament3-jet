@@ -88,6 +88,9 @@ class Account extends Page
 
     protected function updateProfileFormSchema(): array
     {
+        if (!$this->user instanceof \Illuminate\Database\Eloquent\Model) {
+            throw new \Exception('strange things');
+        }
         return array_filter([
             Features::managesProfilePhotos()
                 ? FileUpload::make('profile_photo_path')
@@ -153,8 +156,9 @@ class Account extends Page
 
     /**
      * Update the user's profile information.
+     * @return Redirector|\Illuminate\Http\RedirectResponse
      */
-    public function updateProfileInformation(UpdatesUserProfileInformation $updater): Redirector
+    public function updateProfileInformation(UpdatesUserProfileInformation $updater)
     {
         $updater->update(
             $this->user,
@@ -185,7 +189,9 @@ class Account extends Page
             ->send();
 
         session()->forget('password_hash_'.config('filament.auth.guard'));
-
+        if (!$this->user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
+            throw new \Exception('strange things');
+        }
         Filament::auth()->login($this->user);
 
         $this->reset(['current_password', 'password', 'password_confirmation']);

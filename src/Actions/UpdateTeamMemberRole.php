@@ -15,14 +15,14 @@ class UpdateTeamMemberRole
     /**
      * Update the role for the given team member.
      */
-    public function update(UserContract $user, TeamContract $team, int $teamMemberId, string $role)
+    public function update(UserContract $user, TeamContract $team, int $teamMemberId, string $role): void
     {
         Gate::forUser($user)->authorize('updateTeamMember', $team);
 
         Validator::make([
             'role' => $role,
         ], [
-            'role' => ['required', 'string', new Role],
+            'role' => ['required', 'string', new Role()],
         ])->validate();
 
         $team->users()->updateExistingPivot($teamMemberId, [

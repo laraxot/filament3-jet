@@ -13,9 +13,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 use Livewire\Redirector;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 class RedirectIfTwoFactorAuthenticatable
 {
+    /**
+     * Undocumented variable
+     *
+     * @var \Illuminate\Contracts\Auth\StatefulGuard
+     */
     protected $guard;
 
     /**
@@ -26,6 +32,13 @@ class RedirectIfTwoFactorAuthenticatable
         $this->guard = $guard;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param array $data
+     * @param Closure $next
+     * @return mixed
+     */
     public function handle(array $data, Closure $next)
     {
         $user = $this->validateCredentials($data);
@@ -52,10 +65,15 @@ class RedirectIfTwoFactorAuthenticatable
      * Attempt to validate the incoming credentials.
      *
      * @param  array<string, string>  $data
+     * @return UserContract
      */
     protected function validateCredentials(array $data)
     {
-        $model = $this->guard->getProvider()->getModel();
+        $userProvider=$this->guard->getProvider();
+        if (!method_exists($userProvider, 'getModel')) {
+            throw new \Exception('strange things');
+        }
+        $model = $userProvider->getModel();
 
         return tap($model::where(FilamentJet::username(), $data[FilamentJet::username()])->first(), function ($user) use ($data) {
             if (! $user || ! $this->guard->getProvider()->validateCredentials($user, ['password' => $data['password']])) {
@@ -80,10 +98,13 @@ class RedirectIfTwoFactorAuthenticatable
      * Fire the failed authentication attempt event with the given arguments.
      *
      * @param  array<string, string>  $data
-     * @param  Authenticatable|null  $user
+
      */
-    protected function fireFailedEvent(array $data, Authenticatable|Model $user = null): void
+    protected function fireFailedEvent(array $data, ?UserContract $user = null): void
     {
+        if ($user!=null && !$user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
+            throw new \Exception('strange things');
+        }
         event(new Failed(config('filament.auth.guard'), $user, [
             FilamentJet::username() => $data[FilamentJet::username()],
             'password' => $data['password'],
@@ -93,7 +114,7 @@ class RedirectIfTwoFactorAuthenticatable
     /**
      * Get the two factor authentication enabled response.
      */
-    protected function twoFactorChallengeResponse(array $data, Authenticatable|Model $user): Redirector|RedirectResponse
+    protected function twoFactorChallengeResponse(array $data, UserContract $user): Redirector|RedirectResponse
     {
         session()->put([
             jet()->getTwoFactorLoginSessionPrefix().'login.id' => $user->getKey(),

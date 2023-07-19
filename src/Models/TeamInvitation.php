@@ -4,6 +4,7 @@ namespace ArtMin96\FilamentJet\Models;
 
 use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Database\Eloquent\Model;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -15,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $role
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \ArtMin96\FilamentJet\Contracts\TeamContract $team
+ * @property-read TeamContract $team
  *
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newQuery()
@@ -43,8 +44,9 @@ abstract class TeamInvitation extends Model
 
     /**
      * Get the team that the invitation belongs to.
-     *
-     * @return BelongsTo
+     *  BelongsTo<the related model, the current model>
+     * -return BelongsTo<TeamContract, TeamInvitation> No TeamContract ..
+     * @return BelongsTo<\ArtMin96\FilamentJet\Models\Team,TeamInvitation>
      */
     public function team()
     {

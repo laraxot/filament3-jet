@@ -2,10 +2,13 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+
 /**
- * @method void reset(\Illuminate\Foundation\Auth\User $user, array $input)
+ * ---
  */
 interface ResetsUserPasswords
 {
-    //
+    public function reset(UserContract $user, array $input): void;
 }

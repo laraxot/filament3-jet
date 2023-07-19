@@ -29,14 +29,10 @@ class AttemptToAuthenticate
      */
     public function handle(array $data, Closure $next)
     {
-        if (is_string($data['remember'])) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
-        }
-
         if ($this->guard->attempt([
             FilamentJet::username() => $data[FilamentJet::username()],
             'password' => $data['password'],
-        ], $data['remember'])) {
+        ], boolval($data['remember']))) {
             return $next($data);
         }
 

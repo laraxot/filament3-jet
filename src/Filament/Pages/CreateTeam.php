@@ -54,8 +54,9 @@ class CreateTeam extends Page
 
     /**
      * Create a new team.
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function createTeam(CreatesTeams $creator): \Illuminate\Http\Response
+    public function createTeam(CreatesTeams $creator)
     {
         $creator->create($this->user, $this->createTeamState);
 

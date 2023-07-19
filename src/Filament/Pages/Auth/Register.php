@@ -61,7 +61,7 @@ class Register extends CardPage
     /**
      * Undocumented function
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector|null
      */
     public function register(CreateNewUser $creator)
     {
@@ -86,6 +86,9 @@ class Register extends CardPage
         $data = $this->form->getState();
 
         $user = $creator->create($data);
+        if (!$user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
+            throw new \Exception('user no authenticable');
+        }
 
         Filament::auth()->login(
             user: $user,

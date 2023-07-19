@@ -8,6 +8,7 @@ class PrepareAuthenticatedSession
 {
     /**
      * @param  array<string, string>  $data
+     * @return mixed
      */
     public function handle(array $data, Closure $next)
     {

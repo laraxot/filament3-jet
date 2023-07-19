@@ -3,6 +3,7 @@
 namespace ArtMin96\FilamentJet\Events;
 
 use Illuminate\Queue\SerializesModels;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 class RecoveryCodeReplaced
 {
@@ -11,25 +12,21 @@ class RecoveryCodeReplaced
     /**
      * The authenticated user.
      *
-     * @var \Illuminate\Contracts\Auth\Authenticatable
      */
-    public $user;
+    public UserContract $user;
 
     /**
      * The recovery code.
      *
-     * @var string
      */
-    public $code;
+    public string $code;
 
     /**
      * Create a new event instance.
      *
-     * @param  \Illuminate\Contracts\Auth\Authenticatable  $user
-     * @param  string  $code
      * @return void
      */
-    public function __construct($user, $code)
+    public function __construct(UserContract $user, string $code)
     {
         $this->user = $user;
         $this->code = $code;

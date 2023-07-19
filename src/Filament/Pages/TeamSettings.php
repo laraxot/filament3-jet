@@ -71,6 +71,11 @@ class TeamSettings extends Page
      */
     public ?string $currentRole = null;
 
+    /**
+     * Undocumented function
+     *
+     * @return void|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function mount()
     {
         $this->team = $this->user->currentTeam;
@@ -160,8 +165,9 @@ class TeamSettings extends Page
                                 ])->toArray()
                             )
                             ->columns(1)
-                            ->rules(FilamentJet::hasRoles()
-                                ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
+                            ->rules(
+                                FilamentJet::hasRoles()
+                                ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role()]
                                 : []
                             ),
                     ]),
@@ -202,8 +208,9 @@ class TeamSettings extends Page
                             fn ($state) => $this->currentRole = $state
                         )
                         ->columns(1)
-                        ->rules(FilamentJet::hasRoles()
-                            ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
+                        ->rules(
+                            FilamentJet::hasRoles()
+                            ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role()]
                             : []
                         ),
                 ]),
@@ -317,8 +324,9 @@ class TeamSettings extends Page
 
     /**
      * Remove the currently authenticated user from the team.
+     * @return Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function leaveTeam(RemovesTeamMembers $remover): Redirector
+    public function leaveTeam(RemovesTeamMembers $remover)
     {
         $this->errorBagExcept('team');
 

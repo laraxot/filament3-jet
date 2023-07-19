@@ -7,6 +7,11 @@ use Filament\Pages\Actions\Action;
 
 class PasswordConfirmationAction extends Action
 {
+    /**
+     * Undocumented function
+     *
+     * @return bool
+     */
     protected function isPasswordSessionValid()
     {
         return session()->has('auth.password_confirmed_at') && (time() - session('auth.password_confirmed_at', 0)) < config('filament-jet.password_confirmation_seconds');
@@ -33,6 +38,12 @@ class PasswordConfirmationAction extends Action
         }
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param array $data
+     * @return mixed
+     */
     public function call(array $data = [])
     {
         // If the session already has a cookie and it's still valid, we don't want to reset the time on it.

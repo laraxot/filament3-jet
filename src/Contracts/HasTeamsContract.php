@@ -2,15 +2,18 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
-use Illuminate\Database\Eloquent\Collection;
 use Laravel\Sanctum\Contracts\HasApiTokens;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\CanResetPassword;
 
 /**
  * ArtMin96\FilamentJet\Contracts\HasTeamsContract
  *
  * @property int $id
  * @property string $name
- * @property TeamContract $currentTeam
+ * @property string $two_factor_secret
+ * @property TeamContract|null $currentTeam
  * @property Collection $tokens
  * @property \Illuminate\Support\Carbon|null $two_factor_confirmed_at
  * @property int $current_team_id
@@ -18,7 +21,12 @@ use Laravel\Sanctum\Contracts\HasApiTokens;
  *
  * @mixin \Eloquent
  */
-interface HasTeamsContract extends HasApiTokens, ModelContract
+interface HasTeamsContract extends HasApiTokens,
+    HasProfilePhotoContract,
+    TwoFactorAuthenticatableContract,
+    MustVerifyEmail,
+    CanResetPassword,
+    ModelContract
 {
     /**
      * Determine if the given team is the current team.
