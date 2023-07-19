@@ -60,10 +60,14 @@ class RemoveTeamMember implements RemovesTeamMembers
     {
         if (
 <<<<<<< HEAD
+<<<<<<< HEAD
             ! Gate::forUser($user)->check('removeTeamMember', $team) &&
 =======
             !Gate::forUser($user)->check('removeTeamMember', $team) &&
 >>>>>>> 37a50ce5 (.)
+=======
+            ! Gate::forUser($user)->check('removeTeamMember', $team) &&
+>>>>>>> 4bcd417b (Fix styling)
             $user->id !== $teamMember->id
         ) {
             throw new AuthorizationException;
