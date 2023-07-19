@@ -21,6 +21,7 @@
         "filament/filament": "^2.17",
         "illuminate/contracts": "^9.0|^10.0",
         "jenssegers/agent": "^2.6",
+        "laravel/passport": "^11.8",
         "laravel/sanctum": "^3.2",
         "phpsa/filament-password-reveal": "^1.1",
         "pragmarx/google2fa": "^8.0",
