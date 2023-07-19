@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ArtMin96\FilamentJet\Traits;
 
 use ArtMin96\FilamentJet\Contracts\TeamContract;
@@ -14,7 +16,7 @@ use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
- * Undocumented trait
+ * Undocumented trait.
  *
  * @property TeamContract $currentTeam
  */
@@ -25,7 +27,7 @@ trait HasTeams
      */
     public function isCurrentTeam(TeamContract $team): bool
     {
-        if ($team == null || $this->currentTeam == null) {
+        if (null == $team || null == $this->currentTeam) {
             return false;
         }
 
@@ -50,7 +52,7 @@ trait HasTeams
      */
     public function switchTeam(?TeamContract $team): bool
     {
-        if ($team == null) {
+        if (null == $team) {
             return false;
         }
         if (! $this->belongsToTeam($team)) {
@@ -99,20 +101,11 @@ trait HasTeams
 
     /**
      * Get the user's "personal" team.
-<<<<<<< HEAD
-=======
-     *
-<<<<<<< HEAD
-     * @return \App\Models\Team
->>>>>>> 59fd8d2c (.)
-=======
-     * @return \Modules\User\Models\Team
->>>>>>> 51a866c6 (.)
      */
     public function personalTeam(): ?TeamContract
     {
         $res = $this->ownedTeams->where('personal_team', true)->first();
-        if ($res == null) {
+        if (null == $res) {
             return null;
         }
         if (! $res instanceof TeamContract) {
@@ -156,7 +149,7 @@ trait HasTeams
     public function teamRole(TeamContract $team)
     {
         if ($this->ownsTeam($team)) {
-            return new OwnerRole;
+            return new OwnerRole();
         }
 
         if (! $this->belongsToTeam($team)) {
@@ -215,17 +208,17 @@ trait HasTeams
             return false;
         }
 
-        if (in_array(HasApiTokens::class, class_uses_recursive($this)) &&
-            ! $this->tokenCan($permission) &&
-            $this->currentAccessToken() !== null) {
+        if (in_array(HasApiTokens::class, class_uses_recursive($this))
+            && ! $this->tokenCan($permission)
+            && null !== $this->currentAccessToken()) {
             return false;
         }
 
         $permissions = $this->teamPermissions($team);
 
-        return in_array($permission, $permissions) ||
-            in_array('*', $permissions) ||
-            (Str::endsWith($permission, ':create') && in_array('*:create', $permissions)) ||
-            (Str::endsWith($permission, ':update') && in_array('*:update', $permissions));
+        return in_array($permission, $permissions)
+            || in_array('*', $permissions)
+            || (Str::endsWith($permission, ':create') && in_array('*:create', $permissions))
+            || (Str::endsWith($permission, ':update') && in_array('*:update', $permissions));
     }
 }

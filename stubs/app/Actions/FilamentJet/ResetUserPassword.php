@@ -1,73 +1,21 @@
 <?php
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-namespace ArtMin96\FilamentJet\Actions;
-=======
 declare(strict_types=1);
 
-=======
->>>>>>> 59fd8d2c (.)
-namespace App\Actions\FilamentJet;
->>>>>>> 89797fce (.)
+namespace ArtMin96\FilamentJet\Actions;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-use Modules\User\Models\User;
->>>>>>> 39fcb522 (rebase)
-=======
->>>>>>> 354a30e7 (Fix styling)
-=======
-=======
-use Modules\User\Models\User;
->>>>>>> 798d2d5 (.)
->>>>>>> 5be9ebe5 (rebase)
-=======
-=======
-use Modules\User\Models\User;
->>>>>>> 798d2d5 (.)
-=======
->>>>>>> 88c140b (Fix styling)
->>>>>>> e618ae9f (rebase)
-=======
->>>>>>> 37a50ce5 (.)
-=======
-=======
-use Modules\User\Models\User;
->>>>>>> 798d2d5 (.)
->>>>>>> 0b6c922d (rebase)
-=======
->>>>>>> ac955b82 (.)
-=======
-use App\Models\User;
->>>>>>> 7eb101f0 (up)
-=======
-use Modules\User\Models\User;
->>>>>>> 0da7d9b6 (up)
-=======
->>>>>>> 5d7a24e9 (Fix styling)
 use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Modules\User\Models\User;
 
 class ResetUserPassword implements ResetsUserPasswords
 {
     /**
      * Validate and reset the user's forgotten password.
      *
-     * @param  array<string, string>  $input
+     * @param array<string, string> $input
      */
     public function reset(UserContract $user, array $input): void
     {

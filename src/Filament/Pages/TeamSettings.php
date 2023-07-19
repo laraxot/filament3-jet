@@ -1,51 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-use Modules\User\Models\Team;
->>>>>>> 39fcb522 (rebase)
-=======
->>>>>>> 354a30e7 (Fix styling)
-=======
-=======
-use Modules\User\Models\Team;
->>>>>>> 798d2d5 (.)
->>>>>>> 5be9ebe5 (rebase)
-=======
-=======
-use Modules\User\Models\Team;
->>>>>>> 798d2d5 (.)
-=======
->>>>>>> 88c140b (Fix styling)
->>>>>>> e618ae9f (rebase)
-=======
->>>>>>> 37a50ce5 (.)
-=======
-=======
-use Modules\User\Models\Team;
->>>>>>> 798d2d5 (.)
->>>>>>> 0b6c922d (rebase)
-=======
->>>>>>> ff924dba (up)
-=======
-use App\Models\Team;
->>>>>>> 7eb101f0 (up)
-=======
-use Modules\User\Models\Team;
->>>>>>> 0da7d9b6 (up)
-=======
->>>>>>> 5d7a24e9 (Fix styling)
 use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
 use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
 use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
@@ -62,7 +20,6 @@ use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
 use ArtMin96\FilamentJet\Role;
 use ArtMin96\FilamentJet\Traits\RedirectsActions;
-use Closure;
 use Filament\Facades\Filament;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\TextInput;
@@ -74,17 +31,16 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Unique;
 use Livewire\Redirector;
-use Modules\User\Models\Team;
 use Suleymanozev\FilamentRadioButtonField\Forms\Components\RadioButton;
 
 /**
- * Undocumented trait
+ * Undocumented trait.
  *
- * @property UserContract $user
+ * @property UserContract       $user
  * @property ComponentContainer $form
  * @property ComponentContainer $updateTeamNameForm
  * @property ComponentContainer $addTeamMemberForm
- * @property array $roles
+ * @property array              $roles
  */
 class TeamSettings extends Page
 {
@@ -107,7 +63,7 @@ class TeamSettings extends Page
     /**
      * The user that is having their role managed.
      */
-    //public Authenticatable|Model $managingRoleFor;
+    // public Authenticatable|Model $managingRoleFor;
     public UserContract $managingRoleFor;
 
     /**
@@ -116,7 +72,7 @@ class TeamSettings extends Page
     public ?string $currentRole = null;
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @return void|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -188,7 +144,7 @@ class TeamSettings extends Page
                                 Features::sendsTeamInvitations()
                                     ? '' : Rule::exists(table: FilamentJet::userModel(), column: 'email'),
                                 function () {
-                                    return function (string $attribute, $value, Closure $fail) {
+                                    return function (string $attribute, $value, \Closure $fail) {
                                         if ($this->team?->hasUserWithEmail($value)) {
                                             $fail(__('filament-jet::teams/add-member.messages.already_belongs_to_team'));
                                         }
@@ -209,21 +165,10 @@ class TeamSettings extends Page
                                 ])->toArray()
                             )
                             ->columns(1)
-<<<<<<< HEAD
                             ->rules(
                                 FilamentJet::hasRoles()
-<<<<<<< HEAD
                                 ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role()]
                                 : []
-=======
-                                    ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
-                                    : []
->>>>>>> 89797fce (.)
-=======
-                            ->rules(FilamentJet::hasRoles()
-                                ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
-                                : []
->>>>>>> 59fd8d2c (.)
                             ),
                     ]),
             ]
@@ -263,21 +208,10 @@ class TeamSettings extends Page
                             fn ($state) => $this->currentRole = $state
                         )
                         ->columns(1)
-<<<<<<< HEAD
                         ->rules(
                             FilamentJet::hasRoles()
-<<<<<<< HEAD
                             ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role()]
                             : []
-=======
-                                ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
-                                : []
->>>>>>> 89797fce (.)
-=======
-                        ->rules(FilamentJet::hasRoles()
-                            ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role]
-                            : []
->>>>>>> 59fd8d2c (.)
                         ),
                 ]),
         ];
