@@ -8,6 +8,7 @@ namespace Database\Factories;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 5be9ebe5 (rebase)
 =======
@@ -53,9 +54,14 @@ use Modules\User\Models\Team;
 =======
 >>>>>>> 798d2d5 (.)
 >>>>>>> 0b6c922d (rebase)
+=======
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\User\Models\Team;
+>>>>>>> ff924dba (up)
 use Modules\User\Models\User;
 
-class TeamFactory extends Factory {
+class TeamFactory extends Factory
+{
     /**
 >>>>>>> 080a5a33 (.):database/factories/TeamFactory.php
      * The name of the factory's corresponding model.
@@ -69,7 +75,8 @@ class TeamFactory extends Factory {
      *
      * @return array<string, mixed>
      */
-    public function definition(): array {
+    public function definition(): array
+    {
         return [
             'name' => $this->faker->unique()->company(),
             //'user_id' => UserContract::factory(),
