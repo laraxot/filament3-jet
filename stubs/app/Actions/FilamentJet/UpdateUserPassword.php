@@ -11,6 +11,7 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\User;
 >>>>>>> 39fcb522 (rebase)
@@ -43,10 +44,13 @@ use App\Models\User;
 =======
 use Modules\User\Models\User;
 >>>>>>> 0da7d9b6 (up)
+=======
+>>>>>>> 5d7a24e9 (Fix styling)
 use ArtMin96\FilamentJet\Contracts\UpdatesUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Traits\PasswordValidationRules;
 use Illuminate\Support\Facades\Hash;
+use Modules\User\Models\User;
 
 class UpdateUserPassword implements UpdatesUserPasswords
 {

@@ -11,6 +11,7 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 =======
 =======
@@ -29,6 +30,8 @@ use ArtMin96\FilamentJet\Contracts\TeamContract;
 >>>>>>> 59fd8d2c (.)
 =======
 >>>>>>> 51a866c6 (.)
+=======
+>>>>>>> 6241c56a (.)
 <<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
@@ -90,10 +93,17 @@ use App\Models\User;
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
 >>>>>>> 0da7d9b6 (up)
+<<<<<<< HEAD
 >>>>>>> 51a866c6 (.)
+=======
+=======
+>>>>>>> 5d7a24e9 (Fix styling)
+>>>>>>> 6241c56a (.)
 use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Support\Facades\Gate;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
 
 class UpdateTeamName implements UpdatesTeamNames
 {

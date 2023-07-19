@@ -11,6 +11,7 @@ namespace Database\Factories;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
@@ -47,14 +48,21 @@ use App\Models\User;
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
 >>>>>>> 0da7d9b6 (up)
+=======
+>>>>>>> 5d7a24e9 (Fix styling)
 use ArtMin96\FilamentJet\Features;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+<<<<<<< HEAD:database/factories/UserFactory.old
 <<<<<<< HEAD:database/factories/UserFactory.old
 
 use Modules\User\Models\User;
 =======
 >>>>>>> 59fd8d2c (.):database/factories/UserFactory.php
+=======
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
+>>>>>>> 6241c56a (.):database/factories/UserFactory.php
 
 class UserFactory extends Factory
 {
