@@ -7,6 +7,7 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
@@ -17,9 +18,12 @@ use Modules\User\Models\User;
 =======
 >>>>>>> e618ae9f (rebase)
 =======
+>>>>>>> 0b6c922d (rebase)
+=======
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
 >>>>>>> 798d2d5 (.)
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 5be9ebe5 (rebase)
 =======
@@ -28,6 +32,8 @@ use Modules\User\Models\User;
 >>>>>>> e618ae9f (rebase)
 =======
 >>>>>>> 37a50ce5 (.)
+=======
+>>>>>>> 0b6c922d (rebase)
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;

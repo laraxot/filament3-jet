@@ -7,6 +7,7 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\User;
 >>>>>>> 39fcb522 (rebase)
@@ -26,6 +27,11 @@ use Modules\User\Models\User;
 >>>>>>> e618ae9f (rebase)
 =======
 >>>>>>> 37a50ce5 (.)
+=======
+=======
+use Modules\User\Models\User;
+>>>>>>> 798d2d5 (.)
+>>>>>>> 0b6c922d (rebase)
 use ArtMin96\FilamentJet\Contracts\UpdatesUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Traits\PasswordValidationRules;
