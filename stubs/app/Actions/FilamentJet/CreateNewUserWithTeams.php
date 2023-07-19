@@ -12,6 +12,7 @@ namespace App\Actions\FilamentJet;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 >>>>>>> 39fcb522 (rebase)
@@ -29,6 +30,8 @@ use Modules\User\Models\Team;
 =======
 >>>>>>> 88c140b (Fix styling)
 >>>>>>> e618ae9f (rebase)
+=======
+>>>>>>> 37a50ce5 (.)
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Features;
@@ -88,7 +91,7 @@ class CreateNewUser implements CreatesNewUsers
         $teamClass = FilamentJet::teamModel();
         $user->ownedTeams()->save($teamClass::forceCreate([
             'user_id' => $user->getKey(),
-            'name' => explode(' ', $user->name, 2)[0]."'s Team",
+            'name' => explode(' ', $user->name, 2)[0] . "'s Team",
             'personal_team' => true,
         ]));
     }

@@ -6,6 +6,7 @@ namespace ArtMin96\FilamentJet\Filament\Pages;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 >>>>>>> 39fcb522 (rebase)
@@ -23,6 +24,8 @@ use Modules\User\Models\Team;
 =======
 >>>>>>> 88c140b (Fix styling)
 >>>>>>> e618ae9f (rebase)
+=======
+>>>>>>> 37a50ce5 (.)
 use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
 use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
 use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
@@ -100,7 +103,7 @@ class TeamSettings extends Page
     {
         $this->team = $this->user->currentTeam;
 
-        if (! $this->team) {
+        if (!$this->team) {
             Notification::make()
                 ->title(__('filament-jet::teams/messages.current_team_not_exists'))
                 ->warning()
@@ -148,7 +151,7 @@ class TeamSettings extends Page
                             ->label(__('filament-jet::teams/name.fields.name'))
                             ->required()
                             ->maxLength(255)
-                            ->disabled(! Gate::check('update', $this->team)),
+                            ->disabled(!Gate::check('update', $this->team)),
                     ])
                     ->statePath('teamState'),
                 'addTeamMemberForm' => $this->makeForm()
@@ -300,7 +303,7 @@ class TeamSettings extends Page
      */
     public function cancelTeamInvitation(int $invitationId): void
     {
-        if (! empty($invitationId)) {
+        if (!empty($invitationId)) {
             $model = FilamentJet::teamInvitationModel();
 
             $model::whereKey($invitationId)->delete();
