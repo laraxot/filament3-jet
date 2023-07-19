@@ -6,6 +6,7 @@ namespace App\Providers;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -13,6 +14,11 @@ use Modules\User\Models\Team;
 >>>>>>> 39fcb522 (rebase)
 =======
 >>>>>>> 354a30e7 (Fix styling)
+=======
+=======
+use Modules\User\Models\Team;
+>>>>>>> 798d2d5 (.)
+>>>>>>> 5be9ebe5 (rebase)
 use App\Policies\TeamPolicy;
 >>>>>>> 080a5a33 (.)
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;

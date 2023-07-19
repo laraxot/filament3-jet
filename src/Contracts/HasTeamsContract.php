@@ -4,6 +4,7 @@ namespace ArtMin96\FilamentJet\Contracts;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Collection;
@@ -30,6 +31,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 =======
 <<<<<<< HEAD
 >>>>>>> c48cfbe5 (.)
+=======
+<<<<<<< HEAD
+>>>>>>> eeea3efa (.)
 interface HasTeamsContract
 //extends
 //HasApiTokens, //no sanctum ma passport
@@ -62,6 +66,14 @@ interface HasTeamsContract
      *
      * @param  mixed  $team
 >>>>>>> 354a30e7 (Fix styling)
+=======
+interface HasTeamsContract {
+    /**
+     * Determine if the given team is the current team.
+     *
+     * @param mixed $team
+     *
+>>>>>>> 5be9ebe5 (rebase)
      * @return bool
 >>>>>>> 080a5a33 (.)
      */
@@ -81,6 +93,7 @@ interface HasTeamsContract
      *
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param  mixed  $team
 =======
      * @param mixed $team
@@ -89,6 +102,10 @@ interface HasTeamsContract
 =======
      * @param  mixed  $team
 >>>>>>> 354a30e7 (Fix styling)
+=======
+     * @param mixed $team
+     *
+>>>>>>> 5be9ebe5 (rebase)
      * @return bool
 >>>>>>> 080a5a33 (.)
      */
@@ -123,6 +140,7 @@ interface HasTeamsContract
      *
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param  mixed  $team
 =======
      * @param mixed $team
@@ -131,6 +149,10 @@ interface HasTeamsContract
 =======
      * @param  mixed  $team
 >>>>>>> 354a30e7 (Fix styling)
+=======
+     * @param mixed $team
+     *
+>>>>>>> 5be9ebe5 (rebase)
      * @return bool
 >>>>>>> 080a5a33 (.)
      */
@@ -143,6 +165,7 @@ interface HasTeamsContract
      *
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param  mixed  $team
 =======
      * @param mixed $team
@@ -151,6 +174,10 @@ interface HasTeamsContract
 =======
      * @param  mixed  $team
 >>>>>>> 354a30e7 (Fix styling)
+=======
+     * @param mixed $team
+     *
+>>>>>>> 5be9ebe5 (rebase)
      * @return bool
 >>>>>>> 080a5a33 (.)
      */
@@ -161,9 +188,12 @@ interface HasTeamsContract
      *
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> c48cfbe5 (.)
+=======
+>>>>>>> eeea3efa (.)
 <<<<<<< HEAD
      * @param  mixed  $team
 =======
@@ -176,7 +206,14 @@ interface HasTeamsContract
 =======
      * @param  mixed  $team
 >>>>>>> 354a30e7 (Fix styling)
+<<<<<<< HEAD
 >>>>>>> c48cfbe5 (.)
+=======
+=======
+     * @param mixed $team
+     *
+>>>>>>> 5be9ebe5 (rebase)
+>>>>>>> eeea3efa (.)
      * @return \ArtMin96\FilamentJet\Role|null
      */
     public function teamRole(TeamContract $team);
@@ -188,6 +225,7 @@ interface HasTeamsContract
      *
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param  mixed  $team
 =======
      * @param mixed $team
@@ -196,6 +234,10 @@ interface HasTeamsContract
 =======
      * @param  mixed  $team
 >>>>>>> 354a30e7 (Fix styling)
+=======
+     * @param mixed $team
+     *
+>>>>>>> 5be9ebe5 (rebase)
      * @return bool
 >>>>>>> 080a5a33 (.)
      */
@@ -208,6 +250,7 @@ interface HasTeamsContract
      *
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param  mixed  $team
 =======
      * @param mixed $team
@@ -216,6 +259,10 @@ interface HasTeamsContract
 =======
      * @param  mixed  $team
 >>>>>>> 354a30e7 (Fix styling)
+=======
+     * @param mixed $team
+     *
+>>>>>>> 5be9ebe5 (rebase)
      * @return array
 >>>>>>> 080a5a33 (.)
      */
@@ -228,6 +275,7 @@ interface HasTeamsContract
      *
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @param  mixed  $team
 =======
      * @param mixed $team
@@ -236,6 +284,10 @@ interface HasTeamsContract
 =======
      * @param  mixed  $team
 >>>>>>> 354a30e7 (Fix styling)
+=======
+     * @param mixed $team
+     *
+>>>>>>> 5be9ebe5 (rebase)
      * @return bool
 >>>>>>> 080a5a33 (.)
      */
