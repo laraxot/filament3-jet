@@ -2,7 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Events;
 
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Foundation\Events\Dispatchable;
 
 class RecoveryCodesGenerated
@@ -11,18 +11,15 @@ class RecoveryCodesGenerated
 
     /**
      * The user instance.
-     *
-     * @var UserContract
      */
-    public $user;
+    public UserContract $user;
 
     /**
      * Create a new event instance.
      *
-     * @param  UserContract  $user
      * @return void
      */
-    public function __construct($user)
+    public function __construct(UserContract $user)
     {
         $this->user = $user;
     }

@@ -3,9 +3,9 @@
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
 use ArtMin96\FilamentJet\Actions\DisableTwoFactorAuthentication;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserProfileInformation;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\Filament\Traits\CanDeleteAccount;
 use ArtMin96\FilamentJet\Filament\Traits\CanLogoutOtherBrowserSessions;

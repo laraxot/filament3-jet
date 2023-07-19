@@ -2,7 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Events;
 
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Queue\SerializesModels;
 
 class RecoveryCodeReplaced

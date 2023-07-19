@@ -2,8 +2,8 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages\Auth;
 
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Contracts\TwoFactorAuthenticationProvider;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Events\RecoveryCodeReplaced;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\Filament\Pages\CardPage;

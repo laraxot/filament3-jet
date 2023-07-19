@@ -308,6 +308,7 @@ EOF;
      */
     protected function runCommands($commands)
     {
+        /** @phpstan-ignore-next-line */
         $process = Process::fromShellCommandline(implode(' && ', $commands), null, null, null, null);
 
         if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {

@@ -7,13 +7,13 @@ use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserProfileInformation;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Traits\HasTeams;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -235,7 +235,7 @@ final class FilamentJet
     public static function userHasTeamFeatures(UserContract $user): bool
     {
         return (array_key_exists(HasTeams::class, class_uses_recursive($user)) ||
-            method_exists($user, 'currentTeam')) &&
+                method_exists($user, 'currentTeam')) &&
             self::hasTeamFeatures();
     }
 
@@ -261,8 +261,9 @@ final class FilamentJet
 
     /**
      * Determine registration page.
+     * non e' bool !
      *
-     * @return bool
+     * @return mixed
      */
     public static function registrationPage()
     {
@@ -271,8 +272,9 @@ final class FilamentJet
 
     /**
      * Determine email verification component.
+     * non e' bool !
      *
-     * @return bool
+     * @return mixed
      */
     public static function emailVerificationComponent()
     {
@@ -281,8 +283,9 @@ final class FilamentJet
 
     /**
      * Determine email verification controller.
+     * non e' bool !
      *
-     * @return bool
+     * @return mixed
      */
     public static function emailVerificationController()
     {
@@ -291,8 +294,9 @@ final class FilamentJet
 
     /**
      * Determine terms of service component.
+     * non e' bool !
      *
-     * @return bool
+     * @return mixed
      */
     public static function termsOfServiceComponent()
     {
@@ -301,8 +305,9 @@ final class FilamentJet
 
     /**
      * Determine privacy policy component.
+     * non e' bool !
      *
-     * @return bool
+     * @return mixed
      */
     public static function privacyPolicyComponent()
     {
@@ -311,8 +316,9 @@ final class FilamentJet
 
     /**
      * Determine password reset component.
+     * non e' bool !
      *
-     * @return bool
+     * @return mixed
      */
     public static function resetPasswordPage()
     {
@@ -321,8 +327,9 @@ final class FilamentJet
 
     /**
      * Determine team invitation controller.
+     * non e' bool !
      *
-     * @return bool
+     * @return mixed
      */
     public static function teamInvitationController()
     {
@@ -331,8 +338,9 @@ final class FilamentJet
 
     /**
      * Determine team invitation accept action.
+     * non e' bool !
      *
-     * @return bool
+     * @return mixed
      */
     public static function teamInvitationAcceptAction()
     {
@@ -341,8 +349,9 @@ final class FilamentJet
 
     /**
      * Determine team invitation destroy action.
+     * non e' bool !
      *
-     * @return bool
+     * @return mixed
      */
     public static function teamInvitationDestroyAction()
     {
@@ -352,30 +361,35 @@ final class FilamentJet
     /**
      * Find a user instance by the given ID.
      *
-     * @param  int  $id
-     * @return mixed
+     * @return UserContract
      */
-    public static function findUserByIdOrFail($id)
+    public static function findUserByIdOrFail(int $id)
     {
-        return self::newUserModel()->where('id', $id)->firstOrFail();
+        $res = self::newUserModel()->where('id', $id)->firstOrFail();
+        if (! $res instanceof UserContract) {
+            throw new \Exception('strange things');
+        }
+
+        return $res;
     }
 
     /**
      * Find a user instance by the given email address or fail.
-     *
-     * @return mixed
      */
-    public static function findUserByEmailOrFail(string $email)
+    public static function findUserByEmailOrFail(string $email): UserContract
     {
-        return self::newUserModel()->where('email', $email)->firstOrFail();
+        $res = self::newUserModel()->where('email', $email)->firstOrFail();
+        if (! $res instanceof UserContract) {
+            throw new \Exception('strange things');
+        }
+
+        return $res;
     }
 
     /**
      * Get the name of the user model used by the application.
-     *
-     * @return string
      */
-    public static function userModel()
+    public static function userModel(): string
     {
         return self::$userModel;
     }
@@ -383,7 +397,9 @@ final class FilamentJet
     /**
      * Get a new instance of the user model.
      *
-     * @return mixed
+     * -return UserContract
+     *
+     * @return Model
      */
     public static function newUserModel()
     {

@@ -2,7 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Listeners\Auth;
 
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Notifications\Auth\VerifyEmail;
 use Exception;

@@ -5,7 +5,8 @@ namespace ArtMin96\FilamentJet\Contracts;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Collection;
-use Laravel\Sanctum\Contracts\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * ArtMin96\FilamentJet\Contracts\HasTeamsContract
@@ -21,15 +22,20 @@ use Laravel\Sanctum\Contracts\HasApiTokens;
  *
  * @mixin \Eloquent
  */
-interface HasTeamsContract extends HasApiTokens, HasProfilePhotoContract, TwoFactorAuthenticatableContract, MustVerifyEmail, CanResetPassword, ModelContract
+interface HasTeamsContract
+//extends
+//HasApiTokens, //no sanctum ma passport
+//PassportHasApiTokensContract,
+//HasProfilePhotoContract,
+//TwoFactorAuthenticatableContract,
+//MustVerifyEmail,
+//CanResetPassword,
+//ModelContract
 {
     /**
      * Determine if the given team is the current team.
-     *
-     * @param  mixed  $team
-     * @return bool
      */
-    public function isCurrentTeam($team);
+    public function isCurrentTeam(TeamContract $team): bool;
 
     /**
      * Get the current team of the user's context.
@@ -40,11 +46,8 @@ interface HasTeamsContract extends HasApiTokens, HasProfilePhotoContract, TwoFac
 
     /**
      * Switch the user's context to the given team.
-     *
-     * @param  mixed  $team
-     * @return bool
      */
-    public function switchTeam($team);
+    public function switchTeam(TeamContract $team): bool;
 
     /**
      * Get all of the teams the user owns or belongs to.
@@ -55,70 +58,48 @@ interface HasTeamsContract extends HasApiTokens, HasProfilePhotoContract, TwoFac
 
     /**
      * Get all of the teams the user owns.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function ownedTeams();
+    public function ownedTeams(): HasMany;
 
     /**
      * Get all of the teams the user belongs to.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function teams();
+    public function teams(): BelongsToMany;
 
     /**
      * Get the user's "personal" team.
-     *
-     * @return TeamContract
      */
-    public function personalTeam();
+    public function personalTeam(): ?TeamContract;
 
     /**
      * Determine if the user owns the given team.
-     *
-     * @param  mixed  $team
-     * @return bool
      */
-    public function ownsTeam($team);
+    public function ownsTeam(TeamContract $team): bool;
 
     /**
      * Determine if the user belongs to the given team.
-     *
-     * @param  mixed  $team
-     * @return bool
      */
-    public function belongsToTeam($team);
+    public function belongsToTeam(TeamContract $team): bool;
 
     /**
      * Get the role that the user has on the team.
      *
-     * @param  mixed  $team
      * @return \ArtMin96\FilamentJet\Role|null
      */
-    public function teamRole($team);
+    public function teamRole(TeamContract $team);
 
     /**
      * Determine if the user has the given role on the given team.
-     *
-     * @param  mixed  $team
-     * @return bool
      */
-    public function hasTeamRole($team, string $role);
+    public function hasTeamRole(TeamContract $team, string $role): bool;
 
     /**
      * Get the user's permissions for the given team.
-     *
-     * @param  mixed  $team
-     * @return array
      */
-    public function teamPermissions($team);
+    public function teamPermissions(TeamContract $team): array;
 
     /**
      * Determine if the user has the given permission on the given team.
-     *
-     * @param  mixed  $team
-     * @return bool
      */
-    public function hasTeamPermission($team, string $permission);
+    public function hasTeamPermission(TeamContract $team, string $permission): bool;
 }

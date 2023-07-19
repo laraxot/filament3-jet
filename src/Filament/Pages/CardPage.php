@@ -2,7 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use Filament\Forms\ComponentContainer;
 use Filament\Pages\Page;
 

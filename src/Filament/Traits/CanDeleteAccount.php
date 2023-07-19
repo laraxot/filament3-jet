@@ -3,7 +3,7 @@
 namespace ArtMin96\FilamentJet\Filament\Traits;
 
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use Filament\Facades\Filament;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ trait CanDeleteAccount
      */
     public function deleteAccount(Request $request, DeletesUsers $deleter): Redirector|RedirectResponse
     {
-        $user = Auth::user()->fresh();
+        $user = Auth::user()?->fresh();
         if (! $user instanceof UserContract) {
             throw new \Exception('put usercontract in user');
         }

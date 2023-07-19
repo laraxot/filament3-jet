@@ -2,6 +2,8 @@
 
 namespace ArtMin96\FilamentJet\Events;
 
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Foundation\Events\Dispatchable;
 
 class RemovingTeamMember
@@ -10,26 +12,20 @@ class RemovingTeamMember
 
     /**
      * The team instance.
-     *
-     * @var mixed
      */
-    public $team;
+    public TeamContract $team;
 
     /**
-     * The team member being removed.
-     *
-     * @var mixed
+     * The team member being added.
      */
-    public $user;
+    public UserContract $user;
 
     /**
      * Create a new event instance.
      *
-     * @param  mixed  $team
-     * @param  mixed  $user
      * @return void
      */
-    public function __construct($team, $user)
+    public function __construct(TeamContract $team, UserContract $user)
     {
         $this->team = $team;
         $this->user = $user;
