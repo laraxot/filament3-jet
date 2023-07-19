@@ -1,9 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Database\Factories;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -39,11 +38,18 @@ use Modules\User\Models\User;
 >>>>>>> 0b6c922d (rebase)
 =======
 >>>>>>> ff924dba (up)
+=======
+use App\Models\Team;
+use App\Models\User;
+>>>>>>> 7eb101f0 (up)
 use ArtMin96\FilamentJet\Features;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+<<<<<<< HEAD:database/factories/UserFactory.old
 
 use Modules\User\Models\User;
+=======
+>>>>>>> 59fd8d2c (.):database/factories/UserFactory.php
 
 class UserFactory extends Factory
 {

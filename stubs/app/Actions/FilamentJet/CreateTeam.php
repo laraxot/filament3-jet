@@ -1,13 +1,17 @@
 <?php
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 namespace ArtMin96\FilamentJet\Actions;
 =======
 declare(strict_types=1);
 
+=======
+>>>>>>> 59fd8d2c (.)
 namespace App\Actions\FilamentJet;
 >>>>>>> 89797fce (.)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -70,11 +74,16 @@ use Modules\User\Models\Team;
 >>>>>>> 0b6c922d (rebase)
 =======
 >>>>>>> ac955b82 (.)
+=======
+use App\Models\Team;
+use App\Models\User;
+>>>>>>> 7eb101f0 (up)
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Events\AddingTeam;
 use ArtMin96\FilamentJet\FilamentJet;
+use ArtMin96\FilamentJet\Contracts\HasTeamContract;
 use Illuminate\Support\Facades\Gate;
 
 class CreateTeam implements CreatesTeams
@@ -85,10 +94,14 @@ class CreateTeam implements CreatesTeams
      * @param  array<string, string>  $input
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
     public function create(UserContract $user, array $input): TeamContract
 =======
     public function create(User $user, array $input): Team
 >>>>>>> 89797fce (.)
+=======
+    public function create(\Filament\Models\Contracts\FilamentUser $user, array $input): Team
+>>>>>>> 59fd8d2c (.)
     {
         Gate::forUser($user)->authorize('create', FilamentJet::newTeamModel());
 
