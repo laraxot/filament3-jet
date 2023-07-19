@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Laravel\Sanctum\Contracts\HasApiTokens;
 
 use ArtMin96\FilamentJet\Contracts\TeamContract;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 
 
 /**

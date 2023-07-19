@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
 

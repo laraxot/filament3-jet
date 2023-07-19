@@ -8,7 +8,7 @@ use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification as BaseListener;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 
 class SendEmailVerificationNotification extends BaseListener
 {

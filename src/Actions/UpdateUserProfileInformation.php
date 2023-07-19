@@ -8,7 +8,7 @@ use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {

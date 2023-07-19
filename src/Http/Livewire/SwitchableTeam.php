@@ -10,7 +10,7 @@ use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Collection;
 use ArtMin96\FilamentJet\Events\TeamSwitched;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
 
 class SwitchableTeam extends Component

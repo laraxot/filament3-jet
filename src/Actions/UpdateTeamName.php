@@ -2,7 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use Illuminate\Support\Facades\Gate;

@@ -5,6 +5,7 @@ namespace ArtMin96\FilamentJet\Contracts;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\CanResetPassword;
+use ArtMin96\FilamentJet\Contracts\PassportHasApiTokensContract;
 
 /**
  * ArtMin96\FilamentJet\Contracts\HasTeamsContract
@@ -20,13 +21,15 @@ use Illuminate\Contracts\Auth\CanResetPassword;
  *
  * @mixin \Eloquent
  */
-interface HasTeamsContract extends
+interface HasTeamsContract
+    //extends
     //HasApiTokens, //no sanctum ma passport
-    HasProfilePhotoContract,
-    TwoFactorAuthenticatableContract,
-    MustVerifyEmail,
-    CanResetPassword,
-    ModelContract
+    //PassportHasApiTokensContract,
+    //HasProfilePhotoContract,
+    //TwoFactorAuthenticatableContract,
+    //MustVerifyEmail,
+    //CanResetPassword,
+    //ModelContract
 {
     /**
      * Determine if the given team is the current team.
