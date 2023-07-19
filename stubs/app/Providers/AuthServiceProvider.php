@@ -5,11 +5,14 @@ declare(strict_types=1);
 namespace App\Providers;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 >>>>>>> 39fcb522 (rebase)
+=======
+>>>>>>> 354a30e7 (Fix styling)
 use App\Policies\TeamPolicy;
 >>>>>>> 080a5a33 (.)
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
