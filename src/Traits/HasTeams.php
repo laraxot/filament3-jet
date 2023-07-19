@@ -4,19 +4,21 @@ namespace ArtMin96\FilamentJet\Traits;
 
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Collection;
 use ArtMin96\FilamentJet\OwnerRole;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 trait HasTeams
 {
     /**
      * Determine if the given team is the current team.
      *
-     * @param  mixed  $team
-     * @return bool
      */
-    public function isCurrentTeam($team)
+    public function isCurrentTeam(TeamContract $team):bool
     {
         if ($team == null || $this->currentTeam == null) {
             return false;
@@ -28,7 +30,7 @@ trait HasTeams
     /**
      * Get the current team of the user's context.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function currentTeam()
     {
@@ -42,10 +44,8 @@ trait HasTeams
     /**
      * Switch the user's context to the given team.
      *
-     * @param  mixed  $team
-     * @return bool
      */
-    public function switchTeam($team)
+    public function switchTeam(TeamContract $team):bool
     {
         if (! $this->belongsToTeam($team)) {
             return false;
@@ -63,9 +63,8 @@ trait HasTeams
     /**
      * Get all of the teams the user owns or belongs to.
      *
-     * @return \Illuminate\Support\Collection
      */
-    public function allTeams()
+    public function allTeams():Collection
     {
         return $this->ownedTeams->merge($this->teams)->sortBy('name');
     }
@@ -73,9 +72,8 @@ trait HasTeams
     /**
      * Get all of the teams the user owns.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function ownedTeams()
+    public function ownedTeams():HasMany
     {
         return $this->hasMany(FilamentJet::teamModel());
     }
@@ -83,9 +81,8 @@ trait HasTeams
     /**
      * Get all of the teams the user belongs to.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function teams()
+    public function teams():BelongsToMany
     {
         return $this->belongsToMany(FilamentJet::teamModel(), FilamentJet::membershipModel())
             ->withPivot('role')
@@ -97,18 +94,23 @@ trait HasTeams
      * Get the user's "personal" team.
      *
      */
-    public function personalTeam():TeamContract
+    public function personalTeam():?TeamContract
     {
-        return $this->ownedTeams->where('personal_team', true)->first();
+        $res=$this->ownedTeams->where('personal_team', true)->first();
+        if($res==null){
+            return null;
+        }
+        if(!$res instanceof TeamContract){
+            throw new \Exception('strange things');
+        }
+        return $res;
     }
 
     /**
      * Determine if the user owns the given team.
      *
-     * @param  mixed  $team
-     * @return bool
      */
-    public function ownsTeam($team)
+    public function ownsTeam(TeamContract $team):bool
     {
         if (is_null($team)) {
             return false;
@@ -120,10 +122,8 @@ trait HasTeams
     /**
      * Determine if the user belongs to the given team.
      *
-     * @param  mixed  $team
-     * @return bool
      */
-    public function belongsToTeam($team)
+    public function belongsToTeam(TeamContract $team):bool
     {
         if (is_null($team)) {
             return false;
@@ -137,17 +137,16 @@ trait HasTeams
     /**
      * Get the role that the user has on the team.
      *
-     * @param  mixed  $team
      * @return \ArtMin96\FilamentJet\Role|null
      */
-    public function teamRole($team)
+    public function teamRole(TeamContract $team)
     {
         if ($this->ownsTeam($team)) {
             return new OwnerRole;
         }
 
         if (! $this->belongsToTeam($team)) {
-            return;
+            return null;
         }
 
         $role = $team->users
@@ -162,10 +161,8 @@ trait HasTeams
     /**
      * Determine if the user has the given role on the given team.
      *
-     * @param  mixed  $team
-     * @return bool
      */
-    public function hasTeamRole($team, string $role)
+    public function hasTeamRole(TeamContract $team, string $role):bool
     {
         if ($this->ownsTeam($team)) {
             return true;
@@ -179,10 +176,8 @@ trait HasTeams
     /**
      * Get the user's permissions for the given team.
      *
-     * @param  mixed  $team
-     * @return array
      */
-    public function teamPermissions($team)
+    public function teamPermissions(TeamContract $team):bool
     {
         if ($this->ownsTeam($team)) {
             return ['*'];
@@ -198,7 +193,7 @@ trait HasTeams
     /**
      * Determine if the user has the given permission on the given team.
      *
-     * @param  mixed  $team
+     * @param  TeamContract  $team
      * @return bool
      */
     public function hasTeamPermission($team, string $permission)

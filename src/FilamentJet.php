@@ -267,8 +267,8 @@ final class FilamentJet
 
     /**
      * Determine registration page.
-     *
-     * @return bool
+     * non e' bool !
+     * @return mixed
      */
     public static function registrationPage()
     {
@@ -277,8 +277,8 @@ final class FilamentJet
 
     /**
      * Determine email verification component.
-     *
-     * @return bool
+    * non e' bool !
+     * @return mixed
      */
     public static function emailVerificationComponent()
     {
@@ -287,8 +287,8 @@ final class FilamentJet
 
     /**
      * Determine email verification controller.
-     *
-     * @return bool
+     * non e' bool !
+     * @return mixed
      */
     public static function emailVerificationController()
     {
@@ -297,8 +297,8 @@ final class FilamentJet
 
     /**
      * Determine terms of service component.
-     *
-     * @return bool
+     * non e' bool !
+     * @return mixed
      */
     public static function termsOfServiceComponent()
     {
@@ -307,8 +307,8 @@ final class FilamentJet
 
     /**
      * Determine privacy policy component.
-     *
-     * @return bool
+     * non e' bool !
+     * @return mixed
      */
     public static function privacyPolicyComponent()
     {
@@ -317,8 +317,8 @@ final class FilamentJet
 
     /**
      * Determine password reset component.
-     *
-     * @return bool
+    * non e' bool !
+     * @return mixed
      */
     public static function resetPasswordPage()
     {
@@ -327,8 +327,8 @@ final class FilamentJet
 
     /**
      * Determine team invitation controller.
-     *
-     * @return bool
+     * non e' bool !
+     * @return mixed
      */
     public static function teamInvitationController()
     {
@@ -337,8 +337,8 @@ final class FilamentJet
 
     /**
      * Determine team invitation accept action.
-     *
-     * @return bool
+    * non e' bool !
+     * @return mixed
      */
     public static function teamInvitationAcceptAction()
     {
@@ -347,8 +347,8 @@ final class FilamentJet
 
     /**
      * Determine team invitation destroy action.
-     *
-     * @return bool
+    * non e' bool !
+     * @return mixed
      */
     public static function teamInvitationDestroyAction()
     {

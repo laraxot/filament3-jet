@@ -2,9 +2,12 @@
 
 namespace ArtMin96\FilamentJet\Models;
 
-use ArtMin96\FilamentJet\Contracts\UserContract;
+use Illuminate\Support\Collection;
 use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Database\Eloquent\Model;
+use ArtMin96\FilamentJet\Contracts\UserContract;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * ArtMin96\FilamentJet\Models\Team
@@ -38,7 +41,7 @@ abstract class Team extends Model
     /**
      * Get the owner of the team.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function owner()
     {
@@ -48,7 +51,7 @@ abstract class Team extends Model
     /**
      * Get all of the team's users including its owner.
      *
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     public function allUsers()
     {
@@ -58,7 +61,7 @@ abstract class Team extends Model
     /**
      * Get all of the users that belong to the team.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
     public function users()
     {

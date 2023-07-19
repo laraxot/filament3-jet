@@ -33,13 +33,16 @@ class CreateNewUser implements CreatesNewUsers
                         \ArtMin96\FilamentJet\Listeners\Auth\SendEmailVerificationNotification::class,
                     );
                 }
-                if (! $user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
+                if (! $user instanceof Authenticatable) {
                     throw new Exception('user must implements Authenticatable');
                 }
 
                 event(new Registered($user));
 
                 if (Features::hasTeamFeatures()) {
+                    if (!$user instanceof UserContract) {
+                        throw new \Exception('strange things');
+                    }
                     $this->createTeam($user);
                 }
 
