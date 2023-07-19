@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Factories\Factory;
+<<<<<<< HEAD:database/factories/TeamFactory.old
 
 
 use ArtMin96\FilamentJet\Contracts\UserContract;;
@@ -11,6 +13,17 @@ use ArtMin96\FilamentJet\Contracts\UserContract;;
 class TeamFactory extends Factory
 {
     /*
+=======
+use Modules\User\Models\Team;
+=======
+use Modules\User\Models\Team;
+use Illuminate\Database\Eloquent\Factories\Factory;
+>>>>>>> 39fcb522 (rebase)
+use Modules\User\Models\User;
+
+class TeamFactory extends Factory {
+    /**
+>>>>>>> 080a5a33 (.):database/factories/TeamFactory.php
      * The name of the factory's corresponding model.
      *
      * @var string
@@ -22,8 +35,7 @@ class TeamFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
-    {
+    public function definition(): array {
         return [
             'name' => $this->faker->unique()->company(),
             //'user_id' => UserContract::factory(),

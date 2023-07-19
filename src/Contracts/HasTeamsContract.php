@@ -2,6 +2,7 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
+<<<<<<< HEAD
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Collection;
@@ -22,6 +23,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @mixin \Eloquent
  */
+=======
+<<<<<<< HEAD
+>>>>>>> 080a5a33 (.)
 interface HasTeamsContract
 //extends
 //HasApiTokens, //no sanctum ma passport
@@ -34,6 +38,20 @@ interface HasTeamsContract
 {
     /**
      * Determine if the given team is the current team.
+<<<<<<< HEAD
+=======
+     *
+     * @param  mixed  $team
+=======
+interface HasTeamsContract {
+    /**
+     * Determine if the given team is the current team.
+     *
+     * @param mixed $team
+     *
+>>>>>>> 39fcb522 (rebase)
+     * @return bool
+>>>>>>> 080a5a33 (.)
      */
     public function isCurrentTeam(TeamContract $team): bool;
 
@@ -46,6 +64,17 @@ interface HasTeamsContract
 
     /**
      * Switch the user's context to the given team.
+<<<<<<< HEAD
+=======
+     *
+<<<<<<< HEAD
+     * @param  mixed  $team
+=======
+     * @param mixed $team
+     *
+>>>>>>> 39fcb522 (rebase)
+     * @return bool
+>>>>>>> 080a5a33 (.)
      */
     public function switchTeam(TeamContract $team): bool;
 
@@ -73,33 +102,97 @@ interface HasTeamsContract
 
     /**
      * Determine if the user owns the given team.
+<<<<<<< HEAD
+=======
+     *
+<<<<<<< HEAD
+     * @param  mixed  $team
+=======
+     * @param mixed $team
+     *
+>>>>>>> 39fcb522 (rebase)
+     * @return bool
+>>>>>>> 080a5a33 (.)
      */
     public function ownsTeam(TeamContract $team): bool;
 
     /**
      * Determine if the user belongs to the given team.
+<<<<<<< HEAD
+=======
+     *
+<<<<<<< HEAD
+     * @param  mixed  $team
+=======
+     * @param mixed $team
+     *
+>>>>>>> 39fcb522 (rebase)
+     * @return bool
+>>>>>>> 080a5a33 (.)
      */
     public function belongsToTeam(TeamContract $team): bool;
 
     /**
      * Get the role that the user has on the team.
      *
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+     * @param  mixed  $team
+=======
+     * @param mixed $team
+     *
+>>>>>>> 39fcb522 (rebase)
+>>>>>>> 080a5a33 (.)
      * @return \ArtMin96\FilamentJet\Role|null
      */
     public function teamRole(TeamContract $team);
 
     /**
      * Determine if the user has the given role on the given team.
+<<<<<<< HEAD
+=======
+     *
+<<<<<<< HEAD
+     * @param  mixed  $team
+=======
+     * @param mixed $team
+     *
+>>>>>>> 39fcb522 (rebase)
+     * @return bool
+>>>>>>> 080a5a33 (.)
      */
     public function hasTeamRole(TeamContract $team, string $role): bool;
 
     /**
      * Get the user's permissions for the given team.
+<<<<<<< HEAD
+=======
+     *
+<<<<<<< HEAD
+     * @param  mixed  $team
+=======
+     * @param mixed $team
+     *
+>>>>>>> 39fcb522 (rebase)
+     * @return array
+>>>>>>> 080a5a33 (.)
      */
     public function teamPermissions(TeamContract $team): array;
 
     /**
      * Determine if the user has the given permission on the given team.
+<<<<<<< HEAD
+=======
+     *
+<<<<<<< HEAD
+     * @param  mixed  $team
+=======
+     * @param mixed $team
+     *
+>>>>>>> 39fcb522 (rebase)
+     * @return bool
+>>>>>>> 080a5a33 (.)
      */
     public function hasTeamPermission(TeamContract $team, string $permission): bool;
 }

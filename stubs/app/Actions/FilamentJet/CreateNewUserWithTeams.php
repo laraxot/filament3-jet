@@ -8,6 +8,10 @@ declare(strict_types=1);
 namespace App\Actions\FilamentJet;
 >>>>>>> 89797fce (.)
 
+<<<<<<< HEAD
+=======
+use Modules\User\Models\Team;
+>>>>>>> 39fcb522 (rebase)
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Features;

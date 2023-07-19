@@ -2,7 +2,14 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
+<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\TeamContract;
+=======
+<<<<<<< HEAD
+=======
+use Modules\User\Models\Team;
+>>>>>>> 39fcb522 (rebase)
+>>>>>>> 080a5a33 (.)
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Gate;
