@@ -13,8 +13,4 @@ parameters:
     checkOctaneCompatibility: true
     checkModelProperties: true
     checkMissingIterableValueType: false
-<<<<<<< HEAD
-    checkGenericClassInNonGenericObjectType: false
-=======
->>>>>>> 59fd8d2c (.)
 

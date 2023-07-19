@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ArtMin96\FilamentJet\Models;
 
 use ArtMin96\FilamentJet\Contracts\TeamContract;
@@ -15,19 +17,19 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 /**
- * ArtMin96\FilamentJet\Models\Team
+ * ArtMin96\FilamentJet\Models\Team.
  *
- * @property int $id
- * @property int $user_id
- * @property string $name
- * @property int $personal_team
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property-read UserContract|null $owner
- * @property-read EloquentCollection<int, TeamInvitationContract> $teamInvitations
- * @property-read int|null $team_invitations_count
- * @property-read EloquentCollection<int, UserContract> $users
- * @property-read int|null $users_count
+ * @property int                                             $id
+ * @property int                                             $user_id
+ * @property string                                          $name
+ * @property int                                             $personal_team
+ * @property Carbon|null                                     $created_at
+ * @property Carbon|null                                     $updated_at
+ * @property UserContract|null                               $owner
+ * @property EloquentCollection<int, TeamInvitationContract> $teamInvitations
+ * @property int|null                                        $team_invitations_count
+ * @property EloquentCollection<int, UserContract>           $users
+ * @property int|null                                        $users_count
  *
  * @method static Builder|Team newModelQuery()
  * @method static Builder|Team newQuery()
@@ -79,15 +81,8 @@ abstract class Team extends Model implements TeamContract
     /**
      * Determine if the given user belongs to the team.
      *
-<<<<<<< HEAD
-<<<<<<< HEAD
-     * @param  UserContract  $user
-=======
-     * @param  \App\Models\User  $user
->>>>>>> 59fd8d2c (.)
-=======
-     * @param  \Modules\User\Models\User  $user
->>>>>>> 51a866c6 (.)
+     * @param UserContract $user
+     *
      * @return bool
      */
     public function hasUser($user)
@@ -110,16 +105,9 @@ abstract class Team extends Model implements TeamContract
     /**
      * Determine if the given user has the given permission on the team.
      *
-<<<<<<< HEAD
-<<<<<<< HEAD
-     * @param  UserContract  $user
-=======
-     * @param  \App\Models\User  $user
->>>>>>> 59fd8d2c (.)
-=======
-     * @param  \Modules\User\Models\User  $user
->>>>>>> 51a866c6 (.)
-     * @param  string  $permission
+     * @param UserContract $user
+     * @param string       $permission
+     *
      * @return bool
      */
     public function userHasPermission($user, $permission)
@@ -140,15 +128,8 @@ abstract class Team extends Model implements TeamContract
     /**
      * Remove the given user from the team.
      *
-<<<<<<< HEAD
-<<<<<<< HEAD
-     * @param  UserContract  $user
-=======
-     * @param  \App\Models\User  $user
->>>>>>> 59fd8d2c (.)
-=======
-     * @param  \Modules\User\Models\User  $user
->>>>>>> 51a866c6 (.)
+     * @param UserContract $user
+     *
      * @return void
      */
     public function removeUser($user)

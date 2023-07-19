@@ -1,25 +1,13 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 59fd8d2c (.)
 .idea
 .phpunit.result.cache
 build
 composer.lock
 coverage
 docs
-<<<<<<< HEAD
 vendor
 node_modules
 *.lock
-=======
-/vendor
->>>>>>> 89797fce (.)
-=======
 phpunit.xml
-phpstan.neon
 testbench.yaml
-vendor
-node_modules
-*.lock
->>>>>>> 59fd8d2c (.)
+
+
