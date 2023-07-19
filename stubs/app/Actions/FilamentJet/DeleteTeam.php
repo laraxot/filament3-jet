@@ -10,11 +10,17 @@ namespace App\Actions\FilamentJet;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 >>>>>>> 39fcb522 (rebase)
 =======
 >>>>>>> 354a30e7 (Fix styling)
+=======
+=======
+use Modules\User\Models\Team;
+>>>>>>> 798d2d5 (.)
+>>>>>>> 5be9ebe5 (rebase)
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 
