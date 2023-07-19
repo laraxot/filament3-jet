@@ -11,6 +11,7 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 =======
 =======
@@ -29,6 +30,8 @@ use ArtMin96\FilamentJet\Contracts\TeamContract;
 >>>>>>> 59fd8d2c (.)
 =======
 >>>>>>> 51a866c6 (.)
+=======
+>>>>>>> 6241c56a (.)
 <<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
@@ -86,10 +89,16 @@ use App\Models\Team;
 =======
 use Modules\User\Models\Team;
 >>>>>>> 0da7d9b6 (up)
+<<<<<<< HEAD
 >>>>>>> 51a866c6 (.)
+=======
+=======
+>>>>>>> 5d7a24e9 (Fix styling)
+>>>>>>> 6241c56a (.)
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Gate;
+use Modules\User\Models\Team;
 
 class ValidateTeamDeletion
 {

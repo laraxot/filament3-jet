@@ -20,6 +20,7 @@ namespace App\Actions\FilamentJet;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 >>>>>>> 39fcb522 (rebase)
@@ -52,6 +53,8 @@ use App\Models\Team;
 =======
 use Modules\User\Models\Team;
 >>>>>>> 0da7d9b6 (up)
+=======
+>>>>>>> 5d7a24e9 (Fix styling)
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Features;
@@ -60,6 +63,7 @@ use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Modules\User\Models\Team;
 
 class CreateNewUser implements CreatesNewUsers
 {

@@ -11,6 +11,7 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 =======
@@ -30,6 +31,8 @@ use ArtMin96\FilamentJet\Contracts\UserContract;
 >>>>>>> 59fd8d2c (.)
 =======
 >>>>>>> 51a866c6 (.)
+=======
+>>>>>>> 6241c56a (.)
 <<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
@@ -91,12 +94,19 @@ use App\Models\User;
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
 >>>>>>> 0da7d9b6 (up)
+<<<<<<< HEAD
 >>>>>>> 51a866c6 (.)
+=======
+=======
+>>>>>>> 5d7a24e9 (Fix styling)
+>>>>>>> 6241c56a (.)
 use ArtMin96\FilamentJet\Events\TeamMemberUpdated;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Rules\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
 
 class UpdateTeamMemberRole
 {

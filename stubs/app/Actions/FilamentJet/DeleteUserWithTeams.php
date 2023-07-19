@@ -11,6 +11,7 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
@@ -47,6 +48,8 @@ use App\Models\User;
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
 >>>>>>> 0da7d9b6 (up)
+=======
+>>>>>>> 5d7a24e9 (Fix styling)
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
@@ -54,6 +57,8 @@ use ArtMin96\FilamentJet\Contracts\TeamContract;
 //use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Support\Facades\DB;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
 
 class DeleteUser implements DeletesUsers
 {

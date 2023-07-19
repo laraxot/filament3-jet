@@ -11,6 +11,7 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
@@ -47,6 +48,8 @@ use App\Models\User;
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
 >>>>>>> 0da7d9b6 (up)
+=======
+>>>>>>> 5d7a24e9 (Fix styling)
 use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
@@ -55,6 +58,8 @@ use ArtMin96\FilamentJet\Events\InvitingTeamMember;
 use ArtMin96\FilamentJet\Mail\TeamInvitation;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
 
 class InviteTeamMember implements InvitesTeamMembers
 {

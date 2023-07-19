@@ -20,6 +20,7 @@ namespace App\Actions\FilamentJet;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\User;
 >>>>>>> 39fcb522 (rebase)
@@ -52,11 +53,17 @@ use App\Models\User;
 =======
 use Modules\User\Models\User;
 >>>>>>> 0da7d9b6 (up)
+=======
+>>>>>>> 5d7a24e9 (Fix styling)
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
+<<<<<<< HEAD
 <<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\UserContract;
 =======
 >>>>>>> 59fd8d2c (.)
+=======
+use Modules\User\Models\User;
+>>>>>>> 6241c56a (.)
 
 class DeleteUser implements DeletesUsers
 {
