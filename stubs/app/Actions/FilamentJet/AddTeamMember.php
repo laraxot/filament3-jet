@@ -3,8 +3,8 @@
 namespace ArtMin96\FilamentJet\Actions;
 
 use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
-use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Events\AddingTeamMember;
 use ArtMin96\FilamentJet\Events\TeamMemberAdded;
 use ArtMin96\FilamentJet\FilamentJet;

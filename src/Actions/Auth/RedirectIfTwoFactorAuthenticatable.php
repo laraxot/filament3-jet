@@ -2,17 +2,16 @@
 
 namespace ArtMin96\FilamentJet\Actions\Auth;
 
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Events\TwoFactorAuthenticationChallenged;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Traits\TwoFactorAuthenticatable;
 use Closure;
 use Illuminate\Auth\Events\Failed;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 use Livewire\Redirector;
-use ArtMin96\FilamentJet\Contracts\UserContract;
 
 class RedirectIfTwoFactorAuthenticatable
 {
@@ -34,8 +33,6 @@ class RedirectIfTwoFactorAuthenticatable
     /**
      * Undocumented function
      *
-     * @param array $data
-     * @param Closure $next
      * @return mixed
      */
     public function handle(array $data, Closure $next)
@@ -68,8 +65,8 @@ class RedirectIfTwoFactorAuthenticatable
      */
     protected function validateCredentials(array $data)
     {
-        $userProvider=$this->guard->getProvider();
-        if (!method_exists($userProvider, 'getModel')) {
+        $userProvider = $this->guard->getProvider();
+        if (! method_exists($userProvider, 'getModel')) {
             throw new \Exception('strange things');
         }
         $model = $userProvider->getModel();
@@ -97,11 +94,10 @@ class RedirectIfTwoFactorAuthenticatable
      * Fire the failed authentication attempt event with the given arguments.
      *
      * @param  array<string, string>  $data
-
      */
-    protected function fireFailedEvent(array $data, ?UserContract $user = null): void
+    protected function fireFailedEvent(array $data, UserContract $user = null): void
     {
-        if ($user!=null && !$user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
+        if ($user != null && ! $user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
             throw new \Exception('strange things');
         }
         event(new Failed(config('filament.auth.guard'), $user, [

@@ -2,16 +2,15 @@
 
 namespace ArtMin96\FilamentJet\Http\Livewire;
 
-use Livewire\Component;
-use Illuminate\View\View;
-use Filament\Facades\Filament;
-use ArtMin96\FilamentJet\FilamentJet;
-use Filament\Notifications\Notification;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Support\Collection;
-use ArtMin96\FilamentJet\Events\TeamSwitched;
 use ArtMin96\FilamentJet\Contracts\UserContract;
+use ArtMin96\FilamentJet\Events\TeamSwitched;
+use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use Filament\Facades\Filament;
+use Filament\Notifications\Notification;
+use Illuminate\Support\Collection;
+use Illuminate\View\View;
+use Livewire\Component;
 
 class SwitchableTeam extends Component
 {
@@ -24,13 +23,13 @@ class SwitchableTeam extends Component
     public function mount(): void
     {
         $user = Filament::auth()->user();
-        if($user == null){
-            return ; //persa sessione
+        if ($user == null) {
+            return; //persa sessione
         }
         if (! $user instanceof UserContract) {
             throw new \Exception('['.get_class($user).'] not implements ArtMin96\FilamentJet\Contracts\HasTeamsContract ');
         }
-        $this->user=$user;
+        $this->user = $user;
         $this->teams = $this->user->allTeams();
     }
 

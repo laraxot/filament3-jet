@@ -2,8 +2,8 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
-use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Contracts\TwoFactorAuthenticationProvider;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Events\TwoFactorAuthenticationConfirmed;
 use Illuminate\Validation\ValidationException;
 

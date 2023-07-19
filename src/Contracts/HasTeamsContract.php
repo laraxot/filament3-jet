@@ -2,10 +2,9 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\CanResetPassword;
-use ArtMin96\FilamentJet\Contracts\PassportHasApiTokensContract;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * ArtMin96\FilamentJet\Contracts\HasTeamsContract
@@ -22,14 +21,14 @@ use ArtMin96\FilamentJet\Contracts\PassportHasApiTokensContract;
  * @mixin \Eloquent
  */
 interface HasTeamsContract
-    //extends
-    //HasApiTokens, //no sanctum ma passport
-    //PassportHasApiTokensContract,
-    //HasProfilePhotoContract,
-    //TwoFactorAuthenticatableContract,
-    //MustVerifyEmail,
-    //CanResetPassword,
-    //ModelContract
+//extends
+//HasApiTokens, //no sanctum ma passport
+//PassportHasApiTokensContract,
+//HasProfilePhotoContract,
+//TwoFactorAuthenticatableContract,
+//MustVerifyEmail,
+//CanResetPassword,
+//ModelContract
 {
     /**
      * Determine if the given team is the current team.
@@ -77,9 +76,8 @@ interface HasTeamsContract
 
     /**
      * Get the user's "personal" team.
-     *
      */
-    public function personalTeam():?TeamContract;
+    public function personalTeam(): ?TeamContract;
 
     /**
      * Determine if the user owns the given team.

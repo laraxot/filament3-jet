@@ -2,8 +2,8 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages\Auth\PasswordReset;
 
-use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\Filament\Pages\CardPage;
 use ArtMin96\FilamentJet\FilamentJet;
@@ -14,8 +14,6 @@ use Filament\Facades\Filament;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Support\Facades\Password;
 use Phpsa\FilamentPasswordReveal\Password as PasswordInput;

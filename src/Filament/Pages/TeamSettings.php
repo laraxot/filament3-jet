@@ -6,11 +6,11 @@ use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
 use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
 use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
-use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\Filament\Actions\AlwaysAskPasswordConfirmationAction;
 use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
@@ -323,6 +323,7 @@ class TeamSettings extends Page
 
     /**
      * Remove the currently authenticated user from the team.
+     *
      * @return Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function leaveTeam(RemovesTeamMembers $remover)

@@ -2,17 +2,17 @@
 
 namespace ArtMin96\FilamentJet\Models;
 
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
-use ArtMin96\FilamentJet\FilamentJet;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
+use ArtMin96\FilamentJet\FilamentJet;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 
 /**
  * ArtMin96\FilamentJet\Models\Team

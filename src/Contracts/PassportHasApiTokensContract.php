@@ -5,9 +5,8 @@ namespace ArtMin96\FilamentJet\Contracts;
 /**
  * @propery \Laravel\Passport\Token|\Laravel\Passport\TransientToken|null $accessToken;
  */
-interface PassportHasApiTokensContract {
-
-
+interface PassportHasApiTokensContract
+{
     /**
      * Get all of the user's registered OAuth clients.
      *
@@ -41,7 +40,6 @@ interface PassportHasApiTokensContract {
      * Create a new personal access token for the user.
      *
      * @param  string  $name
-     * @param  array  $scopes
      * @return \Laravel\Passport\PersonalAccessTokenResult
      */
     public function createToken($name, array $scopes = []);

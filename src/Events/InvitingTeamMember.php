@@ -2,8 +2,8 @@
 
 namespace ArtMin96\FilamentJet\Events;
 
-use Illuminate\Foundation\Events\Dispatchable;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
+use Illuminate\Foundation\Events\Dispatchable;
 
 class InvitingTeamMember
 {
@@ -11,7 +11,6 @@ class InvitingTeamMember
 
     /**
      * The team instance.
-     *
      */
     public TeamContract $team;
 
@@ -32,7 +31,6 @@ class InvitingTeamMember
     /**
      * Create a new event instance.
      *
-     * @param  TeamContract  $team
      * @param  mixed  $email
      * @param  mixed  $role
      * @return void

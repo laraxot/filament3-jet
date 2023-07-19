@@ -2,12 +2,11 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
+use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Contracts\Auth\CanResetPassword;
-use ArtMin96\FilamentJet\Contracts\TeamContract;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 /**
  * ArtMin96\FilamentJet\Contracts\UserContract
@@ -26,13 +25,6 @@ use Illuminate\Database\Eloquent\Collection as EloquentCollection;
  */
 interface UserContract extends
     //HasApiTokens, //no sanctum ma passport
-    HasTeamsContract,
-    PassportHasApiTokensContract,
-    HasProfilePhotoContract,
-    TwoFactorAuthenticatableContract,
-    MustVerifyEmail,
-    CanResetPassword,
-    ModelContract
+    HasTeamsContract, PassportHasApiTokensContract, HasProfilePhotoContract, TwoFactorAuthenticatableContract, MustVerifyEmail, CanResetPassword, ModelContract
 {
-
 }

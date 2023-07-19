@@ -94,8 +94,7 @@ class ApiTokens extends Page
     /**
      * Undocumented function
      *
-     * @param object $token
-     * @return void
+     * @param  object  $token
      */
     protected function displayTokenValue($token): void
     {

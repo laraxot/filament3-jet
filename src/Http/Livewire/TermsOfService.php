@@ -16,11 +16,11 @@ class TermsOfService extends Component
     public function render()
     {
         $termsFile = FilamentJet::localizedMarkdownPath('terms.md');
-        if(!is_string($termsFile)){
+        if (! is_string($termsFile)) {
             throw new \Exception('strange things');
         }
-        $fileContents=file_get_contents($termsFile);
-        if($fileContents==false){
+        $fileContents = file_get_contents($termsFile);
+        if ($fileContents == false) {
             throw new \Exception('strange things');
         }
 

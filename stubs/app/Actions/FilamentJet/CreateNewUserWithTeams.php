@@ -3,6 +3,7 @@
 namespace ArtMin96\FilamentJet\Actions;
 
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
 use Exception;
@@ -10,7 +11,6 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use ArtMin96\FilamentJet\Contracts\UserContract;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -40,7 +40,7 @@ class CreateNewUser implements CreatesNewUsers
                 event(new Registered($user));
 
                 if (Features::hasTeamFeatures()) {
-                    if (!$user instanceof UserContract) {
+                    if (! $user instanceof UserContract) {
                         throw new \Exception('strange things');
                     }
                     $this->createTeam($user);
@@ -59,7 +59,7 @@ class CreateNewUser implements CreatesNewUsers
         if (! method_exists($user, 'ownedTeams')) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
-        $teamClass=FilamentJet::teamModel();
+        $teamClass = FilamentJet::teamModel();
         $user->ownedTeams()->save($teamClass::forceCreate([
             'user_id' => $user->getKey(),
             'name' => explode(' ', $user->name, 2)[0]."'s Team",

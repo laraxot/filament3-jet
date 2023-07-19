@@ -2,27 +2,23 @@
 
 namespace ArtMin96\FilamentJet;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Database\Eloquent\Model;
-use ArtMin96\FilamentJet\Traits\HasTeams;
-use Illuminate\Validation\Rules\Password;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Contracts\Auth\CanResetPassword;
+use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
+use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
-use ArtMin96\FilamentJet\Contracts\TeamContract;
-use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
-use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
-use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
+use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserProfileInformation;
 use ArtMin96\FilamentJet\Contracts\UserContract;
+use ArtMin96\FilamentJet\Traits\HasTeams;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Validation\Rules\Password;
 
 final class FilamentJet
 {
@@ -227,7 +223,6 @@ final class FilamentJet
 
     /**
      * Determine if FilamentJet is supporting team features.
-     *
      */
     public static function hasTeamFeatures(): bool
     {
@@ -236,7 +231,6 @@ final class FilamentJet
 
     /**
      * Determine if a given user model utilizes the "HasTeams" trait.
-     *
      */
     public static function userHasTeamFeatures(UserContract $user): bool
     {
@@ -268,6 +262,7 @@ final class FilamentJet
     /**
      * Determine registration page.
      * non e' bool !
+     *
      * @return mixed
      */
     public static function registrationPage()
@@ -277,7 +272,8 @@ final class FilamentJet
 
     /**
      * Determine email verification component.
-    * non e' bool !
+     * non e' bool !
+     *
      * @return mixed
      */
     public static function emailVerificationComponent()
@@ -288,6 +284,7 @@ final class FilamentJet
     /**
      * Determine email verification controller.
      * non e' bool !
+     *
      * @return mixed
      */
     public static function emailVerificationController()
@@ -298,6 +295,7 @@ final class FilamentJet
     /**
      * Determine terms of service component.
      * non e' bool !
+     *
      * @return mixed
      */
     public static function termsOfServiceComponent()
@@ -308,6 +306,7 @@ final class FilamentJet
     /**
      * Determine privacy policy component.
      * non e' bool !
+     *
      * @return mixed
      */
     public static function privacyPolicyComponent()
@@ -317,7 +316,8 @@ final class FilamentJet
 
     /**
      * Determine password reset component.
-    * non e' bool !
+     * non e' bool !
+     *
      * @return mixed
      */
     public static function resetPasswordPage()
@@ -328,6 +328,7 @@ final class FilamentJet
     /**
      * Determine team invitation controller.
      * non e' bool !
+     *
      * @return mixed
      */
     public static function teamInvitationController()
@@ -337,7 +338,8 @@ final class FilamentJet
 
     /**
      * Determine team invitation accept action.
-    * non e' bool !
+     * non e' bool !
+     *
      * @return mixed
      */
     public static function teamInvitationAcceptAction()
@@ -347,7 +349,8 @@ final class FilamentJet
 
     /**
      * Determine team invitation destroy action.
-    * non e' bool !
+     * non e' bool !
+     *
      * @return mixed
      */
     public static function teamInvitationDestroyAction()
@@ -357,35 +360,36 @@ final class FilamentJet
 
     /**
      * Find a user instance by the given ID.
+     *
      * @return UserContract
      */
     public static function findUserByIdOrFail(int $id)
     {
-        $res= self::newUserModel()->where('id', $id)->firstOrFail();
-        if(!$res instanceOf UserContract){
+        $res = self::newUserModel()->where('id', $id)->firstOrFail();
+        if (! $res instanceof UserContract) {
             throw new \Exception('strange things');
         }
+
         return $res;
     }
 
     /**
      * Find a user instance by the given email address or fail.
-      * @return UserContract
      */
-    public static function findUserByEmailOrFail(string $email):UserContract
+    public static function findUserByEmailOrFail(string $email): UserContract
     {
-        $res= self::newUserModel()->where('email', $email)->firstOrFail();
-        if(!$res instanceOf UserContract){
+        $res = self::newUserModel()->where('email', $email)->firstOrFail();
+        if (! $res instanceof UserContract) {
             throw new \Exception('strange things');
         }
+
         return $res;
     }
 
     /**
      * Get the name of the user model used by the application.
-     *
      */
-    public static function userModel():string
+    public static function userModel(): string
     {
         return self::$userModel;
     }
@@ -394,6 +398,7 @@ final class FilamentJet
      * Get a new instance of the user model.
      *
      * -return UserContract
+     *
      * @return Model
      */
     public static function newUserModel()
@@ -517,8 +522,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to create users.
-     *
-
      */
     public static function createUsersUsing(string $class): void
     {
@@ -527,8 +530,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to create teams.
-     *
-
      */
     public static function createTeamsUsing(string $class): void
     {
@@ -537,8 +538,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to update team names.
-     *
-
      */
     public static function updateTeamNamesUsing(string $class): void
     {
@@ -547,8 +546,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to add team members.
-     *
-
      */
     public static function addTeamMembersUsing(string $class): void
     {
@@ -557,8 +554,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to add team members.
-     *
-
      */
     public static function inviteTeamMembersUsing(string $class): void
     {
@@ -567,8 +562,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to remove team members.
-     *
-     * @return void
      */
     public static function removeTeamMembersUsing(string $class): void
     {
@@ -577,8 +570,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to delete teams.
-     *
-     * @return void
      */
     public static function deleteTeamsUsing(string $class): void
     {
@@ -587,8 +578,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to delete users.
-     *
-     * @return void
      */
     public static function deleteUsersUsing(string $class): void
     {

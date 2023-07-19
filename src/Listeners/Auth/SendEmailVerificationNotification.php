@@ -2,13 +2,13 @@
 
 namespace ArtMin96\FilamentJet\Listeners\Auth;
 
+use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Notifications\Auth\VerifyEmail;
 use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification as BaseListener;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use ArtMin96\FilamentJet\Contracts\UserContract;
 
 class SendEmailVerificationNotification extends BaseListener
 {

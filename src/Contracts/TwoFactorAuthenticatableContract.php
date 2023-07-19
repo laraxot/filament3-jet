@@ -25,6 +25,7 @@ interface TwoFactorAuthenticatableContract
      * @return array
      */
     public function recoveryCodes();
+
     /**
      * Replace the given recovery code with a new one in the user's stored codes.
      *

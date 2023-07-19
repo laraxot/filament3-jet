@@ -11,7 +11,6 @@ class RecoveryCodesGenerated
 
     /**
      * The user instance.
-     *
      */
     public UserContract $user;
 

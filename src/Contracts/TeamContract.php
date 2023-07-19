@@ -2,12 +2,9 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
-use Illuminate\Support\Carbon;
-use Laravel\Jetstream\Rules\Role;
 use Illuminate\Database\Eloquent\Builder;
-use ArtMin96\FilamentJet\Contracts\UserContract;
-use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Support\Carbon;
 
 /**
  * ArtMin96\FilamentJet\Contracts\TeamContract
@@ -112,9 +109,9 @@ interface TeamContract extends ModelContract
     public function profilePhotoDisk(): string;
     */
     /**
-    * Get a fresh instance of the batch represented by this ID.
-    *
-    * @return self
-    */
+     * Get a fresh instance of the batch represented by this ID.
+     *
+     * @return self
+     */
     public function fresh();
 }

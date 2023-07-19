@@ -17,8 +17,6 @@ interface ModelContract
      */
     public function withoutRelations();
 
-
-
     /**
      * Fill the model with an array of attributes. Force mass assignment.
      *
