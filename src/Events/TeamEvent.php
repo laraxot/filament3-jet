@@ -16,8 +16,12 @@ abstract class TeamEvent
 <<<<<<< HEAD
 =======
      *
+<<<<<<< HEAD
      * @var \App\Models\Team
 >>>>>>> 59fd8d2c (.)
+=======
+     * @var \Modules\User\Models\Team
+>>>>>>> 51a866c6 (.)
      */
     public TeamContract $team;
 
@@ -25,9 +29,13 @@ abstract class TeamEvent
      * Create a new event instance.
      *
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
      * @param  \App\Models\Team  $team
 >>>>>>> 59fd8d2c (.)
+=======
+     * @param  \Modules\User\Models\Team  $team
+>>>>>>> 51a866c6 (.)
      * @return void
      */
     public function __construct(TeamContract $team)

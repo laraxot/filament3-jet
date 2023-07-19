@@ -215,8 +215,12 @@ interface HasTeamsContract
 <<<<<<< HEAD
 =======
      *
+<<<<<<< HEAD
      * @return \App\Models\Team
 >>>>>>> 59fd8d2c (.)
+=======
+     * @return \Modules\User\Models\Team
+>>>>>>> 51a866c6 (.)
      */
     public function personalTeam(): ?TeamContract;
 

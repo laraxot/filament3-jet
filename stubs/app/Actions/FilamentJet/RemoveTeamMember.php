@@ -10,6 +10,7 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
@@ -42,6 +43,10 @@ use Modules\User\Models\User;
 use App\Models\Team;
 use App\Models\User;
 >>>>>>> 7eb101f0 (up)
+=======
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
+>>>>>>> 0da7d9b6 (up)
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;

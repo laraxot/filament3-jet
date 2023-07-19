@@ -10,6 +10,7 @@ namespace App\Policies;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 =======
@@ -27,6 +28,8 @@ use ArtMin96\FilamentJet\Contracts\UserContract;
 >>>>>>> fe76f0bc (.)
 =======
 >>>>>>> 59fd8d2c (.)
+=======
+>>>>>>> 51a866c6 (.)
 <<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
@@ -83,6 +86,10 @@ use Modules\User\Models\User;
 =======
 use App\Models\Team;
 use App\Models\User;
+=======
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
+>>>>>>> 0da7d9b6 (up)
 use Illuminate\Auth\Access\HandlesAuthorization;
 >>>>>>> 7eb101f0 (up)
 >>>>>>> 59fd8d2c (.)
