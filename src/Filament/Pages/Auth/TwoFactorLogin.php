@@ -62,7 +62,7 @@ class TwoFactorLogin extends CardPage
     public function hasValidCode(?string $code): bool
     {
         return $code && tap(app(TwoFactorAuthenticationProvider::class)->verify(
-            (string)decrypt($this->challengedUser()->two_factor_secret),
+            (string) decrypt($this->challengedUser()->two_factor_secret),
             $code
         ), function ($result) {
             if ($result) {
@@ -111,6 +111,7 @@ class TwoFactorLogin extends CardPage
      * Get the user that is attempting the two factor challenge.
      *
      * -return UserContract|Redirector|\Illuminate\Http\RedirectResponse
+     *
      * @return UserContract
      */
     public function challengedUser()
@@ -139,28 +140,31 @@ class TwoFactorLogin extends CardPage
      */
     public function remember(): bool
     {
-        $res=session()->pull("{$this->sessionPrefix}login.remember", false);
-        if(!is_bool($res)){
+        $res = session()->pull("{$this->sessionPrefix}login.remember", false);
+        if (! is_bool($res)) {
             throw new \Exception('wip');
         }
+
         return $res;
     }
 
     protected function getCardWidth(): string
     {
-        $res= Features::getOption(Features::twoFactorAuthentication(), 'authentication.card_width');
-        if(!is_string($res)){
+        $res = Features::getOption(Features::twoFactorAuthentication(), 'authentication.card_width');
+        if (! is_string($res)) {
             throw new \Exception('wip');
         }
+
         return $res;
     }
 
     protected function hasBrand(): bool
     {
-        $res= Features::optionEnabled(Features::twoFactorAuthentication(), 'authentication.has_brand');
-        if(!is_bool($res)){
+        $res = Features::optionEnabled(Features::twoFactorAuthentication(), 'authentication.has_brand');
+        if (! is_bool($res)) {
             throw new \Exception('wip');
         }
+
         return $res;
     }
 

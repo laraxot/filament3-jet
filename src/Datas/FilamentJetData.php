@@ -1,4 +1,5 @@
 <?php
+
 namespace ArtMin96\FilamentJet\Datas;
 
 use Spatie\LaravelData\Data;

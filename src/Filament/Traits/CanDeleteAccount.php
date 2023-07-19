@@ -30,7 +30,8 @@ trait CanDeleteAccount
             $request->session()->invalidate();
             $request->session()->regenerateToken();
         }
-        $filamentData=FilamentData::make();
+        $filamentData = FilamentData::make();
+
         return redirect($filamentData->path);
     }
 }

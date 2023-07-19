@@ -4,36 +4,36 @@ declare(strict_types=1);
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-use Filament\Pages\Page;
-use Livewire\Redirector;
-use ArtMin96\FilamentJet\Role;
-use Filament\Facades\Filament;
-use Illuminate\Validation\Rule;
-use ArtMin96\FilamentJet\Features;
-use Filament\Pages\Actions\Action;
-use Illuminate\Support\Facades\Gate;
-use ArtMin96\FilamentJet\FilamentJet;
-use Filament\Forms\ComponentContainer;
-use Illuminate\Validation\Rules\Unique;
-use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
-use ArtMin96\FilamentJet\Datas\FilamentData;
-use Illuminate\Contracts\Auth\Authenticatable;
-use ArtMin96\FilamentJet\Datas\FilamentJetData;
-use ArtMin96\FilamentJet\Contracts\DeletesTeams;
-use ArtMin96\FilamentJet\Contracts\TeamContract;
-use ArtMin96\FilamentJet\Contracts\UserContract;
-use ArtMin96\FilamentJet\Traits\RedirectsActions;
-use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
-use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use ArtMin96\FilamentJet\Actions\UpdateTeamMemberRole;
 use ArtMin96\FilamentJet\Actions\ValidateTeamDeletion;
+use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
+use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
-use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
-use Suleymanozev\FilamentRadioButtonField\Forms\Components\RadioButton;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
+use ArtMin96\FilamentJet\Contracts\UserContract;
+use ArtMin96\FilamentJet\Datas\FilamentData;
+use ArtMin96\FilamentJet\Datas\FilamentJetData;
+use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\Filament\Actions\AlwaysAskPasswordConfirmationAction;
+use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
+use ArtMin96\FilamentJet\FilamentJet;
+use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use ArtMin96\FilamentJet\Role;
+use ArtMin96\FilamentJet\Traits\RedirectsActions;
+use Filament\Facades\Filament;
+use Filament\Forms\ComponentContainer;
+use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
+use Filament\Pages\Actions\Action;
+use Filament\Pages\Page;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Unique;
+use Livewire\Redirector;
+use Suleymanozev\FilamentRadioButtonField\Forms\Components\RadioButton;
 
 /**
  * Undocumented trait.
@@ -73,9 +73,6 @@ class TeamSettings extends Page
      */
     public string $currentRole;
 
-
-
-
     /**
      * Undocumented function.
      *
@@ -90,16 +87,18 @@ class TeamSettings extends Page
                 ->title(__('filament-jet::teams/messages.current_team_not_exists'))
                 ->warning()
                 ->send();
-            $filamentData=FilamentData::make();
-            return redirect( $filamentData->path);
+            $filamentData = FilamentData::make();
+
+            return redirect($filamentData->path);
         }
-        $this->team=$team;
+        $this->team = $team;
         $this->updateTeamNameForm->fill($this->team->withoutRelations()->toArray());
     }
 
     protected static function shouldRegisterNavigation(): bool
     {
-        $filamentJetData=FilamentJetData::make();
+        $filamentJetData = FilamentJetData::make();
+
         return $filamentJetData->should_register_navigation->team_settings;
         //return config('filament-jet.should_register_navigation.team_settings');
     }
@@ -350,7 +349,8 @@ class TeamSettings extends Page
             ->title(__('filament-jet::teams/members.messages.leave'))
             ->success()
             ->send();
-        $filamentData=FilamentData::make();
+        $filamentData = FilamentData::make();
+
         return redirect($filamentData->path);
     }
 

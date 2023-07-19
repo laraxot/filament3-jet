@@ -405,10 +405,11 @@ final class FilamentJet
     {
         $model = self::userModel();
 
-        $res= new $model();
-        if(!$res instanceof Model){
+        $res = new $model();
+        if (! $res instanceof Model) {
             throw new \Exception('wip');
         }
+
         return $res;
     }
 
@@ -444,10 +445,11 @@ final class FilamentJet
     {
         $model = self::teamModel();
 
-        $res= new $model();
-        if(!$res instanceof Model){
+        $res = new $model();
+        if (! $res instanceof Model) {
             throw new \Exception('wip');
         }
+
         return $res;
     }
 

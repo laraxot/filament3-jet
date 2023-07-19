@@ -2,23 +2,22 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages\Auth\PasswordReset;
 
-use Filament\Facades\Filament;
+use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
+use ArtMin96\FilamentJet\Contracts\UserContract;
+use ArtMin96\FilamentJet\Datas\FilamentJetData;
 use ArtMin96\FilamentJet\Features;
+use ArtMin96\FilamentJet\Filament\Pages\CardPage;
 use ArtMin96\FilamentJet\FilamentJet;
+use ArtMin96\FilamentJet\Http\Responses\Auth\Contracts\PasswordResetResponse;
+use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use Filament\Facades\Filament;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Illuminate\Support\Facades\Password;
-use ArtMin96\FilamentJet\Datas\FilamentData;
 use Illuminate\Contracts\Auth\PasswordBroker;
-use ArtMin96\FilamentJet\Datas\FilamentJetData;
-use ArtMin96\FilamentJet\Contracts\UserContract;
-use ArtMin96\FilamentJet\Filament\Pages\CardPage;
-use DanHarrin\LivewireRateLimiting\WithRateLimiting;
-use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
+use Illuminate\Support\Facades\Password;
 use Phpsa\FilamentPasswordReveal\Password as PasswordInput;
-use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
-use ArtMin96\FilamentJet\Http\Responses\Auth\Contracts\PasswordResetResponse;
 
 /**
  * Undocumented class
@@ -59,19 +58,21 @@ class ResetPassword extends CardPage
 
     protected function getCardWidth(): string
     {
-        $res= Features::getOption(Features::resetPasswords(), 'reset.card_width');
-        if(!is_string($res)){
+        $res = Features::getOption(Features::resetPasswords(), 'reset.card_width');
+        if (! is_string($res)) {
             throw new \Exception('wip');
         }
+
         return $res;
     }
 
     protected function hasBrand(): bool
     {
-        $res=Features::optionEnabled(Features::resetPasswords(), 'reset.has_brand');
-        if(!is_bool($res)){
+        $res = Features::optionEnabled(Features::resetPasswords(), 'reset.has_brand');
+        if (! is_bool($res)) {
             throw new \Exception('wip');
         }
+
         return $res;
     }
 
@@ -115,12 +116,12 @@ class ResetPassword extends CardPage
 
             return app(PasswordResetResponse::class);
         }
-        if(!is_string($status)){
+        if (! is_string($status)) {
             throw new \Exception('wip');
         }
 
-        $title=__($status);
-        if(!is_string($title)){
+        $title = __($status);
+        if (! is_string($title)) {
             throw new \Exception('wip');
         }
 
@@ -173,7 +174,8 @@ class ResetPassword extends CardPage
      */
     protected function broker(): PasswordBroker
     {
-        $filamentJetData=FilamentJetData::make();
+        $filamentJetData = FilamentJetData::make();
+
         return Password::broker($filamentJetData->passwords);
     }
 

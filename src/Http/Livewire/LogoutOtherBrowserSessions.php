@@ -2,14 +2,11 @@
 
 namespace ArtMin96\FilamentJet\Http\Livewire;
 
-use Livewire\Component;
+use ArtMin96\FilamentJet\Datas\SessionData;
+use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Jenssegers\Agent\Agent;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use ArtMin96\FilamentJet\Datas\SessionData;
+use Livewire\Component;
 
 class LogoutOtherBrowserSessions extends Component
 {
@@ -31,7 +28,8 @@ class LogoutOtherBrowserSessions extends Component
     public function getSessionsProperty(): Collection
     {
 
-        $sessionData=SessionData::make();
+        $sessionData = SessionData::make();
+
         return $sessionData->getSessionsProperty();
     }
 

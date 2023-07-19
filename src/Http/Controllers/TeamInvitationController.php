@@ -29,10 +29,11 @@ class TeamInvitationController extends Controller
                 ->title(__('filament-jet::teams/invitations.messages.feature_disabled'))
                 ->success()
                 ->send();
-            $filamentPath=config('filament.path');
-            if(!is_string($filamentPath)){
+            $filamentPath = config('filament.path');
+            if (! is_string($filamentPath)) {
                 throw new \Exception('strange things');
             }
+
             return redirect($filamentPath);
         }
 
@@ -55,7 +56,7 @@ class TeamInvitationController extends Controller
             ->title(__('filament-jet::teams/invitations.messages.invited', ['team' => $invitation->team->name]))
             ->success()
             ->send();
-        $filamentData=FilamentData::make();
+        $filamentData = FilamentData::make();
 
         return redirect($filamentData->path);
     }

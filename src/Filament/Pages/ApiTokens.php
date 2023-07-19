@@ -55,7 +55,7 @@ class ApiTokens extends Page
 
     protected static function shouldRegisterNavigation(): bool
     {
-        $filamentJetData=FilamentJetData::make();
+        $filamentJetData = FilamentJetData::make();
         //return config('filament-jet.should_register_navigation.api_tokens');
         return $filamentJetData->should_register_navigation->api_tokens;
     }
