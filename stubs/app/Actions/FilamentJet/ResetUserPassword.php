@@ -52,7 +52,7 @@ class ResetUserPassword implements ResetsUserPasswords
     /**
      * Validate and reset the user's forgotten password.
      *
-     * @param array<string, string> $input
+     * @param  array<string, string>  $input
      */
     public function reset(UserContract $user, array $input): void
     {
