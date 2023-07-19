@@ -3,14 +3,22 @@
 namespace ArtMin96\FilamentJet\Actions;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 =======
+=======
+>>>>>>> c48cfbe5 (.)
 <<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
 >>>>>>> 39fcb522 (rebase)
+<<<<<<< HEAD
 >>>>>>> 080a5a33 (.)
+=======
+=======
+>>>>>>> 354a30e7 (Fix styling)
+>>>>>>> c48cfbe5 (.)
 use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Support\Facades\Gate;
