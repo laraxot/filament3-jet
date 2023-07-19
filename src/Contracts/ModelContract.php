@@ -3,6 +3,9 @@
 namespace ArtMin96\FilamentJet\Contracts;
 
 /**
+ * ArtMin96\FilamentJet\Contracts\ModelContract
+ *
+ *
  * @mixin \Eloquent
  */
 interface ModelContract
@@ -50,4 +53,27 @@ interface ModelContract
      * @return mixed
      */
     public function getKey();
+
+    /*
+     * Add a basic where clause to the query.
+     *
+     * @param  \Closure|string|array|\Illuminate\Contracts\Database\Query\Expression  $column
+     * @param  mixed  $operator
+     * @param  mixed  $value
+     * @param  string  $boolean
+     * @return $this
+
+    public function where($column, $operator = null, $value = null, $boolean = 'and');
+    */
+
+    /*
+     * Execute the query and get the first result or throw an exception.
+     *
+     * @param  array|string  $columns
+     * @return \Illuminate\Database\Eloquent\Model|static
+     *
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException<\Illuminate\Database\Eloquent\Model>
+
+    public function firstOrFail($columns = ['*']);
+    */
 }

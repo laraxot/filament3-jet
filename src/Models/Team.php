@@ -2,12 +2,17 @@
 
 namespace ArtMin96\FilamentJet\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 /**
  * ArtMin96\FilamentJet\Models\Team
@@ -16,27 +21,27 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property int $user_id
  * @property string $name
  * @property int $personal_team
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property-read UserContract|null $owner
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
+ * @property-read EloquentCollection<int, TeamInvitationContract> $teamInvitations
  * @property-read int|null $team_invitations_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, UserContract> $users
+ * @property-read EloquentCollection<int, UserContract> $users
  * @property-read int|null $users_count
  *
- * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Team newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Team query()
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team wherePersonalTeam($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereUserId($value)
+ * @method static Builder|Team newModelQuery()
+ * @method static Builder|Team newQuery()
+ * @method static Builder|Team query()
+ * @method static Builder|Team whereCreatedAt($value)
+ * @method static Builder|Team whereId($value)
+ * @method static Builder|Team whereName($value)
+ * @method static Builder|Team wherePersonalTeam($value)
+ * @method static Builder|Team whereUpdatedAt($value)
+ * @method static Builder|Team whereUserId($value)
  *
  * @mixin \Eloquent
  */
-abstract class Team extends Model
+abstract class Team extends Model implements TeamContract
 {
     /**
      * Get the owner of the team.

@@ -30,14 +30,16 @@ class CreateTeam implements CreatesTeams
             throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
         }
 
-        $user->switchTeam($team = $user->ownedTeams()->create([
+        $team = $user->ownedTeams()->create([
             'name' => $input['name'],
             'personal_team' => false,
-        ]));
-
-         if (! $team instanceof TeamContract) {
+        ]);
+        if (! $team instanceof TeamContract) {
             throw new \Exception('team not have TeamContract');
         }
+        $user->switchTeam($team);
+
+
 
         return $team;
     }

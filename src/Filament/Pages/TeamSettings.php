@@ -144,7 +144,7 @@ class TeamSettings extends Page
                                     ? '' : Rule::exists(table: FilamentJet::userModel(), column: 'email'),
                                 function () {
                                     return function (string $attribute, $value, Closure $fail) {
-                                        if ($this->team->hasUserWithEmail($value)) {
+                                        if ($this->team?->hasUserWithEmail($value)) {
                                             $fail(__('filament-jet::teams/add-member.messages.already_belongs_to_team'));
                                         }
                                     };

@@ -2,11 +2,12 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Support\Carbon;
+use Laravel\Jetstream\Rules\Role;
+use Illuminate\Database\Eloquent\Builder;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 /**
  * ArtMin96\FilamentJet\Contracts\TeamContract
@@ -17,6 +18,7 @@ use Illuminate\Support\Carbon;
  * @property int $personal_team
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property string $role
  * @property-read UserContract|null $owner
  * @property-read EloquentCollection<int, TeamInvitationContract> $teamInvitations
  * @property-read int|null $team_invitations_count
@@ -104,11 +106,11 @@ interface TeamContract extends ModelContract
      */
     public function purge();
 
-    /**
+    /* --non qui
      * Get the disk that profile photos should be stored on.
-     */
-    public function profilePhotoDisk(): string;
 
+    public function profilePhotoDisk(): string;
+    */
     /**
     * Get a fresh instance of the batch represented by this ID.
     *

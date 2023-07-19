@@ -49,6 +49,8 @@ trait ProcessesExport
 
     public function updateExportProgress(): void
     {
-        $this->exportProgress = $this->exportBatch->progress();
+        if( $this->exportBatch!=null){
+            $this->exportProgress = $this->exportBatch->progress();
+        }
     }
 }

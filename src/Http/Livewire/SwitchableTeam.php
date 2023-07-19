@@ -24,6 +24,9 @@ class SwitchableTeam extends Component
     public function mount(): void
     {
         $user = Filament::auth()->user();
+        if($user == null){
+            return ; //persa sessione
+        }
         if (! $user instanceof UserContract) {
             throw new \Exception('['.get_class($user).'] not implements ArtMin96\FilamentJet\Contracts\HasTeamsContract ');
         }

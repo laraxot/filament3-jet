@@ -357,31 +357,35 @@ final class FilamentJet
 
     /**
      * Find a user instance by the given ID.
-     *
-     * @param  int  $id
-     * @return mixed
+     * @return UserContract
      */
-    public static function findUserByIdOrFail($id)
+    public static function findUserByIdOrFail(int $id)
     {
-        return self::newUserModel()->where('id', $id)->firstOrFail();
+        $res= self::newUserModel()->where('id', $id)->firstOrFail();
+        if(!$res instanceOf UserContract){
+            throw new \Exception('strange things');
+        }
+        return $res;
     }
 
     /**
      * Find a user instance by the given email address or fail.
-     *
-     * @return mixed
+      * @return UserContract
      */
-    public static function findUserByEmailOrFail(string $email)
+    public static function findUserByEmailOrFail(string $email):UserContract
     {
-        return self::newUserModel()->where('email', $email)->firstOrFail();
+        $res= self::newUserModel()->where('email', $email)->firstOrFail();
+        if(!$res instanceOf UserContract){
+            throw new \Exception('strange things');
+        }
+        return $res;
     }
 
     /**
      * Get the name of the user model used by the application.
      *
-     * @return string
      */
-    public static function userModel()
+    public static function userModel():string
     {
         return self::$userModel;
     }
@@ -389,7 +393,8 @@ final class FilamentJet
     /**
      * Get a new instance of the user model.
      *
-     * @return mixed
+     * -return UserContract
+     * @return Model
      */
     public static function newUserModel()
     {
