@@ -3,11 +3,10 @@
 namespace ArtMin96\FilamentJet\Contracts;
 
 /**
- *
  * @mixin \Eloquent
  */
-
-interface ModelContract{
+interface ModelContract
+{
     /**
      * Duplicate the instance and unset all the loaded relations.
      *
@@ -22,7 +21,7 @@ interface ModelContract{
      */
     public function fresh();
 
-     /**
+    /**
      * Fill the model with an array of attributes. Force mass assignment.
      *
      * @return $this

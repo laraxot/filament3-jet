@@ -3,7 +3,6 @@
 namespace ArtMin96\FilamentJet\Contracts;
 
 // use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;;
-use ArtMin96\FilamentJet\Contracts\ModelContract;
 use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 /**
@@ -35,8 +34,6 @@ use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
  */
 interface TeamContract extends ModelContract
 {
-
-
     /**
      * Get the owner of the team.
      *
@@ -108,6 +105,4 @@ interface TeamContract extends ModelContract
      * Get the disk that profile photos should be stored on.
      */
     public function profilePhotoDisk(): string;
-
-
 }

@@ -2,10 +2,8 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
-use Laravel\Sanctum\Contracts\HasApiTokens;
 use Illuminate\Database\Eloquent\Collection;
-use ArtMin96\FilamentJet\Contracts\TeamContract;
-use ArtMin96\FilamentJet\Contracts\ModelContract;
+use Laravel\Sanctum\Contracts\HasApiTokens;
 
 /**
  * ArtMin96\FilamentJet\Contracts\HasTeamsContract
@@ -20,7 +18,7 @@ use ArtMin96\FilamentJet\Contracts\ModelContract;
  *
  * @mixin \Eloquent
  */
-interface HasTeamsContract extends HasApiTokens,ModelContract
+interface HasTeamsContract extends HasApiTokens, ModelContract
 {
     /**
      * Determine if the given team is the current team.
@@ -120,6 +118,4 @@ interface HasTeamsContract extends HasApiTokens,ModelContract
      * @return bool
      */
     public function hasTeamPermission($team, string $permission);
-
-
 }
