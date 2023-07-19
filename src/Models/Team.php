@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace ArtMin96\FilamentJet\Models;
 
-use ArtMin96\FilamentJet\Contracts\TeamContract;
-use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
-use ArtMin96\FilamentJet\Contracts\UserContract;
-use ArtMin96\FilamentJet\FilamentJet;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use ArtMin96\FilamentJet\FilamentJet;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\UserContract;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 /**
  * ArtMin96\FilamentJet\Models\Team.
@@ -48,9 +49,8 @@ abstract class Team extends Model implements TeamContract
     /**
      * Get the owner of the team.
      *
-     * @return BelongsTo
      */
-    public function owner()
+    public function owner():BelongsTo
     {
         return $this->belongsTo(FilamentJet::userModel(), 'user_id');
     }
@@ -58,19 +58,21 @@ abstract class Team extends Model implements TeamContract
     /**
      * Get all of the team's users including its owner.
      *
-     * @return Collection
+
      */
-    public function allUsers()
+    public function allUsers():Collection
     {
+        if($this->owner == null){
+            return $this->users;
+        }
         return $this->users->merge([$this->owner]);
     }
 
     /**
      * Get all of the users that belong to the team.
      *
-     * @return BelongsToMany
      */
-    public function users()
+    public function users():BelongsToMany
     {
         return $this->belongsToMany(FilamentJet::userModel(), FilamentJet::membershipModel())
             ->withPivot('role')
@@ -81,10 +83,8 @@ abstract class Team extends Model implements TeamContract
     /**
      * Determine if the given user belongs to the team.
      *
-     * @param  UserContract  $user
-     * @return bool
      */
-    public function hasUser($user)
+    public function hasUser(UserContract $user):bool
     {
         return $this->users->contains($user) || $user->ownsTeam($this);
     }
@@ -92,9 +92,8 @@ abstract class Team extends Model implements TeamContract
     /**
      * Determine if the given email address belongs to a user on the team.
      *
-     * @return bool
      */
-    public function hasUserWithEmail(string $email)
+    public function hasUserWithEmail(string $email):bool
     {
         return $this->allUsers()->contains(function ($user) use ($email) {
             return $user->email === $email;
@@ -104,11 +103,8 @@ abstract class Team extends Model implements TeamContract
     /**
      * Determine if the given user has the given permission on the team.
      *
-     * @param  UserContract  $user
-     * @param  string  $permission
-     * @return bool
      */
-    public function userHasPermission($user, $permission)
+    public function userHasPermission(UserContract $user, string $permission):bool
     {
         return $user->hasTeamPermission($this, $permission);
     }
@@ -116,9 +112,9 @@ abstract class Team extends Model implements TeamContract
     /**
      * Get all of the pending user invitations for the team.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+
      */
-    public function teamInvitations()
+    public function teamInvitations():HasMany
     {
         return $this->hasMany(FilamentJet::teamInvitationModel());
     }
@@ -126,10 +122,8 @@ abstract class Team extends Model implements TeamContract
     /**
      * Remove the given user from the team.
      *
-     * @param  UserContract  $user
-     * @return void
      */
-    public function removeUser($user)
+    public function removeUser(UserContract $user):void
     {
         if ($user->current_team_id === $this->id) {
             $user->forceFill([
@@ -143,9 +137,8 @@ abstract class Team extends Model implements TeamContract
     /**
      * Purge all of the team's resources.
      *
-     * @return void
      */
-    public function purge()
+    public function purge():void
     {
         $this->owner()->where('current_team_id', $this->id)
             ->update(['current_team_id' => null]);

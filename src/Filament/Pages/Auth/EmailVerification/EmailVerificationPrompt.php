@@ -48,12 +48,20 @@ class EmailVerificationPrompt extends CardPage
 
     protected function getCardWidth(): string
     {
-        return Features::getOption(Features::emailVerification(), 'card_width');
+        $res= Features::getOption(Features::emailVerification(), 'card_width');
+        if(!is_string($res)){
+            throw new \Exception('wip');
+        }
+        return $res;
     }
 
     protected function hasBrand(): bool
     {
-        return Features::optionEnabled(Features::emailVerification(), 'has_brand');
+        $res= Features::optionEnabled(Features::emailVerification(), 'has_brand');
+        if(!is_bool($res)){
+            throw new \Exception('wip');
+        }
+        return $res;
     }
 
     public function resendNotification(): void
@@ -77,6 +85,10 @@ class EmailVerificationPrompt extends CardPage
         }
 
         $user = Filament::auth()->user();
+        if($user==null){
+            throw new \Exception('strange things');
+        }
+
 
         if (! method_exists($user, 'notify')) {
             $userClass = $user::class;

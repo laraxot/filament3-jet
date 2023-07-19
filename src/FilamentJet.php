@@ -405,7 +405,11 @@ final class FilamentJet
     {
         $model = self::userModel();
 
-        return new $model();
+        $res= new $model();
+        if(!$res instanceof Model){
+            throw new \Exception('wip');
+        }
+        return $res;
     }
 
     /**
@@ -434,13 +438,17 @@ final class FilamentJet
     /**
      * Get a new instance of the team model.
      *
-     * @return mixed
+     * @return Model
      */
     public static function newTeamModel()
     {
         $model = self::teamModel();
 
-        return new $model();
+        $res= new $model();
+        if(!$res instanceof Model){
+            throw new \Exception('wip');
+        }
+        return $res;
     }
 
     /**

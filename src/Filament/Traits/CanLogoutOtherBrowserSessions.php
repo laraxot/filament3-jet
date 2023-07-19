@@ -2,9 +2,10 @@
 
 namespace ArtMin96\FilamentJet\Filament\Traits;
 
-use Filament\Notifications\Notification;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Filament\Notifications\Notification;
+use ArtMin96\FilamentJet\Datas\SessionData;
 
 trait CanLogoutOtherBrowserSessions
 {
@@ -24,7 +25,7 @@ trait CanLogoutOtherBrowserSessions
         $this->deleteOtherSessionRecords();
 
         request()->session()->put([
-            'password_hash_'.Auth::getDefaultDriver() => Auth::user()->getAuthPassword(),
+            'password_hash_'.Auth::getDefaultDriver() => Auth::user()?->getAuthPassword(),
         ]);
 
         $this->emit('loggedOut');
@@ -42,13 +43,7 @@ trait CanLogoutOtherBrowserSessions
      */
     protected function deleteOtherSessionRecords()
     {
-        if (config('session.driver') !== 'database') {
-            return;
-        }
-
-        DB::connection(config('session.connection'))->table(config('session.table', 'sessions'))
-            ->where('user_id', Auth::user()->getAuthIdentifier())
-            ->where('id', '!=', request()->session()->getId())
-            ->delete();
+        $sessionData=SessionData::make();
+        $sessionData->deleteOtherSessionRecords();
     }
 }

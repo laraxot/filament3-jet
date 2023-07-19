@@ -2,9 +2,13 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 /**
  * ArtMin96\FilamentJet\Contracts\TeamContract
@@ -39,69 +43,56 @@ interface TeamContract extends ModelContract
     /**
      * Get the owner of the team.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function owner();
+    public function owner():BelongsTo;
 
     /**
      * Get all of the team's users including its owner.
      *
-     * @return \Illuminate\Support\Collection
      */
-    public function allUsers();
+    public function allUsers():Collection;
 
     /**
      * Get all of the users that belong to the team.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function users();
+    public function users():BelongsToMany;
 
     /**
      * Determine if the given user belongs to the team.
      *
-     * @param  UserContract  $user
-     * @return bool
      */
-    public function hasUser($user);
+    public function hasUser(UserContract $user):bool;
 
     /**
      * Determine if the given email address belongs to a user on the team.
      *
-     * @return bool
      */
-    public function hasUserWithEmail(string $email);
+    public function hasUserWithEmail(string $email):bool;
 
     /**
      * Determine if the given user has the given permission on the team.
      *
-     * @param  UserContract  $user
-     * @param  string  $permission
-     * @return bool
      */
-    public function userHasPermission($user, $permission);
+    public function userHasPermission(UserContract $user,string $permission):bool;
 
     /**
      * Get all of the pending user invitations for the team.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function teamInvitations();
+    public function teamInvitations():HasMany;
 
     /**
      * Remove the given user from the team.
      *
-     * @param  UserContract  $user
-     * @return void
      */
-    public function removeUser($user);
+    public function removeUser(UserContract $user):void;
 
     /**
      * Purge all of the team's resources.
      *
-     * @return void
      */
-    public function purge();
+    public function purge():void;
 
     /* --non qui
      * Get the disk that profile photos should be stored on.

@@ -3,6 +3,7 @@
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
 use ArtMin96\FilamentJet\Contracts\UserContract;
+use ArtMin96\FilamentJet\Datas\FilamentJetData;
 use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasSanctumPermissionsProperty;
@@ -54,7 +55,9 @@ class ApiTokens extends Page
 
     protected static function shouldRegisterNavigation(): bool
     {
-        return config('filament-jet.should_register_navigation.api_tokens');
+        $filamentJetData=FilamentJetData::make();
+        //return config('filament-jet.should_register_navigation.api_tokens');
+        return $filamentJetData->should_register_navigation->api_tokens;
     }
 
     protected function getFormSchema(): array
