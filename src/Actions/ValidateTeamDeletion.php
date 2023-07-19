@@ -5,12 +5,15 @@ namespace ArtMin96\FilamentJet\Actions;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 =======
 =======
 >>>>>>> c48cfbe5 (.)
 =======
 >>>>>>> eeea3efa (.)
+=======
+>>>>>>> 34a1dda4 (.)
 <<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
@@ -28,7 +31,17 @@ use Modules\User\Models\Team;
 use Modules\User\Models\Team;
 >>>>>>> 798d2d5 (.)
 >>>>>>> 5be9ebe5 (rebase)
+<<<<<<< HEAD
 >>>>>>> eeea3efa (.)
+=======
+=======
+=======
+use Modules\User\Models\Team;
+>>>>>>> 798d2d5 (.)
+=======
+>>>>>>> 88c140b (Fix styling)
+>>>>>>> e618ae9f (rebase)
+>>>>>>> 34a1dda4 (.)
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Gate;
