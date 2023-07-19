@@ -50,7 +50,7 @@ trait HasTeams
      */
     public function switchTeam(?TeamContract $team): bool
     {
-        if($team==null){
+        if ($team == null) {
             return false;
         }
         if (! $this->belongsToTeam($team)) {

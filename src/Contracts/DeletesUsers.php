@@ -2,7 +2,6 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
-
 /**
  * ---
  */

@@ -2,11 +2,11 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\CanResetPassword;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * ArtMin96\FilamentJet\Contracts\HasTeamsContract
@@ -34,9 +34,8 @@ interface HasTeamsContract
 {
     /**
      * Determine if the given team is the current team.
-     *
      */
-    public function isCurrentTeam(TeamContract $team):bool;
+    public function isCurrentTeam(TeamContract $team): bool;
 
     /**
      * Get the current team of the user's context.
@@ -47,9 +46,8 @@ interface HasTeamsContract
 
     /**
      * Switch the user's context to the given team.
-     *
      */
-    public function switchTeam(TeamContract $team):bool ;
+    public function switchTeam(TeamContract $team): bool;
 
     /**
      * Get all of the teams the user owns or belongs to.
@@ -60,15 +58,13 @@ interface HasTeamsContract
 
     /**
      * Get all of the teams the user owns.
-     *
      */
-    public function ownedTeams():HasMany;
+    public function ownedTeams(): HasMany;
 
     /**
      * Get all of the teams the user belongs to.
-     *
      */
-    public function teams():BelongsToMany;
+    public function teams(): BelongsToMany;
 
     /**
      * Get the user's "personal" team.
@@ -77,15 +73,13 @@ interface HasTeamsContract
 
     /**
      * Determine if the user owns the given team.
-     *
      */
-    public function ownsTeam(TeamContract $team):bool;
+    public function ownsTeam(TeamContract $team): bool;
 
     /**
      * Determine if the user belongs to the given team.
-     *
      */
-    public function belongsToTeam(TeamContract $team):bool;
+    public function belongsToTeam(TeamContract $team): bool;
 
     /**
      * Get the role that the user has on the team.
@@ -96,19 +90,16 @@ interface HasTeamsContract
 
     /**
      * Determine if the user has the given role on the given team.
-     *
      */
-    public function hasTeamRole(TeamContract $team, string $role):bool;
+    public function hasTeamRole(TeamContract $team, string $role): bool;
 
     /**
      * Get the user's permissions for the given team.
-     *
      */
-    public function teamPermissions(TeamContract $team):array;
+    public function teamPermissions(TeamContract $team): array;
 
     /**
      * Determine if the user has the given permission on the given team.
-     *
      */
-    public function hasTeamPermission(TeamContract $team, string $permission):bool;
+    public function hasTeamPermission(TeamContract $team, string $permission): bool;
 }
