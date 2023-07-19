@@ -14,6 +14,7 @@ namespace App\Actions\FilamentJet;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 >>>>>>> 39fcb522 (rebase)
@@ -38,6 +39,8 @@ use Modules\User\Models\Team;
 use Modules\User\Models\Team;
 >>>>>>> 798d2d5 (.)
 >>>>>>> 0b6c922d (rebase)
+=======
+>>>>>>> ac955b82 (.)
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Features;
@@ -52,7 +55,7 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Create a newly registered user.
      *
-     * @param  array<string, string>  $input
+     * @param array<string, string> $input
      */
     public function create(array $input): UserContract
     {
