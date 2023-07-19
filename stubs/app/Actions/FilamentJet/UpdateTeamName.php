@@ -14,7 +14,7 @@ class UpdateTeamName implements UpdatesTeamNames
     /**
      * Validate and update the given team's name.
      *
-     * @param array<string, string> $input
+     * @param  array<string, string>  $input
      */
     public function update(UserContract $user, TeamContract $team, array $input): void
     {

@@ -81,8 +81,7 @@ abstract class Team extends Model implements TeamContract
     /**
      * Determine if the given user belongs to the team.
      *
-     * @param UserContract $user
-     *
+     * @param  UserContract  $user
      * @return bool
      */
     public function hasUser($user)
@@ -105,9 +104,8 @@ abstract class Team extends Model implements TeamContract
     /**
      * Determine if the given user has the given permission on the team.
      *
-     * @param UserContract $user
-     * @param string       $permission
-     *
+     * @param  UserContract  $user
+     * @param  string  $permission
      * @return bool
      */
     public function userHasPermission($user, $permission)
@@ -128,8 +126,7 @@ abstract class Team extends Model implements TeamContract
     /**
      * Remove the given user from the team.
      *
-     * @param UserContract $user
-     *
+     * @param  UserContract  $user
      * @return void
      */
     public function removeUser($user)
