@@ -2,7 +2,6 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
-use Laravel\Sanctum\Contracts\HasApiTokens;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\CanResetPassword;
@@ -21,7 +20,8 @@ use Illuminate\Contracts\Auth\CanResetPassword;
  *
  * @mixin \Eloquent
  */
-interface HasTeamsContract extends HasApiTokens,
+interface HasTeamsContract extends
+    //HasApiTokens, //no sanctum ma passport
     HasProfilePhotoContract,
     TwoFactorAuthenticatableContract,
     MustVerifyEmail,

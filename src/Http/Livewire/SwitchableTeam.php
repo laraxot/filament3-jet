@@ -25,7 +25,7 @@ class SwitchableTeam extends Component
     {
         $user = Filament::auth()->user();
         if (! $user instanceof UserContract) {
-            throw new \Exception('user not have usercontract');
+            throw new \Exception('['.get_class($user).'] not implements ArtMin96\FilamentJet\Contracts\HasTeamsContract ');
         }
         $this->user=$user;
         $this->teams = $this->user->allTeams();
