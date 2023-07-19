@@ -10,6 +10,7 @@ namespace Database\Factories;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
@@ -36,6 +37,8 @@ use Modules\User\Models\User;
 >>>>>>> 37a50ce5 (.)
 =======
 >>>>>>> 0b6c922d (rebase)
+=======
+>>>>>>> ff924dba (up)
 use ArtMin96\FilamentJet\Features;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
