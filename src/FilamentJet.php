@@ -235,7 +235,7 @@ final class FilamentJet
     public static function userHasTeamFeatures(UserContract $user): bool
     {
         return (array_key_exists(HasTeams::class, class_uses_recursive($user)) ||
-            method_exists($user, 'currentTeam')) &&
+                method_exists($user, 'currentTeam')) &&
             self::hasTeamFeatures();
     }
 
