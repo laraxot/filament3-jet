@@ -2,6 +2,11 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
+<<<<<<< HEAD
+=======
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
+>>>>>>> 39fcb522 (rebase)
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;

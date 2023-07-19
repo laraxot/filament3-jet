@@ -8,6 +8,10 @@ declare(strict_types=1);
 namespace App\Actions\FilamentJet;
 >>>>>>> 89797fce (.)
 
+<<<<<<< HEAD
+=======
+use Modules\User\Models\User;
+>>>>>>> 39fcb522 (rebase)
 use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Auth\Events\PasswordReset;

@@ -2,8 +2,16 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
+<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
+=======
+<<<<<<< HEAD
+=======
+use Modules\User\Models\Team;
+use Modules\User\Models\User;
+>>>>>>> 39fcb522 (rebase)
+>>>>>>> 080a5a33 (.)
 use ArtMin96\FilamentJet\Events\TeamMemberUpdated;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Rules\Role;
