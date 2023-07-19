@@ -17,8 +17,6 @@ use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\TextInput;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse;
 use Filament\Notifications\Notification;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Pipeline;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
@@ -43,7 +41,7 @@ class Login extends CardPage
 
     public bool $remember = false;
 
-    public null|UserContract $user = null;
+    public ?UserContract $user = null;
 
     public function mount(): void
     {

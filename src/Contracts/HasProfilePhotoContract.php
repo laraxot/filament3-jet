@@ -2,20 +2,13 @@
 
 namespace ArtMin96\FilamentJet\Contracts;
 
-use Illuminate\Database\Eloquent\Collection;
-use Laravel\Sanctum\Contracts\HasApiTokens;
-
-use ArtMin96\FilamentJet\Contracts\TeamContract;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
-
-
 /**
  * ArtMin96\FilamentJet\Contracts\HasProfilePhotoContract
- *
-*/
+ */
 interface HasProfilePhotoContract
 {
     public function getFilamentAvatarUrl(): ?string;
+
     /**
      * Update the user's profile photo.
      */

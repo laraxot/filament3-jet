@@ -2,9 +2,9 @@
 
 namespace ArtMin96\FilamentJet\Models;
 
+use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Database\Eloquent\Model;
-use ArtMin96\FilamentJet\Contracts\TeamContract;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -46,6 +46,7 @@ abstract class TeamInvitation extends Model
      * Get the team that the invitation belongs to.
      *  BelongsTo<the related model, the current model>
      * -return BelongsTo<TeamContract, TeamInvitation> No TeamContract ..
+     *
      * @return BelongsTo<\ArtMin96\FilamentJet\Models\Team,TeamInvitation>
      */
     public function team()

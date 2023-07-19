@@ -86,7 +86,7 @@ class Register extends CardPage
         $data = $this->form->getState();
 
         $user = $creator->create($data);
-        if (!$user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
+        if (! $user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
             throw new \Exception('user no authenticable');
         }
 

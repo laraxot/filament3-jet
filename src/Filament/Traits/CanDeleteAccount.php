@@ -17,8 +17,8 @@ trait CanDeleteAccount
      */
     public function deleteAccount(Request $request, DeletesUsers $deleter): Redirector|RedirectResponse
     {
-        $user=Auth::user()->fresh();
-        if (!$user instanceof UserContract) {
+        $user = Auth::user()->fresh();
+        if (! $user instanceof UserContract) {
             throw new \Exception('put usercontract in user');
         }
         $deleter->delete($user);

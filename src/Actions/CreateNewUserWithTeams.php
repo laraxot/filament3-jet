@@ -8,8 +8,6 @@ use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
 use Exception;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,7 +39,7 @@ class CreateNewUser implements CreatesNewUsers
                 event(new Registered($user));
 
                 if (Features::hasTeamFeatures()) {
-                    if (!$user instanceof UserContract) {
+                    if (! $user instanceof UserContract) {
                         throw new \Exception('strange things');
                     }
                     $this->createTeam($user);

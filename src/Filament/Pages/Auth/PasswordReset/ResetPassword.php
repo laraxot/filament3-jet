@@ -14,10 +14,7 @@ use Filament\Facades\Filament;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\PasswordBroker;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Password;
 use Phpsa\FilamentPasswordReveal\Password as PasswordInput;
 

@@ -78,13 +78,12 @@ class EmailVerificationPrompt extends CardPage
 
         $user = Filament::auth()->user();
 
-
         if (! method_exists($user, 'notify')) {
             $userClass = $user::class;
 
             throw new Exception("Model [{$userClass}] does not have a [notify()] method.");
         }
-        if (!$user instanceof UserContract) {
+        if (! $user instanceof UserContract) {
             throw new \Exception('strange things');
         }
 

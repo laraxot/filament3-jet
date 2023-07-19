@@ -2,12 +2,11 @@
 
 namespace ArtMin96\FilamentJet\Actions;
 
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
 use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 class ResetUserPassword implements ResetsUserPasswords
 {

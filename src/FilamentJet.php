@@ -2,27 +2,23 @@
 
 namespace ArtMin96\FilamentJet;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Database\Eloquent\Model;
-use ArtMin96\FilamentJet\Traits\HasTeams;
-use Illuminate\Validation\Rules\Password;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Contracts\Auth\CanResetPassword;
+use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
+use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Contracts\CreatesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
-use ArtMin96\FilamentJet\Contracts\TeamContract;
-use ArtMin96\FilamentJet\Contracts\AddsTeamMembers;
-use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
-use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 use ArtMin96\FilamentJet\Contracts\InvitesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\RemovesTeamMembers;
 use ArtMin96\FilamentJet\Contracts\ResetsUserPasswords;
+use ArtMin96\FilamentJet\Contracts\UpdatesTeamNames;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserProfileInformation;
-use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use ArtMin96\FilamentJet\Traits\HasTeams;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Validation\Rules\Password;
 
 final class FilamentJet
 {
@@ -227,7 +223,6 @@ final class FilamentJet
 
     /**
      * Determine if FilamentJet is supporting team features.
-     *
      */
     public static function hasTeamFeatures(): bool
     {
@@ -236,7 +231,6 @@ final class FilamentJet
 
     /**
      * Determine if a given user model utilizes the "HasTeams" trait.
-     *
      */
     public static function userHasTeamFeatures(UserContract $user): bool
     {
@@ -512,8 +506,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to create users.
-     *
-
      */
     public static function createUsersUsing(string $class): void
     {
@@ -522,8 +514,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to create teams.
-     *
-
      */
     public static function createTeamsUsing(string $class): void
     {
@@ -532,8 +522,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to update team names.
-     *
-
      */
     public static function updateTeamNamesUsing(string $class): void
     {
@@ -542,8 +530,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to add team members.
-     *
-
      */
     public static function addTeamMembersUsing(string $class): void
     {
@@ -552,8 +538,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to add team members.
-     *
-
      */
     public static function inviteTeamMembersUsing(string $class): void
     {
@@ -562,8 +546,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to remove team members.
-     *
-     * @return void
      */
     public static function removeTeamMembersUsing(string $class): void
     {
@@ -572,8 +554,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to delete teams.
-     *
-     * @return void
      */
     public static function deleteTeamsUsing(string $class): void
     {
@@ -582,8 +562,6 @@ final class FilamentJet
 
     /**
      * Register a class / callback that should be used to delete users.
-     *
-     * @return void
      */
     public static function deleteUsersUsing(string $class): void
     {

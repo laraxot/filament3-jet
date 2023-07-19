@@ -22,7 +22,7 @@ trait ProcessesExport
      */
     public function export(): void
     {
-        if (!$this->user instanceof \Spatie\PersonalDataExport\ExportsPersonalData) {
+        if (! $this->user instanceof \Spatie\PersonalDataExport\ExportsPersonalData) {
             throw new \Exception('user must implemtents Spatie\PersonalDataExport\ExportsPersonalData');
         }
         $batch = Bus::batch(new CreatePersonalDataExportJob($this->user))

@@ -2,8 +2,8 @@
 
 namespace ArtMin96\FilamentJet\Events;
 
-use Illuminate\Queue\SerializesModels;
 use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
+use Illuminate\Queue\SerializesModels;
 
 class RecoveryCodeReplaced
 {
@@ -11,13 +11,11 @@ class RecoveryCodeReplaced
 
     /**
      * The authenticated user.
-     *
      */
     public UserContract $user;
 
     /**
      * The recovery code.
-     *
      */
     public string $code;
 

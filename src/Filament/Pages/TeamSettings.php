@@ -324,6 +324,7 @@ class TeamSettings extends Page
 
     /**
      * Remove the currently authenticated user from the team.
+     *
      * @return Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function leaveTeam(RemovesTeamMembers $remover)

@@ -107,9 +107,9 @@ interface TeamContract extends ModelContract
     public function profilePhotoDisk(): string;
 
     /**
-    * Get a fresh instance of the batch represented by this ID.
-    *
-    * @return self
-    */
+     * Get a fresh instance of the batch represented by this ID.
+     *
+     * @return self
+     */
     public function fresh();
 }

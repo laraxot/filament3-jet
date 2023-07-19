@@ -14,8 +14,6 @@ use Filament\Facades\Filament;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
 use Livewire\Redirector;
@@ -99,8 +97,8 @@ class TwoFactorLogin extends CardPage
         if ($this->challengedUser) {
             return true;
         }
-        $userProvider=Filament::auth()->getProvider();
-        if (!method_exists($userProvider, 'getModel')) {
+        $userProvider = Filament::auth()->getProvider();
+        if (! method_exists($userProvider, 'getModel')) {
             throw new \Exception('getModel not exists in userProvider');
         }
         $userModel = $userProvider->getModel();
@@ -111,6 +109,7 @@ class TwoFactorLogin extends CardPage
 
     /**
      * Get the user that is attempting the two factor challenge.
+     *
      * @return UserContract|Redirector|\Illuminate\Http\RedirectResponse
      */
     public function challengedUser()
@@ -119,19 +118,16 @@ class TwoFactorLogin extends CardPage
             return $this->challengedUser;
         }
 
-
-        $userProvider=Filament::auth()->getProvider();
-        if (!method_exists($userProvider, 'getModel')) {
+        $userProvider = Filament::auth()->getProvider();
+        if (! method_exists($userProvider, 'getModel')) {
             throw new \Exception('getModel not exists in userProvider');
         }
         $userModel = $userProvider->getModel();
-
 
         if (! session()->has("{$this->sessionPrefix}login.id") ||
             ! $user = $userModel::find(session()->get("{$this->sessionPrefix}login.id"))) {
             return redirect()->to(jetRouteActions()->loginRoute());
         }
-
 
         return $this->challengedUser = $user;
     }
@@ -192,7 +188,7 @@ class TwoFactorLogin extends CardPage
             return null;
         }
 
-        if (!$user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
+        if (! $user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
             throw new \Exception('strange things');
         }
 

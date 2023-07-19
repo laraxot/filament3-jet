@@ -41,7 +41,6 @@ class PasswordConfirmationAction extends Action
     /**
      * Undocumented function
      *
-     * @param array $data
      * @return mixed
      */
     public function call(array $data = [])
