@@ -47,7 +47,7 @@ class SwitchableTeam extends Component
         if ($this->user == null) {
             throw new \Exception('wip');
         }
-        if(!$team instanceof TeamContract){
+        if (! $team instanceof TeamContract) {
             throw new \Exception('wip');
         }
 
@@ -61,7 +61,7 @@ class SwitchableTeam extends Component
             ->title(__('Team switched'))
             ->success()
             ->send();
-        $filamentData=FilamentData::make();
+        $filamentData = FilamentData::make();
 
         return redirect($filamentData->path, 303);
     }

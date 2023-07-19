@@ -1,4 +1,5 @@
 <?php
+
 namespace ArtMin96\FilamentJet\Datas;
 
 use Spatie\LaravelData\Data;
@@ -6,7 +7,6 @@ use Spatie\LaravelData\Data;
 class FilamentData extends Data
 {
     public string $path;
-
 
     public static function make(): self
     {

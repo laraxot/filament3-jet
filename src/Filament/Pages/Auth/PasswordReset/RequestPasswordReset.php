@@ -41,19 +41,21 @@ class RequestPasswordReset extends CardPage
 
     protected function getCardWidth(): string
     {
-        $res= Features::getOption(Features::resetPasswords(), 'request.card_width');
-        if(!is_string($res)){
+        $res = Features::getOption(Features::resetPasswords(), 'request.card_width');
+        if (! is_string($res)) {
             throw new \Exception('wip');
         }
+
         return $res;
     }
 
     protected function hasBrand(): bool
     {
-        $res= Features::optionEnabled(Features::resetPasswords(), 'request.has_brand');
-        if(!is_bool($res)){
+        $res = Features::optionEnabled(Features::resetPasswords(), 'request.has_brand');
+        if (! is_bool($res)) {
             throw new \Exception('wip');
         }
+
         return $res;
     }
 

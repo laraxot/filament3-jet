@@ -2,10 +2,9 @@
 
 namespace ArtMin96\FilamentJet\Filament\Traits;
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use Filament\Notifications\Notification;
 use ArtMin96\FilamentJet\Datas\SessionData;
+use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Auth;
 
 trait CanLogoutOtherBrowserSessions
 {
@@ -43,7 +42,7 @@ trait CanLogoutOtherBrowserSessions
      */
     protected function deleteOtherSessionRecords()
     {
-        $sessionData=SessionData::make();
+        $sessionData = SessionData::make();
         $sessionData->deleteOtherSessionRecords();
     }
 }
