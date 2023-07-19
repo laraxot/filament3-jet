@@ -48,8 +48,11 @@ trait HasTeams
     /**
      * Switch the user's context to the given team.
      */
-    public function switchTeam(TeamContract $team): bool
+    public function switchTeam(?TeamContract $team): bool
     {
+        if($team==null){
+            return false;
+        }
         if (! $this->belongsToTeam($team)) {
             return false;
         }
