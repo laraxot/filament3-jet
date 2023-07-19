@@ -3,6 +3,7 @@
 namespace ArtMin96\FilamentJet\Contracts;
 
 // use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;;
+use ArtMin96\FilamentJet\Contracts\ModelContract;
 use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 /**
@@ -14,10 +15,10 @@ use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
  * @property int $personal_team
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Modules\User\Models\User|null $owner
+ * @property-read UserContract|null $owner
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
  * @property-read int|null $team_invitations_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, UserContract> $users
  * @property-read int|null $users_count
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()
@@ -32,28 +33,9 @@ use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
  *
  * @mixin \Eloquent
  */
-interface TeamContract
+interface TeamContract extends ModelContract
 {
-    /**
-     * Fill the model with an array of attributes. Force mass assignment.
-     *
-     * @return $this
-     */
-    public function forceFill(array $attributes);
 
-    /**
-     * Save the model to the database.
-     *
-     * @return bool
-     */
-    public function save(array $options = []);
-
-    /**
-     * Save a new model and return the instance. Allow mass-assignment.
-     *
-     * @return \Illuminate\Database\Eloquent\Model|$this
-     */
-    public function forceCreate(array $attributes);
 
     /**
      * Get the owner of the team.
@@ -127,17 +109,5 @@ interface TeamContract
      */
     public function profilePhotoDisk(): string;
 
-    /**
-     * Duplicate the instance and unset all the loaded relations.
-     *
-     * @return $this
-     */
-    public function withoutRelations();
 
-    /**
-     * Get a fresh instance of the batch represented by this ID.
-     *
-     * @return self
-     */
-    public function fresh();
 }

@@ -15,10 +15,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $personal_team
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Modules\User\Models\User|null $owner
+ * @property-read UserContract|null $owner
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
  * @property-read int|null $team_invitations_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, UserContract> $users
  * @property-read int|null $users_count
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()

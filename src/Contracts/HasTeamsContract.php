@@ -3,17 +3,24 @@
 namespace ArtMin96\FilamentJet\Contracts;
 
 use Laravel\Sanctum\Contracts\HasApiTokens;
+use Illuminate\Database\Eloquent\Collection;
+use ArtMin96\FilamentJet\Contracts\TeamContract;
+use ArtMin96\FilamentJet\Contracts\ModelContract;
 
 /**
  * ArtMin96\FilamentJet\Contracts\HasTeamsContract
  *
  * @property int $id
+ * @property string $name
  * @property TeamContract $currentTeam
- * @property array $tokens
+ * @property Collection $tokens
+ * @property \Illuminate\Support\Carbon|null $two_factor_confirmed_at
+ * @property int $current_team_id
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, TeamContract> $ownedTeams
  *
- * @method self fresh()
+ * @mixin \Eloquent
  */
-interface HasTeamsContract extends HasApiTokens
+interface HasTeamsContract extends HasApiTokens,ModelContract
 {
     /**
      * Determine if the given team is the current team.
@@ -114,17 +121,5 @@ interface HasTeamsContract extends HasApiTokens
      */
     public function hasTeamPermission($team, string $permission);
 
-    /**
-     * Duplicate the instance and unset all the loaded relations.
-     *
-     * @return $this
-     */
-    public function withoutRelations();
 
-    /**
-     * Get a fresh instance of the batch represented by this ID.
-     *
-     * @return self
-     */
-    public function fresh();
 }

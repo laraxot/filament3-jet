@@ -63,7 +63,8 @@ class TeamSettings extends Page
     /**
      * The user that is having their role managed.
      */
-    public Authenticatable|Model $managingRoleFor;
+    //public Authenticatable|Model $managingRoleFor;
+    public UserContract $managingRoleFor;
 
     /**
      * The current role for the user that is having their role managed.

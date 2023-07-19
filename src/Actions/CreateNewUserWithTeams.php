@@ -11,7 +11,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Modules\User\Models\Team;
+use ArtMin96\FilamentJet\Contracts\HasTeamsContract as UserContract;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -53,7 +53,7 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Create a personal team for the user.
      */
-    protected function createTeam(Model|Authenticatable $user): void
+    protected function createTeam(UserContract $user): void
     {
         if (! method_exists($user, 'ownedTeams')) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
