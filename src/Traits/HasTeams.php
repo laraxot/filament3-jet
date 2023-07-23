@@ -44,6 +44,11 @@ trait HasTeams
             $this->switchTeam($this->personalTeam());
         }
 
+        if($this->allTeams()->count() == 0){
+            $this->current_team_id = null;
+            $this->update();
+        }
+
         return $this->belongsTo(FilamentJet::teamModel(), 'current_team_id');
     }
 
