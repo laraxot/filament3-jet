@@ -4,9 +4,6 @@ namespace ArtMin96\FilamentJet\Contracts;
 
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 
 /**
  * ArtMin96\FilamentJet\Contracts\UserContract
@@ -36,6 +33,7 @@ use Illuminate\Support\Collection;
  * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Passport\Token> $tokens
  * @property-read int|null $tokens_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User permission($permissions)
@@ -54,16 +52,11 @@ use Illuminate\Support\Collection;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorRecoveryCodes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 interface UserContract extends
     //HasApiTokens, //no sanctum ma passport
-    HasTeamsContract,
-    PassportHasApiTokensContract,
-    HasProfilePhotoContract,
-    TwoFactorAuthenticatableContract,
-    MustVerifyEmail,
-    CanResetPassword,
-    ModelContract
+    HasTeamsContract, PassportHasApiTokensContract, HasProfilePhotoContract, TwoFactorAuthenticatableContract, MustVerifyEmail, CanResetPassword, ModelContract
 {
 }
