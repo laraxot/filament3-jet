@@ -5,7 +5,6 @@ use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Controllers\Auth\EmailVerificationController;
 use Illuminate\Support\Facades\Route;
 
-
 /**
  * @var string $domain
  */
@@ -35,7 +34,7 @@ Route::domain($domain)
         $authMiddleware = config('filament-jet.auth_middleware', 'auth');
 
         Route::name('auth.')
-            ->middleware(['guest:' . $guard])
+            ->middleware(['guest:'.$guard])
             ->group(function () {
                 // Two Factor Authentication...
                 if (Features::enabled(Features::twoFactorAuthentication())) {
