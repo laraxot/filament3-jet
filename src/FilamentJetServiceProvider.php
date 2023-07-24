@@ -267,10 +267,20 @@ class FilamentJetServiceProvider extends PluginServiceProvider
                     $userMenuItems = [];
 
                     if (config('filament-jet.user_menu.team_settings.show')) {
+                        /**
+                         * @var string|null $icon
+                         */
+                        $icon = config('filament-jet.user_menu.team_settings.icon', 'heroicon-o-cog');
+
+                        /**
+                         * @var int|null $sort
+                         */
+                        $sort = config('filament-jet.user_menu.team_settings.sort');
+
                         $userMenuItems['team-settings'] = UserMenuItem::make()
                             ->label(__('filament-jet::jet.user_menu.team_settings'))
-                            ->icon(config('filament-jet.user_menu.team_settings.icon', 'heroicon-o-cog'))
-                            ->sort(config('filament-jet.user_menu.team_settings.sort'))
+                            ->icon($icon)
+                            ->sort($sort)
                             ->url(TeamSettings::getUrl());
                     }
 
