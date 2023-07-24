@@ -194,7 +194,7 @@ class FilamentJetServiceProvider extends PluginServiceProvider
      */
     protected function registerComponent(string $component): void
     {
-        Blade::component('filament-jet::components.'.$component, 'filament-jet-'.$component);
+        Blade::component('filament-jet::components.' . $component, 'filament-jet-' . $component);
     }
 
     /**
@@ -202,18 +202,18 @@ class FilamentJetServiceProvider extends PluginServiceProvider
      */
     protected function configurePublishing(): void
     {
-        if (! $this->app->runningInConsole()) {
+        if (!$this->app->runningInConsole()) {
             return;
         }
 
         $this->publishes([
-            __DIR__.'/../stubs/config/filament-jet.php' => config_path('filament-jet.php'),
+            __DIR__ . '/../stubs/config/filament-jet.php' => config_path('filament-jet.php'),
         ], 'filament-jet-config');
 
         $this->publishes([
-            __DIR__.'/../database/migrations/2022_10_21_100000_create_teams_table.php' => database_path('migrations/2022_10_21_100000_create_teams_table.php'),
-            __DIR__.'/../database/migrations/2022_10_21_200000_create_team_user_table.php' => database_path('migrations/2022_10_21_200000_create_team_user_table.php'),
-            __DIR__.'/../database/migrations/2022_10_21_300000_create_team_invitations_table.php' => database_path('migrations/2022_10_21_300000_create_team_invitations_table.php'),
+            __DIR__ . '/../database/migrations/2022_10_21_100000_create_teams_table.php' => database_path('migrations/2022_10_21_100000_create_teams_table.php'),
+            __DIR__ . '/../database/migrations/2022_10_21_200000_create_team_user_table.php' => database_path('migrations/2022_10_21_200000_create_team_user_table.php'),
+            __DIR__ . '/../database/migrations/2022_10_21_300000_create_team_invitations_table.php' => database_path('migrations/2022_10_21_300000_create_team_invitations_table.php'),
         ], 'filament-jet-team-migrations');
     }
 
@@ -285,10 +285,21 @@ class FilamentJetServiceProvider extends PluginServiceProvider
                     }
 
                     if (config('filament-jet.user_menu.create_team.show')) {
+                        /**
+                         * @var string|null $icon
+                         */
+                        $icon = config('filament-jet.user_menu.create_team.icon', 'heroicon-o-users');
+
+                        /**
+                         * @var int|null $sort
+                         */
+                        $sort = config('filament-jet.user_menu.create_team.sort');
+
+
                         $userMenuItems['create-team'] = UserMenuItem::make()
                             ->label(__('filament-jet::jet.user_menu.create_team'))
-                            ->icon(config('filament-jet.user_menu.create_team.icon', 'heroicon-o-users'))
-                            ->sort(config('filament-jet.user_menu.create_team.sort'))
+                            ->icon($icon)
+                            ->sort($sort)
                             ->url(CreateTeamPage::getUrl());
                     }
 
