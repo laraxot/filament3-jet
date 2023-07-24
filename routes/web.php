@@ -5,16 +5,37 @@ use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Controllers\Auth\EmailVerificationController;
 use Illuminate\Support\Facades\Route;
 
-Route::domain(config('filament.domain'))
-    ->middleware(config('filament.middleware.base'))
-    ->name(config('filament-jet.route_group_prefix'))
-    ->prefix(config('filament.path'))
+
+/**
+ * @var string $domain
+ */
+$domain = config('filament.domain');
+
+/**
+ * @var array<int,string> $middlewares
+ */
+$middlewares = config('filament.middleware.base');
+
+/**
+ * @var string $name
+ */
+$name = config('filament-jet.route_group_prefix');
+
+/**
+ * @var string $prefix
+ */
+$prefix = config('filament.path');
+
+Route::domain($domain)
+    ->middleware($middlewares)
+    ->name($name)
+    ->prefix($prefix)
     ->group(function () {
         $guard = config('filament.auth.guard');
         $authMiddleware = config('filament-jet.auth_middleware', 'auth');
 
         Route::name('auth.')
-            ->middleware(['guest:'.$guard])
+            ->middleware(['guest:' . $guard])
             ->group(function () {
                 // Two Factor Authentication...
                 if (Features::enabled(Features::twoFactorAuthentication())) {
