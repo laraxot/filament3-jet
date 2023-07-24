@@ -60,7 +60,7 @@ trait HasTeams
         if (null == $team) {
             return false;
         }
-        if (!$this->belongsToTeam($team)) {
+        if (! $this->belongsToTeam($team)) {
             return false;
         }
 
@@ -114,7 +114,7 @@ trait HasTeams
         if (null == $res) {
             return null;
         }
-        if (!$res instanceof TeamContract) {
+        if (! $res instanceof TeamContract) {
             throw new \Exception('strange things');
         }
 
@@ -158,7 +158,7 @@ trait HasTeams
             return new OwnerRole();
         }
 
-        if (!$this->belongsToTeam($team)) {
+        if (! $this->belongsToTeam($team)) {
             return null;
         }
 
@@ -195,7 +195,7 @@ trait HasTeams
             return ['*'];
         }
 
-        if (!$this->belongsToTeam($team)) {
+        if (! $this->belongsToTeam($team)) {
             return [];
         }
 
@@ -211,13 +211,13 @@ trait HasTeams
             return true;
         }
 
-        if (!$this->belongsToTeam($team)) {
+        if (! $this->belongsToTeam($team)) {
             return false;
         }
 
         if (
             in_array(HasApiTokens::class, class_uses_recursive($this))
-            && !$this->tokenCan($permission)
+            && ! $this->tokenCan($permission)
             && null !== $this->currentAccessToken()
         ) {
             return false;
