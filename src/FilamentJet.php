@@ -376,7 +376,7 @@ final class FilamentJet
     public static function findUserByIdOrFail(int $id)
     {
         $res = self::newUserModel()->where('id', $id)->firstOrFail();
-        if (!$res instanceof UserContract) {
+        if (! $res instanceof UserContract) {
             throw new \Exception('strange things');
         }
 
@@ -389,7 +389,7 @@ final class FilamentJet
     public static function findUserByEmailOrFail(string $email): UserContract
     {
         $res = self::newUserModel()->where('email', $email)->firstOrFail();
-        if (!$res instanceof UserContract) {
+        if (! $res instanceof UserContract) {
             throw new \Exception('strange things');
         }
 
@@ -416,7 +416,7 @@ final class FilamentJet
         $model = self::userModel();
 
         $res = new $model();
-        if (!$res instanceof Model) {
+        if (! $res instanceof Model) {
             throw new \Exception('wip');
         }
 
@@ -456,7 +456,7 @@ final class FilamentJet
         $model = self::teamModel();
 
         $res = new $model();
-        if (!$res instanceof Model) {
+        if (! $res instanceof Model) {
             throw new \Exception('wip');
         }
 
@@ -615,7 +615,7 @@ final class FilamentJet
     public static function getVerifyEmailUrl(UserContract $user): string
     {
         return URL::temporarySignedRoute(
-            config('filament-jet.route_group_prefix') . 'auth.email-verification.verify',
+            config('filament-jet.route_group_prefix').'auth.email-verification.verify',
             now()->addMinutes(config('auth.verification.expire', 60)),
             [
                 'id' => $user->getKey(),
@@ -626,7 +626,7 @@ final class FilamentJet
 
     public static function getResetPasswordUrl(string $token, UserContract $user): string
     {
-        return URL::signedRoute(config('filament-jet.route_group_prefix') . 'auth.password-reset.reset', [
+        return URL::signedRoute(config('filament-jet.route_group_prefix').'auth.password-reset.reset', [
             'email' => $user->getEmailForPasswordReset(),
             'token' => $token,
         ]);
@@ -661,11 +661,11 @@ final class FilamentJet
      */
     public static function localizedMarkdownPath($name)
     {
-        $localName = preg_replace('#(\.md)$#i', '.' . app()->getLocale() . '$1', $name);
+        $localName = preg_replace('#(\.md)$#i', '.'.app()->getLocale().'$1', $name);
 
         return Arr::first([
-            resource_path('markdown/' . $localName),
-            resource_path('markdown/' . $name),
+            resource_path('markdown/'.$localName),
+            resource_path('markdown/'.$name),
         ], function ($path) {
             return file_exists($path);
         });
