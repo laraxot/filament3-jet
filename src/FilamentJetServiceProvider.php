@@ -184,7 +184,7 @@ class FilamentJetServiceProvider extends PluginServiceProvider
      */
     protected function registerComponent(string $component): void
     {
-        Blade::component('filament-jet::components.'.$component, 'filament-jet-'.$component);
+        Blade::component('filament-jet::components.' . $component, 'filament-jet-' . $component);
     }
 
     /**
@@ -192,26 +192,30 @@ class FilamentJetServiceProvider extends PluginServiceProvider
      */
     protected function configurePublishing(): void
     {
-        if (! $this->app->runningInConsole()) {
+        if (!$this->app->runningInConsole()) {
             return;
         }
 
         $this->publishes([
-            __DIR__.'/../stubs/config/filament-jet.php' => config_path('filament-jet.php'),
+            __DIR__ . '/../stubs/config/filament-jet.php' => config_path('filament-jet.php'),
         ], 'filament-jet-config');
 
         $this->publishes([
-            __DIR__.'/../database/migrations/2022_10_21_100000_create_teams_table.php' => database_path('migrations/2022_10_21_100000_create_teams_table.php'),
-            __DIR__.'/../database/migrations/2022_10_21_200000_create_team_user_table.php' => database_path('migrations/2022_10_21_200000_create_team_user_table.php'),
-            __DIR__.'/../database/migrations/2022_10_21_300000_create_team_invitations_table.php' => database_path('migrations/2022_10_21_300000_create_team_invitations_table.php'),
+            __DIR__ . '/../database/migrations/2022_10_21_100000_create_teams_table.php' => database_path('migrations/2022_10_21_100000_create_teams_table.php'),
+            __DIR__ . '/../database/migrations/2022_10_21_200000_create_team_user_table.php' => database_path('migrations/2022_10_21_200000_create_team_user_table.php'),
+            __DIR__ . '/../database/migrations/2022_10_21_300000_create_team_invitations_table.php' => database_path('migrations/2022_10_21_300000_create_team_invitations_table.php'),
         ], 'filament-jet-team-migrations');
     }
 
     protected function configureDisks(): void
     {
+        /**
+         * @var array<string,array<string,mixed>> $filesystem_disks;
+         */
+        $filesystem_disks = config()->get('filesystems.disks');
         config()->set(
             'filesystems.disks',
-            collect(config()->get('filesystems.disks'))
+            collect($filesystem_disks)
                 ->merge([
                     'personal-data-exports' => [
                         'driver' => 'local',
@@ -243,11 +247,12 @@ class FilamentJetServiceProvider extends PluginServiceProvider
                     'user-menu.start',
                     fn (): string => Blade::render('@livewire(\'switchable-team\')'),
                 );
-
             }
 
-            if (config('filament-jet.user_menu.team_settings.show') ||
-                config('filament-jet.user_menu.create_team.show')) {
+            if (
+                config('filament-jet.user_menu.team_settings.show') ||
+                config('filament-jet.user_menu.create_team.show')
+            ) {
                 Filament::serving(function () {
                     $userMenuItems = [];
 
