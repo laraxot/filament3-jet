@@ -2,17 +2,19 @@
 
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
-use ArtMin96\FilamentJet\Contracts\UserContract;
-use ArtMin96\FilamentJet\Datas\FilamentJetData;
-use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
-use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasSanctumPermissionsProperty;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
-use Filament\Forms\ComponentContainer;
-use Filament\Forms\Components\CheckboxList;
-use Filament\Forms\Components\TextInput;
 use Filament\Pages\Page;
+use Laravel\Sanctum\NewAccessToken;
+use ArtMin96\FilamentJet\FilamentJet;
+use Filament\Forms\ComponentContainer;
+use Filament\Forms\Components\TextInput;
+use Laravel\Sanctum\PersonalAccessToken;
+use Filament\Forms\Components\CheckboxList;
 use Illuminate\Database\Eloquent\Collection;
+use ArtMin96\FilamentJet\Datas\FilamentJetData;
+use ArtMin96\FilamentJet\Contracts\UserContract;
+use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
+use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasSanctumPermissionsProperty;
 
 /**
  * Undocumented class
@@ -97,7 +99,7 @@ class ApiTokens extends Page
     /**
      * Undocumented function
      *
-     * @param  object  $token
+     * @param  \Laravel\Passport\PersonalAccessTokenResult  $token
      */
     protected function displayTokenValue($token): void
     {
