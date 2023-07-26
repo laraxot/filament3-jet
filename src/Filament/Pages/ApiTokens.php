@@ -99,7 +99,7 @@ class ApiTokens extends Page
     /**
      * Undocumented function.
      *
-     * @param \Laravel\Passport\PersonalAccessTokenResult $token
+     * @param  \Laravel\Passport\PersonalAccessTokenResult  $token
      */
     protected function displayTokenValue($token): void
     {
