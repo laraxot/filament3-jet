@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ArtMin96\FilamentJet\Actions;
 
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 // use ArtMin96\FilamentJet\Contracts\UserContract;;
-//use ArtMin96\FilamentJet\Contracts\UserContract;
+// use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Support\Facades\DB;
 
-class DeleteUser implements DeletesUsers
+class DeleteUserWithTeams implements DeletesUsers
 {
     /**
      * The team deleter implementation.
