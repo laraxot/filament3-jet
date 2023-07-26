@@ -32,7 +32,7 @@ use Livewire\Component;
 class ApiTokensTable extends Component implements HasTable
 {
     use InteractsWithTable;
-    // use HasSanctumPermissionsProperty;
+    // //use HasSanctumPermissionsProperty;
 
     /**
      * Undocumented variable.
