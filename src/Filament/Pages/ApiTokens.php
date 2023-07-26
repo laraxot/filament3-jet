@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ArtMin96\FilamentJet\Filament\Pages;
 
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Datas\FilamentJetData;
 use ArtMin96\FilamentJet\Filament\Traits\HasCachedAction;
 use ArtMin96\FilamentJet\FilamentJet;
-use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasSanctumPermissionsProperty;
+// use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasSanctumPermissionsProperty;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\CheckboxList;
@@ -15,11 +17,11 @@ use Filament\Pages\Page;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
- * Undocumented class
+ * Undocumented class.
  *
- * @property UserContract $user
+ * @property UserContract       $user
  * @property ComponentContainer $form
- * @property Collection $sanctumPermissions
+ * @property Collection         $sanctumPermissions
  *
  * @method array getHiddenActions()
  */
@@ -27,7 +29,7 @@ class ApiTokens extends Page
 {
     use HasCachedAction;
     use HasUserProperty;
-    use HasSanctumPermissionsProperty;
+    // use HasSanctumPermissionsProperty;
 
     /**
      * The create API token name.
@@ -56,7 +58,7 @@ class ApiTokens extends Page
     protected static function shouldRegisterNavigation(): bool
     {
         $filamentJetData = FilamentJetData::make();
-        //return config('filament-jet.should_register_navigation.api_tokens');
+        // return config('filament-jet.should_register_navigation.api_tokens');
         return $filamentJetData->should_register_navigation->api_tokens;
     }
 
@@ -95,9 +97,9 @@ class ApiTokens extends Page
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
-     * @param  \Laravel\Passport\PersonalAccessTokenResult  $token
+     * @param \Laravel\Passport\PersonalAccessTokenResult $token
      */
     protected function displayTokenValue($token): void
     {
