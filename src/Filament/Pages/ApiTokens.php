@@ -29,7 +29,7 @@ class ApiTokens extends Page
 {
     use HasCachedAction;
     use HasUserProperty;
-    // //use HasSanctumPermissionsProperty;
+    // ////use HasSanctumPermissionsProperty;
 
     /**
      * The create API token name.
