@@ -14,7 +14,7 @@ class FilamentJetData extends Data
     {
         $data = config('filament-jet');
         if (! is_array($data)) {
-            throw new \Exception('straneg things');
+            throw new \Exception('config filament-jet is not an array');
         }
 
         return self::from($data);
