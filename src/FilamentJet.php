@@ -628,7 +628,7 @@ final class FilamentJet
         $expire = config('auth.verification.expire', 60);
 
         return URL::temporarySignedRoute(
-            config('filament-jet.route_group_prefix') . 'auth.email-verification.verify',
+            config('filament-jet.route_group_prefix').'auth.email-verification.verify',
             now()->addMinutes(config('auth.verification.expire', 60)),
             [
                 'id' => $user->getKey(),
@@ -639,7 +639,7 @@ final class FilamentJet
 
     public static function getResetPasswordUrl(string $token, UserContract $user): string
     {
-        return URL::signedRoute(config('filament-jet.route_group_prefix') . 'auth.password-reset.reset', [
+        return URL::signedRoute(config('filament-jet.route_group_prefix').'auth.password-reset.reset', [
             'email' => $user->getEmailForPasswordReset(),
             'token' => $token,
         ]);
@@ -674,7 +674,7 @@ final class FilamentJet
      */
     public static function localizedMarkdownPath($name)
     {
-        $localName = preg_replace('#(\.md)$#i', '.' . app()->getLocale() . '$1', $name);
+        $localName = preg_replace('#(\.md)$#i', '.'.app()->getLocale().'$1', $name);
 
         /**
          * @var string|null $return
