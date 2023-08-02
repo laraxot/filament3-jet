@@ -628,13 +628,8 @@ final class FilamentJet
         $expire = config('auth.verification.expire', 60);
 
         return URL::temporarySignedRoute(
-<<<<<<< HEAD
-            config('filament-jet.route_group_prefix').'auth.email-verification.verify',
-            now()->addMinutes($expire),
-=======
             config('filament-jet.route_group_prefix') . 'auth.email-verification.verify',
             now()->addMinutes(config('auth.verification.expire', 60)),
->>>>>>> fcdc5179 (.)
             [
                 'id' => $user->getKey(),
                 'hash' => sha1($user->getEmailForVerification()),
@@ -681,18 +676,12 @@ final class FilamentJet
     {
         $localName = preg_replace('#(\.md)$#i', '.' . app()->getLocale() . '$1', $name);
 
-<<<<<<< HEAD
         /**
          * @var string|null $return
          */
         $return = Arr::first([
             resource_path('markdown/'.$localName),
             resource_path('markdown/'.$name),
-=======
-        return Arr::first([
-            resource_path('markdown/' . $localName),
-            resource_path('markdown/' . $name),
->>>>>>> fcdc5179 (.)
         ], function ($path) {
             return file_exists($path);
         });
