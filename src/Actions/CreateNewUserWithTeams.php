@@ -20,7 +20,7 @@ class CreateNewUserWithTeams implements CreatesNewUsers
     /**
      * Create a newly registered user.
      *
-     * @param array<string, string> $input
+     * @param  array<string, string>  $input
      */
     public function create(array $input): UserContract
     {
