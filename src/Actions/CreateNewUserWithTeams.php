@@ -1,22 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ArtMin96\FilamentJet\Actions;
 
 use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
-use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class CreateNewUser implements CreatesNewUsers
+/**
+ * CreateNewUserWithTeams.
+ */
+class CreateNewUserWithTeams implements CreatesNewUsers
 {
     /**
      * Create a newly registered user.
      *
-     * @param  array<string, string>  $input
+     * @param array<string, string> $input
      */
     public function create(array $input): UserContract
     {
@@ -33,7 +37,7 @@ class CreateNewUser implements CreatesNewUsers
                     );
                 }
                 if (! $user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
-                    throw new Exception('user must implements Authenticatable');
+                    throw new \Exception('user must implements Authenticatable');
                 }
 
                 event(new Registered($user));
