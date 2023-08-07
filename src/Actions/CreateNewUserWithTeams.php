@@ -13,11 +13,19 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * CreateNewUserWithTeams.
  */
 =======
 >>>>>>> e7a46d33 (.)
+=======
+=======
+/**
+ * CreateNewUserWithTeams.
+ */
+>>>>>>> bc75677e (up)
+>>>>>>> 15647670 (.)
 class CreateNewUserWithTeams implements CreatesNewUsers
 {
     /**
