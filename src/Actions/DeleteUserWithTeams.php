@@ -7,40 +7,9 @@ namespace ArtMin96\FilamentJet\Actions;
 use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
-<<<<<<< HEAD
-<<<<<<< HEAD
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Support\Facades\DB;
 
-/**
- * DeleteUserWithTeams.
- */
-=======
-=======
->>>>>>> 15647670 (.)
-// use ArtMin96\FilamentJet\Contracts\UserContract;;
-// use ArtMin96\FilamentJet\Contracts\UserContract;
-<<<<<<< HEAD
-use ArtMin96\FilamentJet\Contracts\UserContract;
-use Illuminate\Support\Facades\DB;
-
-=======
-use ArtMin96\FilamentJet\Contracts\UserContract;
-use Illuminate\Support\Facades\DB;
-
-<<<<<<< HEAD
->>>>>>> e7a46d33 (.)
-=======
-=======
-use ArtMin96\FilamentJet\Contracts\UserContract;
-use Illuminate\Support\Facades\DB;
-
-/**
- * DeleteUserWithTeams.
- */
->>>>>>> bc75677e (up)
->>>>>>> 15647670 (.)
->>>>>>> 7e5184fee4cb75679000d7b99495575cff1cbaec
 class DeleteUserWithTeams implements DeletesUsers
 {
     /**
