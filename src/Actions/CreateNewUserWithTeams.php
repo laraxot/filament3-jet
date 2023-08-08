@@ -12,12 +12,29 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * CreateNewUserWithTeams.
+ */
+=======
+>>>>>>> e7a46d33 (.)
+=======
+=======
+/**
+ * CreateNewUserWithTeams.
+ */
+>>>>>>> bc75677e (up)
+>>>>>>> 15647670 (.)
+>>>>>>> 7e5184fee4cb75679000d7b99495575cff1cbaec
 class CreateNewUserWithTeams implements CreatesNewUsers
 {
     /**
      * Create a newly registered user.
      *
-     * @param  array<string, string>  $input
+     * @param array<string, string> $input
      */
     public function create(array $input): UserContract
     {

@@ -16,6 +16,7 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "abanoubnassem/filament-grecaptcha-field": "^0.0.5",
         "bacon/bacon-qr-code": "^2.0",
         "filament/filament": "^2.17",
@@ -29,21 +30,36 @@
         "spatie/laravel-package-tools": "^1.15",
         "spatie/laravel-personal-data-export": "^4.2",
         "suleymanozev/filament-radio-button-field": "^2.0"
+=======
+        "abanoubnassem/filament-grecaptcha-field": "*",
+        "bacon/bacon-qr-code": "*",
+        "filament/filament": "*",
+        "illuminate/contracts": "*",
+        "jenssegers/agent": "*",
+        "laravel/passport": "*",
+        "laravel/sanctum": "*",
+        "phpsa/filament-password-reveal": "*",
+        "pragmarx/google2fa": "*",
+        "spatie/laravel-data": "*",
+        "spatie/laravel-package-tools": "*",
+        "spatie/laravel-personal-data-export": "*",
+        "suleymanozev/filament-radio-button-field": "*"
+>>>>>>> 7e5184fee4cb75679000d7b99495575cff1cbaec
     },
     "require-dev": {
-        "laravel/pint": "^1.10",
-        "nunomaduro/collision": "^6.0",
-        "nunomaduro/larastan": "^2.0.1",
-        "orchestra/testbench": "^7.0",
-        "pestphp/pest": "^1.21",
-        "pestphp/pest-plugin-laravel": "^1.1",
-        "pestphp/pest-plugin-livewire": "^1.0",
-        "pestphp/pest-plugin-parallel": "^0.3",
-        "phpstan/extension-installer": "^1.1",
-        "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0",
-        "phpunit/phpunit": "^9.5",
-        "spatie/laravel-ray": "^1.26"
+        "laravel/pint": "*",
+        "nunomaduro/collision": "*",
+        "nunomaduro/larastan": "*",
+        "orchestra/testbench": "*",
+        "pestphp/pest": "*",
+        "pestphp/pest-plugin-laravel": "*",
+        "pestphp/pest-plugin-livewire": "*",
+        "pestphp/pest-plugin-parallel": "*",
+        "phpstan/extension-installer": "*",
+        "phpstan/phpstan-deprecation-rules": "*",
+        "phpstan/phpstan-phpunit": "*",
+        "phpunit/phpunit": "*",
+        "spatie/laravel-ray": "*"
     },
     "autoload": {
         "files": [
