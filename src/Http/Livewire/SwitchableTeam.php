@@ -25,6 +25,7 @@ class SwitchableTeam extends Component
     public function mount(): void
     {
         $user = Filament::auth()->user();
+
         if ($user == null) {
             return; //persa sessione
         }
