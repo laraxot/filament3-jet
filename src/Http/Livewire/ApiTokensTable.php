@@ -48,6 +48,22 @@ class ApiTokensTable extends Component implements HasTable
         return view('filament-jet::livewire.api-tokens-table');
     }
 
+    public function edit(Model $record, array $data): void
+    {
+        $record->forceFill([
+            'abilities' => FilamentJet::validPermissions($data['abilities']),
+        ])->save();
+
+        Filament::notify('success', __('filament-jet::api.update.notify'));
+    }
+
+    public function delete(Model $record): void
+    {
+        $record->delete();
+
+        Filament::notify('success', __('filament-jet::api.delete.notify'));
+    }
+
     protected function getTableQuery(): Builder|Relation
     {
         return app(Sanctum::$personalAccessTokenModel)->where([
@@ -121,21 +137,5 @@ class ApiTokensTable extends Component implements HasTable
                 ->icon('heroicon-o-trash')
                 ->requiresConfirmation(),
         ];
-    }
-
-    public function edit(Model $record, array $data): void
-    {
-        $record->forceFill([
-            'abilities' => FilamentJet::validPermissions($data['abilities']),
-        ])->save();
-
-        Filament::notify('success', __('filament-jet::api.update.notify'));
-    }
-
-    public function delete(Model $record): void
-    {
-        $record->delete();
-
-        Filament::notify('success', __('filament-jet::api.delete.notify'));
     }
 }

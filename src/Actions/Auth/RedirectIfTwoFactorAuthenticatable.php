@@ -44,9 +44,8 @@ class RedirectIfTwoFactorAuthenticatable
                 ! is_null($user->two_factor_confirmed_at) &&
                 in_array(TwoFactorAuthenticatable::class, class_uses_recursive($user))) {
                 return $this->twoFactorChallengeResponse($data, $user);
-            } else {
-                return $next($data);
             }
+            return $next($data);
         }
 
         if (optional($user)->two_factor_secret &&
@@ -61,6 +60,7 @@ class RedirectIfTwoFactorAuthenticatable
      * Attempt to validate the incoming credentials.
      *
      * @param  array<string, string>  $data
+     *
      * @return UserContract
      */
     protected function validateCredentials(array $data)
@@ -95,9 +95,9 @@ class RedirectIfTwoFactorAuthenticatable
      *
      * @param  array<string, string>  $data
      */
-    protected function fireFailedEvent(array $data, UserContract $user = null): void
+    protected function fireFailedEvent(array $data, ?UserContract $user = null): void
     {
-        if ($user != null && ! $user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
+        if ($user !== null && ! $user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
             throw new \Exception('strange things');
         }
         event(new Failed(config('filament.auth.guard'), $user, [

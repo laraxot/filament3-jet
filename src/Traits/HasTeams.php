@@ -27,7 +27,7 @@ trait HasTeams
      */
     public function isCurrentTeam(TeamContract $team): bool
     {
-        if (null == $team || null == $this->currentTeam) {
+        if ($team === null || $this->currentTeam === null) {
             return false;
         }
 
@@ -44,7 +44,7 @@ trait HasTeams
             $this->switchTeam($this->personalTeam());
         }
 
-        if ($this->allTeams()->count() == 0) {
+        if ($this->allTeams()->count() === 0) {
             $this->current_team_id = null;
             $this->update();
         }
@@ -57,7 +57,7 @@ trait HasTeams
      */
     public function switchTeam(?TeamContract $team): bool
     {
-        if (null == $team) {
+        if ($team === null) {
             return false;
         }
         if (! $this->belongsToTeam($team)) {
@@ -111,7 +111,7 @@ trait HasTeams
     public function personalTeam(): ?TeamContract
     {
         $res = $this->ownedTeams->where('personal_team', true)->first();
-        if (null == $res) {
+        if ($res === null) {
             return null;
         }
         if (! $res instanceof TeamContract) {
@@ -130,7 +130,7 @@ trait HasTeams
             return false;
         }
 
-        return $this->id == $team->{$this->getForeignKey()};
+        return $this->id === $team->{$this->getForeignKey()};
     }
 
     /**
@@ -218,7 +218,7 @@ trait HasTeams
         if (
             in_array(HasApiTokens::class, class_uses_recursive($this))
             && ! $this->tokenCan($permission)
-            && null !== $this->currentAccessToken()
+            && $this->currentAccessToken() !== null
         ) {
             return false;
         }

@@ -15,7 +15,7 @@ class EmailVerificationController extends Controller
         /** @var MustVerifyEmail $user */
         $user = Filament::auth()->user();
 
-        if ((! $user->hasVerifiedEmail()) && $user->markEmailAsVerified()) {
+        if (! $user->hasVerifiedEmail() && $user->markEmailAsVerified()) {
             event(new Verified($user));
         }
 

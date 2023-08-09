@@ -22,13 +22,11 @@ use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
 use ArtMin96\FilamentJet\Role;
 use ArtMin96\FilamentJet\Traits\RedirectsActions;
-use Filament\Facades\Filament;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Pages\Actions\Action;
 use Filament\Pages\Page;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Unique;
@@ -50,8 +48,6 @@ class TeamSettings extends Page
     use RedirectsActions;
     use HasUserProperty;
 
-    protected static string $view = 'filament-jet::filament.pages.team-settings';
-
     public TeamContract $team;
 
     public array $teamState = [];
@@ -72,6 +68,8 @@ class TeamSettings extends Page
      * The current role for the user that is having their role managed.
      */
     public string $currentRole;
+
+    protected static string $view = 'filament-jet::filament.pages.team-settings';
 
     /**
      * Undocumented function.
@@ -95,14 +93,6 @@ class TeamSettings extends Page
         $this->updateTeamNameForm->fill($this->team->withoutRelations()->toArray());
     }
 
-    protected static function shouldRegisterNavigation(): bool
-    {
-        $filamentJetData = FilamentJetData::make();
-
-        return $filamentJetData->should_register_navigation->team_settings;
-        //return config('filament-jet.should_register_navigation.team_settings');
-    }
-
     /**
      * Get the available team member roles.
      */
@@ -120,107 +110,6 @@ class TeamSettings extends Page
             })
             ->values()
             ->all();
-    }
-
-    protected function getForms(): array
-    {
-        return array_merge(
-            parent::getForms(),
-            [
-                'updateTeamNameForm' => $this->makeForm()
-                    ->model(FilamentJet::teamModel())
-                    ->schema([
-                        TextInput::make('name')
-                            ->label(__('filament-jet::teams/name.fields.name'))
-                            ->required()
-                            ->maxLength(255)
-                            ->disabled(! Gate::check('update', $this->team)),
-                    ])
-                    ->statePath('teamState'),
-                'addTeamMemberForm' => $this->makeForm()
-                    ->model(FilamentJet::teamInvitationModel())
-                    ->schema([
-                        TextInput::make('email')
-                            ->label(__('filament-jet::teams/add-member.fields.email'))
-                            ->required()
-                            ->maxLength(255)
-                            ->rule('email')
-                            ->rules([
-                                'email',
-                                Features::sendsTeamInvitations()
-                                    ? '' : Rule::exists(table: FilamentJet::userModel(), column: 'email'),
-                                function () {
-                                    return function (string $attribute, $value, \Closure $fail) {
-                                        if ($this->team->hasUserWithEmail($value)) {
-                                            $fail(__('filament-jet::teams/add-member.messages.already_belongs_to_team'));
-                                        }
-                                    };
-                                },
-                            ])
-                            ->unique(callback: fn (Unique $rule): Unique => $rule->where('team_id', $this->team->id)),
-                        RadioButton::make('role')
-                            ->label(__('filament-jet::teams/add-member.fields.role'))
-                            ->options(
-                                collect($this->roles)->mapWithKeys(fn ($role): array => [
-                                    $role->key => $role->name,
-                                ])->toArray()
-                            )
-                            ->descriptions(
-                                collect($this->roles)->mapWithKeys(fn ($role): array => [
-                                    $role->key => $role->description,
-                                ])->toArray()
-                            )
-                            ->columns(1)
-                            ->rules(
-                                FilamentJet::hasRoles()
-                                ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role()]
-                                : []
-                            ),
-                    ]),
-            ]
-        );
-    }
-
-    protected function getHiddenActions(): array
-    {
-        return [
-            AlwaysAskPasswordConfirmationAction::make('delete_team')
-                ->label(__('filament-jet::teams/delete.buttons.delete'))
-                ->icon('heroicon-o-trash')
-                ->color('danger')
-                ->action('deleteTeam'),
-            Action::make('manage_role')
-                ->action(function (array $data): void {
-                    $this->updateRole(app(UpdateTeamMemberRole::class));
-                })
-                ->modalWidth('lg')
-                ->modalHeading(__('filament-jet::teams/members.modal_heading'))
-                ->modalSubheading(__('filament-jet::teams/members.modal_subheading'))
-                ->modalButton(__('filament-jet::teams/members.buttons.save'))
-                ->form([
-                    RadioButton::make('role')
-                        ->label(__('filament-jet::teams/members.fields.role'))
-                        ->options(
-                            collect($this->roles)->mapWithKeys(fn ($role): array => [
-                                $role->key => $role->name,
-                            ])->toArray()
-                        )
-                        ->descriptions(
-                            collect($this->roles)->mapWithKeys(fn ($role): array => [
-                                $role->key => $role->description,
-                            ])->toArray()
-                        )
-                        ->afterStateUpdated(
-                            fn ($state) => $this->currentRole = $state
-                        )
-                        ->columns(1)
-                        ->rules(
-                            FilamentJet::hasRoles()
-                            ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role()]
-                            : []
-                        ),
-                ]),
-        ];
     }
 
     public function updateTeamName(UpdatesTeamNames $updater): void
@@ -384,6 +273,115 @@ class TeamSettings extends Page
             ->title(__('filament-jet::teams/members.messages.role_updated'))
             ->success()
             ->send();
+    }
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        $filamentJetData = FilamentJetData::make();
+
+        return $filamentJetData->should_register_navigation->team_settings;
+        //return config('filament-jet.should_register_navigation.team_settings');
+    }
+
+    protected function getForms(): array
+    {
+        return array_merge(
+            parent::getForms(),
+            [
+                'updateTeamNameForm' => $this->makeForm()
+                    ->model(FilamentJet::teamModel())
+                    ->schema([
+                        TextInput::make('name')
+                            ->label(__('filament-jet::teams/name.fields.name'))
+                            ->required()
+                            ->maxLength(255)
+                            ->disabled(! Gate::check('update', $this->team)),
+                    ])
+                    ->statePath('teamState'),
+                'addTeamMemberForm' => $this->makeForm()
+                    ->model(FilamentJet::teamInvitationModel())
+                    ->schema([
+                        TextInput::make('email')
+                            ->label(__('filament-jet::teams/add-member.fields.email'))
+                            ->required()
+                            ->maxLength(255)
+                            ->rule('email')
+                            ->rules([
+                                'email',
+                                Features::sendsTeamInvitations()
+                                    ? '' : Rule::exists(table: FilamentJet::userModel(), column: 'email'),
+                                function () {
+                                    return function (string $attribute, $value, \Closure $fail) {
+                                        if ($this->team->hasUserWithEmail($value)) {
+                                            $fail(__('filament-jet::teams/add-member.messages.already_belongs_to_team'));
+                                        }
+                                    };
+                                },
+                            ])
+                            ->unique(callback: fn (Unique $rule): Unique => $rule->where('team_id', $this->team->id)),
+                        RadioButton::make('role')
+                            ->label(__('filament-jet::teams/add-member.fields.role'))
+                            ->options(
+                                collect($this->roles)->mapWithKeys(fn ($role): array => [
+                                    $role->key => $role->name,
+                                ])->toArray()
+                            )
+                            ->descriptions(
+                                collect($this->roles)->mapWithKeys(fn ($role): array => [
+                                    $role->key => $role->description,
+                                ])->toArray()
+                            )
+                            ->columns(1)
+                            ->rules(
+                                FilamentJet::hasRoles()
+                                ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role()]
+                                : []
+                            ),
+                    ]),
+            ]
+        );
+    }
+
+    protected function getHiddenActions(): array
+    {
+        return [
+            AlwaysAskPasswordConfirmationAction::make('delete_team')
+                ->label(__('filament-jet::teams/delete.buttons.delete'))
+                ->icon('heroicon-o-trash')
+                ->color('danger')
+                ->action('deleteTeam'),
+            Action::make('manage_role')
+                ->action(function (array $data): void {
+                    $this->updateRole(app(UpdateTeamMemberRole::class));
+                })
+                ->modalWidth('lg')
+                ->modalHeading(__('filament-jet::teams/members.modal_heading'))
+                ->modalSubheading(__('filament-jet::teams/members.modal_subheading'))
+                ->modalButton(__('filament-jet::teams/members.buttons.save'))
+                ->form([
+                    RadioButton::make('role')
+                        ->label(__('filament-jet::teams/members.fields.role'))
+                        ->options(
+                            collect($this->roles)->mapWithKeys(fn ($role): array => [
+                                $role->key => $role->name,
+                            ])->toArray()
+                        )
+                        ->descriptions(
+                            collect($this->roles)->mapWithKeys(fn ($role): array => [
+                                $role->key => $role->description,
+                            ])->toArray()
+                        )
+                        ->afterStateUpdated(
+                            fn ($state) => $this->currentRole = $state
+                        )
+                        ->columns(1)
+                        ->rules(
+                            FilamentJet::hasRoles()
+                            ? ['required', 'string', new \ArtMin96\FilamentJet\Rules\Role()]
+                            : []
+                        ),
+                ]),
+        ];
     }
 
     /**

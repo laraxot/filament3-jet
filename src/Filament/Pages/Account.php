@@ -68,6 +68,60 @@ class Account extends Page
         }
     }
 
+    /**
+     * Update the user's profile information.
+     *
+     * @return Redirector|\Illuminate\Http\RedirectResponse
+     */
+    public function updateProfileInformation(UpdatesUserProfileInformation $updater)
+    {
+        $updater->update(
+            $this->user,
+            $this->updateProfileInformationForm->getState()
+        );
+
+        $this->notify(
+            status: 'success',
+            message: __('filament-jet::account/update-information.messages.updated'),
+            isAfterRedirect: true
+        );
+
+        return redirect()->route('filament.pages.account');
+    }
+
+    /**
+     * Update the user's password.
+     */
+    public function updatePassword(UpdatesUserPasswords $updater): void
+    {
+        $state = $this->updatePasswordForm->getState();
+
+        $updater->update($this->user, $state);
+
+        Notification::make()
+            ->title(__('filament-jet::account/update-password.messages.updated'))
+            ->success()
+            ->send();
+
+        session()->forget('password_hash_'.config('filament.auth.guard'));
+        if (! $this->user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
+            throw new \Exception('strange things');
+        }
+        Filament::auth()->login($this->user);
+
+        $this->reset(['current_password', 'password', 'password_confirmation']);
+    }
+
+    public function downloadPersonalData(): BinaryFileResponse
+    {
+        $path = glob(Storage::disk(config('personal-data-export.disk'))->path('')."{$this->user->id}_*.zip");
+
+        $this->exportProgress = 0;
+        $this->exportBatch = null;
+
+        return response()->download(end($path))->deleteFileAfterSend();
+    }
+
     protected static function shouldRegisterNavigation(): bool
     {
         $filamentJetData = FilamentJetData::make();
@@ -156,59 +210,5 @@ class Account extends Page
                 ->autocomplete('passwordConfirmation')
                 ->revealable(),
         ]);
-    }
-
-    /**
-     * Update the user's profile information.
-     *
-     * @return Redirector|\Illuminate\Http\RedirectResponse
-     */
-    public function updateProfileInformation(UpdatesUserProfileInformation $updater)
-    {
-        $updater->update(
-            $this->user,
-            $this->updateProfileInformationForm->getState()
-        );
-
-        $this->notify(
-            status: 'success',
-            message: __('filament-jet::account/update-information.messages.updated'),
-            isAfterRedirect: true
-        );
-
-        return redirect()->route('filament.pages.account');
-    }
-
-    /**
-     * Update the user's password.
-     */
-    public function updatePassword(UpdatesUserPasswords $updater): void
-    {
-        $state = $this->updatePasswordForm->getState();
-
-        $updater->update($this->user, $state);
-
-        Notification::make()
-            ->title(__('filament-jet::account/update-password.messages.updated'))
-            ->success()
-            ->send();
-
-        session()->forget('password_hash_'.config('filament.auth.guard'));
-        if (! $this->user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
-            throw new \Exception('strange things');
-        }
-        Filament::auth()->login($this->user);
-
-        $this->reset(['current_password', 'password', 'password_confirmation']);
-    }
-
-    public function downloadPersonalData(): BinaryFileResponse
-    {
-        $path = glob(Storage::disk(config('personal-data-export.disk'))->path('')."{$this->user->id}_*.zip");
-
-        $this->exportProgress = 0;
-        $this->exportBatch = null;
-
-        return response()->download(end($path))->deleteFileAfterSend();
     }
 }

@@ -59,7 +59,7 @@ abstract class Team extends Model implements TeamContract
      */
     public function allUsers(): Collection
     {
-        if ($this->owner == null) {
+        if ($this->owner === null) {
             return $this->users;
         }
 

@@ -16,7 +16,6 @@ use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
-use Livewire\Redirector;
 
 /**
  * Undocumented class
@@ -148,26 +147,6 @@ class TwoFactorLogin extends CardPage
         return $res;
     }
 
-    protected function getCardWidth(): string
-    {
-        $res = Features::getOption(Features::twoFactorAuthentication(), 'authentication.card_width');
-        if (! is_string($res)) {
-            throw new \Exception('wip');
-        }
-
-        return $res;
-    }
-
-    protected function hasBrand(): bool
-    {
-        $res = Features::optionEnabled(Features::twoFactorAuthentication(), 'authentication.has_brand');
-        if (! is_bool($res)) {
-            throw new \Exception('wip');
-        }
-
-        return $res;
-    }
-
     public function authenticate(): ?TwoFactorLoginResponse
     {
         $rateLimitingOptionEnabled = Features::getOption(Features::twoFactorAuthentication(), 'authentication.rate_limiting.enabled');
@@ -217,6 +196,36 @@ class TwoFactorLogin extends CardPage
         return app(TwoFactorLoginResponse::class);
     }
 
+    public function getTitle(): string
+    {
+        return __('filament-jet::auth/two-factor-login.title');
+    }
+
+    public function getHeading(): string
+    {
+        return __('filament-jet::auth/two-factor-login.heading');
+    }
+
+    protected function getCardWidth(): string
+    {
+        $res = Features::getOption(Features::twoFactorAuthentication(), 'authentication.card_width');
+        if (! is_string($res)) {
+            throw new \Exception('wip');
+        }
+
+        return $res;
+    }
+
+    protected function hasBrand(): bool
+    {
+        $res = Features::optionEnabled(Features::twoFactorAuthentication(), 'authentication.has_brand');
+        if (! is_bool($res)) {
+            throw new \Exception('wip');
+        }
+
+        return $res;
+    }
+
     protected function getFormSchema(): array
     {
         return [
@@ -252,15 +261,5 @@ class TwoFactorLogin extends CardPage
                 )
                 ->visible($this->usingRecoveryCode),
         ];
-    }
-
-    public function getTitle(): string
-    {
-        return __('filament-jet::auth/two-factor-login.title');
-    }
-
-    public function getHeading(): string
-    {
-        return __('filament-jet::auth/two-factor-login.heading');
     }
 }

@@ -33,6 +33,7 @@ class InvitingTeamMember
      *
      * @param  mixed  $email
      * @param  mixed  $role
+     *
      * @return void
      */
     public function __construct(TeamContract $team, $email, $role)

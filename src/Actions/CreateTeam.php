@@ -23,11 +23,11 @@ class CreateTeam implements CreatesTeams
         AddingTeam::dispatch($user);
 
         if (! method_exists($user, 'ownedTeams')) {
-            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            throw new \Exception('['.__LINE__.']['.class_basename(self::class).']');
         }
 
         if (! method_exists($user, 'switchTeam')) {
-            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            throw new \Exception('['.__LINE__.']['.class_basename(self::class).']');
         }
         $team = $user->ownedTeams()->create([
             'name' => $input['name'],

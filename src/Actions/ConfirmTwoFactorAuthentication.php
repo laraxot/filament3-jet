@@ -31,6 +31,7 @@ class ConfirmTwoFactorAuthentication
      *
      * @param  UserContract  $user
      * @param  string  $code
+     *
      * @return void
      *
      * @throws ValidationException

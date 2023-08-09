@@ -46,26 +46,6 @@ class EmailVerificationPrompt extends CardPage
         }
     }
 
-    protected function getCardWidth(): string
-    {
-        $res = Features::getOption(Features::emailVerification(), 'card_width');
-        if (! is_string($res)) {
-            throw new \Exception('wip');
-        }
-
-        return $res;
-    }
-
-    protected function hasBrand(): bool
-    {
-        $res = Features::optionEnabled(Features::emailVerification(), 'has_brand');
-        if (! is_bool($res)) {
-            throw new \Exception('wip');
-        }
-
-        return $res;
-    }
-
     public function resendNotification(): void
     {
         $rateLimitingOptionEnabled = Features::getOption(Features::emailVerification(), 'rate_limiting.enabled');
@@ -87,7 +67,7 @@ class EmailVerificationPrompt extends CardPage
         }
 
         $user = Filament::auth()->user();
-        if ($user == null) {
+        if ($user === null) {
             throw new \Exception('strange things');
         }
 
@@ -119,5 +99,25 @@ class EmailVerificationPrompt extends CardPage
     public function getHeading(): string
     {
         return __('filament-jet::auth/email-verification/email-verification-prompt.heading');
+    }
+
+    protected function getCardWidth(): string
+    {
+        $res = Features::getOption(Features::emailVerification(), 'card_width');
+        if (! is_string($res)) {
+            throw new \Exception('wip');
+        }
+
+        return $res;
+    }
+
+    protected function hasBrand(): bool
+    {
+        $res = Features::optionEnabled(Features::emailVerification(), 'has_brand');
+        if (! is_bool($res)) {
+            throw new \Exception('wip');
+        }
+
+        return $res;
     }
 }

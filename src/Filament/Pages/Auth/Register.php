@@ -29,8 +29,6 @@ class Register extends CardPage
     use WithRateLimiting;
     use RedirectsActions;
 
-    protected static string $view = 'filament-jet::filament.pages.auth.register';
-
     public ?string $email = '';
 
     public ?string $name = '';
@@ -39,6 +37,8 @@ class Register extends CardPage
 
     public ?string $passwordConfirmation = '';
 
+    protected static string $view = 'filament-jet::filament.pages.auth.register';
+
     public function mount(): void
     {
         if (Filament::auth()->check()) {
@@ -46,26 +46,6 @@ class Register extends CardPage
         }
 
         $this->form->fill();
-    }
-
-    protected function getCardWidth(): string
-    {
-        $res = Features::getOption(Features::registration(), 'card_width');
-        if (! is_string($res)) {
-            throw new \Exception('wip');
-        }
-
-        return $res;
-    }
-
-    protected function hasBrand(): bool
-    {
-        $res = Features::optionEnabled(Features::registration(), 'has_brand');
-        if (! is_bool($res)) {
-            throw new \Exception('wip');
-        }
-
-        return $res;
     }
 
     /**
@@ -108,6 +88,36 @@ class Register extends CardPage
         session()->regenerate();
 
         return $this->redirectPath($creator);
+    }
+
+    public function getTitle(): string
+    {
+        return __('filament-jet::auth/register.title');
+    }
+
+    public function getHeading(): string
+    {
+        return __('filament-jet::auth/register.heading');
+    }
+
+    protected function getCardWidth(): string
+    {
+        $res = Features::getOption(Features::registration(), 'card_width');
+        if (! is_string($res)) {
+            throw new \Exception('wip');
+        }
+
+        return $res;
+    }
+
+    protected function hasBrand(): bool
+    {
+        $res = Features::optionEnabled(Features::registration(), 'has_brand');
+        if (! is_bool($res)) {
+            throw new \Exception('wip');
+        }
+
+        return $res;
     }
 
     protected function getFormSchema(): array
@@ -162,15 +172,5 @@ class Register extends CardPage
         return [
             'password.same' => __('validation.confirmed', ['attribute' => __('filament-jet::auth/register.fields.password.validation_attribute')]),
         ];
-    }
-
-    public function getTitle(): string
-    {
-        return __('filament-jet::auth/register.title');
-    }
-
-    public function getHeading(): string
-    {
-        return __('filament-jet::auth/register.heading');
     }
 }

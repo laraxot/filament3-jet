@@ -11,7 +11,6 @@ use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Rules\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
-use Modules\User\Models\Team;
 
 class UpdateTeamMemberRole
 {

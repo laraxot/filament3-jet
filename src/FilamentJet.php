@@ -109,9 +109,7 @@ final class FilamentJet
         /**
          * @var string $username
          */
-        $username = config('filament-jet.username', 'email');
-
-        return $username;
+        return config('filament-jet.username', 'email');
     }
 
     /**
@@ -124,9 +122,7 @@ final class FilamentJet
         /**
          * @var string $email
          */
-        $email = config('filament-jet.email', 'email');
-
-        return $email;
+        return config('filament-jet.email', 'email');
     }
 
     /**
@@ -163,7 +159,7 @@ final class FilamentJet
             ->all();
 
         return tap(new Role($key, $name, $permissions), function ($role) use ($key) {
-            static::$roles[$key] = $role;
+            self::$roles[$key] = $role;
         });
     }
 
@@ -445,9 +441,7 @@ final class FilamentJet
         /**
          * @var string $team_model
          */
-        $team_model = config('filament-jet.models.team');
-
-        return $team_model;
+        return config('filament-jet.models.team');
     }
 
     /**
@@ -511,9 +505,7 @@ final class FilamentJet
         /**
          * @var string $team_invitation_model
          */
-        $team_invitation_model = config('filament-jet.models.team_invitation');
-
-        return $team_invitation_model;
+        return config('filament-jet.models.team_invitation');
     }
 
     /**
@@ -647,7 +639,7 @@ final class FilamentJet
 
     public static function setPasswordRules(array $rules): void
     {
-        self::$passwordRules = $rules ?: (array) Password::default();
+        self::$passwordRules = $rules ? $rules : (array) Password::default();
     }
 
     public static function getPasswordRules(): array
@@ -670,6 +662,7 @@ final class FilamentJet
      * Find the path to a localized Markdown resource.
      *
      * @param  string  $name
+     *
      * @return string|null
      */
     public static function localizedMarkdownPath($name)
@@ -679,13 +672,11 @@ final class FilamentJet
         /**
          * @var string|null $return
          */
-        $return = Arr::first([
+        return Arr::first([
             resource_path('markdown/'.$localName),
             resource_path('markdown/'.$name),
         ], function ($path) {
             return file_exists($path);
         });
-
-        return $return;
     }
 }

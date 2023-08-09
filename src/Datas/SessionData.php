@@ -28,14 +28,12 @@ class SessionData extends Data
 
     public function getUserActivities(): Collection
     {
-        $res = DB::connection($this->connection)
+        return DB::connection($this->connection)
             ->table($this->table)
             //->where('user_id', Auth::user()->getAuthIdentifier())
             ->where('user_id', Auth::id())
             ->orderBy('last_activity', 'desc')
             ->get();
-
-        return $res;
     }
 
     public function getSessionsProperty(): Collection
@@ -74,11 +72,12 @@ class SessionData extends Data
      * Create a new agent instance from the given session.
      *
      * @param  mixed  $session
+     *
      * @return \Jenssegers\Agent\Agent
      */
     protected function createAgent($session)
     {
-        return tap(new \Jenssegers\Agent\Agent, function ($agent) use ($session) {
+        return tap(new \Jenssegers\Agent\Agent(), function ($agent) use ($session) {
             $agent->setUserAgent($session->user_agent);
         });
     }

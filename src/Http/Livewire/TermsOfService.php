@@ -20,7 +20,7 @@ class TermsOfService extends Component
             throw new \Exception('strange things');
         }
         $fileContents = file_get_contents($termsFile);
-        if ($fileContents == false) {
+        if ($fileContents === false) {
             throw new \Exception('strange things');
         }
 

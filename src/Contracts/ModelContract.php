@@ -5,7 +5,6 @@ namespace ArtMin96\FilamentJet\Contracts;
 /**
  * ArtMin96\FilamentJet\Contracts\ModelContract
  *
- *
  * @mixin \Eloquent
  */
 interface ModelContract

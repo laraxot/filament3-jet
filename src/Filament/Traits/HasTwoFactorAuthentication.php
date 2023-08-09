@@ -45,17 +45,6 @@ trait HasTwoFactorAuthentication
      */
     public $two_factor_code;
 
-    protected function twoFactorFormSchema(): array
-    {
-        return [
-            TextInput::make('two_factor_code')
-                ->label(__('filament-jet::account/two-factor.fields.code'))
-                ->disableLabel()
-                ->placeholder(__('filament-jet::account/two-factor.fields.code'))
-                ->rules('nullable|string'),
-        ];
-    }
-
     /**
      * Enable two factor authentication for the user.
      *
@@ -83,8 +72,8 @@ trait HasTwoFactorAuthentication
      */
     public function confirmTwoFactorAuthentication(ConfirmTwoFactorAuthentication $confirm)
     {
-        if ($this->two_factor_code == null) {
-            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+        if ($this->two_factor_code === null) {
+            throw new \Exception('['.__LINE__.']['.class_basename(self::class).']');
         }
 
         $confirm($this->user, $this->two_factor_code);
@@ -175,5 +164,16 @@ trait HasTwoFactorAuthentication
     public function getEnabledProperty()
     {
         return ! empty($this->user->two_factor_secret);
+    }
+
+    protected function twoFactorFormSchema(): array
+    {
+        return [
+            TextInput::make('two_factor_code')
+                ->label(__('filament-jet::account/two-factor.fields.code'))
+                ->disableLabel()
+                ->placeholder(__('filament-jet::account/two-factor.fields.code'))
+                ->rules('nullable|string'),
+        ];
     }
 }

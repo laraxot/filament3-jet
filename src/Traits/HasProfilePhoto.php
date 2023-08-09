@@ -63,7 +63,7 @@ trait HasProfilePhoto
      */
     public function photoExists(): bool
     {
-        if ($this->profile_photo_path == null) {
+        if ($this->profile_photo_path === null) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 

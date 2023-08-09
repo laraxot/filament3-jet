@@ -22,14 +22,31 @@ class CreateTeam extends Page
     use RedirectsActions;
     use HasUserProperty;
 
+    public array $createTeamState = [];
+
     protected static string $view = 'filament-jet::filament.pages.create-team';
 
-    public array $createTeamState = [];
+    /**
+     * Create a new team.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     */
+    public function createTeam(CreatesTeams $creator)
+    {
+        $creator->create($this->user, $this->createTeamState);
+
+        Notification::make()
+            ->title(__('filament-jet::teams/create.messages.created'))
+            ->success()
+            ->send();
+
+        return $this->redirectPath($creator);
+    }
 
     protected static function shouldRegisterNavigation(): bool
     {
         if (! is_bool(config('filament-jet.should_register_navigation.create_team'))) {
-            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            throw new \Exception('['.__LINE__.']['.class_basename(self::class).']');
         }
 
         return config('filament-jet.should_register_navigation.create_team');
@@ -50,22 +67,5 @@ class CreateTeam extends Page
                     ->statePath('createTeamState'),
             ]
         );
-    }
-
-    /**
-     * Create a new team.
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
-     */
-    public function createTeam(CreatesTeams $creator)
-    {
-        $creator->create($this->user, $this->createTeamState);
-
-        Notification::make()
-            ->title(__('filament-jet::teams/create.messages.created'))
-            ->success()
-            ->send();
-
-        return $this->redirectPath($creator);
     }
 }

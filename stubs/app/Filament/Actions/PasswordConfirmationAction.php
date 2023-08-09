@@ -7,11 +7,6 @@ use Filament\Pages\Actions\ButtonAction;
 
 class PasswordConfirmationAction extends ButtonAction
 {
-    protected function isPasswordSessionValid(): bool
-    {
-        return session()->has('auth.password_confirmed_at') && (time() - session('auth.password_confirmed_at', 0)) < config('filament-account.password_confirmation_seconds');
-    }
-
     protected function setUp(): void
     {
         if ($this->isPasswordSessionValid()) {
@@ -42,5 +37,9 @@ class PasswordConfirmationAction extends ButtonAction
         }
 
         parent::call($data);
+    }
+    protected function isPasswordSessionValid(): bool
+    {
+        return session()->has('auth.password_confirmed_at') && (time() - session('auth.password_confirmed_at', 0)) < config('filament-account.password_confirmation_seconds');
     }
 }

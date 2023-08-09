@@ -14,6 +14,7 @@ class EnsureEmailIsVerified
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string|null  $redirectToRoute
+     *
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse|null
      */
     public function handle($request, Closure $next, $redirectToRoute = null)
@@ -23,7 +24,7 @@ class EnsureEmailIsVerified
                 ! $request->user()->hasVerifiedEmail())) {
             return $request->expectsJson()
                 ? abort(403, 'Your email address is not verified.')
-                : Redirect::guest(URL::route($redirectToRoute ?: jetRouteActions()->emailVerificationPromptRoute()));
+                : Redirect::guest(URL::route($redirectToRoute ? $redirectToRoute : jetRouteActions()->emailVerificationPromptRoute()));
         }
 
         return $next($request);

@@ -26,9 +26,9 @@ class RequestPasswordReset extends CardPage
 {
     use WithRateLimiting;
 
-    protected static string $view = 'filament-jet::filament.pages.auth.password-reset.request-password-reset';
-
     public ?string $email = null;
+
+    protected static string $view = 'filament-jet::filament.pages.auth.password-reset.request-password-reset';
 
     public function mount(): void
     {
@@ -37,26 +37,6 @@ class RequestPasswordReset extends CardPage
         }
 
         $this->form->fill();
-    }
-
-    protected function getCardWidth(): string
-    {
-        $res = Features::getOption(Features::resetPasswords(), 'request.card_width');
-        if (! is_string($res)) {
-            throw new \Exception('wip');
-        }
-
-        return $res;
-    }
-
-    protected function hasBrand(): bool
-    {
-        $res = Features::optionEnabled(Features::resetPasswords(), 'request.has_brand');
-        if (! is_bool($res)) {
-            throw new \Exception('wip');
-        }
-
-        return $res;
     }
 
     public function request(): void
@@ -114,6 +94,36 @@ class RequestPasswordReset extends CardPage
             ->send();
     }
 
+    public function getTitle(): string
+    {
+        return __('filament-jet::auth/password-reset/request-password-reset.title');
+    }
+
+    public function getHeading(): string
+    {
+        return __('filament-jet::auth/password-reset/request-password-reset.heading');
+    }
+
+    protected function getCardWidth(): string
+    {
+        $res = Features::getOption(Features::resetPasswords(), 'request.card_width');
+        if (! is_string($res)) {
+            throw new \Exception('wip');
+        }
+
+        return $res;
+    }
+
+    protected function hasBrand(): bool
+    {
+        $res = Features::optionEnabled(Features::resetPasswords(), 'request.has_brand');
+        if (! is_bool($res)) {
+            throw new \Exception('wip');
+        }
+
+        return $res;
+    }
+
     protected function getFormSchema(): array
     {
         return [
@@ -123,15 +133,5 @@ class RequestPasswordReset extends CardPage
                 ->required()
                 ->autocomplete(),
         ];
-    }
-
-    public function getTitle(): string
-    {
-        return __('filament-jet::auth/password-reset/request-password-reset.title');
-    }
-
-    public function getHeading(): string
-    {
-        return __('filament-jet::auth/password-reset/request-password-reset.heading');
     }
 }

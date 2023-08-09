@@ -8,7 +8,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 /**
  * ArtMin96\FilamentJet\Contracts\UserContract
  *
- *
  * @property int $id
  * @property string $name
  * @property string $email
@@ -22,6 +21,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
  * @property string|null $profile_photo_path
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Passport\Client> $clients
  * @property-read int|null $clients_count
  * @property-read string $profile_photo_url

@@ -71,7 +71,7 @@ class TeamInvitationController extends Controller
     public function destroy(Request $request, TeamInvitationContract $invitation)
     {
         if (! Gate::forUser($request->user())->check('removeTeamMember', $invitation->team)) {
-            throw new AuthorizationException;
+            throw new AuthorizationException();
         }
 
         $invitation->delete();

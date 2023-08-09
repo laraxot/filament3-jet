@@ -29,8 +29,6 @@ class ResetPassword extends CardPage
 {
     use WithRateLimiting;
 
-    protected static string $view = 'filament-jet::filament.pages.auth.password-reset.reset-password';
-
     public ?string $email = null;
 
     public ?string $password = '';
@@ -39,6 +37,8 @@ class ResetPassword extends CardPage
 
     public ?string $token = null;
 
+    protected static string $view = 'filament-jet::filament.pages.auth.password-reset.reset-password';
+
     public function mount(): void
     {
         if (Filament::auth()->check()) {
@@ -46,7 +46,7 @@ class ResetPassword extends CardPage
         }
 
         if (is_array(request()->query('token'))) {
-            throw new \Exception('['.__LINE__.']['.class_basename(__CLASS__).']');
+            throw new \Exception('['.__LINE__.']['.class_basename(self::class).']');
         }
 
         $this->token = request()->query('token');
@@ -54,26 +54,6 @@ class ResetPassword extends CardPage
         $this->form->fill([
             'email' => request()->query('email'),
         ]);
-    }
-
-    protected function getCardWidth(): string
-    {
-        $res = Features::getOption(Features::resetPasswords(), 'reset.card_width');
-        if (! is_string($res)) {
-            throw new \Exception('wip');
-        }
-
-        return $res;
-    }
-
-    protected function hasBrand(): bool
-    {
-        $res = Features::optionEnabled(Features::resetPasswords(), 'reset.has_brand');
-        if (! is_bool($res)) {
-            throw new \Exception('wip');
-        }
-
-        return $res;
     }
 
     public function resetPassword(): ?PasswordResetResponse
@@ -133,6 +113,51 @@ class ResetPassword extends CardPage
         return null;
     }
 
+    /**
+     * @param  string  $propertyName
+     */
+    public function propertyIsPublicAndNotDefinedOnBaseClass($propertyName): bool
+    {
+        if ((! app()->runningUnitTests()) && in_array($propertyName, [
+            'email',
+            'token',
+        ])) {
+            return false;
+        }
+
+        return parent::propertyIsPublicAndNotDefinedOnBaseClass($propertyName);
+    }
+
+    public function getTitle(): string
+    {
+        return __('filament-jet::auth/password-reset/reset-password.title');
+    }
+
+    public function getHeading(): string
+    {
+        return __('filament-jet::auth/password-reset/reset-password.heading');
+    }
+
+    protected function getCardWidth(): string
+    {
+        $res = Features::getOption(Features::resetPasswords(), 'reset.card_width');
+        if (! is_string($res)) {
+            throw new \Exception('wip');
+        }
+
+        return $res;
+    }
+
+    protected function hasBrand(): bool
+    {
+        $res = Features::optionEnabled(Features::resetPasswords(), 'reset.has_brand');
+        if (! is_bool($res)) {
+            throw new \Exception('wip');
+        }
+
+        return $res;
+    }
+
     protected function getFormSchema(): array
     {
         return [
@@ -155,21 +180,6 @@ class ResetPassword extends CardPage
     }
 
     /**
-     * @param  string  $propertyName
-     */
-    public function propertyIsPublicAndNotDefinedOnBaseClass($propertyName): bool
-    {
-        if ((! app()->runningUnitTests()) && in_array($propertyName, [
-            'email',
-            'token',
-        ])) {
-            return false;
-        }
-
-        return parent::propertyIsPublicAndNotDefinedOnBaseClass($propertyName);
-    }
-
-    /**
      * Get the broker to be used during password reset.
      */
     protected function broker(): PasswordBroker
@@ -187,15 +197,5 @@ class ResetPassword extends CardPage
         return [
             'password.same' => __('validation.confirmed', ['attribute' => __('filament-jet::auth/password-reset/reset-password.fields.password.validation_attribute')]),
         ];
-    }
-
-    public function getTitle(): string
-    {
-        return __('filament-jet::auth/password-reset/reset-password.title');
-    }
-
-    public function getHeading(): string
-    {
-        return __('filament-jet::auth/password-reset/reset-password.heading');
     }
 }

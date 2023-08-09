@@ -55,6 +55,24 @@ class ApiTokens extends Page
         $this->permissions = FilamentJet::$defaultPermissions;
     }
 
+    /**
+     * Create a new API token.
+     */
+    public function createApiToken(): void
+    {
+        $state = $this->form->getState();
+
+        $this->displayTokenValue($this->user->createToken(
+            $state['name'],
+            FilamentJet::validPermissions($state['permissions'])
+        ));
+
+        $this->name = '';
+        $this->permissions = FilamentJet::$defaultPermissions;
+
+        $this->emit('tokenCreated');
+    }
+
     protected static function shouldRegisterNavigation(): bool
     {
         $filamentJetData = FilamentJetData::make();
@@ -76,24 +94,6 @@ class ApiTokens extends Page
                 ->columns(2)
                 ->required(),
         ];
-    }
-
-    /**
-     * Create a new API token.
-     */
-    public function createApiToken(): void
-    {
-        $state = $this->form->getState();
-
-        $this->displayTokenValue($this->user->createToken(
-            $state['name'],
-            FilamentJet::validPermissions($state['permissions'])
-        ));
-
-        $this->name = '';
-        $this->permissions = FilamentJet::$defaultPermissions;
-
-        $this->emit('tokenCreated');
     }
 
     /**

@@ -53,6 +53,7 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
      * @param  string  $companyName
      * @param  string  $companyEmail
      * @param  string  $secret
+     *
      * @return string
      */
     public function qrCodeUrl($companyName, $companyEmail, $secret)
@@ -78,7 +79,10 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
         /** @var int $oldTimestamp */
         $oldTimestamp = $this->cache->get($key = 'filament-jet.2fa_codes.'.md5($code));
         $timestamp = $this->engine->verifyKeyNewer(
-            $secret, $code, $oldTimestamp);
+            $secret,
+            $code,
+            $oldTimestamp
+        );
 
         if ($timestamp !== false) {
             if ($timestamp === true) {

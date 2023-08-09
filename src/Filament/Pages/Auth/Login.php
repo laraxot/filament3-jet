@@ -33,8 +33,6 @@ class Login extends CardPage
 {
     use WithRateLimiting;
 
-    protected static string $view = 'filament-jet::filament.pages.auth.login';
-
     public ?string $email = null;
 
     public ?string $password = null;
@@ -43,6 +41,8 @@ class Login extends CardPage
 
     public ?UserContract $user = null;
 
+    protected static string $view = 'filament-jet::filament.pages.auth.login';
+
     public function mount(): void
     {
         if (Filament::auth()->check()) {
@@ -50,26 +50,6 @@ class Login extends CardPage
         }
 
         $this->form->fill();
-    }
-
-    protected function getCardWidth(): string
-    {
-        $res = Features::getOption(Features::login(), 'card_width');
-        if (! is_string($res)) {
-            throw new \Exception('wip');
-        }
-
-        return $res;
-    }
-
-    protected function hasBrand(): bool
-    {
-        $res = Features::optionEnabled(Features::login(), 'has_brand');
-        if (! is_bool($res)) {
-            throw new \Exception('wip');
-        }
-
-        return $res;
     }
 
     public function authenticate(): null|LoginResponse|Redirector
@@ -97,6 +77,26 @@ class Login extends CardPage
         return $this->loginPipeline($data)->then(function ($data) {
             return app(LoginResponse::class);
         });
+    }
+
+    protected function getCardWidth(): string
+    {
+        $res = Features::getOption(Features::login(), 'card_width');
+        if (! is_string($res)) {
+            throw new \Exception('wip');
+        }
+
+        return $res;
+    }
+
+    protected function hasBrand(): bool
+    {
+        $res = Features::optionEnabled(Features::login(), 'has_brand');
+        if (! is_bool($res)) {
+            throw new \Exception('wip');
+        }
+
+        return $res;
     }
 
     protected function loginPipeline(array $data): Pipeline

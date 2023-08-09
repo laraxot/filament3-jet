@@ -26,11 +26,11 @@ class SwitchableTeam extends Component
     {
         $user = Filament::auth()->user();
 
-        if ($user == null) {
+        if ($user === null) {
             return; //persa sessione
         }
         if (! $user instanceof UserContract) {
-            throw new \Exception('['.get_class($user).'] not implements ArtMin96\FilamentJet\Contracts\HasTeamsContract ');
+            throw new \Exception('['.$user::class.'] not implements ArtMin96\FilamentJet\Contracts\HasTeamsContract ');
         }
         $this->user = $user;
         $this->teams = $this->user->allTeams();
@@ -45,7 +45,7 @@ class SwitchableTeam extends Component
     {
         $team = FilamentJet::newTeamModel()->findOrFail($teamId);
 
-        if ($this->user == null) {
+        if ($this->user === null) {
             throw new \Exception('wip');
         }
         if (! $team instanceof TeamContract) {
