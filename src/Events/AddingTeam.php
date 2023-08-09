@@ -19,7 +19,6 @@ class AddingTeam
      * Create a new event instance.
      *
      * @param  mixed  $owner
-     *
      * @return void
      */
     public function __construct($owner)

@@ -273,7 +273,6 @@ EOF;
      *
      * @param  string  $after
      * @param  string  $name
-     *
      * @return void
      */
     protected function installServiceProviderAfter($after, $name)
@@ -303,7 +302,6 @@ EOF;
      * @param  string  $search
      * @param  string  $replace
      * @param  string  $path
-     *
      * @return void
      */
     protected function replaceInFile($search, $replace, $path)
@@ -330,7 +328,6 @@ EOF;
      * Run the given commands.
      *
      * @param  array  $commands
-     *
      * @return void
      */
     protected function runCommands($commands)

@@ -14,7 +14,6 @@ class EnsureEmailIsVerified
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string|null  $redirectToRoute
-     *
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse|null
      */
     public function handle($request, Closure $next, $redirectToRoute = null)

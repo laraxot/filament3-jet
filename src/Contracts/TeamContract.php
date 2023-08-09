@@ -20,7 +20,6 @@ use Illuminate\Support\Collection;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string $role
- *
  * @property-read UserContract|null $owner
  * @property-read EloquentCollection<int, TeamInvitationContract> $teamInvitations
  * @property-read int|null $team_invitations_count

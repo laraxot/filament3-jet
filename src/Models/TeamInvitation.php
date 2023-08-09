@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $role
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @property-read TeamContract $team
  *
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newModelQuery()

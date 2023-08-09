@@ -11,7 +11,6 @@ namespace ArtMin96\FilamentJet\Contracts;
  * @property string|null $role
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @property-read \ArtMin96\FilamentJet\Contracts\TeamContract $team
  *
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newModelQuery()

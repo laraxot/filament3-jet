@@ -53,7 +53,6 @@ class TwoFactorAuthenticationProvider implements TwoFactorAuthenticationProvider
      * @param  string  $companyName
      * @param  string  $companyEmail
      * @param  string  $secret
-     *
      * @return string
      */
     public function qrCodeUrl($companyName, $companyEmail, $secret)

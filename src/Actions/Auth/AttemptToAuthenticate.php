@@ -25,7 +25,6 @@ class AttemptToAuthenticate
 
     /**
      * @param  array<string, string>  $data
-     *
      * @return array|null
      */
     public function handle(array $data, Closure $next)

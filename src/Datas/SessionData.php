@@ -72,7 +72,6 @@ class SessionData extends Data
      * Create a new agent instance from the given session.
      *
      * @param  mixed  $session
-     *
      * @return \Jenssegers\Agent\Agent
      */
     protected function createAgent($session)

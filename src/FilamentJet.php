@@ -662,7 +662,6 @@ final class FilamentJet
      * Find the path to a localized Markdown resource.
      *
      * @param  string  $name
-     *
      * @return string|null
      */
     public static function localizedMarkdownPath($name)

@@ -43,6 +43,7 @@ class PasswordConfirmationAction extends Action
 
         parent::call($data);
     }
+
     /**
      * Undocumented function
      *

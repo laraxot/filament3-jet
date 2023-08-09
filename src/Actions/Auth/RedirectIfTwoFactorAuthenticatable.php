@@ -45,6 +45,7 @@ class RedirectIfTwoFactorAuthenticatable
                 in_array(TwoFactorAuthenticatable::class, class_uses_recursive($user))) {
                 return $this->twoFactorChallengeResponse($data, $user);
             }
+
             return $next($data);
         }
 
@@ -60,7 +61,6 @@ class RedirectIfTwoFactorAuthenticatable
      * Attempt to validate the incoming credentials.
      *
      * @param  array<string, string>  $data
-     *
      * @return UserContract
      */
     protected function validateCredentials(array $data)
@@ -95,7 +95,7 @@ class RedirectIfTwoFactorAuthenticatable
      *
      * @param  array<string, string>  $data
      */
-    protected function fireFailedEvent(array $data, ?UserContract $user = null): void
+    protected function fireFailedEvent(array $data, UserContract $user = null): void
     {
         if ($user !== null && ! $user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
             throw new \Exception('strange things');
