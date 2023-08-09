@@ -2,6 +2,8 @@
 
 namespace ArtMin96\FilamentJet;
 
+use Exception;
+
 class Jet
 {
     /**
@@ -11,7 +13,7 @@ class Jet
     {
         $res = Features::getOption(Features::twoFactorAuthentication(), 'authentication.session_prefix');
         if (! is_string($res)) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
         return $res;

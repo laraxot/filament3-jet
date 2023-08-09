@@ -26,9 +26,9 @@ class RequestPasswordReset extends CardPage
 {
     use WithRateLimiting;
 
-    public ?string $email = null;
-
     protected static string $view = 'filament-jet::filament.pages.auth.password-reset.request-password-reset';
+
+    public ?string $email = null;
 
     public function mount(): void
     {
@@ -108,7 +108,7 @@ class RequestPasswordReset extends CardPage
     {
         $res = Features::getOption(Features::resetPasswords(), 'request.card_width');
         if (! is_string($res)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;
@@ -118,7 +118,7 @@ class RequestPasswordReset extends CardPage
     {
         $res = Features::optionEnabled(Features::resetPasswords(), 'request.has_brand');
         if (! is_bool($res)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;

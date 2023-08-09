@@ -10,6 +10,7 @@ use ArtMin96\FilamentJet\Filament\Pages\CardPage;
 use ArtMin96\FilamentJet\Http\Responses\Auth\Contracts\TwoFactorLoginResponse;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use Exception;
 use Filament\Facades\Filament;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\TextInput;
@@ -28,6 +29,8 @@ class TwoFactorLogin extends CardPage
 {
     use WithRateLimiting;
 
+    protected static string $view = 'filament-jet::filament.pages.auth.two-factor-login';
+
     public ?string $code = '';
 
     public ?string $recoveryCode = '';
@@ -35,8 +38,6 @@ class TwoFactorLogin extends CardPage
     public bool $usingRecoveryCode = false;
 
     public ?UserContract $challengedUser = null;
-
-    protected static string $view = 'filament-jet::filament.pages.auth.two-factor-login';
 
     /**
      * Undocumented function
@@ -98,7 +99,7 @@ class TwoFactorLogin extends CardPage
         }
         $userProvider = Filament::auth()->getProvider();
         if (! method_exists($userProvider, 'getModel')) {
-            throw new \Exception('getModel not exists in userProvider');
+            throw new Exception('getModel not exists in userProvider');
         }
         $userModel = $userProvider->getModel();
 
@@ -121,14 +122,14 @@ class TwoFactorLogin extends CardPage
 
         $userProvider = Filament::auth()->getProvider();
         if (! method_exists($userProvider, 'getModel')) {
-            throw new \Exception('getModel not exists in userProvider');
+            throw new Exception('getModel not exists in userProvider');
         }
         $userModel = $userProvider->getModel();
 
         if (! session()->has("{$this->sessionPrefix}login.id") ||
             ! $user = $userModel::find(session()->get("{$this->sessionPrefix}login.id"))) {
             //return redirect()->to(jetRouteActions()->loginRoute());
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $this->challengedUser = $user;
@@ -141,7 +142,7 @@ class TwoFactorLogin extends CardPage
     {
         $res = session()->pull("{$this->sessionPrefix}login.remember", false);
         if (! is_bool($res)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;
@@ -186,7 +187,7 @@ class TwoFactorLogin extends CardPage
         }
 
         if (! $user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
         Filament::auth()->login($user, $this->remember());
@@ -210,7 +211,7 @@ class TwoFactorLogin extends CardPage
     {
         $res = Features::getOption(Features::twoFactorAuthentication(), 'authentication.card_width');
         if (! is_string($res)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;
@@ -220,7 +221,7 @@ class TwoFactorLogin extends CardPage
     {
         $res = Features::optionEnabled(Features::twoFactorAuthentication(), 'authentication.has_brand');
         if (! is_bool($res)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;

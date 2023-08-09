@@ -10,6 +10,7 @@ use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Events\InvitingTeamMember;
 use ArtMin96\FilamentJet\Mail\TeamInvitation;
+use Exception;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 
@@ -29,7 +30,7 @@ class InviteTeamMember implements InvitesTeamMembers
             'role' => $role,
         ]);
         if (! $invitation instanceof TeamInvitationContract) {
-            throw new \Exception('invitation must implements TeamInvitationContract');
+            throw new Exception('invitation must implements TeamInvitationContract');
         }
 
         Mail::to($email)->send(new TeamInvitation($invitation));

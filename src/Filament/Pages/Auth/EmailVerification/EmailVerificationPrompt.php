@@ -68,7 +68,7 @@ class EmailVerificationPrompt extends CardPage
 
         $user = Filament::auth()->user();
         if ($user === null) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
         if (! method_exists($user, 'notify')) {
@@ -77,10 +77,10 @@ class EmailVerificationPrompt extends CardPage
             throw new Exception("Model [{$userClass}] does not have a [notify()] method.");
         }
         if (! $user instanceof UserContract) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
-        $notification = new VerifyEmail();
+        $notification = new VerifyEmail;
         $notification->url = FilamentJet::getVerifyEmailUrl($user);
 
         $user->notify($notification);
@@ -105,7 +105,7 @@ class EmailVerificationPrompt extends CardPage
     {
         $res = Features::getOption(Features::emailVerification(), 'card_width');
         if (! is_string($res)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;
@@ -115,7 +115,7 @@ class EmailVerificationPrompt extends CardPage
     {
         $res = Features::optionEnabled(Features::emailVerification(), 'has_brand');
         if (! is_bool($res)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;

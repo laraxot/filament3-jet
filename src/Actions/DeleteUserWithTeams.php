@@ -8,6 +8,7 @@ use ArtMin96\FilamentJet\Contracts\DeletesTeams;
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
 use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class DeleteUserWithTeams implements DeletesUsers
@@ -34,14 +35,14 @@ class DeleteUserWithTeams implements DeletesUsers
     {
         DB::transaction(function () use ($user) {
             if (! method_exists($user, 'deleteProfilePhoto')) {
-                throw new \Exception('['.__LINE__.']['.__FILE__.']');
+                throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
             }
             if (! method_exists($user, 'delete')) {
-                throw new \Exception('['.__LINE__.']['.__FILE__.']');
+                throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
             }
             $this->deleteTeams($user);
             if (! method_exists($user, 'deleteProfilePhoto')) {
-                throw new \Exception('method deleteProfilePhoto is missing on user');
+                throw new Exception('method deleteProfilePhoto is missing on user');
             }
             $user->deleteProfilePhoto();
             $user->tokens->each->delete();
@@ -55,7 +56,7 @@ class DeleteUserWithTeams implements DeletesUsers
     protected function deleteTeams(UserContract $user): void
     {
         if (! method_exists($user, 'teams')) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
         $user->teams()->detach();
 

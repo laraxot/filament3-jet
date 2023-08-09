@@ -17,9 +17,6 @@ class TeamInvitation extends Mailable
      */
     public TeamInvitationContract $invitation;
 
-    /**
-     * Create a new message instance.
-     */
     public function __construct(TeamInvitationContract $invitation)
     {
         $this->invitation = $invitation;

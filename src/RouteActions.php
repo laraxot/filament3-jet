@@ -2,6 +2,8 @@
 
 namespace ArtMin96\FilamentJet;
 
+use Exception;
+
 class RouteActions
 {
     public function routePrefix(): string
@@ -10,7 +12,7 @@ class RouteActions
         if (is_string($res)) {
             return $res;
         }
-        throw new \Exception('config filament-jet.route_group_prefix is not a string ');
+        throw new Exception('config filament-jet.route_group_prefix is not a string ');
     }
 
     public function loginRoute(): string
@@ -20,16 +22,16 @@ class RouteActions
 
     public function registrationRoute(): string
     {
-        return route($this->routePrefix().'auth.register');
+        return route($this->routePrefix() . 'auth.register');
     }
 
     public function getRequestPasswordResetRoute(): string
     {
-        return route($this->routePrefix().'auth.password-reset.request');
+        return route($this->routePrefix() . 'auth.password-reset.request');
     }
 
     public function emailVerificationPromptRoute(): string
     {
-        return $this->routePrefix().'auth.email-verification.prompt';
+        return $this->routePrefix() . 'auth.email-verification.prompt';
     }
 }

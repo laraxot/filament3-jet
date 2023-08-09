@@ -1,5 +1,5 @@
 <x-filament::page>
-    @if(\ArtMin96\FilamentJet\Features::canUpdateProfileInformation())
+    @if (\ArtMin96\FilamentJet\Features::canUpdateProfileInformation())
         <x-filament-jet-form-section submit="updateProfileInformation">
             <x-slot name="title">
                 {{ __('filament-jet::account/update-information.title') }}
@@ -21,7 +21,7 @@
         </x-filament-jet-form-section>
     @endif
 
-    @if(\ArtMin96\FilamentJet\Features::enabled(\ArtMin96\FilamentJet\Features::updatePasswords()))
+    @if (\ArtMin96\FilamentJet\Features::enabled(\ArtMin96\FilamentJet\Features::updatePasswords()))
         <x-filament::hr />
 
         <x-filament-jet-form-section submit="updatePassword">
@@ -45,7 +45,7 @@
         </x-filament-jet-form-section>
     @endif
 
-    @if(\ArtMin96\FilamentJet\Features::canManageTwoFactorAuthentication())
+    @if (\ArtMin96\FilamentJet\Features::canManageTwoFactorAuthentication())
         @php
             $user = $this->user;
             $hasEnabledTwoFactorAuthentication = $user->hasEnabledTwoFactorAuthentication();
@@ -83,11 +83,11 @@
                     </p>
                 </div>
 
-                @if($this->enabled)
+                @if ($this->enabled)
                     @if ($showingQrCode)
                         <div class="mt-3 max-w-xl text-sm text-gray-600 dark:text-gray-300">
                             <p class="font-semibold">
-                                @if($showingConfirmation)
+                                @if ($showingConfirmation)
                                     {{ __('filament-jet::account/two-factor.finish_enabling.description') }}
                                 @else
                                     {{ __('filament-jet::account/two-factor.enabled.description') }}
@@ -102,7 +102,7 @@
                         </div>
                     @endif
 
-                    @if($showingRecoveryCodes)
+                    @if ($showingRecoveryCodes)
                         <hr class="my-3"/>
                         <p class="mt-3 max-w-xl text-sm text-gray-600 dark:text-gray-300">{{ __('filament-jet::account/two-factor.enabled.store_codes') }}</p>
 
@@ -117,9 +117,9 @@
                 @endif
 
                 <x-slot name="actions">
-                    @if($hasConfirmedTwoFactorAuthentication)
+                    @if ($hasConfirmedTwoFactorAuthentication)
                         <div class="flex items-center justify-between">
-                            @if(! $showingRecoveryCodes)
+                            @if (! $showingRecoveryCodes)
                                 {{ $this->getCachedAction('showing_recovery_codes') }}
                             @else
                                 {{ $this->getCachedAction('hide_recovery_codes') }}
@@ -127,7 +127,7 @@
 
                             {{ $this->getCachedAction('disable2fa') }}
                         </div>
-                    @elseif($showingConfirmation)
+                    @elseif ($showingConfirmation)
                         <form wire:submit.prevent="confirmTwoFactorAuthentication">
                             <div class="flex items-center justify-between">
 
@@ -154,7 +154,7 @@
         </x-filament-jet-action-section>
     @endif
 
-    @if(\ArtMin96\FilamentJet\Features::canLogoutOtherBrowserSessions())
+    @if (\ArtMin96\FilamentJet\Features::canLogoutOtherBrowserSessions())
         <x-filament::hr />
 
         <x-filament-jet-action-section>
@@ -182,7 +182,7 @@
         </x-filament-jet-action-section>
     @endif
 
-    @if(\ArtMin96\FilamentJet\Features::hasAccountDeletionFeatures())
+    @if (\ArtMin96\FilamentJet\Features::hasAccountDeletionFeatures())
         <x-filament::hr />
 
         <x-filament-jet-action-section>
@@ -208,7 +208,7 @@
         </x-filament-jet-action-section>
     @endif
 
-    @if(\ArtMin96\FilamentJet\Features::canExportPersonalData())
+    @if (\ArtMin96\FilamentJet\Features::canExportPersonalData())
         <x-filament::hr />
 
         <x-filament-jet-action-section>
@@ -227,11 +227,11 @@
 
                 <x-slot name="actions">
                     <div class="text-right">
-                        @if($this->exportBatch)
+                        @if ($this->exportBatch)
                             <div wire:poll="updateExportProgress">
                                 <x-filament-jet-progress-bar :percentage="$this->exportProgress" />
 
-                                @if($this->exportProgress == 100)
+                                @if ($this->exportProgress == 100)
                                     <div class="mt-4">
                                         {{ $this->getCachedAction('download_personal_data') }}
                                     </div>

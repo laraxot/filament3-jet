@@ -7,6 +7,17 @@ use Filament\Pages\Actions\ButtonAction;
 
 class PasswordConfirmationAction extends ButtonAction
 {
+    public function call(array $data = []): void
+    {
+        // If the session already has a cookie and it's still valid, we don't want to reset the time on it.
+        if ($this->isPasswordSessionValid()) {
+        } else {
+            session(['auth.password_confirmed_at' => time()]);
+        }
+
+        parent::call($data);
+    }
+
     protected function setUp(): void
     {
         if ($this->isPasswordSessionValid()) {
@@ -26,17 +37,6 @@ class PasswordConfirmationAction extends ButtonAction
                         ->rule('current_password'),
                 ]);
         }
-    }
-
-    public function call(array $data = []): void
-    {
-        // If the session already has a cookie and it's still valid, we don't want to reset the time on it.
-        if ($this->isPasswordSessionValid()) {
-        } else {
-            session(['auth.password_confirmed_at' => time()]);
-        }
-
-        parent::call($data);
     }
 
     protected function isPasswordSessionValid(): bool

@@ -7,6 +7,7 @@ use ArtMin96\FilamentJet\Contracts\TeamInvitationContract;
 use ArtMin96\FilamentJet\Datas\FilamentData;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
+use Exception;
 use Filament\Notifications\Notification;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class TeamInvitationController extends Controller
                 ->send();
             $filamentPath = config('filament.path');
             if (! is_string($filamentPath)) {
-                throw new \Exception('strange things');
+                throw new Exception('strange things');
             }
 
             return redirect($filamentPath);
@@ -71,7 +72,7 @@ class TeamInvitationController extends Controller
     public function destroy(Request $request, TeamInvitationContract $invitation)
     {
         if (! Gate::forUser($request->user())->check('removeTeamMember', $invitation->team)) {
-            throw new AuthorizationException();
+            throw new AuthorizationException;
         }
 
         $invitation->delete();

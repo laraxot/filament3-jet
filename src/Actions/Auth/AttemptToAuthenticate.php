@@ -4,6 +4,7 @@ namespace ArtMin96\FilamentJet\Actions\Auth;
 
 use ArtMin96\FilamentJet\FilamentJet;
 use Closure;
+use Exception;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Validation\ValidationException;
@@ -57,7 +58,7 @@ class AttemptToAuthenticate
     protected function fireFailedEvent(array $data): void
     {
         if (! is_string(config('filament.auth.guard'))) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
 
         event(new Failed(config('filament.auth.guard'), null, [

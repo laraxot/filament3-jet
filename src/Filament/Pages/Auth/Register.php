@@ -10,6 +10,7 @@ use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Traits\RedirectsActions;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use Exception;
 use Filament\Facades\Filament;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\Checkbox;
@@ -29,6 +30,8 @@ class Register extends CardPage
     use WithRateLimiting;
     use RedirectsActions;
 
+    protected static string $view = 'filament-jet::filament.pages.auth.register';
+
     public ?string $email = '';
 
     public ?string $name = '';
@@ -36,8 +39,6 @@ class Register extends CardPage
     public ?string $password = '';
 
     public ?string $passwordConfirmation = '';
-
-    protected static string $view = 'filament-jet::filament.pages.auth.register';
 
     public function mount(): void
     {
@@ -77,7 +78,7 @@ class Register extends CardPage
 
         $user = $creator->create($data);
         if (! $user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
-            throw new \Exception('user no authenticable');
+            throw new Exception('user no authenticable');
         }
 
         Filament::auth()->login(
@@ -104,7 +105,7 @@ class Register extends CardPage
     {
         $res = Features::getOption(Features::registration(), 'card_width');
         if (! is_string($res)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;
@@ -114,7 +115,7 @@ class Register extends CardPage
     {
         $res = Features::optionEnabled(Features::registration(), 'has_brand');
         if (! is_bool($res)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;
@@ -149,8 +150,8 @@ class Register extends CardPage
                 ->label(
                     new HtmlString(
                         __('filament-jet::auth/register.fields.terms_and_policy.label', [
-                            'terms_of_service' => '<a target="_blank" href="'.route(config('filament-jet.route_group_prefix').'terms').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('filament-jet::auth/register.fields.terms_and_policy.terms_of_service').'</a>',
-                            'privacy_policy' => '<a target="_blank" href="'.route(config('filament-jet.route_group_prefix').'policy').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('filament-jet::auth/register.fields.terms_and_policy.privacy_policy').'</a>',
+                            'terms_of_service' => '<a target="_blank" href="' . route(config('filament-jet.route_group_prefix') . 'terms') . '" class="underline text-sm text-gray-600 hover:text-gray-900">' . __('filament-jet::auth/register.fields.terms_and_policy.terms_of_service') . '</a>',
+                            'privacy_policy' => '<a target="_blank" href="' . route(config('filament-jet.route_group_prefix') . 'policy') . '" class="underline text-sm text-gray-600 hover:text-gray-900">' . __('filament-jet::auth/register.fields.terms_and_policy.privacy_policy') . '</a>',
                         ])
                     )
                 )

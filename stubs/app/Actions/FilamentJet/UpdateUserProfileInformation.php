@@ -6,6 +6,7 @@ use ArtMin96\FilamentJet\Contracts\UpdatesUserProfileInformation;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
+use Exception;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
@@ -19,7 +20,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     {
         if (Features::managesProfilePhotos()) {
             if (! method_exists($user, 'updateProfilePhoto')) {
-                throw new \Exception('method updateProfilePhoto not exists in user');
+                throw new Exception('method updateProfilePhoto not exists in user');
             }
             $user->updateProfilePhoto($input['profile_photo_path']);
         }
@@ -45,7 +46,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         $user->forceFill([
             'name' => $input['name'],
             FilamentJet::email() => $input[FilamentJet::email()],
-            FilamentJet::email().'_verified_at' => null,
+            FilamentJet::email() . '_verified_at' => null,
         ])->save();
 
         app()->bind(

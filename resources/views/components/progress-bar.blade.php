@@ -16,7 +16,7 @@
     <div class="flex justify-end space-y-1 text-xs font-semibold {{ $done ? 'text-success-500' : 'text-orange-600' }}">
 
         {{-- checkmark --}}
-        @if($done) &#10003; @endif
+        @if ($done) &#10003; @endif
 
         {{ $percentage }}%
 

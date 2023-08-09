@@ -8,6 +8,7 @@ use ArtMin96\FilamentJet\Contracts\CreatesNewUsers;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Features;
 use ArtMin96\FilamentJet\FilamentJet;
+use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -34,14 +35,14 @@ class CreateNewUserWithTeams implements CreatesNewUsers
                     );
                 }
                 if (! $user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
-                    throw new \Exception('user must implements Authenticatable');
+                    throw new Exception('user must implements Authenticatable');
                 }
 
                 event(new Registered($user));
 
                 if (Features::hasTeamFeatures()) {
                     if (! $user instanceof UserContract) {
-                        throw new \Exception('strange things');
+                        throw new Exception('strange things');
                     }
                     $this->createTeam($user);
                 }
@@ -57,12 +58,12 @@ class CreateNewUserWithTeams implements CreatesNewUsers
     protected function createTeam(UserContract $user): void
     {
         if (! method_exists($user, 'ownedTeams')) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
         $teamClass = FilamentJet::teamModel();
         $user->ownedTeams()->save($teamClass::forceCreate([
             'user_id' => $user->getKey(),
-            'name' => explode(' ', $user->name, 2)[0]."'s Team",
+            'name' => explode(' ', $user->name, 2)[0] . "'s Team",
             'personal_team' => true,
         ]));
     }

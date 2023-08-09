@@ -22,7 +22,7 @@
         </p>
     </div>
 
-    @unless($hasBeenSent)
+    @unless ($hasBeenSent)
         {{ $this->form }}
 
         <x-filament::button type="submit" class="w-full">

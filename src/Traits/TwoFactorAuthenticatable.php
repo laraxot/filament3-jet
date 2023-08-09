@@ -11,6 +11,7 @@ use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Renderer\RendererStyle\Fill;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
+use Exception;
 
 /**
  * @property string $two_factor_confirmed_at
@@ -49,7 +50,7 @@ trait TwoFactorAuthenticatable
     public function recoveryCodes()
     {
         if ($this->two_factor_recovery_codes === null) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
 
         return (array) json_decode(decrypt($this->two_factor_recovery_codes), true);
@@ -64,11 +65,11 @@ trait TwoFactorAuthenticatable
     public function replaceRecoveryCode($code)
     {
         if ($code === null) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
 
         if ($this->two_factor_recovery_codes === null) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
 
         $this->forceFill([
@@ -90,7 +91,7 @@ trait TwoFactorAuthenticatable
         $svg = (new Writer(
             new ImageRenderer(
                 new RendererStyle(192, 0, null, null, Fill::uniformColor(new Rgb(255, 255, 255), new Rgb(45, 55, 72))),
-                new SvgImageBackEnd()
+                new SvgImageBackEnd
             )
         ))->writeString($this->twoFactorQrCodeUrl());
 
@@ -106,11 +107,11 @@ trait TwoFactorAuthenticatable
     {
         $app_name = (string) config('app.name');
         if ($app_name === null) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
 
         if ($this->two_factor_secret === null) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
 
         return app(TwoFactorAuthenticationProvider::class)->qrCodeUrl(

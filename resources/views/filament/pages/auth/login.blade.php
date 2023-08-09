@@ -1,5 +1,5 @@
 <div>
-    @if(\ArtMin96\FilamentJet\Features::hasRegistrationFeature())
+    @if (\ArtMin96\FilamentJet\Features::hasRegistrationFeature())
         <x-slot name="subheading">
             {{ __('filament-jet::auth/login.buttons.register.before') }}
             <x-filament::link :href="jetRouteActions()->registrationRoute()">

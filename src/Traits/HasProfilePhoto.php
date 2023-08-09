@@ -3,6 +3,7 @@
 namespace ArtMin96\FilamentJet\Traits;
 
 use ArtMin96\FilamentJet\Features;
+use Exception;
 use Illuminate\Support\Facades\Storage;
 
 trait HasProfilePhoto
@@ -64,7 +65,7 @@ trait HasProfilePhoto
     public function photoExists(): bool
     {
         if ($this->profile_photo_path === null) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
 
         return Storage::disk($this->profilePhotoDisk())->exists($this->profile_photo_path);

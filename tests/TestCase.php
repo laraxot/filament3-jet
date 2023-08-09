@@ -15,17 +15,8 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'ArtMin96\\FilamentJet\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'ArtMin96\\FilamentJet\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
-    }
-
-    protected function getPackageProviders($app)
-    {
-        return [
-            LivewireServiceProvider::class,
-            FilamentServiceProvider::class,
-            FilamentJetServiceProvider::class,
-        ];
     }
 
     public function getEnvironmentSetUp($app)
@@ -36,5 +27,14 @@ class TestCase extends Orchestra
         $migration = include __DIR__.'/../database/migrations/create_filament-jet_table.php.stub';
         $migration->up();
         */
+    }
+
+    protected function getPackageProviders($app)
+    {
+        return [
+            LivewireServiceProvider::class,
+            FilamentServiceProvider::class,
+            FilamentJetServiceProvider::class,
+        ];
     }
 }

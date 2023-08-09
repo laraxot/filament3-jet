@@ -7,6 +7,22 @@ use Filament\Pages\Actions\Action;
 
 class PasswordConfirmationAction extends Action
 {
+    /**
+     * Undocumented function
+     *
+     * @return mixed
+     */
+    public function call(array $data = [])
+    {
+        // If the session already has a cookie and it's still valid, we don't want to reset the time on it.
+        if ($this->isPasswordSessionValid()) {
+        } else {
+            session(['auth.password_confirmed_at' => time()]);
+        }
+
+        parent::call($data);
+    }
+
     protected function setUp(): void
     {
         if ($this->isPasswordSessionValid()) {
@@ -26,22 +42,6 @@ class PasswordConfirmationAction extends Action
                         ->rule('current_password'),
                 ]);
         }
-    }
-
-    /**
-     * Undocumented function
-     *
-     * @return mixed
-     */
-    public function call(array $data = [])
-    {
-        // If the session already has a cookie and it's still valid, we don't want to reset the time on it.
-        if ($this->isPasswordSessionValid()) {
-        } else {
-            session(['auth.password_confirmed_at' => time()]);
-        }
-
-        parent::call($data);
     }
 
     /**

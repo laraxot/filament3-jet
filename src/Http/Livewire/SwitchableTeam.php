@@ -8,6 +8,7 @@ use ArtMin96\FilamentJet\Datas\FilamentData;
 use ArtMin96\FilamentJet\Events\TeamSwitched;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
+use Exception;
 use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Collection;
@@ -30,7 +31,7 @@ class SwitchableTeam extends Component
             return; //persa sessione
         }
         if (! $user instanceof UserContract) {
-            throw new \Exception('['.$user::class.'] not implements ArtMin96\FilamentJet\Contracts\HasTeamsContract ');
+            throw new Exception('[' . $user::class . '] not implements ArtMin96\FilamentJet\Contracts\HasTeamsContract ');
         }
         $this->user = $user;
         $this->teams = $this->user->allTeams();
@@ -46,10 +47,10 @@ class SwitchableTeam extends Component
         $team = FilamentJet::newTeamModel()->findOrFail($teamId);
 
         if ($this->user === null) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
         if (! $team instanceof TeamContract) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         if (! $this->user->switchTeam($team)) {

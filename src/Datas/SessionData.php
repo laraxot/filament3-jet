@@ -3,6 +3,7 @@
 namespace ArtMin96\FilamentJet\Datas;
 
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,7 @@ class SessionData extends Data
     {
         $data = config('session');
         if (! is_array($data)) {
-            throw new \Exception('straneg things');
+            throw new Exception('straneg things');
         }
 
         return self::from($data);
@@ -31,7 +32,7 @@ class SessionData extends Data
         return DB::connection($this->connection)
             ->table($this->table)
             //->where('user_id', Auth::user()->getAuthIdentifier())
-            ->where('user_id', Auth::id())
+            ->where('user_id', auth()->id())
             ->orderBy('last_activity', 'desc')
             ->get();
     }
@@ -63,7 +64,7 @@ class SessionData extends Data
         DB::connection($this->connection)
             ->table($this->table)
             //->where('user_id', Auth::user()->getAuthIdentifier())
-            ->where('user_id', Auth::id())
+            ->where('user_id', auth()->id())
             ->where('id', '!=', request()->session()->getId())
             ->delete();
     }
@@ -76,7 +77,7 @@ class SessionData extends Data
      */
     protected function createAgent($session)
     {
-        return tap(new \Jenssegers\Agent\Agent(), function ($agent) use ($session) {
+        return tap(new \Jenssegers\Agent\Agent, function ($agent) use ($session) {
             $agent->setUserAgent($session->user_agent);
         });
     }

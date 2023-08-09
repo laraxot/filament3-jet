@@ -29,6 +29,8 @@ class ApiTokens extends Page
 {
     use HasCachedAction;
     use HasUserProperty;
+
+    protected static string $view = 'filament-jet::filament.pages.api-tokens';
     // ////use HasSanctumPermissionsProperty;
 
     /**
@@ -48,7 +50,12 @@ class ApiTokens extends Page
      */
     public ?string $plainTextToken = '';
 
-    protected static string $view = 'filament-jet::filament.pages.api-tokens';
+    protected static function shouldRegisterNavigation(): bool
+    {
+        $filamentJetData = FilamentJetData::make();
+        // return config('filament-jet.should_register_navigation.api_tokens');
+        return $filamentJetData->should_register_navigation->api_tokens;
+    }
 
     public function mount(): void
     {
@@ -71,13 +78,6 @@ class ApiTokens extends Page
         $this->permissions = FilamentJet::$defaultPermissions;
 
         $this->emit('tokenCreated');
-    }
-
-    protected static function shouldRegisterNavigation(): bool
-    {
-        $filamentJetData = FilamentJetData::make();
-        // return config('filament-jet.should_register_navigation.api_tokens');
-        return $filamentJetData->should_register_navigation->api_tokens;
     }
 
     protected function getFormSchema(): array

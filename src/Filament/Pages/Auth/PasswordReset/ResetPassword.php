@@ -11,6 +11,7 @@ use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Responses\Auth\Contracts\PasswordResetResponse;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use Exception;
 use Filament\Facades\Filament;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\TextInput;
@@ -29,6 +30,8 @@ class ResetPassword extends CardPage
 {
     use WithRateLimiting;
 
+    protected static string $view = 'filament-jet::filament.pages.auth.password-reset.reset-password';
+
     public ?string $email = null;
 
     public ?string $password = '';
@@ -37,8 +40,6 @@ class ResetPassword extends CardPage
 
     public ?string $token = null;
 
-    protected static string $view = 'filament-jet::filament.pages.auth.password-reset.reset-password';
-
     public function mount(): void
     {
         if (Filament::auth()->check()) {
@@ -46,7 +47,7 @@ class ResetPassword extends CardPage
         }
 
         if (is_array(request()->query('token'))) {
-            throw new \Exception('['.__LINE__.']['.class_basename(self::class).']');
+            throw new Exception('[' . __LINE__ . '][' . class_basename(self::class) . ']');
         }
 
         $this->token = request()->query('token');
@@ -97,12 +98,12 @@ class ResetPassword extends CardPage
             return app(PasswordResetResponse::class);
         }
         if (! is_string($status)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         $title = __($status);
         if (! is_string($title)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         Notification::make()
@@ -142,7 +143,7 @@ class ResetPassword extends CardPage
     {
         $res = Features::getOption(Features::resetPasswords(), 'reset.card_width');
         if (! is_string($res)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;
@@ -152,7 +153,7 @@ class ResetPassword extends CardPage
     {
         $res = Features::optionEnabled(Features::resetPasswords(), 'reset.has_brand');
         if (! is_bool($res)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;

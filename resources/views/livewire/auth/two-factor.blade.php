@@ -26,7 +26,7 @@
 
     <div class="text-center">
         {{ $this->usingRecoveryCode ? '' : __('filament-jet::login.two_factor.recovery_code_text') }}
-        <a x-data @click="$wire.toggleRecoveryCode()" class="text-primary-600 hover:text-primary-700" href="#">{{$this->usingRecoveryCode ? __('filament-jet::login.cancel') : __('filament-jet::login.two_factor.recovery_code_link') }}</a>
+        <a x-data @click="$wire.toggleRecoveryCode()" class="text-primary-600 hover:text-primary-700" href="#">{{ $this->usingRecoveryCode ? __('filament-jet::login.cancel') : __('filament-jet::login.two_factor.recovery_code_link') }}</a>
     </div>
 
 </x-filament-jet::auth-card>

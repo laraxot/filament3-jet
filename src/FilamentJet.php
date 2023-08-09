@@ -15,6 +15,7 @@ use ArtMin96\FilamentJet\Contracts\UpdatesUserPasswords;
 use ArtMin96\FilamentJet\Contracts\UpdatesUserProfileInformation;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Traits\HasTeams;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\URL;
@@ -182,7 +183,7 @@ final class FilamentJet
     {
         self::$permissions = $permissions;
 
-        return new self();
+        return new self;
     }
 
     /**
@@ -194,7 +195,7 @@ final class FilamentJet
     {
         self::$defaultPermissions = $permissions;
 
-        return new self();
+        return new self;
     }
 
     /**
@@ -373,7 +374,7 @@ final class FilamentJet
     {
         $res = self::newUserModel()->where('id', $id)->firstOrFail();
         if (! $res instanceof UserContract) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
         return $res;
@@ -386,7 +387,7 @@ final class FilamentJet
     {
         $res = self::newUserModel()->where('email', $email)->firstOrFail();
         if (! $res instanceof UserContract) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
         return $res;
@@ -411,9 +412,9 @@ final class FilamentJet
     {
         $model = self::userModel();
 
-        $res = new $model();
+        $res = new $model;
         if (! $res instanceof Model) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;
@@ -428,7 +429,7 @@ final class FilamentJet
     {
         self::$userModel = $model;
 
-        return new self();
+        return new self;
     }
 
     /**
@@ -453,9 +454,9 @@ final class FilamentJet
     {
         $model = self::teamModel();
 
-        $res = new $model();
+        $res = new $model;
         if (! $res instanceof Model) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;
@@ -470,7 +471,7 @@ final class FilamentJet
     {
         self::$teamModel = $model;
 
-        return new self();
+        return new self;
     }
 
     /**
@@ -492,7 +493,7 @@ final class FilamentJet
     {
         self::$membershipModel = $model;
 
-        return new self();
+        return new self;
     }
 
     /**
@@ -517,7 +518,7 @@ final class FilamentJet
     {
         self::$teamInvitationModel = $model;
 
-        return new self();
+        return new self;
     }
 
     /**
@@ -620,7 +621,7 @@ final class FilamentJet
         $expire = config('auth.verification.expire', 60);
 
         return URL::temporarySignedRoute(
-            config('filament-jet.route_group_prefix').'auth.email-verification.verify',
+            config('filament-jet.route_group_prefix') . 'auth.email-verification.verify',
             now()->addMinutes($expire),
             [
                 'id' => $user->getKey(),
@@ -631,7 +632,7 @@ final class FilamentJet
 
     public static function getResetPasswordUrl(string $token, UserContract $user): string
     {
-        return URL::signedRoute(config('filament-jet.route_group_prefix').'auth.password-reset.reset', [
+        return URL::signedRoute(config('filament-jet.route_group_prefix') . 'auth.password-reset.reset', [
             'email' => $user->getEmailForPasswordReset(),
             'token' => $token,
         ]);
@@ -666,14 +667,14 @@ final class FilamentJet
      */
     public static function localizedMarkdownPath($name)
     {
-        $localName = preg_replace('#(\.md)$#i', '.'.app()->getLocale().'$1', $name);
+        $localName = preg_replace('#(\.md)$#i', '.' . app()->getLocale() . '$1', $name);
 
         /**
          * @var string|null $return
          */
         return Arr::first([
-            resource_path('markdown/'.$localName),
-            resource_path('markdown/'.$name),
+            resource_path('markdown/' . $localName),
+            resource_path('markdown/' . $name),
         ], function ($path) {
             return file_exists($path);
         });

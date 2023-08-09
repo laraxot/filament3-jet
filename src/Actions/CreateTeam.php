@@ -7,6 +7,7 @@ use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\Contracts\UserContract;
 use ArtMin96\FilamentJet\Events\AddingTeam;
 use ArtMin96\FilamentJet\FilamentJet;
+use Exception;
 use Illuminate\Support\Facades\Gate;
 
 class CreateTeam implements CreatesTeams
@@ -23,18 +24,18 @@ class CreateTeam implements CreatesTeams
         AddingTeam::dispatch($user);
 
         if (! method_exists($user, 'ownedTeams')) {
-            throw new \Exception('['.__LINE__.']['.class_basename(self::class).']');
+            throw new Exception('[' . __LINE__ . '][' . class_basename(self::class) . ']');
         }
 
         if (! method_exists($user, 'switchTeam')) {
-            throw new \Exception('['.__LINE__.']['.class_basename(self::class).']');
+            throw new Exception('[' . __LINE__ . '][' . class_basename(self::class) . ']');
         }
         $team = $user->ownedTeams()->create([
             'name' => $input['name'],
             'personal_team' => false,
         ]);
         if (! $team instanceof TeamContract) {
-            throw new \Exception('team not have TeamContract');
+            throw new Exception('team not have TeamContract');
         }
         $user->switchTeam($team);
 

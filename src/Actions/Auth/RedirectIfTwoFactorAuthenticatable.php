@@ -7,6 +7,7 @@ use ArtMin96\FilamentJet\Events\TwoFactorAuthenticationChallenged;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Traits\TwoFactorAuthenticatable;
 use Closure;
+use Exception;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\RedirectResponse;
@@ -67,7 +68,7 @@ class RedirectIfTwoFactorAuthenticatable
     {
         $userProvider = $this->guard->getProvider();
         if (! method_exists($userProvider, 'getModel')) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
         $model = $userProvider->getModel();
 
@@ -98,7 +99,7 @@ class RedirectIfTwoFactorAuthenticatable
     protected function fireFailedEvent(array $data, UserContract $user = null): void
     {
         if ($user !== null && ! $user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
         event(new Failed(config('filament.auth.guard'), $user, [
             FilamentJet::username() => $data[FilamentJet::username()],
@@ -112,8 +113,8 @@ class RedirectIfTwoFactorAuthenticatable
     protected function twoFactorChallengeResponse(array $data, UserContract $user): Redirector|RedirectResponse
     {
         session()->put([
-            jet()->getTwoFactorLoginSessionPrefix().'login.id' => $user->getKey(),
-            jet()->getTwoFactorLoginSessionPrefix().'login.remember' => $data['remember'],
+            jet()->getTwoFactorLoginSessionPrefix() . 'login.id' => $user->getKey(),
+            jet()->getTwoFactorLoginSessionPrefix() . 'login.remember' => $data['remember'],
         ]);
 
         TwoFactorAuthenticationChallenged::dispatch($user);

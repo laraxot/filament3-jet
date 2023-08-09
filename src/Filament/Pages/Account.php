@@ -16,6 +16,7 @@ use ArtMin96\FilamentJet\Filament\Traits\HasTwoFactorAuthentication;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Http\Livewire\Traits\Properties\HasUserProperty;
 use ArtMin96\FilamentJet\Traits\ProcessesExport;
+use Exception;
 use Filament\Facades\Filament;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\Actions\Action;
@@ -48,6 +49,8 @@ class Account extends Page
     use CanDeleteAccount;
     use ProcessesExport;
 
+    protected static string $view = 'filament-jet::filament.pages.account';
+
     public ?array $updateProfileInformationState = [];
 
     public ?string $currentPassword;
@@ -56,7 +59,12 @@ class Account extends Page
 
     public ?string $passwordConfirmation;
 
-    protected static string $view = 'filament-jet::filament.pages.account';
+    protected static function shouldRegisterNavigation(): bool
+    {
+        $filamentJetData = FilamentJetData::make();
+
+        return $filamentJetData->should_register_navigation->account;
+    }
 
     public function mount(): void
     {
@@ -103,9 +111,9 @@ class Account extends Page
             ->success()
             ->send();
 
-        session()->forget('password_hash_'.config('filament.auth.guard'));
+        session()->forget('password_hash_' . config('filament.auth.guard'));
         if (! $this->user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
         Filament::auth()->login($this->user);
 
@@ -114,19 +122,12 @@ class Account extends Page
 
     public function downloadPersonalData(): BinaryFileResponse
     {
-        $path = glob(Storage::disk(config('personal-data-export.disk'))->path('')."{$this->user->id}_*.zip");
+        $path = glob(Storage::disk(config('personal-data-export.disk'))->path('') . "{$this->user->id}_*.zip");
 
         $this->exportProgress = 0;
         $this->exportBatch = null;
 
         return response()->download(end($path))->deleteFileAfterSend();
-    }
-
-    protected static function shouldRegisterNavigation(): bool
-    {
-        $filamentJetData = FilamentJetData::make();
-
-        return $filamentJetData->should_register_navigation->account;
     }
 
     protected function getForms(): array
@@ -146,7 +147,7 @@ class Account extends Page
     protected function updateProfileFormSchema(): array
     {
         if (! $this->user instanceof \Illuminate\Database\Eloquent\Model) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
         return array_filter([

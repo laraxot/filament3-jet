@@ -4,6 +4,7 @@ namespace ArtMin96\FilamentJet\Actions;
 
 use ArtMin96\FilamentJet\Contracts\DeletesUsers;
 use ArtMin96\FilamentJet\Contracts\UserContract;
+use Exception;
 
 class DeleteUser implements DeletesUsers
 {
@@ -13,10 +14,10 @@ class DeleteUser implements DeletesUsers
     public function delete(UserContract $user): void
     {
         if (! method_exists($user, 'deleteProfilePhoto')) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
         if (! method_exists($user, 'delete')) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
         $user->deleteProfilePhoto();
         $user->tokens->each->delete();

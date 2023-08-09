@@ -3,6 +3,7 @@
 namespace ArtMin96\FilamentJet;
 
 use JsonSerializable;
+use ReturnTypeWillChange;
 
 class Role implements JsonSerializable
 {
@@ -63,7 +64,7 @@ class Role implements JsonSerializable
      *
      * @return array
      */
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return [

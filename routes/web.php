@@ -34,16 +34,16 @@ Route::domain($domain)
         $authMiddleware = config('filament-jet.auth_middleware', 'auth');
 
         Route::name('auth.')
-            ->middleware(['guest:'.$guard])
+            ->middleware(['guest:' . $guard])
             ->group(function () {
                 // Two Factor Authentication...
                 if (Features::enabled(Features::twoFactorAuthentication())) {
-                    Route::get('/two-factor-login', \ArtMin96\FilamentJet\Filament\Pages\Auth\TwoFactorLogin::class)->name('two-factor.login');
+                    Route::get('two-factor-login', \ArtMin96\FilamentJet\Filament\Pages\Auth\TwoFactorLogin::class)->name('two-factor.login');
                 }
 
                 // Registration...
                 if (Features::hasRegistrationFeature()) {
-                    Route::get('/register', FilamentJet::registrationPage())->name('register');
+                    Route::get('register', FilamentJet::registrationPage())->name('register');
                 }
 
                 // Password Reset...
@@ -51,8 +51,8 @@ Route::domain($domain)
                     Route::name('password-reset.')
                         ->prefix('/password-reset')
                         ->group(function () {
-                            Route::get('/request', Features::getOption(Features::resetPasswords(), 'request.page'))->name('request');
-                            Route::get('/reset', Features::getOption(Features::resetPasswords(), 'reset.page'))
+                            Route::get('request', Features::getOption(Features::resetPasswords(), 'request.page'))->name('request');
+                            Route::get('reset', Features::getOption(Features::resetPasswords(), 'reset.page'))
                                 ->middleware(['signed'])
                                 ->name('reset');
                         });
@@ -61,8 +61,8 @@ Route::domain($domain)
 
         if (Features::enabled(Features::registration())) {
             if (FilamentJet::hasTermsAndPrivacyPolicyFeature()) {
-                Route::get('/terms-of-service', FilamentJet::termsOfServiceComponent())->name('terms');
-                Route::get('/privacy-policy', FilamentJet::privacyPolicyComponent())->name('policy');
+                Route::get('terms-of-service', FilamentJet::termsOfServiceComponent())->name('terms');
+                Route::get('privacy-policy', FilamentJet::privacyPolicyComponent())->name('policy');
             }
         }
 
@@ -71,7 +71,7 @@ Route::domain($domain)
             Route::middleware(
                 Features::getOption(Features::teams(), 'middleware') ?? []
             )->group(function () {
-                Route::get('/team-invitations/{invitation}', [FilamentJet::teamInvitationController(), FilamentJet::teamInvitationAcceptAction()])
+                Route::get('team-invitations/{invitation}', [FilamentJet::teamInvitationController(), FilamentJet::teamInvitationAcceptAction()])
                     ->middleware(['signed'])
                     ->name('team-invitations.accept');
             });
@@ -82,9 +82,9 @@ Route::domain($domain)
             Route::name('auth.email-verification.')
                 ->prefix('/email-verification')
                 ->group(function () {
-                    Route::get('/prompt', Features::getOption(Features::emailVerification(), 'page'))->name('prompt');
+                    Route::get('prompt', Features::getOption(Features::emailVerification(), 'page'))->name('prompt');
 
-                    Route::get('/verify', [
+                    Route::get('verify', [
                         Features::getOption(Features::emailVerification(), 'controller') ?? EmailVerificationController::class,
                         '__invoke',
                     ])

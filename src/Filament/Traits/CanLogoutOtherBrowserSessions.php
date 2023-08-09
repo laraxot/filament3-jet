@@ -4,7 +4,6 @@ namespace ArtMin96\FilamentJet\Filament\Traits;
 
 use ArtMin96\FilamentJet\Datas\SessionData;
 use Filament\Notifications\Notification;
-use Illuminate\Support\Facades\Auth;
 
 trait CanLogoutOtherBrowserSessions
 {
@@ -19,12 +18,12 @@ trait CanLogoutOtherBrowserSessions
             return;
         }
 
-        Auth::logoutOtherDevices('password');
+        auth()->logoutOtherDevices('password');
 
         $this->deleteOtherSessionRecords();
 
         request()->session()->put([
-            'password_hash_'.Auth::getDefaultDriver() => Auth::user()?->getAuthPassword(),
+            'password_hash_' . auth()->getDefaultDriver() => auth()->user()?->getAuthPassword(),
         ]);
 
         $this->emit('loggedOut');

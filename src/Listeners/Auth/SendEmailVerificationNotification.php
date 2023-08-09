@@ -29,10 +29,10 @@ class SendEmailVerificationNotification extends BaseListener
         }
 
         if (! $event->user instanceof UserContract) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
-        $notification = new VerifyEmail();
+        $notification = new VerifyEmail;
         $notification->url = FilamentJet::getVerifyEmailUrl($event->user);
 
         $event->user->notify($notification);

@@ -11,7 +11,7 @@
         <div>
             {{ __('filament-jet::email-verify.before_proceeding') }}
 
-            @unless($hasBeenSent)
+            @unless ($hasBeenSent)
                 {{ __('filament-jet::email-verify.not_receive') }}
 
                 <a class="text-primary-600" href="#" wire:click="resend">

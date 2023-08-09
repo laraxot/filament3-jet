@@ -11,6 +11,7 @@ use ArtMin96\FilamentJet\Filament\Pages\CardPage;
 use ArtMin96\FilamentJet\FilamentJet;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use Exception;
 use Filament\Facades\Filament;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\Checkbox;
@@ -33,6 +34,8 @@ class Login extends CardPage
 {
     use WithRateLimiting;
 
+    protected static string $view = 'filament-jet::filament.pages.auth.login';
+
     public ?string $email = null;
 
     public ?string $password = null;
@@ -40,8 +43,6 @@ class Login extends CardPage
     public bool $remember = false;
 
     public ?UserContract $user = null;
-
-    protected static string $view = 'filament-jet::filament.pages.auth.login';
 
     public function mount(): void
     {
@@ -83,7 +84,7 @@ class Login extends CardPage
     {
         $res = Features::getOption(Features::login(), 'card_width');
         if (! is_string($res)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;
@@ -93,7 +94,7 @@ class Login extends CardPage
     {
         $res = Features::optionEnabled(Features::login(), 'has_brand');
         if (! is_bool($res)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $res;

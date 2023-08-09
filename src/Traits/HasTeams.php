@@ -8,6 +8,7 @@ use ArtMin96\FilamentJet\Contracts\TeamContract;
 use ArtMin96\FilamentJet\FilamentJet;
 use ArtMin96\FilamentJet\Models\Team;
 use ArtMin96\FilamentJet\OwnerRole;
+use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -115,7 +116,7 @@ trait HasTeams
             return null;
         }
         if (! $res instanceof TeamContract) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
         return $res;
@@ -155,7 +156,7 @@ trait HasTeams
     public function teamRole(TeamContract $team)
     {
         if ($this->ownsTeam($team)) {
-            return new OwnerRole();
+            return new OwnerRole;
         }
 
         if (! $this->belongsToTeam($team)) {

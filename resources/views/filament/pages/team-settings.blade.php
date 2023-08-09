@@ -10,7 +10,7 @@
 
         <x-slot name="form">
             <!-- Team Owner Information -->
-            @if($team->owner)  {{-- Temporarily solve the problem of team owner not found, after deleting a team, before the redirect --}}
+            @if ($team->owner)  {{-- Temporarily solve the problem of team owner not found, after deleting a team, before the redirect --}}
                 <div class="col-span-6">
                     <div class="block font-medium text-sm text-gray-700 dark:text-gray-300">
                         {{ __('filament-jet::teams/name.team_owner.label') }}
@@ -30,7 +30,7 @@
             {{ $this->updateTeamNameForm }}
         </x-slot>
 
-        @if(\Illuminate\Support\Facades\Gate::check('update', $team))
+        @if (\Illuminate\Support\Facades\Gate::check('update', $team))
             <x-slot name="actions">
                 <x-filament::button type="submit">
                     {{ __('filament-jet::teams/name.buttons.save') }}
@@ -163,7 +163,7 @@
         </div>
     @endif
 
-    @if(\Illuminate\Support\Facades\Gate::check('delete', $team) && ! $team->personal_team)
+    @if (\Illuminate\Support\Facades\Gate::check('delete', $team) && ! $team->personal_team)
         <x-filament-jet-section-border />
 
         <x-filament-jet-action-section>
