@@ -113,8 +113,8 @@ class RedirectIfTwoFactorAuthenticatable
     protected function twoFactorChallengeResponse(array $data, UserContract $user): Redirector|RedirectResponse
     {
         session()->put([
-            jet()->getTwoFactorLoginSessionPrefix() . 'login.id' => $user->getKey(),
-            jet()->getTwoFactorLoginSessionPrefix() . 'login.remember' => $data['remember'],
+            jet()->getTwoFactorLoginSessionPrefix().'login.id' => $user->getKey(),
+            jet()->getTwoFactorLoginSessionPrefix().'login.remember' => $data['remember'],
         ]);
 
         TwoFactorAuthenticationChallenged::dispatch($user);

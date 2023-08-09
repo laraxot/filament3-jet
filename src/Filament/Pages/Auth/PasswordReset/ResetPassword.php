@@ -47,7 +47,7 @@ class ResetPassword extends CardPage
         }
 
         if (is_array(request()->query('token'))) {
-            throw new Exception('[' . __LINE__ . '][' . class_basename(self::class) . ']');
+            throw new Exception('['.__LINE__.']['.class_basename(self::class).']');
         }
 
         $this->token = request()->query('token');

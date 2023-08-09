@@ -74,7 +74,7 @@ trait HasTwoFactorAuthentication
     public function confirmTwoFactorAuthentication(ConfirmTwoFactorAuthentication $confirm)
     {
         if ($this->two_factor_code === null) {
-            throw new Exception('[' . __LINE__ . '][' . class_basename(self::class) . ']');
+            throw new Exception('['.__LINE__.']['.class_basename(self::class).']');
         }
 
         $confirm($this->user, $this->two_factor_code);

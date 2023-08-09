@@ -50,7 +50,7 @@ trait TwoFactorAuthenticatable
     public function recoveryCodes()
     {
         if ($this->two_factor_recovery_codes === null) {
-            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         return (array) json_decode(decrypt($this->two_factor_recovery_codes), true);
@@ -65,11 +65,11 @@ trait TwoFactorAuthenticatable
     public function replaceRecoveryCode($code)
     {
         if ($code === null) {
-            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         if ($this->two_factor_recovery_codes === null) {
-            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         $this->forceFill([
@@ -107,11 +107,11 @@ trait TwoFactorAuthenticatable
     {
         $app_name = (string) config('app.name');
         if ($app_name === null) {
-            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         if ($this->two_factor_secret === null) {
-            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         return app(TwoFactorAuthenticationProvider::class)->qrCodeUrl(

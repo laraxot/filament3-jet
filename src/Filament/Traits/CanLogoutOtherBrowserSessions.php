@@ -23,7 +23,7 @@ trait CanLogoutOtherBrowserSessions
         $this->deleteOtherSessionRecords();
 
         request()->session()->put([
-            'password_hash_' . auth()->getDefaultDriver() => auth()->user()?->getAuthPassword(),
+            'password_hash_'.auth()->getDefaultDriver() => auth()->user()?->getAuthPassword(),
         ]);
 
         $this->emit('loggedOut');

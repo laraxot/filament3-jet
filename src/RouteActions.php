@@ -22,16 +22,16 @@ class RouteActions
 
     public function registrationRoute(): string
     {
-        return route($this->routePrefix() . 'auth.register');
+        return route($this->routePrefix().'auth.register');
     }
 
     public function getRequestPasswordResetRoute(): string
     {
-        return route($this->routePrefix() . 'auth.password-reset.request');
+        return route($this->routePrefix().'auth.password-reset.request');
     }
 
     public function emailVerificationPromptRoute(): string
     {
-        return $this->routePrefix() . 'auth.email-verification.prompt';
+        return $this->routePrefix().'auth.email-verification.prompt';
     }
 }

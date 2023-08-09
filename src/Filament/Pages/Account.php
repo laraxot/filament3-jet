@@ -111,7 +111,7 @@ class Account extends Page
             ->success()
             ->send();
 
-        session()->forget('password_hash_' . config('filament.auth.guard'));
+        session()->forget('password_hash_'.config('filament.auth.guard'));
         if (! $this->user instanceof \Illuminate\Contracts\Auth\Authenticatable) {
             throw new Exception('strange things');
         }
@@ -122,7 +122,7 @@ class Account extends Page
 
     public function downloadPersonalData(): BinaryFileResponse
     {
-        $path = glob(Storage::disk(config('personal-data-export.disk'))->path('') . "{$this->user->id}_*.zip");
+        $path = glob(Storage::disk(config('personal-data-export.disk'))->path('')."{$this->user->id}_*.zip");
 
         $this->exportProgress = 0;
         $this->exportBatch = null;

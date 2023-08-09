@@ -35,10 +35,10 @@ class DeleteUserWithTeams implements DeletesUsers
     {
         DB::transaction(function () use ($user) {
             if (! method_exists($user, 'deleteProfilePhoto')) {
-                throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+                throw new Exception('['.__LINE__.']['.__FILE__.']');
             }
             if (! method_exists($user, 'delete')) {
-                throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+                throw new Exception('['.__LINE__.']['.__FILE__.']');
             }
             $this->deleteTeams($user);
             if (! method_exists($user, 'deleteProfilePhoto')) {
@@ -56,7 +56,7 @@ class DeleteUserWithTeams implements DeletesUsers
     protected function deleteTeams(UserContract $user): void
     {
         if (! method_exists($user, 'teams')) {
-            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
         $user->teams()->detach();
 

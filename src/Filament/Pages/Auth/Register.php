@@ -150,8 +150,8 @@ class Register extends CardPage
                 ->label(
                     new HtmlString(
                         __('filament-jet::auth/register.fields.terms_and_policy.label', [
-                            'terms_of_service' => '<a target="_blank" href="' . route(config('filament-jet.route_group_prefix') . 'terms') . '" class="underline text-sm text-gray-600 hover:text-gray-900">' . __('filament-jet::auth/register.fields.terms_and_policy.terms_of_service') . '</a>',
-                            'privacy_policy' => '<a target="_blank" href="' . route(config('filament-jet.route_group_prefix') . 'policy') . '" class="underline text-sm text-gray-600 hover:text-gray-900">' . __('filament-jet::auth/register.fields.terms_and_policy.privacy_policy') . '</a>',
+                            'terms_of_service' => '<a target="_blank" href="'.route(config('filament-jet.route_group_prefix').'terms').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('filament-jet::auth/register.fields.terms_and_policy.terms_of_service').'</a>',
+                            'privacy_policy' => '<a target="_blank" href="'.route(config('filament-jet.route_group_prefix').'policy').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('filament-jet::auth/register.fields.terms_and_policy.privacy_policy').'</a>',
                         ])
                     )
                 )

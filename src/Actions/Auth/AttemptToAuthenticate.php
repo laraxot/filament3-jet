@@ -58,7 +58,7 @@ class AttemptToAuthenticate
     protected function fireFailedEvent(array $data): void
     {
         if (! is_string(config('filament.auth.guard'))) {
-            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         event(new Failed(config('filament.auth.guard'), null, [

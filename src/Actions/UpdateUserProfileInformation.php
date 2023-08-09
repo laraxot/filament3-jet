@@ -46,7 +46,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         $user->forceFill([
             'name' => $input['name'],
             FilamentJet::email() => $input[FilamentJet::email()],
-            FilamentJet::email() . '_verified_at' => null,
+            FilamentJet::email().'_verified_at' => null,
         ])->save();
 
         app()->bind(

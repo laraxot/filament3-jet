@@ -31,7 +31,7 @@ class SwitchableTeam extends Component
             return; //persa sessione
         }
         if (! $user instanceof UserContract) {
-            throw new Exception('[' . $user::class . '] not implements ArtMin96\FilamentJet\Contracts\HasTeamsContract ');
+            throw new Exception('['.$user::class.'] not implements ArtMin96\FilamentJet\Contracts\HasTeamsContract ');
         }
         $this->user = $user;
         $this->teams = $this->user->allTeams();

@@ -19,11 +19,11 @@ class PrivacyPolicy extends Component
         $policyFile = FilamentJet::localizedMarkdownPath('policy.md');
 
         if ($policyFile === null) {
-            throw new Exception('[' . __LINE__ . '][' . class_basename(self::class) . ']');
+            throw new Exception('['.__LINE__.']['.class_basename(self::class).']');
         }
 
         if (! file_get_contents($policyFile)) {
-            throw new Exception('[' . __LINE__ . '][' . class_basename(self::class) . ']');
+            throw new Exception('['.__LINE__.']['.class_basename(self::class).']');
         }
 
         $view = view('filament-jet::livewire.privacy-policy', [
