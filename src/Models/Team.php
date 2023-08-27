@@ -71,13 +71,13 @@ abstract class Team extends Model implements TeamContract
      */
     public function users(): BelongsToMany
     {
-        $pivotClass=FilamentJet::membershipModel();
-        $pivot=app($pivotClass);
-        $pivotTable=$pivot->getTable();
-        $pivotDbName=$pivot->getConnection()->getDatabaseName();
-        $pivotTableFull=$pivotDbName.'.'.$pivotTable;
+        $pivotClass = FilamentJet::membershipModel();
+        $pivot = app($pivotClass);
+        $pivotTable = $pivot->getTable();
+        $pivotDbName = $pivot->getConnection()->getDatabaseName();
+        $pivotTableFull = $pivotDbName.'.'.$pivotTable;
 
-        return $this->belongsToMany(FilamentJet::userModel(), $pivotTableFull,'team_id')
+        return $this->belongsToMany(FilamentJet::userModel(), $pivotTableFull, 'team_id')
             ->using($pivotClass)
             ->withPivot('role')
             ->withTimestamps()

@@ -100,13 +100,13 @@ trait HasTeams
      */
     public function teams(): BelongsToMany
     {
-        $pivotClass=FilamentJet::membershipModel();
-        $pivot=app($pivotClass);
-        $pivotTable=$pivot->getTable();
-        $pivotDbName=$pivot->getConnection()->getDatabaseName();
-        $pivotTableFull=$pivotDbName.'.'.$pivotTable;
+        $pivotClass = FilamentJet::membershipModel();
+        $pivot = app($pivotClass);
+        $pivotTable = $pivot->getTable();
+        $pivotDbName = $pivot->getConnection()->getDatabaseName();
+        $pivotTableFull = $pivotDbName.'.'.$pivotTable;
 
-        return $this->belongsToMany(FilamentJet::teamModel(), $pivotTableFull,null,'team_id')
+        return $this->belongsToMany(FilamentJet::teamModel(), $pivotTableFull, null, 'team_id')
             ->using($pivotClass)
             ->withPivot('role')
             ->withTimestamps()
