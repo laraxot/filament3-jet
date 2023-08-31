@@ -45,8 +45,8 @@ use Suleymanozev\FilamentRadioButtonField\Forms\Components\RadioButton;
 class TeamSettings extends Page
 {
     use HasCachedAction;
-    use RedirectsActions;
     use HasUserProperty;
+    use RedirectsActions;
 
     protected static string $view = 'filament-jet::filament.pages.team-settings';
 

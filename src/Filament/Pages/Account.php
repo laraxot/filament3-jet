@@ -42,12 +42,12 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
  */
 class Account extends Page
 {
-    use HasHiddenAction;
-    use HasCachedAction;
-    use HasUserProperty;
-    use HasTwoFactorAuthentication;
-    use CanLogoutOtherBrowserSessions;
     use CanDeleteAccount;
+    use CanLogoutOtherBrowserSessions;
+    use HasCachedAction;
+    use HasHiddenAction;
+    use HasTwoFactorAuthentication;
+    use HasUserProperty;
     use ProcessesExport;
 
     protected static string $view = 'filament-jet::filament.pages.account';

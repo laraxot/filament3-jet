@@ -21,8 +21,8 @@ use Filament\Pages\Page;
  */
 class CreateTeam extends Page
 {
-    use RedirectsActions;
     use HasUserProperty;
+    use RedirectsActions;
 
     protected static string $view = 'filament-jet::filament.pages.create-team';
 
